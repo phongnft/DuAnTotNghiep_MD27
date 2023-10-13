@@ -3,5 +3,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grow">#534F4F</color>
+
     <color name="red">#F40202</color>
+
+    <color name="home">#F44336</color>
+    <color name="card">#03A9F4</color>
+    <color name="favorite">#4CAF50</color>
+    <color name="profile">#FFC107</color>
+
+    <color name="home_20">#33F44336</color>
+    <color name="card_20">#3303A9F4</color>
+    <color name="favorite_20">#334CAF50</color>
+    <color name="profile_20">#33FFC107</color>
+
 </resources>
