@@ -2,6 +2,7 @@ package com.example.duantotnghiep_md27;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -33,6 +34,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         replaceFragment(new Home_Fragment());
 
+        Toolbar toolbar=findViewById(R.id.toolbar_home);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.cart_bar:
+                        replaceFragment(new Cart_Fragment());
+                        break;
+                }
+                return false;
+            }
+        });
+
         bottomNavigationView = findViewById(R.id.bottomnavmenu);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -50,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.profile:
                         replaceFragment(new Profile_Fragment());
                         break;
+
                 }
                 return true;
             }
