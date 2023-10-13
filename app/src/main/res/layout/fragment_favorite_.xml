@@ -2,15 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/card"
+    android:background="#4CAF50"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Profile_Fragment">
+    tools:context=".Fragment.Favorite_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:textSize="50dp"
+        android:textSize="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Trang tài khoản" />
+        android:text="trang yêu thích" />
 
 </FrameLayout>

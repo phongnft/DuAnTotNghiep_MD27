@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-    android:id="@+id/home"
-    android:title="Home"
-    android:icon="@drawable/baseline_lock_24"/>
+    <item
+        android:id="@+id/home_"
+        android:icon="@drawable/img"
+        android:title="Trang chủ" />
 
     <item
         android:id="@+id/card"
-        android:title="card"
-        android:icon="@drawable/baseline_lock_24"/>
+        android:icon="@drawable/img_1"
+        android:title="Giỏ hàng" />
 
     <item
         android:id="@+id/favorite"
-        android:title="favorite"
-        android:icon="@drawable/baseline_lock_24"/>
+        android:icon="@drawable/img_2"
+        android:title="Yêu thích" />
 
     <item
         android:id="@+id/profile"
-        android:title="profile"
-        android:icon="@drawable/baseline_lock_24"/>
+        android:icon="@drawable/img_3"
+        android:title="Tài khoản" />
 
 </menu>
