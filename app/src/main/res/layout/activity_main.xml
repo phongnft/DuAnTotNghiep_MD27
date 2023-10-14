@@ -15,7 +15,18 @@
         android:background="#2196F3"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:menu="@menu/bottom_toolbar" />
+        app:menu="@menu/bottom_toolbar" >
+
+        <EditText
+            android:paddingLeft="10dp"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:textColorHint="#535151"
+            android:hint="Tìm kiếm sản phẩm..."
+            android:backgroundTint="@color/white"
+            android:background="@drawable/custom_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/framehome"
