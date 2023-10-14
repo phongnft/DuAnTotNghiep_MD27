@@ -15,5 +15,6 @@
     <color name="card_20">#3303A9F4</color>
     <color name="favorite_20">#334CAF50</color>
     <color name="profile_20">#33FFC107</color>
+    <color name="info">#E6D6D6</color>
 
 </resources>

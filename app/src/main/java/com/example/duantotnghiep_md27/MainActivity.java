@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         replaceFragment(new Home_Fragment());
 
-        Toolbar toolbar=findViewById(R.id.toolbar_home);
+        Toolbar toolbar = findViewById(R.id.toolbar_home);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

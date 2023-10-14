@@ -55,13 +55,13 @@
                     android:layout_height="70dp">
 
                     <EditText
-                        android:drawableStart="@drawable/baseline_email_24"
-                        android:background="@drawable/custom_edittex"
                         android:id="@+id/login_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Email"
+                        android:background="@drawable/custom_edittex"
+                        android:drawableStart="@drawable/baseline_email_24"
                         android:drawablePadding="8dp"
+                        android:hint="Email"
                         android:inputType="textEmailAddress"
                         android:maxLines="10"
                         android:textColor="@color/black"
@@ -71,26 +71,25 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleEnabled="true"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
+                    android:layout_height="70dp"
+                    android:layout_marginTop="20dp"
+                    app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:drawableStart="@drawable/baseline_lock_24"
-                        android:background="@drawable/custom_edittex"
                         android:id="@+id/login_pass"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Password"
+                        android:background="@drawable/custom_edittex"
+                        android:drawableStart="@drawable/baseline_lock_24"
                         android:drawablePadding="8dp"
+                        android:hint="Password"
                         android:inputType="textEmailAddress"
                         android:maxLines="10"
                         android:textColor="@color/black"
                         android:textColorHint="#FF9800"
                         android:textSize="20dp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
 
 
                 <LinearLayout

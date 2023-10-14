@@ -15,18 +15,7 @@
         android:background="#2196F3"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:menu="@menu/bottom_toolbar" >
-
-        <EditText
-            android:paddingLeft="10dp"
-            android:drawableStart="@drawable/baseline_search_24"
-            android:textColorHint="#535151"
-            android:hint="Tìm kiếm sản phẩm"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/custom_searchview"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"/>
-    </androidx.appcompat.widget.Toolbar>
+        app:menu="@menu/bottom_toolbar" />
 
     <FrameLayout
         android:id="@+id/framehome"
@@ -38,7 +27,6 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:background="@color/white"
         android:id="@+id/bottomnavmenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
