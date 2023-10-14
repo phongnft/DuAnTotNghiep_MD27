@@ -22,10 +22,11 @@
             android:drawableStart="@drawable/baseline_search_24"
             android:textColorHint="#535151"
             android:hint="Tìm kiếm sản phẩm..."
+            android:maxLines="1"
             android:backgroundTint="@color/white"
             android:background="@drawable/custom_searchview"
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="50dp"/>
     </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
