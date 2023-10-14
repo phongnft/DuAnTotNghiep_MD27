@@ -7,4 +7,9 @@
         android:id="@+id/cart_bar"
         android:icon="@drawable/baseline_shopping_cart_24"
         android:title="Giỏ hàng" />
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/notifications"
+        android:icon="@drawable/baseline_notifications_24"
+        android:title="Giỏ hàng" />
 </menu>
