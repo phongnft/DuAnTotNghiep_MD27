@@ -24,37 +24,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="130dp">
 
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/viewPager"
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/smartSlider"
+                        android:layout_alignParentTop="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_alignParentTop="true">
+                        android:paddingStart="60dp"
+                        android:paddingEnd="60dp"
+                        />
 
-                    </androidx.viewpager.widget.ViewPager>
 
-                    <LinearLayout
-                        android:id="@+id/SliderDots"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="10dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"></LinearLayout>
+
                 </RelativeLayout>
 
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="19sp"
+                        android:layout_marginStart="10dp"
+                        android:text="Danh mục sản phẩm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-                <RelativeLayout
+                    <TextView
+                        android:textColor="@color/card"
+                        android:textSize="19sp"
+                        android:layout_marginStart="110dp"
+                        android:text="Xem tất cả"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
+                </LinearLayout>
+
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/category_rv"
+                        android:id="@+id/recycleview_category"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
-                </RelativeLayout>
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -67,11 +89,12 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="5dp"
-                            android:text="New Products"
+                            android:text="Sản phẩm mới"
                             android:textSize="20dp"
                             android:textStyle="bold" />
                     </RelativeLayout>
@@ -97,9 +120,10 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:textColor="@color/black"
+                            android:layout_marginStart="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
                             android:text="Popular Products"
                             android:textSize="20dp"

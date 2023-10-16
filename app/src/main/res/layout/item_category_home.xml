@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="13dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="#E6DFDF"
+        android:background="@drawable/backgrow_cardview"
+        app:cardCornerRadius="10000dp"
+        android:layout_gravity="center"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/img_item_category"
+            android:src="@drawable/img_11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/tv_item_category"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:hint="Đồ nam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
