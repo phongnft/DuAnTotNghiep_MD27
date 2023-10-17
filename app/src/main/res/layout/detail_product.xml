@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/img_product" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quần âu nam BAT chất vải tuyết mưa, Quần tây nam có giản 4 chiều dáng ôm body siêu hot"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="150.000đ"
+                android:textColor="@color/red" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_cardview"
+                android:drawableLeft="@drawable/baseline_shopping_cart_24"
+                android:gravity="left"
+                android:paddingLeft="110dp"
+                android:text="Thêm vào giỏ hàng" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Mô tả sản phẩm"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Áo thun nam luôn là sự lựa chọn của phái mạnh đi cùng với đó thì nhu cầu về áo thun nam ngày càng tăng dẫn tới sự đa dạng về mẫu mã, chất liệu và màu sắc. Tuy nhiên, tuỳ theo từng sở thích và phong cách cá nhân mà ( tên shop) đã sản xuất ra nhiều mẫu mã đa dạng để bạn có thể lựa chọn
+          ✪ Giới thiệu sản phẩm: Áo phông nam
+phong cách đơn giản mà vẫn toát lên vẻ nam tính thì đây sẽ là sự lựa chọn không tồi khi dạo phố hoặc đi chơi với bạn bè. Sự đa dạng về màu sắc, không kén người mặc sẽ rất dễ dàng cho bạn lựa chọn chiếc áo ưng ý, thoải mái phối đồ và tự tin mỗi ngày.
+✪ Chi tiết sản phẩm: Áo thun nam
+- Tên sản phẩm: Áo thun nam
+- Chất liệu: Cotton thấm hút mồ hôi và tạo sự thoải mái khi mặc
+- Thiết kế nổi bật"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

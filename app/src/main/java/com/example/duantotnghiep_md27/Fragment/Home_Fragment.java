@@ -74,10 +74,10 @@ public class Home_Fragment extends Fragment {
     //hàm sản phẩm
     private void setupProductRecycleView() {
         product_list = new ArrayList<>();
-        product_list.add(new Product_home("Aó phông nam", "1345000", ""));
-        product_list.add(new Product_home("Aó phông nam", "1345000", ""));
-        product_list.add(new Product_home("Ao hoodie nam", "1345000", ""));
-        product_list.add(new Product_home("Aó sơ mi nam", "1345000", ""));
+        product_list.add(new Product_home("Áo Polo nam phong cách hàn quốc", "1345000", ""));
+        product_list.add(new Product_home("Áo hoodie UNISEX nam nữ Basic chất vải cao cấp", "1345000", ""));
+        product_list.add(new Product_home("Quần tây nam vải tuyết mưa cao cấp", "1345000", ""));
+        product_list.add(new Product_home("ÁO SƠ MI NAM CHẤT VẢI NHUNG TĂM", "1345000", ""));
         product_list.add(new Product_home("Aó cộc tay nam", "1345000", ""));
         product_list.add(new Product_home("quần tây nam", "1345000", ""));
         product_list.add(new Product_home("quần short nam", "1345000", ""));

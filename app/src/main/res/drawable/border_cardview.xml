@@ -1,0 +1,9 @@
+<shape xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    <solid android:color="@android:color/white"/> <!-- Màu nền của CardView -->
+    <stroke
+        android:width="2dp"/> <!-- Độ dày của đường viền -->
+    android:color="#FF0000"/> <!-- Màu của đường viền -->
+    <corners android:radius="8dp"/> <!-- Độ cong góc của CardView -->
+</shape>
