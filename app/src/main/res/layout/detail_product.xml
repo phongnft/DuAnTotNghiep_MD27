@@ -16,13 +16,39 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/img_product" />
+                android:layout_height="200dp"
+                android:src="@drawable/img_product1" />
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:src="@drawable/baseline_favorite_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="#CAC8C8"
+                    android:text="|"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:src="@drawable/baseline_share_24"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Quần âu nam BAT chất vải tuyết mưa, Quần tây nam có giản 4 chiều dáng ôm body siêu hot"
+                android:text="Áo thun nam Cotton Coolmate Basics 200gsm thương hiệu Coolmate CW"
                 android:textStyle="bold" />
 
             <TextView
@@ -31,6 +57,39 @@
                 android:layout_marginTop="5dp"
                 android:text="150.000đ"
                 android:textColor="@color/red" />
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Đen"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="#CAC8C8"
+                    android:text="|"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Size"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text=">"
+                    />
+            </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"
@@ -45,25 +104,150 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:text="Mô tả sản phẩm"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Áo thun nam luôn là sự lựa chọn của phái mạnh đi cùng với đó thì nhu cầu về áo thun nam ngày càng tăng dẫn tới sự đa dạng về mẫu mã, chất liệu và màu sắc. Tuy nhiên, tuỳ theo từng sở thích và phong cách cá nhân mà ( tên shop) đã sản xuất ra nhiều mẫu mã đa dạng để bạn có thể lựa chọn
-          ✪ Giới thiệu sản phẩm: Áo phông nam
-phong cách đơn giản mà vẫn toát lên vẻ nam tính thì đây sẽ là sự lựa chọn không tồi khi dạo phố hoặc đi chơi với bạn bè. Sự đa dạng về màu sắc, không kén người mặc sẽ rất dễ dàng cho bạn lựa chọn chiếc áo ưng ý, thoải mái phối đồ và tự tin mỗi ngày.
-✪ Chi tiết sản phẩm: Áo thun nam
-- Tên sản phẩm: Áo thun nam
-- Chất liệu: Cotton thấm hút mồ hôi và tạo sự thoải mái khi mặc
-- Thiết kế nổi bật"
+                android:layout_marginTop="10dp"
+                android:text="Chất liệu: 100% Cotton mềm mại
+Định lượng vải: 200gsm, dày dặn
+Dáng áo vừa vặn, phù hợp với đi chơi, đi làm và ở nhà
+Tự hào sản xuất tại Việt Nam"
                 android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Thương hiệu"
+                android:textColor="@color/black"
+                android:textSize="16dp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Cool-mate"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Bảng Size"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/bang_size_ao"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Phù hợp với bạn"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/img_product4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/red"
+                        android:text="150.000đ"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Men's Sport Box - Set Đồ bộ Thể Thao"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/img_product2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:layout_margin="5dp"
+                        android:text="199.000đ"/>
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Áo Hoodie nam Daily Wear (mũ trùm)"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/img_product3"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:layout_margin="5dp"
+                        android:text="250.000đ"/>
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Áo khoác gió thể thao HeiQ ViroBlock"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
