@@ -20,29 +20,31 @@
                 android:src="@drawable/img_product1" />
 
             <LinearLayout
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:src="@drawable/baseline_favorite_24"/>
+                    android:layout_weight="1"
+                    android:src="@drawable/baseline_favorite_24" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:text="|"
                     android:textColor="#CAC8C8"
-                    android:text="|"/>
+                    android:textSize="20dp" />
+
                 <ImageView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:src="@drawable/baseline_share_24"/>
+                    android:layout_weight="1"
+                    android:src="@drawable/baseline_share_24" />
             </LinearLayout>
 
             <TextView
@@ -57,38 +59,39 @@
                 android:layout_marginTop="5dp"
                 android:text="150.000đ"
                 android:textColor="@color/red" />
+
             <LinearLayout
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="Đen"
-                    />
+                    android:layout_weight="1"
+                    android:text="Đen" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:text="|"
                     android:textColor="#CAC8C8"
-                    android:text="|"/>
+                    android:textSize="20dp" />
+
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="Size"
                     android:layout_marginLeft="20dp"
-                    />
+                    android:layout_weight="1"
+                    android:text="Size" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text=">"
-                    />
+                    android:text=">" />
             </LinearLayout>
 
             <Button
@@ -118,8 +121,7 @@
 Định lượng vải: 200gsm, dày dặn
 Dáng áo vừa vặn, phù hợp với đi chơi, đi làm và ở nhà
 Tự hào sản xuất tại Việt Nam"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -135,8 +137,7 @@ Tự hào sản xuất tại Việt Nam"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Cool-mate"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -148,10 +149,10 @@ Tự hào sản xuất tại Việt Nam"
                 android:textStyle="bold" />
 
             <ImageView
-                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                android:src="@drawable/bang_size_ao"/>
+                android:layout_margin="10dp"
+                android:src="@drawable/bang_size_ao" />
 
 
             <TextView
@@ -164,17 +165,17 @@ Tự hào sản xuất tại Việt Nam"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
@@ -186,63 +187,70 @@ Tự hào sản xuất tại Việt Nam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:textColor="@color/red"
-                        android:text="150.000đ"/>
+                        android:text="150.000đ"
+                        android:textColor="@color/red" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Men's Sport Box - Set Đồ bộ Thể Thao"/>
+                        android:text="Men's Sport Box - Set Đồ bộ Thể Thao" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/img_product2"/>
+                        android:src="@drawable/img_product2" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/red"
                         android:layout_margin="5dp"
-                        android:text="199.000đ"/>
+                        android:text="199.000đ"
+                        android:textColor="@color/red" />
+
                     <TextView
-                        android:layout_margin="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Áo Hoodie nam Daily Wear (mũ trùm)"/>
+                        android:layout_margin="5dp"
+                        android:text="Áo Hoodie nam Daily Wear (mũ trùm)" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/img_product3"/>
+                        android:src="@drawable/img_product3" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/red"
                         android:layout_margin="5dp"
-                        android:text="250.000đ"/>
+                        android:text="250.000đ"
+                        android:textColor="@color/red" />
+
                     <TextView
-                        android:layout_margin="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Áo khoác gió thể thao HeiQ ViroBlock"/>
+                        android:layout_margin="5dp"
+                        android:text="Áo khoác gió thể thao HeiQ ViroBlock" />
 
                 </LinearLayout>
 

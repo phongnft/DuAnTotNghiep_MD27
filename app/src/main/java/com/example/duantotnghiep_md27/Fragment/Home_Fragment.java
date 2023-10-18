@@ -59,7 +59,7 @@ public class Home_Fragment extends Fragment {
         sliderItems.add(new SliderItem(R.drawable.img_10, "Image 3"));
         sliderItems.add(new SliderItem("https://dojeannam.com/wp-content/uploads/2017/10/banner-thoi-trang-nam-cong-so-2018.jpg", "Image from url"));
 
-        viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, 5000));
+        viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, 3000));
 
         new SliderAdapter((position, title, vieww) -> {
 
