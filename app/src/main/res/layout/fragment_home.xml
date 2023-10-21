@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/bottom_toolbar">
+
+
+        <EditText
+            android:id="@+id/edt_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_searchview"
+            android:backgroundTint="@color/white"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:hint="Tìm kiếm sản phẩm..."
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:textColorHint="#535151" />
+    </androidx.appcompat.widget.Toolbar>
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
+        android:layout_below="@+id/toolbar"
         android:fillViewport="true">
 
         <RelativeLayout
@@ -25,43 +50,41 @@
                     android:layout_height="130dp">
 
                     <androidx.viewpager2.widget.ViewPager2
-                        android:layout_marginTop="20dp"
                         android:id="@+id/smartSlider"
-                        android:layout_alignParentTop="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20dp"
                         android:paddingStart="60dp"
-                        android:paddingEnd="60dp"
-                        />
-
+                        android:paddingEnd="60dp" />
 
 
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="19sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:text="Danh mục sản phẩm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="@color/black"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:textColor="@color/card"
-                        android:textSize="19sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="110dp"
                         android:text="Xem tất cả"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="@color/card"
+                        android:textSize="19sp" />
 
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -89,12 +112,12 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Sản phẩm mới"
+                            android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold" />
                     </RelativeLayout>
@@ -120,12 +143,12 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:textColor="@color/black"
-                            android:layout_marginStart="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Popular Products"
+                            android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold" />
                     </RelativeLayout>

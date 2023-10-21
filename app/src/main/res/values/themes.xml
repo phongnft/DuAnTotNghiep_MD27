@@ -4,10 +4,12 @@
         <item name="colorPrimary">#2196F3</item>
         <item name="colorPrimaryDark">#2196F3</item>
 
+
+
     </style>
 
     <style name="Theme.DuAnTotNghiep_MD27" parent="Base.Theme.DuAnTotNghiep_MD27" />
-<!--    <style name="NavigationView" parent="Base.Theme.DuAnTotNghiep_MD27">-->
-<!--        <item name="android:listDivider">@color/home</item>-->
-<!--    </style>-->
+    <!--    <style name="NavigationView" parent="Base.Theme.DuAnTotNghiep_MD27">-->
+    <!--        <item name="android:listDivider">@color/home</item>-->
+    <!--    </style>-->
 </resources>

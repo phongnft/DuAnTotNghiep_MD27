@@ -3,6 +3,7 @@ package com.example.duantotnghiep_md27.Fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -91,15 +95,26 @@ public class Home_Fragment extends Fragment {
     //hàm danh mục
     private void setupCategoryRecycleView() {
         categoryList = new ArrayList<>();
-        categoryList.add(new Category("","Áo nam",R.drawable.img_11));
+        categoryList.add(new Category("","Áo nam",R.drawable.img_product1));
         categoryList.add(new Category("","Áo nữ",R.drawable.img_10));
-        categoryList.add(new Category("","Quần nam",1));
-        categoryList.add(new Category("","Đồ nót",2));
+        categoryList.add(new Category("","Quần nam",R.drawable.img_10));
+        categoryList.add(new Category("","Đồ nữ",R.drawable.img_10));
         categoryList.add(new Category("","Áo nam",R.drawable.img_11));
         category_adapter=new Category_Adapter(categoryList,getContext(),"category");
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);
         category_recyclerView.setItemAnimator(new DefaultItemAnimator());
         category_recyclerView.setAdapter(category_adapter);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+       // inflater.inflate(R.menu.bottom_toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

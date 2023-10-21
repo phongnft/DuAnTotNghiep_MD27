@@ -6,44 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar_home"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:background="#2196F3"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        android:theme="?attr/actionBarTheme">-->
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="#2196F3"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:menu="@menu/bottom_toolbar" >
+<!--&lt;!&ndash;        <EditText&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/edt_searchview"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="40dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@drawable/custom_searchview"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:backgroundTint="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:drawableStart="@drawable/baseline_search_24"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:hint="Tìm kiếm sản phẩm..."&ndash;&gt;-->
+<!--&lt;!&ndash;            android:maxLines="1"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:paddingLeft="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:textColorHint="#535151" />&ndash;&gt;-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
 
-        <EditText
-            android:paddingLeft="10dp"
-            android:drawableStart="@drawable/baseline_search_24"
-            android:textColorHint="#535151"
-            android:hint="Tìm kiếm sản phẩm..."
-            android:maxLines="1"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/custom_searchview"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
-    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/framehome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomnavmenu"
-        android:layout_below="@+id/toolbar_home" />
-
+        android:layout_above="@+id/bottomnavmenu"/>
+<!--        android:layout_below="@+id/toolbar_home" />-->
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:background="@color/white"
         android:id="@+id/bottomnavmenu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
+        android:background="@color/white"
         app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>
