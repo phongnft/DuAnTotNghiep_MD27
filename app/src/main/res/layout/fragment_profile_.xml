@@ -24,7 +24,7 @@
     </androidx.appcompat.widget.Toolbar>
 
 <LinearLayout
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="10dp"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@drawable/customtext"
@@ -120,7 +120,7 @@
         android:text="Đăng Xuất"
         />
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="100dp">
