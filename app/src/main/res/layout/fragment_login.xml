@@ -55,7 +55,7 @@
                     android:layout_height="70dp">
 
                     <EditText
-                        android:id="@+id/login_mobile"
+                        android:id="@+id/edt_mailLog"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
@@ -77,7 +77,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/login_pass"
+                        android:id="@+id/edt_passLog"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
@@ -113,7 +113,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnlogin"
+                    android:id="@+id/btnLogin"
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="3dp"
