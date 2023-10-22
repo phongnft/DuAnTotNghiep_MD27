@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
+import com.example.duantotnghiep_md27.Fragment.Category_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Favorite_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Home_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Login_Fragment;
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.card:
                         replaceFragment(new Cart_Fragment());
                         break;
-                    case R.id.favorite:
-                        replaceFragment(new Favorite_Fragment());
+                    case R.id.category:
+                        replaceFragment(new Category_Fragment());
                         break;
                     case R.id.profile:
                         replaceFragment(new Profile_Fragment());
