@@ -12,7 +12,7 @@
         android:title="Giỏ hàng" />
 
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/category"
         android:icon="@drawable/category_icon"
         android:title="Danh mục" />
 

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Activity.Cart_Activity;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
+import com.example.duantotnghiep_md27.Fragment.Category_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Favorite_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Home_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Login_Fragment;
@@ -52,6 +53,27 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomnavmenu);
 
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_:
+                        replaceFragment(new Home_Fragment());
+                        break;
+                    case R.id.card:
+                        replaceFragment(new Cart_Fragment());
+                        break;
+                    case R.id.category:
+                        replaceFragment(new Category_Fragment());
+                        break;
+                    case R.id.profile:
+                        replaceFragment(new Profile_Fragment());
+                        break;
+
+                }
+                return true;
+
+
         //set click cho từng item navigation
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -67,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.profile:
                     replaceFragment(new Profile_Fragment());
                     break;
+
 
             }
 //                if (item.getItemId()==R.id.home_){
