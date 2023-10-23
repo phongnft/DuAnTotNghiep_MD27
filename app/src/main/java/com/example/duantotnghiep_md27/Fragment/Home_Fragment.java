@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,18 +24,26 @@ import com.bdtopcoder.smart_slider.SliderAdapter;
 import com.bdtopcoder.smart_slider.SliderItem;
 import com.example.duantotnghiep_md27.Adapter.Category_Adapter;
 import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
+import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.Category;
+import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
+import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Home_Fragment extends Fragment {
 
 
     ViewPager2 viewPager2;
+    Token token;
     private RecyclerView product_recyclerView;
     private RecyclerView category_recyclerView;
     private Product_homeAdapter product_homeAdapter;
@@ -51,11 +60,54 @@ public class Home_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         product_recyclerView = view.findViewById(R.id.product_recycleview);
         category_recyclerView = view.findViewById(R.id.recycleview_category);
-        setupProductRecycleView();
+        viewPager2 = view.findViewById(R.id.smartSlider);
+        sliderAuto();
+        getProduct();
         setupCategoryRecycleView();
 
+        product_list = new ArrayList<>();
 
-        viewPager2 = view.findViewById(R.id.smartSlider);
+
+
+
+
+
+
+        return view;
+
+    }
+
+    private void getProduct() {
+
+        Call<ProductResult> call = RestClient.getApiService(getContext()).newProducts(token);
+        call.enqueue(new Callback<ProductResult>() {
+            @Override
+            public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
+                Log.d("Response :=>", response.body() + "");
+                if (response != null) {
+
+                    ProductResult productResult = response.body();
+                    if (productResult.getStatus() == 200) {
+
+                        product_list = productResult.getProduct_homeList();
+                        setupProductRecycleView();
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProductResult> call, Throwable t) {
+                Log.d("Error", t.getMessage());
+
+            }
+        });
+
+
+    }
+
+    private void sliderAuto(){
 
         List<SliderItem> sliderItems = new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.img_8, "image 1"));
@@ -68,25 +120,14 @@ public class Home_Fragment extends Fragment {
         new SliderAdapter((position, title, vieww) -> {
 
         });
-
-
-        return view;
-
     }
+
 
 
     //hàm sản phẩm
     private void setupProductRecycleView() {
-        product_list = new ArrayList<>();
-        product_list.add(new Product_home("Áo Polo nam phong cách hàn quốc", "1345000", ""));
-        product_list.add(new Product_home("Áo hoodie UNISEX nam nữ Basic chất vải cao cấp", "1345000", ""));
-        product_list.add(new Product_home("Quần tây nam vải tuyết mưa cao cấp", "1345000", ""));
-        product_list.add(new Product_home("ÁO SƠ MI NAM CHẤT VẢI NHUNG TĂM", "1345000", ""));
-        product_list.add(new Product_home("Aó cộc tay nam", "1345000", ""));
-        product_list.add(new Product_home("quần tây nam", "1345000", ""));
-        product_list.add(new Product_home("quần short nam", "1345000", ""));
         product_homeAdapter = new Product_homeAdapter(product_list, getContext(), "home");
-        RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(getContext(),2,LinearLayoutManager.VERTICAL,false);
+        RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         product_recyclerView.setLayoutManager(nLayoutManager);
         product_recyclerView.setItemAnimator(new DefaultItemAnimator());
         product_recyclerView.setAdapter(product_homeAdapter);
@@ -95,12 +136,12 @@ public class Home_Fragment extends Fragment {
     //hàm danh mục
     private void setupCategoryRecycleView() {
         categoryList = new ArrayList<>();
-        categoryList.add(new Category("","Áo nam",R.drawable.img_product1));
-        categoryList.add(new Category("","Áo nữ",R.drawable.img_10));
-        categoryList.add(new Category("","Quần nam",R.drawable.img_10));
-        categoryList.add(new Category("","Đồ nữ",R.drawable.img_10));
-        categoryList.add(new Category("","Áo nam",R.drawable.img_11));
-        category_adapter=new Category_Adapter(categoryList,getContext(),"category");
+        categoryList.add(new Category("", "Áo nam", R.drawable.img_product1));
+        categoryList.add(new Category("", "Áo nữ", R.drawable.img_10));
+        categoryList.add(new Category("", "Quần nam", R.drawable.img_10));
+        categoryList.add(new Category("", "Đồ nữ", R.drawable.img_10));
+        categoryList.add(new Category("", "Áo nam", R.drawable.img_11));
+        category_adapter = new Category_Adapter(categoryList, getContext(), "category");
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);
         category_recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -109,7 +150,7 @@ public class Home_Fragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-       // inflater.inflate(R.menu.bottom_toolbar, menu);
+        // inflater.inflate(R.menu.bottom_toolbar, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

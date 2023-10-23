@@ -1,14 +1,19 @@
 package com.example.duantotnghiep_md27.Api;
 
+import com.example.duantotnghiep_md27.Model.ProductResult;
+import com.example.duantotnghiep_md27.Model.Product_home;
+import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.Model.User;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface Api_Service {
@@ -25,5 +30,8 @@ public interface Api_Service {
     Call<List<User>> getListUser(
             @Query("duantotnghiep_md27") String key
     );
+
+    @POST("demo2")
+    Call<ProductResult> newProducts(@Body Token token);
 
 }
