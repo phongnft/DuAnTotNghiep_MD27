@@ -42,6 +42,13 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
         holder.name.setText(list.get(position).getName());
         holder.price.setText(list.get(position).getPrice());
 
+        holder.imgproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
 
     }
 
