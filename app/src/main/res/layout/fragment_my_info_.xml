@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.MyInfo_Fragment">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_my_if"
+            android:src="@drawable/img_avatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/tv_name_if"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:textSize="23dp"
+            android:text="Nguyễn Văn A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/baseline_emoji_people_24"
+            android:drawablePadding="7dp"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="Tuổi"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_tuoi_my_if"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:text="18"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="7dp"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="Địa chỉ"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_diachi_my_if"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:text="số 2 Trịnh Văn Bô"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/baseline_email_if"
+            android:drawablePadding="7dp"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="Email"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/tv_email_my_if"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:text="123@fpt.edu.vn"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="7dp"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="Số điện thoại"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/tv_sdt_my_if"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:text="0133454878"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_edit_my_if"
+        android:layout_width="200dp"
+        android:layout_marginBottom="70dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_edittex"
+        android:padding="3dp"
+        android:text="Sửa"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

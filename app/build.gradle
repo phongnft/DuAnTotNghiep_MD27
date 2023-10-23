@@ -45,5 +45,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //slider auto
     implementation 'com.github.AtikulSoftware:smart-slider:1.0'
+
+    //retrofit call api
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
 }
