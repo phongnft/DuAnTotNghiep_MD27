@@ -96,6 +96,7 @@
         android:drawableEnd="@drawable/baseline_navigate_next_24"
         />
     <TextView
+        android:id="@+id/tv_facebook"
         android:textSize="20dp"
         android:layout_width="300dp"
         android:layout_height="48dp"
