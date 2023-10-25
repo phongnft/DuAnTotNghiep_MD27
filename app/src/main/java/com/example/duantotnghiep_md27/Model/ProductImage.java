@@ -4,6 +4,9 @@ public class ProductImage {
     String id;
     String image;
 
+    public ProductImage(String s) {
+    }
+
     public String getId() {
         return id;
     }

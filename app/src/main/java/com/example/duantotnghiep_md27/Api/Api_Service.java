@@ -31,7 +31,11 @@ public interface Api_Service {
             @Query("duantotnghiep_md27") String key
     );
 
-    @POST("demo2")
-    Call<ProductResult> newProducts(@Body Token token);
+
+    @GET("demo2")
+    Call<List<Product_home>> getData();
+
+    @GET("demo2")
+    Call<ProductResult> getDataa();
 
 }

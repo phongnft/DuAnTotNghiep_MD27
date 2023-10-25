@@ -8,16 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.duantotnghiep_md27.Activity.Cart_Activity;
 import com.example.duantotnghiep_md27.Fragment.Detail_ProductFragment;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapter.ProductViewHolder> {
@@ -25,7 +28,7 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
     List<Product_home> list = new ArrayList<>();
 
 
-    public Product_homeAdapter(List<Product_home> list, Context context, String home) {
+    public Product_homeAdapter(List<Product_home> list,Context context) {
         this.context = context;
         this.list = list;
     }
@@ -43,8 +46,6 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
 
         final Product_home product_home= list.get(position);
-
-
         holder.name.setText(product_home.getName());
         holder.price.setText(product_home.getPrice());
 
@@ -56,6 +57,8 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
             intent.putExtra("id", list.get(position).getId());
             intent.putExtra("name", list.get(position).getName());
             intent.putExtra("price", list.get(position).getPrice());
+
+
 
             context.startActivity(intent);
 

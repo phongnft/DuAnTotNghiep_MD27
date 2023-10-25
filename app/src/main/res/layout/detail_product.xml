@@ -48,12 +48,14 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tvdetail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Áo thun nam Cotton Coolmate Basics 200gsm thương hiệu Coolmate CW"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvdetail_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
