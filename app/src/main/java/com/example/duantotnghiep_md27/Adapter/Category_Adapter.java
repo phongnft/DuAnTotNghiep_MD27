@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,8 @@ public class Category_Adapter extends RecyclerView.Adapter<Category_Adapter.Cate
     @Override
     public void onBindViewHolder(@NonNull CategoryViewholder holder, int position) {
         holder.name.setText(list.get(position).getName());
-        holder.imgcategory.setImageAlpha(list.get(position).getImage());
+        holder.imgCategory.setImageResource(list.get(position).getImage());
+
     }
 
     @Override
@@ -48,11 +50,11 @@ public class Category_Adapter extends RecyclerView.Adapter<Category_Adapter.Cate
     }
 
     public class CategoryViewholder extends RecyclerView.ViewHolder {
-        ImageView imgcategory;
+     RoundedImageView imgCategory;
         TextView name;
         public CategoryViewholder(@NonNull View itemView) {
             super(itemView);
-            imgcategory = itemView.findViewById(R.id.img_item_category);
+            imgCategory = itemView.findViewById(R.id.itemCategory);
             name = itemView.findViewById(R.id.tv_item_category);
 
         }

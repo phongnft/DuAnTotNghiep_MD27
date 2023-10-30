@@ -6,21 +6,14 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="#E6DFDF"
-        android:background="@drawable/backgrow_cardview"
-        app:cardCornerRadius="10000dp"
-        android:layout_gravity="center"
+    <com.makeramen.roundedimageview.RoundedImageView
         android:layout_width="50dp"
-        android:layout_height="50dp">
+        android:layout_height="40dp"
+        android:id="@+id/itemCategory"
+        app:riv_oval="true"
+        />
 
-        <ImageView
-            android:scaleType="centerCrop"
-            android:id="@+id/img_item_category"
-            android:src="@drawable/img_11"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/tv_item_category"
         android:layout_marginTop="8dp"

@@ -2,4 +2,8 @@
     <string name="app_name">ClosetStore</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no1">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi</string>
+    <string name="no2">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi</string>
+    <string name="no3">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi </string>
+    <string name="no4">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi </string>
 </resources>

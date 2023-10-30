@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragment.Promotion_and_Bonus">
+    tools:context=".Fragment.NotificationsFragment">
     <ImageView
-        android:onClick="backPromotion"
+        android:id="@+id/BackNotifications"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:layout_width="20dp"
@@ -26,9 +26,23 @@
         >
     </SearchView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông báo"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        >
+    </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerNo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_notifications"
+        >
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

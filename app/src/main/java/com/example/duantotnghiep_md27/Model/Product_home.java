@@ -1,17 +1,24 @@
 package com.example.duantotnghiep_md27.Model;
 
-import com.google.gson.annotations.SerializedName;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product_home {
+public class Product_home implements Serializable {
     String id;
     String name;
     String category;
     String price;
     String description;
     String currency;
+
+
+
+//    List<ProductImage> productImages=new ArrayList<>();
+
+    public Product_home() {
+
+    }
 
     public Product_home(String id, String name, String category, String price, String description, String currency) {
         this.id = id;
@@ -69,4 +76,13 @@ public class Product_home {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
+
+    //        public List<ProductImage> getProductImages() {
+//        return productImages;
+//    }
+//
+//    public void setProductImages(List<ProductImage> productImages) {
+//        this.productImages = productImages;
+//    }
+
 }
