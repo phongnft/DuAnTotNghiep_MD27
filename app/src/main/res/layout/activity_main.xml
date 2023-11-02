@@ -6,34 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar_home"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:background="#2196F3"-->
-<!--        android:minHeight="?attr/actionBarSize"-->
-<!--        android:theme="?attr/actionBarTheme">-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#54ABEF"
+        android:id="@+id/toolbar"
 
-<!--&lt;!&ndash;        <EditText&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/edt_searchview"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="40dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:background="@drawable/custom_searchview"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:backgroundTint="@color/white"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:drawableStart="@drawable/baseline_search_24"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:hint="Tìm kiếm sản phẩm..."&ndash;&gt;-->
-<!--&lt;!&ndash;            android:maxLines="1"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:paddingLeft="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textColorHint="#535151" />&ndash;&gt;-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
+        >
+
+        <EditText
+            android:id="@+id/edt_searchview"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/custom_searchview"
+            android:backgroundTint="@color/white"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:hint="Tìm kiếm sản phẩm..."
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:textColorHint="#535151"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/CartIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/NotiIcon"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_notifications_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/CartIcon"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_shopping_cart_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/NotiIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <FrameLayout
         android:id="@+id/framehome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomnavmenu"/>
+        android:layout_above="@+id/bottomnavmenu"
+        android:layout_below="@id/toolbar"
+        />
 <!--        android:layout_below="@+id/toolbar_home" />-->
 
 

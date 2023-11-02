@@ -5,34 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="?attr/actionBarTheme"
-        app:menu="@menu/bottom_toolbar">
-
-
-        <EditText
-            android:id="@+id/edt_searchview"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/custom_searchview"
-            android:backgroundTint="@color/white"
-            android:drawableStart="@drawable/baseline_search_24"
-            android:hint="Tìm kiếm sản phẩm..."
-            android:maxLines="1"
-            android:paddingLeft="10dp"
-            android:textColorHint="#535151" />
-    </androidx.appcompat.widget.Toolbar>
-
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
+
         android:fillViewport="true">
 
         <RelativeLayout
