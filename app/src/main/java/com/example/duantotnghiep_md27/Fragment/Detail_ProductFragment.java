@@ -23,7 +23,7 @@ public class Detail_ProductFragment extends Fragment {
 
     TextView name, price;
     String _id, _name, _price;
-Button Btaddcart;
+    Button Btaddcart;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,8 +51,8 @@ Button Btaddcart;
 //                fragmentTransaction.replace(R.id.framehome,cartFragment).commit();
 
 
-    return view;
+        return view;
         // }
 
-}
+    }
 }

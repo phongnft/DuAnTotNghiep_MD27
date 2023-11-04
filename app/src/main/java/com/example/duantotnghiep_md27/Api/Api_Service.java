@@ -4,6 +4,7 @@ import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.Model.User;
+import com.example.duantotnghiep_md27.Model.UserResult;
 
 import java.util.List;
 
@@ -37,5 +38,11 @@ public interface Api_Service {
 
     @GET("demo2")
     Call<ProductResult> getDataa();
+
+    @POST("duantotnghiep_md27")
+    Call<UserResult> register(@Body User user);
+
+    @POST("duantotnghiep_md27")
+    Call<UserResult> login(@Body User user);
 
 }

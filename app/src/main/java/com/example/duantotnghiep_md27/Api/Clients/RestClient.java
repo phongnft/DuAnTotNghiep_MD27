@@ -45,6 +45,24 @@ public class RestClient {
 //        return api_servicea;
 //    }
 
+    public static Api_Service getRestService(final Context context) {
+        if (api_servicea == null) {
+            Gson gson = new GsonBuilder().setLenient().create();
+            OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+            builder.readTimeout(30, TimeUnit.SECONDS);
+            builder.connectTimeout(30, TimeUnit.SECONDS);
+            OkHttpClient client = builder.build();
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+            api_servicea = retrofit.create(Api_Service.class);
+        }
+        return api_servicea;
+    }
+
 
 
 

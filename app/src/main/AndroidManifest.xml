@@ -15,6 +15,15 @@
         android:theme="@style/Theme.DuAnTotNghiep_MD27"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.OTP_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Register_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Login_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.detail_activity"
             android:exported="false" />
         <activity

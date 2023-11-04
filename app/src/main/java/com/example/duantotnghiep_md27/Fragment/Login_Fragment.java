@@ -74,7 +74,9 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
     }
 
     private void setClicklisteners() {
-        btnLogin.setOnClickListener(this);
+        btnLogin.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), MainActivity.class));
+        });
         forgotpass.setOnClickListener(this);
         createaccount.setOnClickListener(this);
     }
