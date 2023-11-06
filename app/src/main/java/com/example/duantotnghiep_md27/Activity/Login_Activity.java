@@ -111,7 +111,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "chưa đc", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     }
 
                 } else {

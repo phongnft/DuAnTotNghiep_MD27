@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="123000đ"
-                    android:textColor="@color/red"
+                    android:textColor="#CC0606"
                     android:textSize="15dp" />
 
                 <ImageView

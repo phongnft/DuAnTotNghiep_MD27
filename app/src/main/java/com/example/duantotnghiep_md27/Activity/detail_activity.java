@@ -52,7 +52,7 @@ public class detail_activity extends AppCompatActivity {
         btAddcart = findViewById(R.id.addCart);
 
         name.setText(productHome.getName());
-        price.setText(productHome.getPrice());
+        price.setText(productHome.getPrice()+"đ");
         btAddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
