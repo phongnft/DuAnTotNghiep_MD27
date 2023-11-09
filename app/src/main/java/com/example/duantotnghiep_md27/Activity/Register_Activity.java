@@ -2,6 +2,7 @@ package com.example.duantotnghiep_md27.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class Register_Activity extends AppCompatActivity {
     User user;
 
     String firebaseToken;
+    TextView loginAcout;
     EditText edtname, edtmail, edtpass;
     Button btnRegister;
     String URL = "https://64d7a4932a017531bc136e44.mockapi.io/";
@@ -43,7 +45,15 @@ public class Register_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         localStorage = new LocalStorage(getApplicationContext());
         firebaseToken = localStorage.getFirebaseToken();
+        loginAcout = findViewById(R.id.loginAccount);
         initView();
+
+        loginAcout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Login();
+            }
+        });
     }
 
     private void initView() {
@@ -83,6 +93,11 @@ public class Register_Activity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void Login(){
+        Intent intent = new Intent(Register_Activity.this,Login_Activity.class );
+        startActivity(intent);
     }
 
     private void registerUser(User userString) {

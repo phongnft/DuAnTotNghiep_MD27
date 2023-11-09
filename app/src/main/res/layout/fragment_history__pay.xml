@@ -15,17 +15,7 @@
        >
 
    </ImageView>
-<SearchView
-    android:layout_marginTop="10dp"
-    android:layout_width="300dp"
-    android:layout_marginLeft="50dp"
-    android:layout_height="wrap_content"
-    android:iconifiedByDefault="false"
-    android:queryHint="tìm kiếm sản phẩm"
-    android:background="@drawable/botron"
-    >
 
-</SearchView>
    <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
