@@ -6,4 +6,21 @@
     <string name="no2">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi</string>
     <string name="no3">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi </string>
     <string name="no4">Áo vest nam giảm giá đến 50%, nhanh tay mua sắm nào bạn ơi </string>
+
+    <string-array name="Size">
+        <item>Size</item>
+        <item>Size S</item>
+        <item>Size M</item>
+        <item>Size L</item>
+        <item>Size XL</item>
+        <item>Khác</item>
+    </string-array>
+
+    <string-array name="Color">
+        <item>Màu</item>
+        <item>Đen</item>
+        <item>Trắng</item>
+        <item>Khác</item>
+
+    </string-array>
 </resources>

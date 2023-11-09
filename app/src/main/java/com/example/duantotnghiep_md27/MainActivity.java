@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 //                    //getMenuInflater().inflate(R.menu.bottom_toolbar, menu);
 //                   // setSupportActionBar(toolbar);
 //
+
 //                }else if(item.getItemId()==R.id.card){
 //                    replaceFragment(new Cart_Fragment());
 //                    //toolbar.setTitle("Giỏ Hàng");

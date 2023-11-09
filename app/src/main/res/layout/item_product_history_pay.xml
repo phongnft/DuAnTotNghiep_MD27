@@ -12,10 +12,10 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:onClick="ImageOderPay"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:background="@drawable/clothes"
+            android:onClick="ImageOderPay"
 
             ></ImageButton>
 
@@ -97,9 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="10dp"
-        android:text="Hủy"
-        android:backgroundTint="#F60000"
-        android:background="@drawable/botronbutton"
-        ></Button>
+        android:backgroundTint="#FF0000"
+        android:text="Hủy"></Button>
 
 </LinearLayout>

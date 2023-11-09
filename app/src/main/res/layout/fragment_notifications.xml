@@ -5,44 +5,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragment.NotificationsFragment">
-    <ImageView
-        android:id="@+id/BackNotifications"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/iconback"
-        >
 
-    </ImageView>
-    <SearchView
-        android:layout_marginTop="10dp"
-        android:layout_width="300dp"
-        android:layout_marginLeft="50dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="tìm kiếm sản phẩm"
-        android:background="@drawable/botron"
-        >
-    </SearchView>
+        android:layout_marginTop="5dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thông báo"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        >
-    </TextView>
+        <ImageView
+            android:id="@+id/BackNotifications"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/iconback"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="135dp"
+            android:text="Thông báo"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_notifications"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/item_notifications"></androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

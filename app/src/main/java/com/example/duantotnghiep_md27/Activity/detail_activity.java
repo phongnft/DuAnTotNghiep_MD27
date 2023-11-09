@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +30,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class detail_activity extends AppCompatActivity {
+public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView name, price, nameProductCart, priceProductCart;
     Button btAddcart;
     String _id, _name, _price;
+    ImageView btnshare;
     List<Product_home> list = new ArrayList<>();
+    Spinner SizeSpiner, ColorSpiner;
 
 
 
@@ -50,13 +57,24 @@ public class detail_activity extends AppCompatActivity {
         name = findViewById(R.id.tvdetail_namee);
         price = findViewById(R.id.tvdetail_pricee);
         btAddcart = findViewById(R.id.addCart);
+        btnshare = findViewById(R.id.buttonShare);
+        SizeSpiner = findViewById(R.id.SizeNumber);
+        ColorSpiner = findViewById(R.id.ColorNumber);
+        Size(); Color();
 
         name.setText(productHome.getName());
         price.setText(productHome.getPrice()+"đ");
+
+        btnshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareClick(detail_activity.this);
+            }
+        });
         btAddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(detail_activity.this,"them vao gio thanh cong",Toast.LENGTH_SHORT).show();
+                Toast.makeText(detail_activity.this,"Thêm vào giỏ thành công!",Toast.LENGTH_SHORT).show();
                 productHome = Util.productHome;
 //                setResult(RESULT_OK);
 //                finish();
@@ -64,6 +82,42 @@ public class detail_activity extends AppCompatActivity {
             }
         });
 
+    }
+    private void ShareClick(Context context){
+        final String appPackageName = context.getPackageName();
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT,"Dowload now: https://play.google.com/store/apps/details?id" + appPackageName);
+        intent.setType("text/plain");
+        context.startActivity(intent);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String textSize = parent.getItemAtPosition(position).toString();
+        String TextColor = parent.getItemAtPosition(position).toString();
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void Size(){
+        ArrayAdapter<CharSequence> adapterSpinerSize =
+                ArrayAdapter.createFromResource
+                        (this, R.array.Size, android.R.layout.simple_spinner_item);
+        adapterSpinerSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SizeSpiner.setAdapter(adapterSpinerSize);
+        SizeSpiner.setOnItemSelectedListener(this);
+    }
+
+    public void Color(){
+        ArrayAdapter<CharSequence> adapterSpinerSize =
+                ArrayAdapter.createFromResource
+                        (this, R.array.Color, android.R.layout.simple_spinner_item);
+        adapterSpinerSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ColorSpiner.setAdapter(adapterSpinerSize);
+        ColorSpiner.setOnItemSelectedListener(this);
     }
 
 }

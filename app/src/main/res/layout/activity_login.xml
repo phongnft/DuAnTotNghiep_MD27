@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,6 +50,7 @@
                     android:textColor="#03A9F4"
                     android:textSize="35sp"
                     android:textStyle="bold" />
+
 
                 <com.google.android.material.textfield.TextInputLayout
 
@@ -106,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:padding="5dp"
+
                         android:text="Quên mật khẩu?"
                         android:textColor="#F44336"
                         android:textSize="16sp" />
@@ -123,7 +126,39 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:src="@drawable/google_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:text="hoặc"
+                android:textStyle="italic"
+               android:layout_marginRight="15dp"
+                >
+
+            </TextView>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:src="@drawable/fb_img"
+                android:layout_height="40dp"/>
+
+
+        </LinearLayout>
+
             </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/createAccount"

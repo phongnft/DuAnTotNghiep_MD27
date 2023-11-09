@@ -2,56 +2,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        >
+        android:orientation="horizontal">
+
         <ImageView
-            android:onClick="ImageOderPay"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:background="@drawable/clothes"
-            >
-        </ImageView>
+            android:onClick="ImageOderPay"></ImageView>
+
         <TextView
             android:id="@+id/txtNameOderPay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Áo Khoác Vest Da Nam Đờ Mi Chất Liệu Da Phong Cách Hàn Quốc Thời Trang Xuân Thu"
-            android:paddingTop="10dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
             android:layout_marginLeft="5dp"
-            />
+            android:paddingTop="10dp"
+            android:text="Áo Khoác Vest Da Nam Đờ Mi Chất Liệu Da Phong Cách Hàn Quốc Thời Trang Xuân Thu"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Số lượng: 1"
+        android:orientation="horizontal">
 
-        android:textSize="20dp"
-        android:layout_marginLeft="100dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="7dp"
+            android:text="Số lượng:"
+            android:textStyle="bold"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="7dp"
+            android:text="1"
+            android:textSize="20dp"></TextView>
+
+
+
         >
+    </LinearLayout>
 
-    </TextView>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Size: L"
+            android:text="Size:"
+            android:textStyle="bold"
+            android:textSize="20dp">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L"
+
             android:textSize="20dp"
+            android:layout_marginLeft="3dp"
             >
 
         </TextView>
@@ -59,45 +83,65 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giá:"
-            android:textSize="20dp"
             android:layout_marginLeft="100dp"
-            >
-        </TextView>
+            android:text="Giá:"
+            android:textStyle="bold"
+            android:textSize="20dp"></TextView>
+
         <TextView
             android:id="@+id/txtPriceOderPay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.199.000đ"
-            android:textSize="20dp"
+            android:layout_marginLeft="4dp"
+            android:text="1.199.000"
             android:textColor="#020202"
-            android:layout_marginLeft="3dp"
-            >
-        </TextView>
+            android:textSize="20dp"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:text="đ"
+            android:textColor="#020202"
+            android:textSize="20dp"></TextView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginLeft="90dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Màu: đen"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            >
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="999.000đ"
-            android:textSize="20dp"
-            android:textColor="#FF0000"
-            android:layout_marginLeft="130dp"
-            >
-        </TextView>
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Màu:"
+            android:textStyle="bold"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Đen"
+
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:text="999.000"
+            android:textColor="#FF0000"
+            android:textSize="20dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:text="đ"
+            android:textColor="#FF0000"
+            android:textSize="20dp"></TextView>
     </LinearLayout>
 </LinearLayout>
