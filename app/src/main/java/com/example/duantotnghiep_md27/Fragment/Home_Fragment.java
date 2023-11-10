@@ -1,7 +1,6 @@
 package com.example.duantotnghiep_md27.Fragment;
 
 import android.annotation.SuppressLint;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,7 @@ import android.widget.Toast;
 
 import com.bdtopcoder.smart_slider.SliderAdapter;
 import com.bdtopcoder.smart_slider.SliderItem;
-import com.example.duantotnghiep_md27.Adapter.Category_Adapter;
+import com.example.duantotnghiep_md27.Adapter.HomeCategoryAdapter;
 import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.Category;
@@ -49,7 +48,7 @@ public class Home_Fragment extends Fragment {
     private RecyclerView product_recyclerView;
     private RecyclerView category_recyclerView;
     private Product_homeAdapter product_homeAdapter;
-    private Category_Adapter category_adapter;
+    private HomeCategoryAdapter homeCategoryAdapter;
     private List<Product_home> product_list;
 
     List<ProductImage> productImages;
@@ -151,16 +150,16 @@ public class Home_Fragment extends Fragment {
     //hàm danh mục
     private void setupCategoryRecycleView() {
         categoryList = new ArrayList<>();
-        categoryList.add(new Category("", "Áo nam", R.drawable.closetmen));
-        categoryList.add(new Category("", "Áo nữ", R.drawable.closetwomen));
-        categoryList.add(new Category("", "Quần nam", R.drawable.closetmen));
-        categoryList.add(new Category("", "Đồ nữ", R.drawable.closetwomen));
-        categoryList.add(new Category("", "Áo nam", R.drawable.closetmen));
-        category_adapter = new Category_Adapter(categoryList, getContext(), "category");
+//        categoryList.add(new Category("", "Áo nam", R.drawable.closetmen));
+//        categoryList.add(new Category("", "Áo nữ", R.drawable.closetwomen));
+//        categoryList.add(new Category("", "Quần nam", R.drawable.closetmen));
+//        categoryList.add(new Category("", "Đồ nữ", R.drawable.closetwomen));
+//        categoryList.add(new Category("", "Áo nam", R.drawable.closetmen));
+        homeCategoryAdapter = new HomeCategoryAdapter(categoryList, getContext(), "category");
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);
         category_recyclerView.setItemAnimator(new DefaultItemAnimator());
-        category_recyclerView.setAdapter(category_adapter);
+        category_recyclerView.setAdapter(homeCategoryAdapter);
     }
 
     @Override

@@ -1,66 +1,138 @@
 package com.example.duantotnghiep_md27.Fragment;
 
+
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.duantotnghiep_md27.Adapter.CategoryAdapter;
+import com.example.duantotnghiep_md27.Adapter.SubCategoryAdapter;
+import com.example.duantotnghiep_md27.Interface.CategorySelectCallBacks;
+import com.example.duantotnghiep_md27.Model.Category;
+import com.example.duantotnghiep_md27.Model.SubCategory;
+import com.example.duantotnghiep_md27.Model.Token;
+import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.permission.LocalStorage;
+import com.google.gson.Gson;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Category_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Category_Fragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class Category_Fragment extends Fragment implements CategorySelectCallBacks {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    LocalStorage localStorage;
+    Gson gson = new Gson();
+    User user;
+    Token token;
+
+    View progress;
+    private List<Category> homeCategoryList = new ArrayList<>();
+    private List<SubCategory> subCategoryList = new ArrayList<>();
+    private RecyclerView recyclerView,subCateRecyclerview;
+    private CategoryAdapter mAdapter;
+    private SubCategoryAdapter sAdapter;
 
     public Category_Fragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CategoriFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Category_Fragment newInstance(String param1, String param2) {
-        Category_Fragment fragment = new Category_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        recyclerView = view.findViewById(R.id.category_rv);
+        subCateRecyclerview = view.findViewById(R.id.sub_category_rv);
+        progress = view.findViewById(R.id.progress_bar);
+
+        localStorage = new LocalStorage(getContext());
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
+        token = new Token(user.getToken());
+
+        getCategoryData();
+
+
+        return view;
+    }
+
+    private void getCategoryData() {
+
+        showProgressDialog();
+
+//        Call<CategoryResult> call = RestClient.getRestService(getContext()).allCategory(token);
+//        call.enqueue(new Callback<CategoryResult>() {
+//            @Override
+//            public void onResponse(Call<CategoryResult> call, Response<CategoryResult> response) {
+//                Log.d("Response :=>", response.body() + "");
+//                if (response != null) {
+//
+//                    CategoryResult categoryResult = response.body();
+//                    if (categoryResult.getStatus() == 200) {
+//
+//                        homeCategoryList = categoryResult.getCategoryList();
+//                        setupCategoryRecycleView();
+//                        if(homeCategoryList.size()>0){
+//                            subCategoryList = homeCategoryList.get(0).getSubCategory();
+//                            setupSubCategoryRecycleView();
+//                        }
+//
+//                    }
+//
+//                }
+//
+//                hideProgressDialog();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<CategoryResult> call, Throwable t) {
+//                Log.d("Error==>", t.getMessage());
+//            }
+//        });
+    }
+
+    private void setupCategoryRecycleView() {
+        mAdapter = new CategoryAdapter(homeCategoryList, getActivity(), this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    private void hideProgressDialog() {
+        progress.setVisibility(View.GONE);
+    }
+
+    private void showProgressDialog() {
+        progress.setVisibility(View.VISIBLE);
+    }
+
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        getActivity().setTitle("Category");
+    }
+
+    @Override
+    public void onCategorySelect(int position) {
+       subCategoryList = homeCategoryList.get(position).getSubCategory();
+        setupSubCategoryRecycleView();
+    }
+
+    private void setupSubCategoryRecycleView() {
+        sAdapter = new SubCategoryAdapter(subCategoryList, getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        subCateRecyclerview.setLayoutManager(mLayoutManager);
+        subCateRecyclerview.setItemAnimator(new DefaultItemAnimator());
+        subCateRecyclerview.setAdapter(sAdapter);
     }
 }
