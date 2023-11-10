@@ -56,35 +56,22 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         final Category category = categoryList.get(position);
-        holder.title.setText(category.getCategory());
-        Log.d("Category Image ==>", category.getCateimg());
 
-        if (Tag.equalsIgnoreCase("Category")) {
-//            Picasso.get()
-//                    .load(Util.CategoryImage + category.getCateimg())
-//                    .into(holder.imageView, new Callback() {
-//                        @Override
-//                        public void onSuccess() {
-//                            holder.progressBar.setVisibility(View.GONE);
-//                        }
-//
-//                        @Override
-//                        public void onError(Exception e) {
-//                            Log.d("Error : ", e.getMessage());
-//                        }
-//                    });
-        }else if(category.getCateimg()!=null){
-
-            Glide.with(context).load(RestClient.BASE_URL + category.getCateimg()).into(holder.imageView);
+        holder.title.setText(category.getTenLoai());
+        if(category.getHinhanhLSP()!=null){
+            Glide.with(context)
+                    .load(RestClient.BASE_URL+ category.getHinhanhLSP())
+                    .into(holder.imageView);
         }
+
 
         holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Product_Activity.class);
-                intent.putExtra("category", "category");
-                intent.putExtra("title", category.getCategory());
-                intent.putExtra("category_id", category.getId());
+                intent.putExtra("LoaiSanPham", "LoaiSanPham");
+                intent.putExtra("TenLoai", category.getTenLoai());
+                intent.putExtra("MaLoai", category.getMaLoai());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(intent);
             }
@@ -94,14 +81,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
     @Override
     public int getItemCount() {
-        if (Tag.equalsIgnoreCase("Home") && categoryList.size() < 6 && categoryList.size() > 3) {
-            return 3;
-        } else if (Tag.equalsIgnoreCase("Home") && categoryList.size() >= 6) {
-            return 6;
-        } else {
             return categoryList.size();
-        }
-
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -111,7 +91,6 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.category_image);
             title = itemView.findViewById(R.id.category_title);
             cardView = itemView.findViewById(R.id.card_view);

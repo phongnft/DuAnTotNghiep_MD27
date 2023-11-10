@@ -1,5 +1,6 @@
 package com.example.duantotnghiep_md27.Api;
 
+import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Token;
@@ -48,5 +49,8 @@ public interface Api_Service {
 
     @POST("Sanpham/list")
     Call<ProductResult> newProducts();
+
+    @GET("LoaiSanPham/list")
+    Call<List<Category>> allCategory();
 
 }
