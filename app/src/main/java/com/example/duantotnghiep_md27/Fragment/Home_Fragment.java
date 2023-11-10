@@ -68,7 +68,7 @@ public class Home_Fragment extends Fragment {
         sliderAuto();
         //getNewProduct();
         getDataFromApi();
-        setupCategoryRecycleView();
+        getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
@@ -120,6 +120,23 @@ public class Home_Fragment extends Fragment {
         });
     }
 
+    private void getCategoryData(){
+        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    categoryList.addAll(response.body());
+                    setupCategoryRecycleView();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void sliderAuto() {
 
@@ -150,12 +167,7 @@ public class Home_Fragment extends Fragment {
     //hàm danh mục
     private void setupCategoryRecycleView() {
         categoryList = new ArrayList<>();
-//        categoryList.add(new Category("", "Áo nam", R.drawable.closetmen));
-//        categoryList.add(new Category("", "Áo nữ", R.drawable.closetwomen));
-//        categoryList.add(new Category("", "Quần nam", R.drawable.closetmen));
-//        categoryList.add(new Category("", "Đồ nữ", R.drawable.closetwomen));
-//        categoryList.add(new Category("", "Áo nam", R.drawable.closetmen));
-        homeCategoryAdapter = new HomeCategoryAdapter(categoryList, getContext(), "category");
+        homeCategoryAdapter = new HomeCategoryAdapter(categoryList, getContext(), "Home");
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);
         category_recyclerView.setItemAnimator(new DefaultItemAnimator());
