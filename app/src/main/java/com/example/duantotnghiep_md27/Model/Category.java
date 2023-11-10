@@ -1,16 +1,19 @@
 package com.example.duantotnghiep_md27.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Category {
-    private String id, name;
-    private int image;
+    String id;
+    String category;
+    String cateimg;
+    String token;
+    String category_id;
+    List<SubCategory> subCategory = new ArrayList<>();
 
-    public Category() {
-    }
-
-    public Category(String id, String name, int image) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
+    public Category(String token, String category_id) {
+        this.token = token;
+        this.category_id = category_id;
     }
 
     public String getId() {
@@ -21,19 +24,43 @@ public class Category {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public int getImage() {
-        return image;
+    public String getCateimg() {
+        return cateimg;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setCateimg(String cateimg) {
+        this.cateimg = cateimg;
+    }
+
+    public List<SubCategory> getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(List<SubCategory> subCategory) {
+        this.subCategory = subCategory;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 }
