@@ -4,85 +4,116 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product_home implements Serializable {
-    String id;
-    String name;
-    String category;
-    String price;
-    String description;
-    String currency;
+public class Product_home{
+//    String id;
+//    String name;
+//    String category;
+//    String price;
+//    String description;
+//    String currency;
 
 
+    int maSP;
+    String TenSP;
+    int GiaSP;
+    int SizeSP;
+    String ColorSP;
+    String HinhanhSP;
+    String Mota;
+    int MaLoai;
+    int SoLuong;
+    int MaNH;
 
-//    List<ProductImage> productImages=new ArrayList<>();
-
-    public Product_home() {
-
+    public Product_home(int maSP, String tenSP, int giaSP, int sizeSP, String colorSP, String hinhanhSP, String mota, int maLoai, int soLuong, int maNH) {
+        this.maSP = maSP;
+        TenSP = tenSP;
+        GiaSP = giaSP;
+        SizeSP = sizeSP;
+        ColorSP = colorSP;
+        HinhanhSP = hinhanhSP;
+        Mota = mota;
+        MaLoai = maLoai;
+        SoLuong = soLuong;
+        MaNH = maNH;
     }
 
-    public Product_home(String id, String name, String category, String price, String description, String currency) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.price = price;
-        this.description = description;
-        this.currency = currency;
+    public int getMaSP() {
+        return maSP;
     }
 
-    public String getId() {
-        return id;
+    public void setMaSP(int maSP) {
+        this.maSP = maSP;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getTenSP() {
+        return TenSP;
     }
 
-    public String getName() {
-        return name;
+    public void setTenSP(String tenSP) {
+        TenSP = tenSP;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getGiaSP() {
+        return GiaSP;
     }
 
-    public String getCategory() {
-        return category;
+    public void setGiaSP(int giaSP) {
+        GiaSP = giaSP;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public int getSizeSP() {
+        return SizeSP;
     }
 
-    public String getPrice() {
-        return price;
+    public void setSizeSP(int sizeSP) {
+        SizeSP = sizeSP;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public String getColorSP() {
+        return ColorSP;
     }
 
-    public String getDescription() {
-        return description;
+    public void setColorSP(String colorSP) {
+        ColorSP = colorSP;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getHinhanhSP() {
+        return HinhanhSP;
     }
 
-    public String getCurrency() {
-        return currency;
+    public void setHinhanhSP(String hinhanhSP) {
+        HinhanhSP = hinhanhSP;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public String getMota() {
+        return Mota;
     }
 
-    //        public List<ProductImage> getProductImages() {
-//        return productImages;
-//    }
-//
-//    public void setProductImages(List<ProductImage> productImages) {
-//        this.productImages = productImages;
-//    }
+    public void setMota(String mota) {
+        Mota = mota;
+    }
 
+    public int getMaLoai() {
+        return MaLoai;
+    }
+
+    public void setMaLoai(int maLoai) {
+        MaLoai = maLoai;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        SoLuong = soLuong;
+    }
+
+    public int getMaNH() {
+        return MaNH;
+    }
+
+    public void setMaNH(int maNH) {
+        MaNH = maNH;
+    }
 }

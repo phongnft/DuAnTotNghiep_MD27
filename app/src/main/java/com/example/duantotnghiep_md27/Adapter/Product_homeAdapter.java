@@ -44,8 +44,8 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         final Product_home product_home= list.get(position);
-        holder.name.setText(product_home.getName());
-        holder.price.setText(product_home.getPrice()+"đ");
+        holder.name.setText(product_home.getTenSP());
+        holder.price.setText(product_home.getGiaSP()+"đ");
 //        set su kien khi click vao item san pham
         holder.cardViewItem.setOnClickListener(view -> {
             Util.productHome = product_home;

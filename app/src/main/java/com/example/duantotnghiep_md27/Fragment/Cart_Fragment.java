@@ -50,8 +50,8 @@ public class Cart_Fragment extends Fragment {
 
         productHome = Util.productHome;
         if(productHome!= null){
-            txtname.setText(productHome.getName());
-            txtPrice.setText(productHome.getPrice());
+            txtname.setText(productHome.getTenSP());
+            txtPrice.setText(productHome.getGiaSP());
 }
 
 

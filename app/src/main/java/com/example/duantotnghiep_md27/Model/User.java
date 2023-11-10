@@ -1,60 +1,95 @@
 package com.example.duantotnghiep_md27.Model;
 
 public class User {
-    String id, name, email, password, token, firebase_token;
+   // String id, name, email, password, token, firebase_token;
+
+   // String id;
+    String tenND;
+    String MatKhauND;
+    String SDTND;
+    String DiachiND;
+    String TuoiND;
+    String Email;
+    String HinhAnhND;
+    String token;
+    String firebase_token;
 
 
-    public User(String name, String email, String password, String firebase_token) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.firebase_token = firebase_token;
-    }
-    public User(String id, String name, String email, String password, String token) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public User(String id, String tenND, String matKhauND, String SDTND, String diachiND, String tuoiND, String email, String hinhAnhND, String token, String firebase_token) {
+        this.tenND = tenND;
+        MatKhauND = matKhauND;
+        this.SDTND = SDTND;
+        DiachiND = diachiND;
+        TuoiND = tuoiND;
+        Email = email;
+        HinhAnhND = hinhAnhND;
         this.token = token;
+        this.firebase_token = firebase_token;
     }
 
-    public User(String email, String password, String firebase_token) {
-        this.email = email;
-        this.password = password;
+    public User(String tenND, String email, String matKhauND, String firebase_token) {
+        this.tenND = tenND;
+        Email = email;
+        MatKhauND = matKhauND;
         this.firebase_token = firebase_token;
     }
 
 
-    public String getId() {
-        return id;
+
+    public String getTenND() {
+        return tenND;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTenND(String tenND) {
+        this.tenND = tenND;
     }
 
-    public String getName() {
-        return name;
+    public String getMatKhauND() {
+        return MatKhauND;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMatKhauND(String matKhauND) {
+        MatKhauND = matKhauND;
+    }
+
+    public String getSDTND() {
+        return SDTND;
+    }
+
+    public void setSDTND(String SDTND) {
+        this.SDTND = SDTND;
+    }
+
+    public String getDiachiND() {
+        return DiachiND;
+    }
+
+    public void setDiachiND(String diachiND) {
+        DiachiND = diachiND;
+    }
+
+    public String getTuoiND() {
+        return TuoiND;
+    }
+
+    public void setTuoiND(String tuoiND) {
+        TuoiND = tuoiND;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHinhAnhND() {
+        return HinhAnhND;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHinhAnhND(String hinhAnhND) {
+        HinhAnhND = hinhAnhND;
     }
 
     public String getToken() {
@@ -72,6 +107,4 @@ public class User {
     public void setFirebase_token(String firebase_token) {
         this.firebase_token = firebase_token;
     }
-
-
 }

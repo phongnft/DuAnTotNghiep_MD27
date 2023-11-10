@@ -67,41 +67,42 @@ public class Home_Fragment extends Fragment {
         viewPager2 = view.findViewById(R.id.smartSlider);
         product_list = new ArrayList<>();
         sliderAuto();
+        //getNewProduct();
         getDataFromApi();
         setupCategoryRecycleView();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
-//    private void getProduct() {
-//
-//        Call<ProductResult> call = RestClient.getApiService(getContext()).newProducts(token);
-//        call.enqueue(new Callback<ProductResult>() {
-//            @Override
-//            public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
-//                Log.d("Response :=>", response.body() + "");
-//                if (response != null) {
-//
-//                    ProductResult productResult = response.body();
-//                    if (productResult.getStatus() == 200) {
-//
-//                        product_list = productResult.getProduct_homeList();
-//                        setupProductRecycleView();
-//
-//                    }
-//
-//                }
-////            }
-//
-//            @Override
-//            public void onFailure(Call<ProductResult> call, Throwable t) {
-//                Log.d("Error", t.getMessage());
-//
-//            }
-//        });
-//
-//
-//    }
+
+    private void getNewProduct() {
+        Call<ProductResult> call = RestClient.getRestService(getContext()).newProducts();
+        call.enqueue(new Callback<ProductResult>() {
+            @Override
+            public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
+                Log.d("Response :=>", response.body() + "");
+                if (response != null) {
+
+                    ProductResult productResult = response.body();
+                    if (productResult.getStatus() == 200) {
+
+                        product_list = productResult.getProduct_homeList();
+                        setupProductRecycleView();
+
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ProductResult> call, Throwable t) {
+                Log.d("Error", t.getMessage());
+
+            }
+        });
+    }
 
     private void getDataFromApi() {
         RestClient.getApiService().getData().enqueue(new Callback<List<Product_home>>() {
@@ -112,6 +113,7 @@ public class Home_Fragment extends Fragment {
                     setupProductRecycleView();
                 }
             }
+
             @Override
             public void onFailure(Call<List<Product_home>> call, Throwable t) {
                 Toast.makeText(getContext(), "Loi roi" + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -120,7 +122,7 @@ public class Home_Fragment extends Fragment {
     }
 
 
-    private void sliderAuto(){
+    private void sliderAuto() {
 
         ArrayList<SliderItem> sliderItems = new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.img_8, "image 1"));
@@ -159,7 +161,7 @@ public class Home_Fragment extends Fragment {
         category_recyclerView.setLayoutManager(categ_LayoutManager);
         category_recyclerView.setItemAnimator(new DefaultItemAnimator());
         category_recyclerView.setAdapter(category_adapter);
-    } 
+    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {

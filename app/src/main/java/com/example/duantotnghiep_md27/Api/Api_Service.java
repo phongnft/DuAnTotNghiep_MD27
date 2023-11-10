@@ -6,6 +6,7 @@ import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,16 +34,19 @@ public interface Api_Service {
     );
 
 
-    @GET("demo2")
+    @GET("Sanpham/list")
     Call<List<Product_home>> getData();
 
     @GET("demo2")
     Call<ProductResult> getDataa();
 
-    @POST("duantotnghiep_md27")
+    @POST("users/add")
     Call<UserResult> register(@Body User user);
 
-    @POST("duantotnghiep_md27")
+    @POST("users/add")
     Call<UserResult> login(@Body User user);
+
+    @POST("Sanpham/list")
+    Call<ProductResult> newProducts();
 
 }

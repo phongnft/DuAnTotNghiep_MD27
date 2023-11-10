@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
+import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserResult;
 import com.example.duantotnghiep_md27.R;
@@ -35,7 +36,6 @@ public class Register_Activity extends AppCompatActivity {
     TextView loginAcout;
     EditText edtname, edtmail, edtpass;
     Button btnRegister;
-    String URL = "https://64d7a4932a017531bc136e44.mockapi.io/";
     View progress;
     private static TextView login;
 
@@ -70,25 +70,25 @@ public class Register_Activity extends AppCompatActivity {
     }
 
     private void checkValidation() {
-        String name = edtname.getText().toString();
-        String mail = edtmail.getText().toString();
-        String pass = edtpass.getText().toString();
+        String tenND = edtname.getText().toString();
+        String Email = edtmail.getText().toString();
+        String MatKhauND = edtpass.getText().toString();
 
 
-        if (name.length() == 0) {
+        if (tenND.length() == 0) {
             edtname.setError("Vui lòng điền tên");
             edtname.requestFocus();
-        } else if (mail.length() == 0) {
+        } else if (Email.length() == 0) {
             edtmail.setError("Vui lòng điền mail");
             edtmail.requestFocus();
-        } else if (pass.length() == 0) {
+        } else if (MatKhauND.length() == 0) {
             edtpass.setError("Vui lòng điền mật khẩu");
             edtpass.requestFocus();
-        } else if (pass.length() < 6) {
+        } else if (MatKhauND.length() < 6) {
             edtpass.setError("Mật khẩu phải đủ 6 kí tự");
             edtpass.requestFocus();
         } else {
-            user = new User(name, mail, pass, firebaseToken);
+            user = new User(tenND, Email, MatKhauND, firebaseToken);
             registerUser(user);
 
         }
@@ -110,10 +110,11 @@ public class Register_Activity extends AppCompatActivity {
                 if (response != null) {
 
                     UserResult userResult = response.body();
-                    if (userResult != null) {   // && userResult.getStatus() == 200
+                    if (userResult != null) {  // && userResult.getStatus() == 200
                         String userString = gson.toJson(userResult.getUser());
                         localStorage.createUserLoginSession(userString);
                         Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                        // startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
 
                     } else {

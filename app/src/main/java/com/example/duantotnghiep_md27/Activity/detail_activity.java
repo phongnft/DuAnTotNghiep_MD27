@@ -31,7 +31,7 @@ import java.util.List;
 
 
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextView name, price, nameProductCart, priceProductCart;
+    TextView name, price, mota, priceProductCart;
     Button btAddcart;
     String _id, _name, _price;
     ImageView btnshare;
@@ -56,15 +56,16 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 //        _price = intent.getStringExtra("price");
         name = findViewById(R.id.tvdetail_namee);
         price = findViewById(R.id.tvdetail_pricee);
+        mota = findViewById(R.id.tvdetail_mota);
         btAddcart = findViewById(R.id.addCart);
         btnshare = findViewById(R.id.buttonShare);
         SizeSpiner = findViewById(R.id.SizeNumber);
         ColorSpiner = findViewById(R.id.ColorNumber);
         Size(); Color();
 
-        name.setText(productHome.getName());
-        price.setText(productHome.getPrice()+"đ");
-
+        name.setText(productHome.getTenSP());
+        price.setText(productHome.getGiaSP()+"đ");
+        mota.setText(productHome.getMota());
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

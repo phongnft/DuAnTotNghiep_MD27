@@ -80,7 +80,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 //                    "Vui long dien day du thong tin");
             //  vibrate(200);
         } else {     // if (NetworkCheck.isNetworkAvailable(getApplicationContext()))
-            user = new User(mail, password, firebaseToken);
+         //   user = new User(mail, password, firebaseToken);
             login(user);
         }
     }
@@ -95,6 +95,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                 Log.d("Response :=>", response.body() + "");
                 if (response != null) {
 
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     UserResult userResult = response.body();
                     if (userResult != null ) { //&& userResult.getStatus() == 200
                         Gson gson = new Gson();
