@@ -59,7 +59,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             startActivity(new Intent(getApplicationContext(), Register_Activity.class));
         });
         btnLogin.setOnClickListener(view -> {
-            checkValidation();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+           // checkValidation();
         });
 
 

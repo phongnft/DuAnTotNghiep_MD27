@@ -34,7 +34,7 @@ public interface Api_Service {
     );
 
 
-    @GET("Sanpham/list")
+    @GET("demo2")
     Call<List<Product_home>> getData();
 
     @GET("demo2")

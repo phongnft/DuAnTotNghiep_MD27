@@ -31,10 +31,10 @@ import java.util.List;
 
 
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextView name, price, mota, priceProductCart;
+    TextView name, price, mota;
     Button btAddcart;
     String _id, _name, _price;
-    ImageView btnshare;
+    ImageView btnshare, image;
     List<Product_home> list = new ArrayList<>();
     Spinner SizeSpiner, ColorSpiner;
 
@@ -55,6 +55,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 //        _name = intent.getStringExtra("name");
 //        _price = intent.getStringExtra("price");
         name = findViewById(R.id.tvdetail_namee);
+        image = findViewById(R.id.imagedetail);
         price = findViewById(R.id.tvdetail_pricee);
         mota = findViewById(R.id.tvdetail_mota);
         btAddcart = findViewById(R.id.addCart);
@@ -66,6 +67,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         name.setText(productHome.getTenSP());
         price.setText(productHome.getGiaSP()+"đ");
         mota.setText(productHome.getMota());
+        Glide.with(getApplicationContext()).load(productHome.getHinhanhSP()).into(image);
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

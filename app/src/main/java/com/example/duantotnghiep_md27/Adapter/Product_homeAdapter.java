@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
@@ -46,6 +47,7 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
         final Product_home product_home= list.get(position);
         holder.name.setText(product_home.getTenSP());
         holder.price.setText(product_home.getGiaSP()+"đ");
+        Glide.with(activity).load(product_home.getHinhanhSP()).into(holder.imgproduct);
 //        set su kien khi click vao item san pham
         holder.cardViewItem.setOnClickListener(view -> {
             Util.productHome = product_home;
