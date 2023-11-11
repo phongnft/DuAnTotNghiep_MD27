@@ -42,37 +42,30 @@ import retrofit2.Response;
 
 public class Home_Fragment extends Fragment {
 
-
     ViewPager2 viewPager2;
-    Token token;
     private RecyclerView product_recyclerView;
     private RecyclerView category_recyclerView;
     private Product_homeAdapter product_homeAdapter;
     private HomeCategoryAdapter homeCategoryAdapter;
     private List<Product_home> product_list;
-
-    List<ProductImage> productImages;
     private List<Category> categoryList;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         product_recyclerView = view.findViewById(R.id.product_recycleview);
         category_recyclerView = view.findViewById(R.id.recycleview_category);
+        categoryList = new ArrayList<>();
         viewPager2 = view.findViewById(R.id.smartSlider);
         product_list = new ArrayList<>();
         sliderAuto();
-        //getNewProduct();
         getDataFromApi();
         getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
-
 
     private void getNewProduct() {
         Call<ProductResult> call = RestClient.getRestService(getContext()).newProducts();
@@ -81,24 +74,25 @@ public class Home_Fragment extends Fragment {
             public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
                 Log.d("Response :=>", response.body() + "");
                 if (response != null) {
-
                     ProductResult productResult = response.body();
-                    if (productResult.getStatus() == 200) {
-
+                    if (productResult != null && productResult.getStatus() == 200) {
                         product_list = productResult.getProduct_homeList();
                         setupProductRecycleView();
-
                     }
-
                 }
-
-
             }
 
             @Override
             public void onFailure(Call<ProductResult> call, Throwable t) {
-                Log.d("Error", t.getMessage());
-
+                if (isAdded() && getContext() != null) {
+                    String errorMessage = "Lỗi rồi";
+                    if (t != null && t.getMessage() != null) {
+                        errorMessage += ": " + t.getMessage();
+                    }
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.d("Home_Fragment", "getContext() is null in onFailure");
+                }
             }
         });
     }
@@ -115,12 +109,18 @@ public class Home_Fragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Product_home>> call, Throwable t) {
-                Toast.makeText(getContext(), "Loi roi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    String errorMessage = "Lỗi rồi";
+                    if (t != null && t.getMessage() != null) {
+                        errorMessage += ": " + t.getMessage();
+                    }
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    private void getCategoryData(){
+    private void getCategoryData() {
         RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
@@ -132,14 +132,14 @@ public class Home_Fragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
-                Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "Đã xảy ra lỗi!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-
     private void sliderAuto() {
-
         ArrayList<SliderItem> sliderItems = new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.img_8, "image 1"));
         sliderItems.add(new SliderItem(R.drawable.img_9, "Image 2"));
@@ -148,15 +148,13 @@ public class Home_Fragment extends Fragment {
 
         viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, 3000));
 
+        // Nếu bạn không có ý định sử dụng callback này, có thể bỏ đi
         new SliderAdapter((position, title, vieww) -> {
-
+            // Xử lý callback nếu cần
         });
     }
 
-
-    //hàm sản phẩm
     private void setupProductRecycleView() {
-
         product_homeAdapter = new Product_homeAdapter((ArrayList<Product_home>) product_list, requireActivity());
         RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         product_recyclerView.setLayoutManager(nLayoutManager);
@@ -164,9 +162,7 @@ public class Home_Fragment extends Fragment {
         product_recyclerView.setAdapter(product_homeAdapter);
     }
 
-    //hàm danh mục
     private void setupCategoryRecycleView() {
-        categoryList = new ArrayList<>();
         homeCategoryAdapter = new HomeCategoryAdapter(categoryList, getContext(), "Home");
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);

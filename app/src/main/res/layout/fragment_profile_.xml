@@ -31,6 +31,7 @@
     android:layout_height="50dp">
 
     <LinearLayout
+        android:id="@+id/tv_next_taikhoan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
@@ -46,13 +47,13 @@
             android:orientation="vertical"
             android:layout_height="50dp">
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_name_pro"
                 android:paddingLeft="10dp"
                 android:text="Nguyễn Văn Phong"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/tv_sdt"
+                android:id="@+id/tv_sdt_pro"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
                 android:text="0334158096"
@@ -60,7 +61,6 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <TextView
-            android:id="@+id/tv_next_taikhoan"
             android:drawableRight="@drawable/baseline_navigate_next_24"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -68,19 +68,6 @@
     </LinearLayout>
 </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_donhang"
-        android:textSize="20dp"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/baseline_shopping_info"
-        android:drawablePadding="15dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="15dp"
-        android:text="Đơn hàng của tôi"
-        android:drawableEnd="@drawable/baseline_navigate_next_24"
-        />
 
     <TextView
         android:id="@+id/tv_gioithieu"
@@ -153,6 +140,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/tv_sdt_store"
             android:text="0334158096"
             android:textSize="20dp"
             android:layout_gravity="center"
@@ -172,6 +160,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/tv_email_store"
             android:text="closetstore@gmail.com"
             android:textSize="20dp"
             android:layout_gravity="center"
