@@ -1,39 +1,47 @@
 package com.example.duantotnghiep_md27.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Category {
-    private String id, name;
-    private int image;
+//    String id;
+//    String category;
+//    String cateimg;
+//    String token;
+//    String category_id;
 
-    public Category() {
+    int MaLoai;
+    String TenLoai,HinhanhLSP;
+
+
+    public Category(int maLoai, String tenLoai, String hinhanhLSP) {
+        MaLoai = maLoai;
+        TenLoai = tenLoai;
+        HinhanhLSP = hinhanhLSP;
     }
 
-    public Category(String id, String name, int image) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
+    public int getMaLoai() {
+        return MaLoai;
     }
 
-    public String getId() {
-        return id;
+    public void setMaLoai(int maLoai) {
+        MaLoai = maLoai;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getTenLoai() {
+        return TenLoai;
     }
 
-    public String getName() {
-        return name;
+    public void setTenLoai(String tenLoai) {
+        TenLoai = tenLoai;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getHinhanhLSP() {
+        return HinhanhLSP;
     }
 
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
+    public void setHinhanhLSP(String hinhanhLSP) {
+        HinhanhLSP = hinhanhLSP;
     }
 }
+
