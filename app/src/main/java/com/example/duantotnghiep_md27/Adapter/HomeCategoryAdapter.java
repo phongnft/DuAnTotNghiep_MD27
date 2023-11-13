@@ -58,12 +58,9 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
         final Category category = categoryList.get(position);
 
         holder.title.setText(category.getTenLoai());
-        if(category.getHinhanhLSP()!=null){
-            Glide.with(context)
-                    .load(RestClient.BASE_URL+ category.getHinhanhLSP())
-                    .into(holder.imageView);
-        }
-
+        Glide.with(context)
+                .load(categoryList.get(position).getHinhanhLSP())
+                .into(holder.imageView);
 
         holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
