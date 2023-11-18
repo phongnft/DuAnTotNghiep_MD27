@@ -4,44 +4,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-//    String id;
-//    String category;
-//    String cateimg;
-//    String token;
-//    String category_id;
+    private String category_id;
+    private String category_name;
+    private String image_url;
+    private String description;
 
-    int MaLoai;
-    String TenLoai,HinhanhLSP;
-
-
-    public Category(int maLoai, String tenLoai, String hinhanhLSP) {
-        MaLoai = maLoai;
-        TenLoai = tenLoai;
-        HinhanhLSP = hinhanhLSP;
+    public Category(String category_id, String category_name, String image_url, String description) {
+        this.category_id = category_id;
+        this.category_name = category_name;
+        this.image_url = image_url;
+        this.description = description;
     }
 
-    public int getMaLoai() {
-        return MaLoai;
+    public String getCategory_id() {
+        return category_id;
     }
 
-    public void setMaLoai(int maLoai) {
-        MaLoai = maLoai;
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 
-    public String getTenLoai() {
-        return TenLoai;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setTenLoai(String tenLoai) {
-        TenLoai = tenLoai;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
-    public String getHinhanhLSP() {
-        return HinhanhLSP;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setHinhanhLSP(String hinhanhLSP) {
-        HinhanhLSP = hinhanhLSP;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

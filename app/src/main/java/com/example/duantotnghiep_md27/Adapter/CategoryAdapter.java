@@ -55,11 +55,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         final Category category = categoryList.get(position);
-        holder.name.setText(category.getTenLoai());
+        holder.name.setText(category.getCategory_name());
 
-        if(category.getHinhanhLSP()!=null){
+        if(category.getImage_url()!=null){
             Glide.with(context)
-                    .load(RestClient.BASE_URL+ category.getHinhanhLSP())
+                    .load(RestClient.BASE_URL+ category.getImage_url())
                     .into(holder.imageView);
         }
 
@@ -68,8 +68,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
             public void onClick(View view) {
                 Intent intent = new Intent(context, Product_Activity.class);
                 intent.putExtra("LoaiSanPham", "LoaiSanPham");
-                intent.putExtra("TenLoai", category.getTenLoai());
-                intent.putExtra("MaLoai", category.getMaLoai());
+                intent.putExtra("TenLoai", category.getCategory_name());
+                intent.putExtra("MaLoai", category.getCategory_id());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(intent);
             }

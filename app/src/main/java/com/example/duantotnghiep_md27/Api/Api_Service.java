@@ -1,6 +1,7 @@
 package com.example.duantotnghiep_md27.Api;
 
 import com.example.duantotnghiep_md27.Model.Category;
+import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Token;
@@ -34,8 +35,14 @@ public interface Api_Service {
             @Query("duantotnghiep_md27") String key
     );
 
+    @GET("products/getallproducts")
+    Call<List<Product_home>> getProductshome();
 
-    @GET("demo2")
+    @GET("roducts/getallproducts")
+    Call<ProductData> getproductData();
+
+
+    @GET("products/getallproducts")
     Call<List<Product_home>> getData();
 
     @GET("demo2")
@@ -44,11 +51,11 @@ public interface Api_Service {
     @POST("users/add")
     Call<UserResult> register(@Body User user);
 
-    @POST("users/add")
+    @POST("user/createuser")
     Call<UserResult> login(@Body User user);
 
-    @POST("Sanpham/list")
-    Call<ProductResult> newProducts();
+    @GET("products/getallproducts")
+    Call<ProductData> newProducts();
 
     @GET("LoaiSanPham/list")
     Call<List<Category>> allCategory();

@@ -25,7 +25,10 @@ import com.example.duantotnghiep_md27.Fragment.UserPayfragment;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.Util;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,13 +36,12 @@ import java.util.List;
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView name, price, mota;
     Button btAddcart;
-    String _id, _name, _price;
+    String _id, _name, _price,_description,_image;
     ImageView btnshare, image;
     List<Product_home> list = new ArrayList<>();
     Spinner SizeSpiner, ColorSpiner;
 
-
-
+    Gson gson;
 
     private Product_home productHome;
 
@@ -51,9 +53,12 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         Intent intent = getIntent();
         productHome = Util.productHome;
 
-//  _id = intent.getStringExtra("id");
-//        _name = intent.getStringExtra("name");
-//        _price = intent.getStringExtra("price");
+        _id = intent.getStringExtra("id");
+        _name = intent.getStringExtra("name");
+        _price = intent.getStringExtra("price");
+        _description = intent.getStringExtra("description");
+        _image = intent.getStringExtra("image");
+
         name = findViewById(R.id.tvdetail_namee);
         image = findViewById(R.id.imagedetail);
         price = findViewById(R.id.tvdetail_pricee);
@@ -62,12 +67,15 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         btnshare = findViewById(R.id.buttonShare);
         SizeSpiner = findViewById(R.id.SizeNumber);
         ColorSpiner = findViewById(R.id.ColorNumber);
-        Size(); Color();
+        Size();
+        Color();
 
-        name.setText(productHome.getTenSP());
-        price.setText(productHome.getGiaSP()+"đ");
-        mota.setText(productHome.getMota());
-        Glide.with(getApplicationContext()).load(productHome.getHinhanhSP()).into(image);
+        name.setText(_name);
+        price.setText(_price);
+        mota.setText(_description);
+        Glide.with(getApplicationContext()).load(_image).into(image);
+
+//        image = gson.fromJson(price,);
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +85,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         btAddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(detail_activity.this,"Thêm vào giỏ thành công!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(detail_activity.this, "Thêm vào giỏ thành công!", Toast.LENGTH_SHORT).show();
                 productHome = Util.productHome;
 //                setResult(RESULT_OK);
 //                finish();
@@ -86,11 +94,12 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         });
 
     }
-    private void ShareClick(Context context){
+
+    private void ShareClick(Context context) {
         final String appPackageName = context.getPackageName();
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT,"Dowload now: https://play.google.com/store/apps/details?id" + appPackageName);
+        intent.putExtra(Intent.EXTRA_TEXT, "Dowload now: https://play.google.com/store/apps/details?id" + appPackageName);
         intent.setType("text/plain");
         context.startActivity(intent);
     }
@@ -100,12 +109,13 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         String textSize = parent.getItemAtPosition(position).toString();
         String TextColor = parent.getItemAtPosition(position).toString();
     }
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
-    public void Size(){
+    public void Size() {
         ArrayAdapter<CharSequence> adapterSpinerSize =
                 ArrayAdapter.createFromResource
                         (this, R.array.Size, android.R.layout.simple_spinner_item);
@@ -114,7 +124,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         SizeSpiner.setOnItemSelectedListener(this);
     }
 
-    public void Color(){
+    public void Color() {
         ArrayAdapter<CharSequence> adapterSpinerSize =
                 ArrayAdapter.createFromResource
                         (this, R.array.Color, android.R.layout.simple_spinner_item);

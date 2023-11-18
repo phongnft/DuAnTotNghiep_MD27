@@ -1,119 +1,107 @@
 package com.example.duantotnghiep_md27.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product_home{
-//    String id;
-//    String name;
-//    String category;
-//    String price;
-//    String description;
-//    String currency;
+public class Product_home {
+    private String product_id;
+    private String product_name;
+    private double price;
+    private String image_url;
+    private String description;
+    private String category_id;
+    private String creation_date;
+    private Category category;
 
+//    @SerializedName("product_id")
+//    private String productId;
+//    @SerializedName("product_name")
+//    private String productName;
+//    private double price;
+//    @SerializedName("image_url")
+//    private String imageUrl;
+//    private String description;
+//    @SerializedName("category_id")
+//    private String categoryId;
+//    @SerializedName("creation_date")
+//    private String creationDate;
+//    private Category category;
 
-    int maSP;
-    String TenSP;
-    int GiaSP;
-    int SizeSP;
-    String ColorSP;
-    String HinhanhSP;
-    String Mota;
-    int MaLoai;
-    int SoLuong;
-    int MaNH;
-
-    public Product_home(int maSP, String tenSP, int giaSP, int sizeSP, String colorSP, String hinhanhSP, String mota, int maLoai, int soLuong, int maNH) {
-        this.maSP = maSP;
-        TenSP = tenSP;
-        GiaSP = giaSP;
-        SizeSP = sizeSP;
-        ColorSP = colorSP;
-        HinhanhSP = hinhanhSP;
-        Mota = mota;
-        MaLoai = maLoai;
-        SoLuong = soLuong;
-        MaNH = maNH;
+    public Product_home(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, Category category) {
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.price = price;
+        this.image_url = image_url;
+        this.description = description;
+        this.category_id = category_id;
+        this.creation_date = creation_date;
+        this.category = category;
     }
 
-    public int getMaSP() {
-        return maSP;
+    public String getProduct_id() {
+        return product_id;
     }
 
-    public void setMaSP(int maSP) {
-        this.maSP = maSP;
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
     }
 
-    public String getTenSP() {
-        return TenSP;
+    public String getProduct_name() {
+        return product_name;
     }
 
-    public void setTenSP(String tenSP) {
-        TenSP = tenSP;
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 
-    public int getGiaSP() {
-        return GiaSP;
+    public double getPrice() {
+        return price;
     }
 
-    public void setGiaSP(int giaSP) {
-        GiaSP = giaSP;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public int getSizeSP() {
-        return SizeSP;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setSizeSP(int sizeSP) {
-        SizeSP = sizeSP;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public String getColorSP() {
-        return ColorSP;
+    public String getDescription() {
+        return description;
     }
 
-    public void setColorSP(String colorSP) {
-        ColorSP = colorSP;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getHinhanhSP() {
-        return HinhanhSP;
+    public String getCategory_id() {
+        return category_id;
     }
 
-    public void setHinhanhSP(String hinhanhSP) {
-        HinhanhSP = hinhanhSP;
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 
-    public String getMota() {
-        return Mota;
+    public String getCreation_date() {
+        return creation_date;
     }
 
-    public void setMota(String mota) {
-        Mota = mota;
+    public void setCreation_date(String creation_date) {
+        this.creation_date = creation_date;
     }
 
-    public int getMaLoai() {
-        return MaLoai;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setMaLoai(int maLoai) {
-        MaLoai = maLoai;
-    }
-
-    public int getSoLuong() {
-        return SoLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        SoLuong = soLuong;
-    }
-
-    public int getMaNH() {
-        return MaNH;
-    }
-
-    public void setMaNH(int maNH) {
-        MaNH = maNH;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

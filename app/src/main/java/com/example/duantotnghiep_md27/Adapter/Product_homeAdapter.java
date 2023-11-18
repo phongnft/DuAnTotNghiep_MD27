@@ -18,41 +18,62 @@ import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.Util;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapter.ProductViewHolder> {
     Activity activity;
-    List<Product_home> list = new ArrayList<>();
+    String Tag;
+    Gson gson;
+    List<Product_home> productList;
+    private Context context;
 
 
-
-    public Product_homeAdapter(List<Product_home> list,Activity activity) {
-        this.activity = activity;
-        this.list =list;
+    public Product_homeAdapter(List<Product_home> productList, Context context, String tag) {
+        this.productList = productList;
+        this.context = context;
+        Tag = tag;
     }
 
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.item_products, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_products, parent, false);
         return new ProductViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        final Product_home product_home= list.get(position);
-        holder.name.setText(product_home.getTenSP());
-        holder.price.setText(product_home.getGiaSP()+"đ");
-        Glide.with(activity).load(product_home.getHinhanhSP()).into(holder.imgproduct);
+        final Product_home product_home = productList.get(position);
+        holder.name.setText(product_home.getProduct_name());
+        holder.price.setText(product_home.getPrice() + "đ");
+//        Product product = productList.get(position);
+//        holder.txtProductName.setText(product.getProductName());
+//        holder.txtPrice.setText(String.valueOf(product.getPrice()));
+//        Picasso.get().load(product.getImageUrl()).into(holder.imgProduct);
+        Glide.with(context).load(product_home.getImage_url()).into(holder.imgproduct);
 //        set su kien khi click vao item san pham
         holder.cardViewItem.setOnClickListener(view -> {
-            Util.productHome = product_home;
-            Intent intent = new Intent(activity, detail_activity.class);
-            activity.startActivityForResult(intent,123);
+
+            Intent intent = new Intent(context, detail_activity.class);
+            intent.putExtra("id", product_home.getProduct_id());
+            intent.putExtra("name", product_home.getProduct_name());
+            intent.putExtra("image", product_home.getImage_url());
+            intent.putExtra("price", product_home.getPrice() + "đ");
+            intent.putExtra("description", product_home.getDescription());
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(intent);
+
+
+//
+//            Util.productHome = product_home;
+//            Intent intent = new Intent(context, detail_activity.class);
+//            activity.startActivityForResult(intent, 123);
 
         });
 
@@ -61,7 +82,7 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return productList.size();
     }
 
 
