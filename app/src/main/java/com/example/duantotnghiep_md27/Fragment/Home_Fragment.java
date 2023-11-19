@@ -26,6 +26,7 @@ import com.example.duantotnghiep_md27.Adapter.HomeCategoryAdapter;
 import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.Category;
+import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.ProductImage;
 import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
@@ -66,38 +67,47 @@ public class Home_Fragment extends Fragment {
         viewPager2 = view.findViewById(R.id.smartSlider);
         product_list = new ArrayList<>();
         sliderAuto();
-        //getNewProduct();
-        getDataFromApi();
+        getNewProduct();
+       // getDataFromApi();
         getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
 
+
+
     private void getNewProduct() {
-        Call<ProductResult> call = RestClient.getRestService(getContext()).newProducts();
-        call.enqueue(new Callback<ProductResult>() {
+        Call<ProductData> call = RestClient.getRestService(getContext()).getproductData();
+        call.enqueue(new Callback<ProductData>() {
             @Override
-            public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
+            public void onResponse(Call<ProductData> call, Response<ProductData> response) {
                 Log.d("Response :=>", response.body() + "");
-                if (response != null) {
+                if (response.isSuccessful() && response.body() != null) {
 
-                    ProductResult productResult = response.body();
-                    if (productResult.getStatus() == 200) {
+                    ProductData productData = response.body();
+                    //if (productData.getStatus() == 200) {
 
-                        product_list = productResult.getProduct_homeList();
-                        setupProductRecycleView();
+                    product_list = productData.getData();
+                    setupProductRecycleView();
 
-                    }
+                    // }
 
+
+                    Toast.makeText(getContext(), "call ok kìa", Toast.LENGTH_SHORT).show();
+
+
+
+                } else {
+                    Toast.makeText(getContext(), "Lỗi rồi kìa", Toast.LENGTH_SHORT).show();
                 }
 
 
             }
 
             @Override
-            public void onFailure(Call<ProductResult> call, Throwable t) {
-                Log.d("Error", t.getMessage());
+            public void onFailure(Call<ProductData> call, Throwable t) {
+                Toast.makeText(getContext(), "Fail api mất rồi" + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

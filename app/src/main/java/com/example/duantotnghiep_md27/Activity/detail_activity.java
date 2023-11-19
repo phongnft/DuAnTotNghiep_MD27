@@ -26,9 +26,7 @@ import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.Util;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +40,9 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     Spinner SizeSpiner, ColorSpiner;
 
     Gson gson;
+
+
+
 
     private Product_home productHome;
 
@@ -92,14 +93,29 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 
             }
         });
+        btnshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareClick(detail_activity.this);
+            }
+        });
+        btAddcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(detail_activity.this,"Thêm vào giỏ thành công!",Toast.LENGTH_SHORT).show();
+                productHome = Util.productHome;
+//                setResult(RESULT_OK);
+//                finish();
+
+            }
+        });
 
     }
-
-    private void ShareClick(Context context) {
+    private void ShareClick(Context context){
         final String appPackageName = context.getPackageName();
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, "Dowload now: https://play.google.com/store/apps/details?id" + appPackageName);
+        intent.putExtra(Intent.EXTRA_TEXT,"Dowload now: https://play.google.com/store/apps/details?id" + appPackageName);
         intent.setType("text/plain");
         context.startActivity(intent);
     }
@@ -109,13 +125,12 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         String textSize = parent.getItemAtPosition(position).toString();
         String TextColor = parent.getItemAtPosition(position).toString();
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
-    public void Size() {
+    public void Size(){
         ArrayAdapter<CharSequence> adapterSpinerSize =
                 ArrayAdapter.createFromResource
                         (this, R.array.Size, android.R.layout.simple_spinner_item);
@@ -124,7 +139,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         SizeSpiner.setOnItemSelectedListener(this);
     }
 
-    public void Color() {
+    public void Color(){
         ArrayAdapter<CharSequence> adapterSpinerSize =
                 ArrayAdapter.createFromResource
                         (this, R.array.Color, android.R.layout.simple_spinner_item);

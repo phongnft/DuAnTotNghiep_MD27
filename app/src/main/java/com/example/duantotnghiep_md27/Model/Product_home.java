@@ -1,12 +1,10 @@
 package com.example.duantotnghiep_md27.Model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product_home {
+public class Product_home{
     private String product_id;
     private String product_name;
     private double price;
@@ -15,20 +13,6 @@ public class Product_home {
     private String category_id;
     private String creation_date;
     private Category category;
-
-//    @SerializedName("product_id")
-//    private String productId;
-//    @SerializedName("product_name")
-//    private String productName;
-//    private double price;
-//    @SerializedName("image_url")
-//    private String imageUrl;
-//    private String description;
-//    @SerializedName("category_id")
-//    private String categoryId;
-//    @SerializedName("creation_date")
-//    private String creationDate;
-//    private Category category;
 
     public Product_home(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, Category category) {
         this.product_id = product_id;

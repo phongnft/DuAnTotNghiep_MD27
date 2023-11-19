@@ -2,6 +2,7 @@ package com.example.duantotnghiep_md27.Api;
 
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.MyInfo;
+import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Profile;
@@ -33,6 +34,12 @@ public interface Api_Service {
 
     );
 
+    @GET("products/getallproducts")
+    Call<List<Product_home>> getProductshome();
+
+    @GET("products/getallproducts")
+    Call<ProductData> getproductData();
+
     @GET("duantotnghiep_md27")
     Call<List<User>> getListUser(
             @Query("duantotnghiep_md27") String key
@@ -42,7 +49,7 @@ public interface Api_Service {
     @GET("demo2")
     Call<List<Product_home>> getData();
 
-    @GET("demo2")
+    @GET("")
     Call<ProductResult> getDataa();
 
     @POST("users/add")
@@ -70,5 +77,7 @@ public interface Api_Service {
             @Path("maND") int maND,
             @Body MyInfo updatedUser
     );
+
+
 
 }
