@@ -9,7 +9,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+
+        >
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -120,41 +123,42 @@
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="3dp"
-                    android:background="@drawable/custom_edittex"
+                    android:background="@drawable/botronlicuatruong"
                     android:padding="3dp"
                     android:text="Đăng nhập"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            >
-            <ImageView
-                android:layout_marginRight="20dp"
-                android:src="@drawable/google_img"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
-            <TextView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:text="hoặc"
-                android:textStyle="italic"
-               android:layout_marginRight="15dp"
-                >
 
-            </TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:src="@drawable/fb_img"
-                android:layout_height="40dp"/>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/google_img" />
+
+                    <TextView
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="15dp"
+                        android:text="hoặc"
+                        android:textStyle="italic">
+
+                    </TextView>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/fb_img" />
 
 
-        </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 

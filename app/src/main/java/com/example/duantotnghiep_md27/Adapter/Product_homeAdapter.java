@@ -24,11 +24,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapter.ProductViewHolder> {
-    Activity activity;
+
     String Tag;
     Gson gson;
     List<Product_home> productList;
     private Context context;
+
 
 
     public Product_homeAdapter(List<Product_home> productList, Context context, String tag) {
@@ -76,7 +77,6 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
 //            activity.startActivityForResult(intent, 123);
 
         });
-
 
     }
 

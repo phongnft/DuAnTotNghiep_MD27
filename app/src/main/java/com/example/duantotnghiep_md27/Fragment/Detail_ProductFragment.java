@@ -31,7 +31,6 @@ public class Detail_ProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.detail_product, container, false);
-
         Intent intent = getActivity().getIntent();
 
 //        _id = intent.getStringExtra("id");
