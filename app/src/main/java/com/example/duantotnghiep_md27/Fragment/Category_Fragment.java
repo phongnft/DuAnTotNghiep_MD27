@@ -46,7 +46,6 @@ public class Category_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.category_rv);
         product_recyclerView = view.findViewById(R.id.product_rv);
         getCategoryData();
-        getProductData();
 
         return view;
     }
@@ -70,30 +69,6 @@ public class Category_Fragment extends Fragment {
 
     }
 
-    private void getProductData() {
-
-        RestClient.getApiService().getData().enqueue(new Callback<List<Product_home>>() {
-            @Override
-            public void onResponse(Call<List<Product_home>> call, Response<List<Product_home>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    product_list.addAll(response.body());
-                    setupProductRecycleView();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Product_home>> call, Throwable t) {
-                if (getContext() != null) {
-                    String errorMessage = "Lỗi rồi";
-                    if (t != null && t.getMessage() != null) {
-                        errorMessage += ": " + t.getMessage();
-                    }
-                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-    }
 
     private void setupCategoryRecycleView() {
         mAdapter = new CategoryAdapter(categoryList, getActivity());
@@ -101,14 +76,4 @@ public class Category_Fragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
     }
-
-    private void setupProductRecycleView() {
-        product_homeAdapter = new Product_homeAdapter((ArrayList<Product_home>) product_list, requireActivity());
-        RecyclerView.LayoutManager nLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        product_recyclerView.setLayoutManager(nLayoutManager);
-        product_recyclerView.setItemAnimator(new DefaultItemAnimator());
-        product_recyclerView.setAdapter(product_homeAdapter);
-    }
-
-
 }

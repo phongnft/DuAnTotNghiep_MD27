@@ -16,9 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.duantotnghiep_md27.Activity.Product_Activity;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
-import com.example.duantotnghiep_md27.Interface.CategorySelectCallBacks;
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.R;
 
@@ -30,7 +28,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     List<Category> categoryList;
     Context context;
     int selectedPosition = 0;
-    CategorySelectCallBacks callBacks;
 
     public CategoryAdapter(List<Category> categoryList, Context context) {
         this.categoryList = categoryList;
@@ -55,25 +52,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         final Category category = categoryList.get(position);
-        holder.name.setText(category.getTenLoai());
+        holder.name.setText(category.getCategory_name());
 
-        if(category.getHinhanhLSP()!=null){
+        if(category.getImage_url()!=null){
             Glide.with(context)
-                    .load(RestClient.BASE_URL+ category.getHinhanhLSP())
+                    .load(RestClient.BASE_URL+ category.getImage_url())
                     .into(holder.imageView);
         }
-
-        holder.name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Product_Activity.class);
-                intent.putExtra("LoaiSanPham", "LoaiSanPham");
-                intent.putExtra("TenLoai", category.getTenLoai());
-                intent.putExtra("MaLoai", category.getMaLoai());
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                context.startActivity(intent);
-            }
-        });
 
     }
 

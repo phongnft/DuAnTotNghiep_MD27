@@ -129,7 +129,6 @@ public class Home_Fragment extends Fragment {
                     setupCategoryRecycleView();
                 }
             }
-
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
                 Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -157,7 +156,7 @@ public class Home_Fragment extends Fragment {
     //hàm sản phẩm
     private void setupProductRecycleView() {
 
-        product_homeAdapter = new Product_homeAdapter((ArrayList<Product_home>) product_list, requireActivity());
+        product_homeAdapter = new Product_homeAdapter(product_list, getContext(), "Home");
         RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         product_recyclerView.setLayoutManager(nLayoutManager);
         product_recyclerView.setItemAnimator(new DefaultItemAnimator());
