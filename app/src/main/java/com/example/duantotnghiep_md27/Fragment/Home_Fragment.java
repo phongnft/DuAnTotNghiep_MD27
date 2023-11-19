@@ -24,10 +24,8 @@ import com.bdtopcoder.smart_slider.SliderAdapter;
 import com.bdtopcoder.smart_slider.SliderItem;
 import com.example.duantotnghiep_md27.Adapter.HomeCategoryAdapter;
 import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
-import com.example.duantotnghiep_md27.Api.Api_Service;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.Category;
-import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.ProductImage;
 import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
@@ -35,7 +33,6 @@ import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
@@ -69,10 +66,8 @@ public class Home_Fragment extends Fragment {
         viewPager2 = view.findViewById(R.id.smartSlider);
         product_list = new ArrayList<>();
         sliderAuto();
-        getNewProduct();
-        // getDataaaaaa();
-        // getDataFromApi();
-        //getDataFromApiiiiiiiii();
+        //getNewProduct();
+        getDataFromApi();
         getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
@@ -80,84 +75,36 @@ public class Home_Fragment extends Fragment {
 
 
     private void getNewProduct() {
-        Call<ProductData> call = RestClient.getRestService(getContext()).newProducts();
-        call.enqueue(new Callback<ProductData>() {
+        Call<ProductResult> call = RestClient.getRestService(getContext()).newProducts();
+        call.enqueue(new Callback<ProductResult>() {
             @Override
-            public void onResponse(Call<ProductData> call, Response<ProductData> response) {
+            public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
                 Log.d("Response :=>", response.body() + "");
-                if (response.isSuccessful() && response.body() != null) {
+                if (response != null) {
 
-                    ProductData productData = response.body();
-                    //if (productData.getStatus() == 200) {
+                    ProductResult productResult = response.body();
+                    if (productResult.getStatus() == 200) {
 
-                        product_list = productData.getData();
+                        product_list = productResult.getProduct_homeList();
                         setupProductRecycleView();
 
-                   // }
+                    }
 
-
-                    Toast.makeText(getContext(), "call ok kìa", Toast.LENGTH_SHORT).show();
-
-
-
-                } else {
-                    Toast.makeText(getContext(), "Lỗi rồi kìa", Toast.LENGTH_SHORT).show();
                 }
 
 
             }
 
             @Override
-            public void onFailure(Call<ProductData> call, Throwable t) {
-                Toast.makeText(getContext(), "Fail api mất rồi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ProductResult> call, Throwable t) {
+                Log.d("Error", t.getMessage());
 
-            }
-        });
-    }
-
-
-
-    private void getDataFromApiiiiiiiii() {
-
-
-        RestClient.getRestService(getContext()).getproductData().enqueue(new Callback<ProductData>() {
-            @Override
-            public void onResponse(Call<ProductData> call, Response<ProductData> response) {
-                if (response.isSuccessful()) {
-                    ProductData productData = response.body();
-
-                    // if (productResult.getStatus() == 200) {
-
-//                    product_list = productData.getProduct_data();
-//                    setupProductRecycleView();
-
-                    // }
-                    // List<Product_home> productList = productData.getData();
-//                    productList.addAll(response.body());
-                    // setupProductRecycleView();
-                    Toast.makeText(getContext(), "call ok roi", Toast.LENGTH_SHORT).show();
-                    // Xử lý dữ liệu nhận được từ API
-//                    for (Product product : productList) {
-//                        // ...
-//                    }
-                } else {
-                    Toast.makeText(getContext(), "loi roi", Toast.LENGTH_SHORT).show();
-                    // Xử lý khi gặp lỗi trong phản hồi từ API
-                    // ...
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProductData> call, Throwable t) {
-                Toast.makeText(getContext(), "Loi roi" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void getDataFromApi() {
-
-
-        RestClient.getApiService().getProductshome().enqueue(new Callback<List<Product_home>>() {
+        RestClient.getApiService().getData().enqueue(new Callback<List<Product_home>>() {
             @Override
             public void onResponse(Call<List<Product_home>> call, Response<List<Product_home>> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -173,7 +120,7 @@ public class Home_Fragment extends Fragment {
         });
     }
 
-    private void getCategoryData() {
+    private void getCategoryData(){
         RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
@@ -210,7 +157,7 @@ public class Home_Fragment extends Fragment {
     //hàm sản phẩm
     private void setupProductRecycleView() {
 
-        product_homeAdapter = new Product_homeAdapter(product_list,getContext(),"home");
+        product_homeAdapter = new Product_homeAdapter((ArrayList<Product_home>) product_list, requireActivity());
         RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         product_recyclerView.setLayoutManager(nLayoutManager);
         product_recyclerView.setItemAnimator(new DefaultItemAnimator());

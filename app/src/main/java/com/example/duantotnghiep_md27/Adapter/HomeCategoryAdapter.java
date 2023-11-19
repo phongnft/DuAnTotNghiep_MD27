@@ -57,10 +57,10 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
         final Category category = categoryList.get(position);
 
-        holder.title.setText(category.getCategory_name());
-        if(category.getImage_url()!=null){
+        holder.title.setText(category.getTenLoai());
+        if(category.getHinhanhLSP()!=null){
             Glide.with(context)
-                    .load(RestClient.BASE_URL+ category.getImage_url())
+                    .load(RestClient.BASE_URL+ category.getHinhanhLSP())
                     .into(holder.imageView);
         }
 
@@ -70,8 +70,8 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
             public void onClick(View view) {
                 Intent intent = new Intent(context, Product_Activity.class);
                 intent.putExtra("LoaiSanPham", "LoaiSanPham");
-                intent.putExtra("TenLoai", category.getImage_url());
-                intent.putExtra("MaLoai", category.getCategory_id());
+                intent.putExtra("TenLoai", category.getTenLoai());
+                intent.putExtra("MaLoai", category.getMaLoai());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(intent);
             }
