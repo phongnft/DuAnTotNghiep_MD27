@@ -70,25 +70,25 @@ public class Register_Activity extends AppCompatActivity {
     }
 
     private void checkValidation() {
-        String tenND = edtname.getText().toString();
+        String name = edtname.getText().toString();
         String Email = edtmail.getText().toString();
-        String MatKhauND = edtpass.getText().toString();
+        String pass = edtpass.getText().toString();
 
 
-        if (tenND.length() == 0) {
+        if (name.length() == 0) {
             edtname.setError("Vui lòng điền tên");
             edtname.requestFocus();
         } else if (Email.length() == 0) {
             edtmail.setError("Vui lòng điền mail");
             edtmail.requestFocus();
-        } else if (MatKhauND.length() == 0) {
+        } else if (pass.length() == 0) {
             edtpass.setError("Vui lòng điền mật khẩu");
             edtpass.requestFocus();
-        } else if (MatKhauND.length() < 6) {
+        } else if (pass.length() < 6) {
             edtpass.setError("Mật khẩu phải đủ 6 kí tự");
             edtpass.requestFocus();
         } else {
-            user = new User(tenND, Email, MatKhauND, firebaseToken);
+            user = new User(name, Email, pass);
             registerUser(user);
 
         }

@@ -34,8 +34,6 @@ public interface Api_Service {
 
     );
 
-    @GET("products/getallproducts")
-    Call<List<Product_home>> getProductshome();
 
     @GET("products/getallproducts")
     Call<ProductData> getproductData();
@@ -48,17 +46,13 @@ public interface Api_Service {
     @GET("demo2")
     Call<List<Product_home>> getData();
 
-    @GET("")
-    Call<ProductResult> getDataa();
 
-    @POST("users/add")
+    @POST("user/createuser")
     Call<UserResult> register(@Body User user);
 
     @POST("users/add")
     Call<UserResult> login(@Body User user);
 
-    @POST("Sanpham/list")
-    Call<ProductResult> newProducts();
 
     @GET("category")
     Call<List<Category>> getCategory();
@@ -69,8 +63,7 @@ public interface Api_Service {
     @GET("users/list")
     Call<List<MyInfo>> getUserList(@Header("Authorization") String token);
 
-    //    @GET("user/list")
-//    Call<List<Profile>> getProfileData(String maND);
+
     @GET("getProfileData")
     Call<List<Profile>> getProfileData(@Query("maND") String maND);
 

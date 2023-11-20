@@ -1,110 +1,68 @@
 package com.example.duantotnghiep_md27.Model;
 
 public class User {
-   // String id, name, email, password, token, firebase_token;
 
-   // String id;
-    String tenND;
-    String MatKhauND;
-    String SDTND;
-    String DiachiND;
-    String TuoiND;
-    String Email;
-    String HinhAnhND;
-    String token;
-    String firebase_token;
+    private String full_name;
+    private String password;
+    private String phone_number;
+    private String email;
+    private String image_url;
+
+//    String token;
+//    String firebase_token;
 
 
-    public User(String id, String tenND, String matKhauND, String SDTND, String diachiND, String tuoiND, String email, String hinhAnhND, String token, String firebase_token) {
-        this.tenND = tenND;
-        MatKhauND = matKhauND;
-        this.SDTND = SDTND;
-        DiachiND = diachiND;
-        TuoiND = tuoiND;
-        Email = email;
-        HinhAnhND = hinhAnhND;
-        this.token = token;
-        this.firebase_token = firebase_token;
+    public User(String full_name, String password, String phone_number, String email, String image_url) {
+        this.full_name = full_name;
+        this.password = password;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.image_url = image_url;
     }
 
-    public User(String tenND, String email, String matKhauND, String firebase_token) {
-        this.tenND = tenND;
-        Email = email;
-        MatKhauND = matKhauND;
-        this.firebase_token = firebase_token;
+    public User(String full_name, String password,  String email) {
+        this.full_name = full_name;
+        this.password = password;
+        this.email = email;
     }
 
-
-
-    public String getTenND() {
-        return tenND;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public void setTenND(String tenND) {
-        this.tenND = tenND;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
-    public String getMatKhauND() {
-        return MatKhauND;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMatKhauND(String matKhauND) {
-        MatKhauND = matKhauND;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getSDTND() {
-        return SDTND;
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public void setSDTND(String SDTND) {
-        this.SDTND = SDTND;
-    }
-
-    public String getDiachiND() {
-        return DiachiND;
-    }
-
-    public void setDiachiND(String diachiND) {
-        DiachiND = diachiND;
-    }
-
-    public String getTuoiND() {
-        return TuoiND;
-    }
-
-    public void setTuoiND(String tuoiND) {
-        TuoiND = tuoiND;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    public String getHinhAnhND() {
-        return HinhAnhND;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setHinhAnhND(String hinhAnhND) {
-        HinhAnhND = hinhAnhND;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getFirebase_token() {
-        return firebase_token;
-    }
-
-    public void setFirebase_token(String firebase_token) {
-        this.firebase_token = firebase_token;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }
