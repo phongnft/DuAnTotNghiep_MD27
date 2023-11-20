@@ -45,7 +45,6 @@ public interface Api_Service {
             @Query("duantotnghiep_md27") String key
     );
 
-
     @GET("demo2")
     Call<List<Product_home>> getData();
 
@@ -61,8 +60,11 @@ public interface Api_Service {
     @POST("Sanpham/list")
     Call<ProductResult> newProducts();
 
-    @GET("LoaiSanPham/list")
-    Call<List<Category>> allCategory();
+    @GET("category")
+    Call<List<Category>> getCategory();
+
+    @GET("product/{category_id}")
+    Call<List<Product_home>> getProductsByCategory(@Path("category_id") String category_id);
 
     @GET("users/list")
     Call<List<MyInfo>> getUserList(@Header("Authorization") String token);

@@ -1,15 +1,14 @@
 package com.example.duantotnghiep_md27.Fragment;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,60 +19,110 @@ import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Category_Fragment extends Fragment {
+public class Category_Fragment extends Fragment implements CategoryAdapter.OnCategoryClickListener {
 
-    private List<Category> categoryList = new ArrayList<>();
-    private RecyclerView recyclerView,product_recyclerView;
-    private CategoryAdapter mAdapter;
-
-    private Product_homeAdapter product_homeAdapter;
-
-    private List<Product_home> product_list;
-
+    private List<Category> categoryList;
+    private RecyclerView category_rv;
+    private RecyclerView product_rv;
+    private CategoryAdapter categoryAdapter;
+    private Product_homeAdapter productAdapter;
+    private List<Product_home> productList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_category, container, false);
-        recyclerView = view.findViewById(R.id.category_rv);
-        product_recyclerView = view.findViewById(R.id.product_rv);
-        getCategoryData();
+        category_rv = view.findViewById(R.id.category_rv);
+        product_rv = view.findViewById(R.id.product_rv);
+
+        setupCategoryRecycleView();
+        setupProductRecycleView();
+
+        new GetCategory().execute();
 
         return view;
     }
 
-    private void getCategoryData() {
-
-        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
-            @Override
-            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    categoryList.addAll(response.body());
-                    setupCategoryRecycleView();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Category>> call, Throwable t) {
-                Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+    @Override
+    public void onCategoryClick(String category_id) {
+        new GetProductsByCategory(category_id).execute();
     }
 
+    private class GetCategory extends AsyncTask<Void, Void, List<Category>> {
+        @Override
+        protected List<Category> doInBackground(Void... voids) {
+            try {
+                // Gọi API để lấy danh sách loại sản phẩm
+                Response<List<Category>> response = RestClient.getApiService().getCategory().execute();
 
+                if (response.isSuccessful()) {
+                    // Trả về danh sách loại sản phẩm từ API
+                    return response.body();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Category> categoryList) {
+            if (categoryList != null) {
+                // Cập nhật dữ liệu vào Adapter để hiển thị lên RecyclerView
+                categoryAdapter.setData(categoryList);
+            }
+        }
+    }
+
+    private class GetProductsByCategory extends AsyncTask<Void, Void, List<Product_home>> {
+        private String category_id;
+
+        public GetProductsByCategory(String category_id) {
+            this.category_id = category_id;
+        }
+
+        @Override
+        protected List<Product_home> doInBackground(Void... voids) {
+            try {
+                // Gọi API để lấy danh sách sản phẩm theo category_id
+                Response<List<Product_home>> response = RestClient.getApiService().getProductsByCategory(category_id).execute();
+
+                if (response.isSuccessful()) {
+                    // Trả về danh sách sản phẩm từ API
+                    return response.body();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Product_home> productList) {
+            if (productList != null) {
+                // Cập nhật dữ liệu vào Adapter để hiển thị lên RecyclerView
+                productAdapter.setData(productList);
+            }
+        }
+    }
+
+    private void setupProductRecycleView() {
+        productAdapter = new Product_homeAdapter(productList, getContext(), "category");
+        RecyclerView.LayoutManager LayoutManager = new LinearLayoutManager(getContext(),  LinearLayoutManager.VERTICAL, false);
+        product_rv.setLayoutManager(LayoutManager);
+        product_rv.setItemAnimator(new DefaultItemAnimator());
+        product_rv.setAdapter(productAdapter);
+    }
     private void setupCategoryRecycleView() {
-        mAdapter = new CategoryAdapter(categoryList, getActivity());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        categoryAdapter = new CategoryAdapter(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        category_rv.setLayoutManager(mLayoutManager);
+        category_rv.setItemAnimator(new DefaultItemAnimator());
+        category_rv.setAdapter(categoryAdapter);
     }
 }
