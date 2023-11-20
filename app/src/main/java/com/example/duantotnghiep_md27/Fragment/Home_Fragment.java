@@ -131,7 +131,7 @@ public class Home_Fragment extends Fragment {
     }
 
     private void getCategoryData(){
-        RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
+        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 if (response.isSuccessful() && response.body() != null) {
