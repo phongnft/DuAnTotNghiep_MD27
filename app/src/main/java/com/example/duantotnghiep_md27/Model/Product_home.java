@@ -12,9 +12,11 @@ public class Product_home{
     private String description;
     private String category_id;
     private String creation_date;
+    private double quantity;
     private Category category;
+    private List<ProductSize> product_Sizes;
 
-    public Product_home(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, Category category) {
+    public Product_home(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, double quantity, Category category, List<ProductSize> product_Sizes) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
@@ -22,7 +24,9 @@ public class Product_home{
         this.description = description;
         this.category_id = category_id;
         this.creation_date = creation_date;
+        this.quantity = quantity;
         this.category = category;
+        this.product_Sizes = product_Sizes;
     }
 
     public String getProduct_id() {
@@ -81,11 +85,27 @@ public class Product_home{
         this.creation_date = creation_date;
     }
 
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<ProductSize> getProduct_Sizes() {
+        return product_Sizes;
+    }
+
+    public void setProduct_Sizes(List<ProductSize> product_Sizes) {
+        this.product_Sizes = product_Sizes;
     }
 }

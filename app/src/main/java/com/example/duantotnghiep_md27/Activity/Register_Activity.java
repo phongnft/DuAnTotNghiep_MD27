@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.MainActivity;
+import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserResult;
 import com.example.duantotnghiep_md27.R;
@@ -34,7 +35,7 @@ public class Register_Activity extends AppCompatActivity {
 
     String firebaseToken;
     TextView loginAcout;
-    EditText edtname, edtmail, edtpass;
+    EditText edtname, edtphone, edtpass;
     Button btnRegister;
     View progress;
     private static TextView login;
@@ -47,19 +48,13 @@ public class Register_Activity extends AppCompatActivity {
         firebaseToken = localStorage.getFirebaseToken();
         loginAcout = findViewById(R.id.loginAccount);
         initView();
-
-        loginAcout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Login();
-            }
-        });
+        loginAcout.setOnClickListener(v -> Login());
     }
 
     private void initView() {
         login = findViewById(R.id.loginAccount);
         edtname = findViewById(R.id.edt_nameReg);
-        edtmail = findViewById(R.id.edt_emailReg);
+        edtphone = findViewById(R.id.edt_phoneReg);
         edtpass = findViewById(R.id.edt_passReg);
         btnRegister = findViewById(R.id.btn_Register);
         btnRegister.setOnClickListener(view -> {
@@ -71,16 +66,16 @@ public class Register_Activity extends AppCompatActivity {
 
     private void checkValidation() {
         String name = edtname.getText().toString();
-        String Email = edtmail.getText().toString();
+        String phone = edtphone.getText().toString();
         String pass = edtpass.getText().toString();
 
 
         if (name.length() == 0) {
             edtname.setError("Vui lòng điền tên");
             edtname.requestFocus();
-        } else if (Email.length() == 0) {
-            edtmail.setError("Vui lòng điền mail");
-            edtmail.requestFocus();
+        } else if (phone.length() == 0) {
+            edtphone.setError("Vui lòng điền số điện thoại");
+            edtphone.requestFocus();
         } else if (pass.length() == 0) {
             edtpass.setError("Vui lòng điền mật khẩu");
             edtpass.requestFocus();
@@ -88,20 +83,46 @@ public class Register_Activity extends AppCompatActivity {
             edtpass.setError("Mật khẩu phải đủ 6 kí tự");
             edtpass.requestFocus();
         } else {
-            user = new User(name, Email, pass);
+            user = new User(name, phone, pass);
             registerUser(user);
-
         }
 
     }
 
-    public void Login(){
-        Intent intent = new Intent(Register_Activity.this,Login_Activity.class );
+    public void Login() {
+        Intent intent = new Intent(Register_Activity.this, Login_Activity.class);
         startActivity(intent);
     }
 
+
+//    private void sendDataToApi() {
+//
+//        Call<User> call = RestClient.getApiService().register(user);
+//
+//        call.enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                // if (response.isSuccessful()) {
+//                user = response.body();
+//                // Xử lý phản hồi thành công từ API
+//                Log.d("MainActivity", "Data sent successfully");
+//                Toast.makeText(getApplicationContext(), "thành công", Toast.LENGTH_SHORT).show();
+//                // } else {
+//                // Xử lý lỗi từ API
+//                Toast.makeText(getApplicationContext(), "Xử lý lỗi từ API", Toast.LENGTH_SHORT).show();
+//                Log.e("MainActivity", "Error: " + response.message());
+//                // }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(), "call fail", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
     private void registerUser(User userString) {
-        // showProgressDialog();
+
         Call<UserResult> call = RestClient.getRestService(getApplicationContext()).register(userString);
         call.enqueue(new Callback<UserResult>() {
             @Override
@@ -110,32 +131,26 @@ public class Register_Activity extends AppCompatActivity {
                 if (response != null) {
 
                     UserResult userResult = response.body();
-                    if (userResult != null) {  // && userResult.getStatus() == 200
+//                    if (userResult != null) {  //&& userResult.getStatus() == 201
                         String userString = gson.toJson(userResult.getUser());
                         localStorage.createUserLoginSession(userString);
-                        Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                       // startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
-
-                    } else {
-
-                        Toast.makeText(getApplicationContext(), "Vẫn chưa đc", Toast.LENGTH_LONG).show();
-
-                    }
+                        Toast.makeText(getApplicationContext(), userResult.getMessage(), Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), "k trả về 201", Toast.LENGTH_SHORT).show();
+//
+//                    }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Please Enter Correct Data", Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext(), "response đang k null", Toast.LENGTH_SHORT).show();
                 }
 
-                //  hideProgressDialog();
 
             }
 
             @Override
             public void onFailure(Call<UserResult> call, Throwable t) {
-                Log.d("Error==> ", t.getMessage());
-                //  hideProgressDialog();
+                Toast.makeText(getApplicationContext(), "call api fail", Toast.LENGTH_SHORT).show();
             }
         });
     }

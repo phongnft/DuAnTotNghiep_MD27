@@ -34,6 +34,9 @@ public interface Api_Service {
 
     );
 
+    @POST("user/loginemail")
+    Call<UserResult> register(@Body User user);
+
 
     @GET("products/getallproducts")
     Call<ProductData> getproductData();
@@ -47,8 +50,7 @@ public interface Api_Service {
     Call<List<Product_home>> getData();
 
 
-    @POST("user/createuser")
-    Call<UserResult> register(@Body User user);
+
 
     @POST("users/add")
     Call<UserResult> login(@Body User user);

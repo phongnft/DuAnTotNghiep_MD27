@@ -110,6 +110,8 @@
                         android:textStyle="bold"
                         tools:ignore="LabelFor"
                         />
+
+
                     <EditText
                         android:id="@+id/inputCode5"
                         android:layout_width="40dp"
@@ -122,8 +124,7 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        tools:ignore="LabelFor"
-                        />
+                        tools:ignore="LabelFor" />
                     <EditText
                         android:id="@+id/inputCode6"
                         android:layout_width="40dp"

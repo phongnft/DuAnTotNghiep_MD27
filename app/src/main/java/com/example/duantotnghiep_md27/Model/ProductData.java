@@ -28,7 +28,7 @@ public class ProductData {
         this.productList = productList;
     }
 
-    public int getStatus() {
+    public double getStatus() {
         return status;
     }
 
