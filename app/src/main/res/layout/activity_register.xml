@@ -77,13 +77,13 @@
                     android:layout_marginTop="20dp">
 
                     <EditText
-                        android:id="@+id/edt_emailReg"
+                        android:id="@+id/edt_phoneReg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
                         android:drawableStart="@drawable/baseline_email_24"
                         android:drawablePadding="8dp"
-                        android:hint="Email"
+                        android:hint="Số điện thoại"
                         android:inputType="textEmailAddress"
                         android:maxLines="10"
                         android:textColor="@color/black"

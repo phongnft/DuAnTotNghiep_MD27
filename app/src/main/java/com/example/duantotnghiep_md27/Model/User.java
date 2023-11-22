@@ -7,20 +7,45 @@ public class User {
     private String phone_number;
     private String email;
     private String image_url;
+    private String status;
+    private String otp;
+
+
 
 //    String token;
 //    String firebase_token;
 
 
-    public User(String full_name, String password, String phone_number, String email, String image_url) {
+    public User(String full_name, String password, String phone_number, String email, String image_url, String status, String otp) {
+
         this.full_name = full_name;
         this.password = password;
         this.phone_number = phone_number;
         this.email = email;
         this.image_url = image_url;
+        this.status = status;
+        this.otp = otp;
     }
 
-    public User(String full_name, String password,  String email) {
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
+    }
+
+    public User(String full_name, String password, String email) {
         this.full_name = full_name;
         this.password = password;
         this.email = email;

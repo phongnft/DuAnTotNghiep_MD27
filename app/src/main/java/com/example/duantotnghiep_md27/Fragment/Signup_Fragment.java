@@ -56,7 +56,7 @@ public class Signup_Fragment extends Fragment implements View.OnClickListener {
     private void initView() {
         login = view.findViewById(R.id.loginAccount);
         edtname=view.findViewById(R.id.edt_nameReg);
-        edtmail=view.findViewById(R.id.edt_emailReg);
+        edtmail=view.findViewById(R.id.edt_phoneReg);
         edtpass=view.findViewById(R.id.edt_passReg );
         btnRegister=view.findViewById(R.id.btn_Register);
     }

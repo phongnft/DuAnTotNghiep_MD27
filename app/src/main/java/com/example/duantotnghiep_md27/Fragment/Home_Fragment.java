@@ -43,7 +43,6 @@ import retrofit2.Response;
 
 public class Home_Fragment extends Fragment {
 
-
     ViewPager2 viewPager2;
     Token token;
     private RecyclerView product_recyclerView;
@@ -68,13 +67,11 @@ public class Home_Fragment extends Fragment {
         product_list = new ArrayList<>();
         sliderAuto();
         getNewProduct();
-       // getDataFromApi();
+        // getDataFromApi();
         getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
-
-
 
 
     private void getNewProduct() {
@@ -86,16 +83,16 @@ public class Home_Fragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
 
                     ProductData productData = response.body();
-                    //if (productData.getStatus() == 200) {
+//                    if (productData.getStatus() == 200) {
+                    if (response.isSuccessful()) {
 
-                    product_list = productData.getData();
-                    setupProductRecycleView();
+                        product_list = productData.getData();
+                        setupProductRecycleView();
 
-                    // }
+                    }
 
 
                     Toast.makeText(getContext(), "call ok kìa", Toast.LENGTH_SHORT).show();
-
 
 
                 } else {
@@ -130,6 +127,8 @@ public class Home_Fragment extends Fragment {
         });
     }
 
+    private void getCategoryData() {
+        RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
     private void getCategoryData(){
         RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
             @Override
@@ -139,6 +138,7 @@ public class Home_Fragment extends Fragment {
                     setupCategoryRecycleView();
                 }
             }
+
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
                 Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
