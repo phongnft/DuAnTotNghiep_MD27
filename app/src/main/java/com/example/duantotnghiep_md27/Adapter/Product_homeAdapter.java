@@ -103,11 +103,5 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
 
         }
     }
-
-    // Setter cho dữ liệu
-    public void setData(List<Product_home> productList) {
-        this.productList = productList;
-        notifyDataSetChanged();
-    }
 }
 
