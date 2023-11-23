@@ -43,7 +43,6 @@ import retrofit2.Response;
 
 public class Home_Fragment extends Fragment {
 
-
     ViewPager2 viewPager2;
     Token token;
     private RecyclerView product_recyclerView;
@@ -69,7 +68,7 @@ public class Home_Fragment extends Fragment {
         sliderAuto();
         getNewProduct();
         // getDataFromApi();
-        // getCategoryData();
+        getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
@@ -81,16 +80,17 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onResponse(Call<ProductData> call, Response<ProductData> response) {
                 Log.d("Response :=>", response.body() + "");
-                Toast.makeText(getContext(), "Reponse là cái này nha"+response.body(), Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful() && response.body() != null) {
 
                     ProductData productData = response.body();
-                    //if (productData.getStatus() == 200) {
+//                    if (productData.getStatus() == 200) {
                     if (response.isSuccessful()) {
 
                         product_list = productData.getData();
                         setupProductRecycleView();
+
                     }
+
 
                     Toast.makeText(getContext(), "call ok kìa", Toast.LENGTH_SHORT).show();
 
@@ -127,21 +127,27 @@ public class Home_Fragment extends Fragment {
         });
     }
 
-//    private void getCategoryData(){
-//        RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
-//            @Override
-//            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    categoryList.addAll(response.body());
-//                    setupCategoryRecycleView();
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<List<Category>> call, Throwable t) {
-//                Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+<<<<<<<<< Temporary merge branch 1
+    private void getCategoryData(){
+        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
+=========
+    private void getCategoryData() {
+        RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
+>>>>>>>>> Temporary merge branch 2
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    categoryList.addAll(response.body());
+                    setupCategoryRecycleView();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     private void sliderAuto() {

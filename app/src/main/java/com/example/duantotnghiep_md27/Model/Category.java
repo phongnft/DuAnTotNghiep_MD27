@@ -1,12 +1,18 @@
 package com.example.duantotnghiep_md27.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
+    @SerializedName("category_id")
     private String category_id;
+    @SerializedName("category_name")
     private String category_name;
+    @SerializedName("image_url")
     private String image_url;
+    @SerializedName("description")
     private String description;
 
     public Category(String category_id, String category_name, String image_url, String description) {

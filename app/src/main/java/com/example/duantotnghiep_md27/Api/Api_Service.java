@@ -48,9 +48,11 @@ public interface Api_Service {
     @POST("user/loginemailpassword")
     Call<UserLogin> login(@Body User user);
 
+    @GET("category")
+    Call<List<Category>> getCategory();
 
-    @GET("LoaiSanPham/list")
-    Call<List<Category>> allCategory();
+    @GET("products/{category_id}")
+    Call<List<Product_home>> getProductsByCategory(@Path("category_id") String idCategory);
 
     @GET("users/list")
     Call<List<MyInfo>> getUserList(@Header("Authorization") String token);
