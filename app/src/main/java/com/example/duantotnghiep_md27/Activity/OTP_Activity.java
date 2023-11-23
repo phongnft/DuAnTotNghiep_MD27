@@ -2,30 +2,19 @@ package com.example.duantotnghiep_md27.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.User;
-import com.example.duantotnghiep_md27.Model.UserResult;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.gson.Gson;
-
-import java.util.concurrent.TimeUnit;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class OTP_Activity extends AppCompatActivity {
 

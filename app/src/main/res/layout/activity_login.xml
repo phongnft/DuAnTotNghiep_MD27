@@ -61,7 +61,7 @@
                     android:layout_height="70dp">
 
                     <EditText
-                        android:id="@+id/edt_mailLog"
+                        android:id="@+id/edt_phoneLog"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"

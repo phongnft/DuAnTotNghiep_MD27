@@ -2,16 +2,12 @@ package com.example.duantotnghiep_md27.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class UserResult {
-
-    @SerializedName("data")
+public class UserRegister {
+    @SerializedName("user")
     User user;
+
     @SerializedName("message")
     String message;
-    @SerializedName("status")
-    int status;
 
     public User getUser() {
         return user;
@@ -28,12 +24,6 @@ public class UserResult {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 }
+
+

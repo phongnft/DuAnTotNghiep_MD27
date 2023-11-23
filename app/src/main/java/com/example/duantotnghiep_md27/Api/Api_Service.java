@@ -3,20 +3,16 @@ package com.example.duantotnghiep_md27.Api;
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.MyInfo;
 import com.example.duantotnghiep_md27.Model.ProductData;
-import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Profile;
-import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.Model.User;
-import com.example.duantotnghiep_md27.Model.UserResult;
+import com.example.duantotnghiep_md27.Model.UserRegister;
+import com.example.duantotnghiep_md27.Model.UserLogin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -25,17 +21,15 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api_Service {
-    @FormUrlEncoded
-    @POST("duantotnghiep_md27")
-    Call<User> addPerson(
-            @Field("name") String name,
-            @Field("email") String email,
-            @Field("password") String password
 
-    );
+    @POST("user/createuser")
+    Call<UserRegister> register(@Body User user);
 
-    @POST("user/loginemail")
-    Call<UserResult> register(@Body User user);
+
+
+    @POST("user/loginemailpassword")
+    Call<User> register1111(@Body User user);
+
 
 
     @GET("products/getallproducts")
@@ -51,10 +45,8 @@ public interface Api_Service {
     Call<List<Product_home>> getData();
 
 
-
-
-    @POST("users/add")
-    Call<UserResult> login(@Body User user);
+    @POST("user/loginemailpassword")
+    Call<UserLogin> login(@Body User user);
 
 
     @GET("LoaiSanPham/list")
@@ -72,7 +64,6 @@ public interface Api_Service {
             @Path("maND") int maND,
             @Body MyInfo updatedUser
     );
-
 
 
 }
