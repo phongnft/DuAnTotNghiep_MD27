@@ -68,9 +68,24 @@ public class Home_Fragment extends Fragment {
         sliderAuto();
         getNewProduct();
         // getDataFromApi();
-        getCategoryData();
+        // getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
+    }
+
+    private void sliderAuto() {
+
+        ArrayList<SliderItem> sliderItems = new ArrayList<>();
+        sliderItems.add(new SliderItem(R.drawable.img_8, "image 1"));
+        sliderItems.add(new SliderItem(R.drawable.img_9, "Image 2"));
+        sliderItems.add(new SliderItem(R.drawable.img_10, "Image 3"));
+        sliderItems.add(new SliderItem("https://dojeannam.com/wp-content/uploads/2017/10/banner-thoi-trang-nam-cong-so-2018.jpg", "Image from url"));
+
+        viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, 3000));
+
+        new SliderAdapter((position, title, vieww) -> {
+
+        });
     }
 
 
@@ -110,62 +125,6 @@ public class Home_Fragment extends Fragment {
         });
     }
 
-    private void getDataFromApi() {
-        RestClient.getApiService().getData().enqueue(new Callback<List<Product_home>>() {
-            @Override
-            public void onResponse(Call<List<Product_home>> call, Response<List<Product_home>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    product_list.addAll(response.body());
-                    setupProductRecycleView();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Product_home>> call, Throwable t) {
-                Toast.makeText(getContext(), "Loi roi" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-<<<<<<<<< Temporary merge branch 1
-    private void getCategoryData(){
-        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
-=========
-    private void getCategoryData() {
-        RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
->>>>>>>>> Temporary merge branch 2
-            @Override
-            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    categoryList.addAll(response.body());
-                    setupCategoryRecycleView();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Category>> call, Throwable t) {
-                Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-
-    private void sliderAuto() {
-
-        ArrayList<SliderItem> sliderItems = new ArrayList<>();
-        sliderItems.add(new SliderItem(R.drawable.img_8, "image 1"));
-        sliderItems.add(new SliderItem(R.drawable.img_9, "Image 2"));
-        sliderItems.add(new SliderItem(R.drawable.img_10, "Image 3"));
-        sliderItems.add(new SliderItem("https://dojeannam.com/wp-content/uploads/2017/10/banner-thoi-trang-nam-cong-so-2018.jpg", "Image from url"));
-
-        viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, 3000));
-
-        new SliderAdapter((position, title, vieww) -> {
-
-        });
-    }
-
-
     //hàm sản phẩm
     private void setupProductRecycleView() {
 
@@ -176,7 +135,6 @@ public class Home_Fragment extends Fragment {
         product_recyclerView.setAdapter(product_homeAdapter);
     }
 
-    //hàm danh mục
     private void setupCategoryRecycleView() {
         categoryList = new ArrayList<>();
         homeCategoryAdapter = new HomeCategoryAdapter(categoryList, getContext(), "Home");
@@ -186,14 +144,44 @@ public class Home_Fragment extends Fragment {
         category_recyclerView.setAdapter(homeCategoryAdapter);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        // inflater.inflate(R.menu.bottom_toolbar, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+//    private void getDataFromApi() {
+//        RestClient.getApiService().getData().enqueue(new Callback<List<Product_home>>() {
+//            @Override
+//            public void onResponse(Call<List<Product_home>> call, Response<List<Product_home>> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    product_list.addAll(response.body());
+//                    setupProductRecycleView();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Product_home>> call, Throwable t) {
+//                Toast.makeText(getContext(), "Loi roi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
+
+//    private void getCategoryData() {
+//        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
+//
+//            private void getCategoryData() {
+//                RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
+//
+//                    @Override
+//                    public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+//                        if (response.isSuccessful() && response.body() != null) {
+//                            categoryList.addAll(response.body());
+//                            setupCategoryRecycleView();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<Category>> call, Throwable t) {
+//                        Toast.makeText(getContext(), "Loi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        }
+//    }
 }
