@@ -1,17 +1,27 @@
 package com.example.duantotnghiep_md27.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Product_home{
+    @SerializedName("product_id")
     private String product_id;
+    @SerializedName("product_name")
     private String product_name;
+    @SerializedName("price")
     private double price;
+    @SerializedName("image_url")
     private String image_url;
+    @SerializedName("description")
     private String description;
+    @SerializedName("category_id")
     private String category_id;
+    @SerializedName("creation_date")
     private String creation_date;
+    @SerializedName("quantity")
     private double quantity;
     private Category category;
     private List<ProductSize> product_Sizes;
