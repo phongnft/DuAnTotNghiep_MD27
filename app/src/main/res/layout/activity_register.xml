@@ -60,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
-                        android:drawableStart="@drawable/baseline_email_24"
+                        android:drawableStart="@drawable/name_24"
                         android:drawablePadding="8dp"
                         android:hint="Họ tên"
                         android:inputType="textEmailAddress"
@@ -81,9 +81,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
-                        android:drawableStart="@drawable/baseline_email_24"
+                        android:drawableStart="@drawable/baseline_phone_android_24"
                         android:drawablePadding="8dp"
                         android:hint="Số điện thoại"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="10"
+                        android:textColor="@color/black"
+                        android:textColorHint="#FF9800"
+                        android:textSize="20dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/edt_mailReg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edittex"
+                        android:drawableStart="@drawable/baseline_email_24"
+                        android:drawablePadding="8dp"
+                        android:hint="Email"
                         android:inputType="textEmailAddress"
                         android:maxLines="10"
                         android:textColor="@color/black"

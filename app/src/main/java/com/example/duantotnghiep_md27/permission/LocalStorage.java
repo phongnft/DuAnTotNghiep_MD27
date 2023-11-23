@@ -28,6 +28,8 @@ public class LocalStorage {
         editor.putString(KEY_USER, user);
         editor.commit();
     }
+
+
     public String getFirebaseToken() {
         return sharedPreferences.getString(KEY_FIREBASE_TOKEN, null);
     }

@@ -127,8 +127,13 @@ public class Home_Fragment extends Fragment {
         });
     }
 
+<<<<<<<<< Temporary merge branch 1
     private void getCategoryData(){
+        RestClient.getApiService().allCategory().enqueue(new Callback<List<Category>>() {
+=========
+    private void getCategoryData() {
         RestClient.getApiService().getCategory().enqueue(new Callback<List<Category>>() {
+>>>>>>>>> Temporary merge branch 2
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 if (response.isSuccessful() && response.body() != null) {

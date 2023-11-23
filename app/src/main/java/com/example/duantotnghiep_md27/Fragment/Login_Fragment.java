@@ -67,7 +67,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
     private void initViews() {
         fragmentManager = getActivity().getSupportFragmentManager();
         btnLogin = view.findViewById(R.id.btnLogin);
-        edtmail = view.findViewById(R.id.edt_mailLog);
+//        edtmail = view.findViewById(R.id.edt_mailLog);
         edtpass = view.findViewById(R.id.edt_passLog);
         forgotpass = view.findViewById(R.id.forgot_password);
         createaccount = view.findViewById(R.id.createAccount);

@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RestClient {
     public static final String BASE_URL = "http://192.168.24.103:5000/api/v1/";
     private static Retrofit retrofit;
-    public static Api_Service api_servicea= null;
+    public static Api_Service api_servicea = null;
 
     public static Api_Service getApiService() {
         if (retrofit == null) {
@@ -45,7 +45,6 @@ public class RestClient {
         }
         return api_servicea;
     }
-
 
 
 }

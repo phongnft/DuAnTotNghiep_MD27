@@ -55,7 +55,7 @@
                     android:layout_height="70dp">
 
                     <EditText
-                        android:id="@+id/edt_mailLog"
+                        android:id="@+id/edt_mailLog2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
@@ -77,7 +77,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/edt_passLog"
+                        android:id="@+id/edt_passLog2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/custom_edittex"
