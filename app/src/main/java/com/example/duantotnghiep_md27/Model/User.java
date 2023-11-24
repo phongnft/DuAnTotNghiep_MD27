@@ -7,11 +7,11 @@ public class User {
     String phone_number;
     String email;
     String status;
-    int otp;
+    String otp;
     String address;
 
 
-    public User(String user_id, String full_name, String phone_number, String password, String email, String status, int otp, String address) {
+    public User(String user_id, String full_name, String phone_number, String password, String email, String status, String otp, String address) {
         this.user_id = user_id;
         this.full_name = full_name;
         this.phone_number = phone_number;
@@ -22,7 +22,7 @@ public class User {
         this.address = address;
     }
 
-    public User(String full_name, String phone_number,String email, String password) {
+    public User(String full_name, String phone_number, String email, String password) {
         this.full_name = full_name;
         this.phone_number = phone_number;
         this.email = email;
@@ -84,11 +84,11 @@ public class User {
         this.status = status;
     }
 
-    public int getOtp() {
+    public String getOtp() {
         return otp;
     }
 
-    public void setOtp(int otp) {
+    public void setOtp(String otp) {
         this.otp = otp;
     }
 
