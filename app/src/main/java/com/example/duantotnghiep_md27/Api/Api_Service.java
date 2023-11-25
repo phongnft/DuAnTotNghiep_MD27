@@ -6,6 +6,7 @@ import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Profile;
 import com.example.duantotnghiep_md27.Model.User;
+import com.example.duantotnghiep_md27.Model.UserOTP;
 import com.example.duantotnghiep_md27.Model.UserRegister;
 import com.example.duantotnghiep_md27.Model.UserLogin;
 
@@ -25,11 +26,8 @@ public interface Api_Service {
     @POST("user/createuser")
     Call<UserRegister> register(@Body User user);
 
-
-
-    @POST("user/loginemailpassword")
-    Call<User> register1111(@Body User user);
-
+    @POST("user/verifyotp")
+    Call<UserOTP> verifyOTP(@Body User user);
 
 
     @GET("products/getallproducts")
