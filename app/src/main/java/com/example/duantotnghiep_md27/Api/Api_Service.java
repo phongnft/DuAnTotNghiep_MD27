@@ -9,6 +9,7 @@ import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserOTP;
 import com.example.duantotnghiep_md27.Model.UserRegister;
 import com.example.duantotnghiep_md27.Model.UserLogin;
+import com.example.duantotnghiep_md27.Model.UserResetPass;
 
 import java.util.List;
 
@@ -28,6 +29,15 @@ public interface Api_Service {
 
     @POST("user/verifyotp")
     Call<UserOTP> verifyOTP(@Body User user);
+
+    @POST("user/forgotpassword")
+    Call<UserLogin> ForgotPassword(@Body User user);
+
+    @POST("user/forgotpassword")
+    Call<UserLogin> resendOTP(@Body User user);
+
+    @POST("user/resetpassword")
+    Call<UserLogin> ConfirmresetPassword(@Body User user);
 
 
     @GET("products/getallproducts")

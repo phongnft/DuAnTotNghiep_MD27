@@ -47,6 +47,7 @@ public class Register_Activity extends AppCompatActivity {
     }
 
     private void initView() {
+        progress = findViewById(R.id.progress_bar);
         login = findViewById(R.id.loginAccount);
         edtname = findViewById(R.id.edt_nameReg);
         edtphone = findViewById(R.id.edt_phoneReg);
@@ -88,8 +89,8 @@ public class Register_Activity extends AppCompatActivity {
     }
 
     private void registerUser(User userString) {
+        showProgressDialog();
         Call<UserRegister> call = RestClient.getApiService().register(userString);
-
         call.enqueue(new Callback<UserRegister>() {
             @Override
             public void onResponse(Call<UserRegister> call, Response<UserRegister> response) {
@@ -110,12 +111,13 @@ public class Register_Activity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "lỗi reponse null", Toast.LENGTH_LONG).show();
                 }
 
-
+                hideProgressDialog();
             }
 
             @Override
             public void onFailure(Call<UserRegister> call, Throwable t) {
                 Log.d("Error==> ", t.getMessage());
+                hideProgressDialog();
             }
         });
     }
@@ -127,11 +129,11 @@ public class Register_Activity extends AppCompatActivity {
     }
 
 
-//    private void showProgressDialog() {
-//        progress.setVisibility(View.VISIBLE);
-//    }
+    private void showProgressDialog() {
+        progress.setVisibility(View.VISIBLE);
+    }
 
-//    private void hideProgressDialog() {
-//        progress.setVisibility(View.GONE);
-//    }
+    private void hideProgressDialog() {
+        progress.setVisibility(View.GONE);
+    }
 }

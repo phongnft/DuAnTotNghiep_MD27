@@ -2,8 +2,10 @@ package com.example.duantotnghiep_md27.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Login_Activity extends AppCompatActivity implements View.OnClickListener {
+public class Login_Activity extends AppCompatActivity {
 
     private EditText edtphone, edtpass;
 
@@ -33,6 +35,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     LocalStorage localStorage;
     User user;
     String firebaseToken;
+
+    View progress;
 
 
     @Override
@@ -50,16 +54,22 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         user = gson.fromJson(userString, User.class);
         firebaseToken = localStorage.getFirebaseToken();
 
+        progress = findViewById(R.id.progress_bar);
         btnLogin = findViewById(R.id.btnLogin);
         edtphone = findViewById(R.id.edt_phoneLog);
         edtpass = findViewById(R.id.edt_passLog);
         forgotpass = findViewById(R.id.forgot_password);
         createaccount = findViewById(R.id.createAccount);
+
         createaccount.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), Register_Activity.class));
         });
         btnLogin.setOnClickListener(view -> {
             checkValidation();
+        });
+
+        forgotpass.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
         });
 
 
@@ -74,6 +84,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         // Check for both field is empty or not
         if (email.equals("") || email.length() == 0
                 || password.equals("") || password.length() == 0) {
+            vibrate(200);
             Toast.makeText(getApplicationContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             user = new User(email, password);
@@ -83,6 +94,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
 
     private void login(User user) {
+        showProgressDialog();
         Call<UserLogin> call = RestClient.getRestService(getApplicationContext()).login(user);
         call.enqueue(new Callback<UserLogin>() {
             @Override
@@ -109,28 +121,28 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                 } else {
                     Toast.makeText(getApplicationContext(), "Reponse null rồi", Toast.LENGTH_LONG).show();
                 }
-
+                hideProgressDialog();
             }
 
             @Override
             public void onFailure(Call<UserLogin> call, Throwable t) {
                 Log.d("Error==> ", t.getMessage());
-
+                hideProgressDialog();
             }
         });
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnLogin:
-                break;
-            case R.id.forgot_password:
-                break;
-            case R.id.createAccount:
-                //  startActivity(new Intent(getApplicationContext(), Register_Activity.class));
-                break;
-        }
-
+    public void vibrate(int duration) {
+        Vibrator vibs = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+        vibs.vibrate(duration);
     }
+
+    private void hideProgressDialog() {
+        progress.setVisibility(View.GONE);
+    }
+
+    private void showProgressDialog() {
+        progress.setVisibility(View.VISIBLE);
+    }
+
 }

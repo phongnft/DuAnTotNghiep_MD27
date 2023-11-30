@@ -4,23 +4,26 @@ public class User {
     String user_id;
     String full_name;
     String password;
+    String newPassword;
     String phone_number;
     String email;
     String status;
     String otp;
     String address;
 
-
-    public User(String user_id, String full_name, String phone_number, String password, String email, String status, String otp, String address) {
-        this.user_id = user_id;
-        this.full_name = full_name;
-        this.phone_number = phone_number;
-        this.password = password;
-        this.email = email;
-        this.status = status;
-        this.otp = otp;
-        this.address = address;
+    public User() {
     }
+
+//    public User(String user_id, String full_name, String phone_number, String password, String email, String status, String otp, String address) {
+//        this.user_id = user_id;
+//        this.full_name = full_name;
+//        this.phone_number = phone_number;
+//        this.password = password;
+//        this.email = email;
+//        this.status = status;
+//        this.otp = otp;
+//        this.address = address;
+//    }
 
     public User(String full_name, String phone_number, String email, String password) {
         this.full_name = full_name;
@@ -58,6 +61,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
     public String getPhone_number() {
@@ -99,4 +110,6 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
 }
