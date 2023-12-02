@@ -2,6 +2,8 @@ package com.example.duantotnghiep_md27.Api;
 
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.MyInfo;
+import com.example.duantotnghiep_md27.Model.OderCall;
+import com.example.duantotnghiep_md27.Model.Oderdata;
 import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Profile;
@@ -9,7 +11,6 @@ import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserOTP;
 import com.example.duantotnghiep_md27.Model.UserRegister;
 import com.example.duantotnghiep_md27.Model.UserLogin;
-import com.example.duantotnghiep_md27.Model.UserResetPass;
 
 import java.util.List;
 
@@ -23,6 +24,12 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api_Service {
+    @GET("cart/history/1")
+    Call<OderCall>getOrders();
+
+    @GET("users/getalluser")
+    Call<User> getUser();
+
 
     @POST("user/createuser")
     Call<UserRegister> register(@Body User user);

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -267,6 +268,13 @@ public class OTP_Activity extends AppCompatActivity {
                             localStorage.createUserLoginSession(userString);
                             Toast.makeText(getApplicationContext(), "Xác minh OTP thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                            infolog(userOTP.getData().getUser_id(),
+//                                    userOTP.getData().getFull_name(),
+//                                    userOTP.getData().getPhone_number(),
+//                                    userOTP.getData().getEmail(),
+//                                    userOTP.getData().getAddress()
+//                            );
+
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Mã OTP không chính xác", Toast.LENGTH_SHORT).show();
@@ -355,6 +363,16 @@ public class OTP_Activity extends AppCompatActivity {
         if (cTimer != null)
             cTimer.cancel();
     }
-
+//    public void infolog(String user_id,String full_name,String phone_number,String email,String address){
+//        SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("user_id",user_id);
+//        editor.putString("full_name",full_name);
+//        editor.putString("phone_number",phone_number);
+//        editor.putString("email",email);
+//        editor.putString("address",address);
+//
+//
+//    }
 
 }

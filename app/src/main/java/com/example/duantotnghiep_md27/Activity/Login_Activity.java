@@ -1,9 +1,12 @@
 package com.example.duantotnghiep_md27.Activity;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -104,14 +107,34 @@ public class Login_Activity extends AppCompatActivity {
                 if (response != null) {
 
                     UserLogin userLogin = response.body();
+
                     if (userLogin != null && response.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), "khac null", Toast.LENGTH_LONG).show();
+
                         String userString = gson.toJson(userLogin);
                         localStorage.createUserLoginSession(userString);
                         if (userLogin.getData().getUser().getStatus().equalsIgnoreCase("2")) {
                             startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
 
                         } else {
+                            Toast.makeText(getApplicationContext(), "davao", Toast.LENGTH_LONG).show();
+
+
+                            infolog(userLogin.getData().getUser().getUser_id(),
+                                    userLogin.getData().getUser().getFull_name(),
+                                    userLogin.getData().getUser().getPhone_number(),
+                                    userLogin.getData().getUser().getEmail(),
+                                    userLogin.getData().getUser().getAddress()
+                            );
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+
+                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getUser_id(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getPhone_number(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getEmail(), Toast.LENGTH_LONG).show();
+
+//                            String user_id,String full_name,String phone_number,String email,String image_url,String address){
+//        SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
                         }
 
                     } else {
@@ -143,6 +166,19 @@ public class Login_Activity extends AppCompatActivity {
 
     private void showProgressDialog() {
         progress.setVisibility(View.VISIBLE);
+    }
+    public void infolog(String user_id,String full_name,String phone_number,String email,String address){
+        SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("user_id",user_id);
+        editor.putString("full_name",full_name);
+        editor.putString("phone_number",phone_number);
+        editor.putString("email",email);
+        editor.putString("address",address);
+        editor.commit();
+
+        Toast.makeText(getApplicationContext(), "ggdrctfvybuhni", Toast.LENGTH_LONG).show();
+
     }
 
 }
