@@ -24,11 +24,11 @@ import com.example.duantotnghiep_md27.R;
 import java.util.ArrayList;
 
 
-public class NotificationsFragment extends Fragment{
-ImageView imageViewNotifications;
-MainActivity mainActivity;
-RecyclerView recyclerViewNo;
-CardView cardViewNo;
+public class NotificationsFragment extends Fragment {
+    ImageView imageViewNotifications;
+    MainActivity mainActivity;
+    RecyclerView recyclerViewNo;
+    CardView cardViewNo;
     private ArrayList<NotificationsModer> NoArrayList;
     private String[] TextNo;
     private int[] ImageNo;
@@ -41,15 +41,14 @@ CardView cardViewNo;
         View view = inflater.inflate(R.layout.fragment_notifications, container, false);
         imageViewNotifications = view.findViewById(R.id.BackNotifications);
         recyclerViewNo = view.findViewById(R.id.recyclerNo);
-        mainActivity = (MainActivity)getActivity();
+        mainActivity = (MainActivity) getActivity();
         imageViewNotifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),mainActivity.getClass());
+                Intent intent = new Intent(getActivity(), mainActivity.getClass());
                 startActivity(intent);
             }
         });
-
 
 
         return view;
@@ -63,12 +62,13 @@ CardView cardViewNo;
         recyclerViewNo = view.findViewById(R.id.recyclerNo);
         recyclerViewNo.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewNo.setHasFixedSize(true);
-        NotificationsAdapter notificationsAdapter = new NotificationsAdapter(getContext(),NoArrayList);
+        NotificationsAdapter notificationsAdapter = new NotificationsAdapter(getContext(), NoArrayList);
         recyclerViewNo.setAdapter(notificationsAdapter);
         notificationsAdapter.notifyDataSetChanged();
 
     }
-    private void dataNo (){
+
+    private void dataNo() {
         NoArrayList = new ArrayList<>();
 
 //        TextNo = new String []{
@@ -86,12 +86,12 @@ CardView cardViewNo;
 //        };
 
 
-        NoArrayList.add(new NotificationsModer("ao vest nam giam 506",R.drawable.discount50));
-        NoArrayList.add(new NotificationsModer("ao vest nam giam 506",R.drawable.discount50));
-        NoArrayList.add(new NotificationsModer("ao vest nam giam 506",R.drawable.discount50));
-        NoArrayList.add(new NotificationsModer("ao vest nam giam 506",R.drawable.discount50));
-        NoArrayList.add(new NotificationsModer("ao vest nam giam 506",R.drawable.discount50));
-        NoArrayList.add(new NotificationsModer("ao vest nam giam 506",R.drawable.discount50));
+        NoArrayList.add(new NotificationsModer("ao vest nam giam 506", R.drawable.discount50));
+        NoArrayList.add(new NotificationsModer("ao vest nam giam 506", R.drawable.discount50));
+        NoArrayList.add(new NotificationsModer("ao vest nam giam 506", R.drawable.discount50));
+        NoArrayList.add(new NotificationsModer("ao vest nam giam 506", R.drawable.discount50));
+        NoArrayList.add(new NotificationsModer("ao vest nam giam 506", R.drawable.discount50));
+        NoArrayList.add(new NotificationsModer("ao vest nam giam 506", R.drawable.discount50));
 
 //        for (int i = 0; i<TextNo.length; i++){
 //            NotificationsModer notificationsModer = new NotificationsModer(TextNo[i],ImageNo[i]);

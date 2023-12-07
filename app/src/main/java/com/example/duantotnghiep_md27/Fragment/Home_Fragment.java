@@ -100,21 +100,14 @@ public class Home_Fragment extends Fragment {
                     ProductData productData = response.body();
 //                    if (productData.getStatus() == 200) {
                     if (response.isSuccessful()) {
-
                         product_list = productData.getData();
-                        setupProductRecycleView();
 
+                        setupProductRecycleView();
                     }
 
-
-                    Toast.makeText(getContext(), "call ok kìa", Toast.LENGTH_SHORT).show();
-
-
                 } else {
-                    Toast.makeText(getContext(), "Lỗi rồi kìa", Toast.LENGTH_SHORT).show();
+
                 }
-
-
             }
 
             @Override

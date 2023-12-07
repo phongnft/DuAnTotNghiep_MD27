@@ -13,9 +13,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
-    public static final String BASE_URL = "http://192.168.24.103:5000/api/v1/";
+    public static final String BASE_URL = "http://172.22.32.1:5000/api/v1/";
     private static Retrofit retrofit;
-    public static Api_Service api_servicea = null;
+    public static Api_Service api_servicea= null;
 
     public static Api_Service getApiService() {
         if (retrofit == null) {
@@ -27,6 +27,23 @@ public class RestClient {
         return retrofit.create(Api_Service.class);
     }
 
+//    public static Api_Service getApiService(final Context context) {
+//        if (api_servicea == null) {
+//            Gson gson = new GsonBuilder().setLenient().create();
+//            OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+//            builder.readTimeout(30, TimeUnit.SECONDS);
+//            builder.connectTimeout(30, TimeUnit.SECONDS);
+//            OkHttpClient client = builder.build();
+//
+//            Retrofit retrofit = new Retrofit.Builder()
+//                    .baseUrl(BASE_URL)
+//                    .client(client)
+//                    .addConverterFactory(GsonConverterFactory.create(gson))
+//                    .build();
+//            api_servicea = retrofit.create(Api_Service.class);
+//        }
+//        return api_servicea;
+//    }
 
     public static Api_Service getRestService(final Context context) {
         if (api_servicea == null) {
@@ -45,6 +62,9 @@ public class RestClient {
         }
         return api_servicea;
     }
+
+
+
 
 
 }
