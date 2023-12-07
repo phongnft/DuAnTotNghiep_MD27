@@ -117,10 +117,10 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
 
                     //Lưu token khi đăng nhập thành công
 
-                    SharedPreferences preferences = getActivity().getSharedPreferences("my_preferences", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("access_token", token);
-                    editor.apply();
+//                    SharedPreferences preferences = getActivity().getSharedPreferences("my_preferences", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = preferences.edit();
+//                    editor.putString("access_token", token);
+//                    editor.apply();
                 } else {
                     Toast.makeText(getContext(), result.getString("message"), Toast.LENGTH_SHORT).show();
                 }
