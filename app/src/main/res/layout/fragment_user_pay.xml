@@ -225,7 +225,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:background="#F6F3F3">
+        android:background="#FFFFFF">
 
         <TextView
             android:layout_width="wrap_content"
@@ -256,8 +256,8 @@
         </ImageView>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/icon_adress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView4"
@@ -312,15 +312,15 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/iconbank"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/vnpay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.872"></ImageView>
+            app:layout_constraintVertical_bias="0.96"></ImageView>
 
         <TextView
             android:id="@+id/textView6"
@@ -328,7 +328,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="30dp"
-            android:text="Số thẻ 0893***4234***12"
+            android:text="Ví VNPay"
             android:textColor="@color/black"
             android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -340,19 +340,6 @@
 
         </TextView>
 
-        <ImageView
-            android:id="@+id/NextPay"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/iconnextpay"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.815">
-
-        </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

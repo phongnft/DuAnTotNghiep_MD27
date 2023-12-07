@@ -2,11 +2,7 @@ package com.example.duantotnghiep_md27.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Product_home{
+public class ProductForCart {
     @SerializedName("product_id")
     private String product_id;
     @SerializedName("product_name")
@@ -21,12 +17,10 @@ public class Product_home{
     private String category_id;
     @SerializedName("creation_date")
     private String creation_date;
-    @SerializedName("quantity")
-    private int quantity;
-    private Category category;
-    private List<ProductSize> product_Sizes;
 
-    public Product_home(String product_id, String product_name, int price, String image_url, String description, String category_id, String creation_date, int quantity, Category category, List<ProductSize> product_Sizes) {
+    private Boolean IScheck = true;
+
+    public ProductForCart(String product_id, String product_name, int price, String image_url, String description, String category_id, String creation_date, Boolean IScheck) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
@@ -34,9 +28,7 @@ public class Product_home{
         this.description = description;
         this.category_id = category_id;
         this.creation_date = creation_date;
-        this.quantity = quantity;
-        this.category = category;
-        this.product_Sizes = product_Sizes;
+        this.IScheck = IScheck;
     }
 
     public String getProduct_id() {
@@ -95,27 +87,12 @@ public class Product_home{
         this.creation_date = creation_date;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Boolean getIScheck() {
+        return IScheck;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public List<ProductSize> getProduct_Sizes() {
-        return product_Sizes;
-    }
-
-    public void setProduct_Sizes(List<ProductSize> product_Sizes) {
-        this.product_Sizes = product_Sizes;
+    public void setIScheck(Boolean IScheck) {
+        this.IScheck = IScheck;
     }
 }
+

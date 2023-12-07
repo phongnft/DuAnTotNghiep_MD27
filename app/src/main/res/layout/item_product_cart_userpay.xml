@@ -19,29 +19,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <CheckBox
-                    android:id="@+id/CheckboxProductCart"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Enable Feature" />
 
 
-            </LinearLayout>
 
 
             <ImageView
-                android:id="@+id/imgProductCart"
+                android:id="@+id/imgProductUserPay"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="2dp"
                 android:layout_marginRight="7dp"
+                android:layout_marginLeft="2dp"
                 android:src="@drawable/img_product" />
 
             <LinearLayout
@@ -50,7 +38,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/NameProductCart"
+                    android:id="@+id/nameProductUserPay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Quần âu nam BAT chất vải tuyết mưa, Quần tây nam co giãn 4 chiều cao cấp"
@@ -70,10 +58,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/PriceProductCart"
+                        android:id="@+id/priceProductUserPay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="150dp"
                         android:layout_marginTop="10dp"
                         android:text="123.000đ"
                         android:textColor="@color/red"
@@ -92,39 +80,19 @@
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/SoluongDown"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/soluongtru"
-                        app:riv_border_color="#333333"
-                        app:riv_border_width="1dip"
-                        app:riv_corner_radius="30dip"
-                        app:riv_mutate_background="true" />
+
 
                     <TextView
-                        android:id="@+id/SoluongProductCart"
+                        android:id="@+id/soLuongProductUserPay"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:gravity="center"
                         android:text="1"
                         android:textSize="15dp" />
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/SoluongUp"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/soluongtru"
-                        app:riv_border_color="#333333"
-                        app:riv_border_width="1dip"
-                        app:riv_corner_radius="30dip"
-                        app:riv_mutate_background="true" />
+
 
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,16 +104,20 @@
                         android:layout_height="wrap_content"
                         android:text="Size: "
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
                     <TextView
-                        android:id="@+id/sizeCart"
+                        android:id="@+id/sizeProductUserPay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" "
-                        android:textSize="15dp" />
+                        android:text="s"
+                        android:textSize="15dp"
+                        />
 
                 </LinearLayout>
+
+
 
 
             </LinearLayout>
@@ -153,26 +125,8 @@
 
         </LinearLayout>
 
-        <!--        <TextView-->
-
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="5dp"-->
-        <!--            android:textStyle="italic"-->
-        <!--            android:textSize="10dp"-->
-        <!--            android:layout_marginLeft="270dp"-->
-        <!--            android:text="trượt để xóa sản phẩm-&ndash;&gt;"-->
-
-
-        <!--            />-->
 
     </LinearLayout>
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Xóa"
-        android:layout_marginLeft="420dp"
-        />
+
 
 </androidx.cardview.widget.CardView>

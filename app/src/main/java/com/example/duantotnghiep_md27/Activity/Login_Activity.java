@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
+import com.example.duantotnghiep_md27.Fragment.Home_Fragment;
 import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserLogin;
@@ -66,6 +67,7 @@ public class Login_Activity extends AppCompatActivity {
         });
         btnLogin.setOnClickListener(view -> {
             checkValidation();
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
 
         forgotpass.setOnClickListener(view -> {

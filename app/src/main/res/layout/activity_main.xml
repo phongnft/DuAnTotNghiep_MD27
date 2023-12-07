@@ -39,6 +39,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+
         <ImageView
             android:id="@+id/CartIcon"
             android:layout_width="50dp"
@@ -47,6 +49,23 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/NotiIcon"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvCartItemCount"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="10"
+            android:textColor="#EF0202"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/CartIcon"
+            app:layout_constraintBottom_toTopOf="@id/CartIcon"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
