@@ -3,6 +3,7 @@ package com.example.duantotnghiep_md27.Model;
 public class User {
     String user_id;
     String full_name;
+    String image_url;
     String password;
     String newPassword;
     String phone_number;
@@ -31,6 +32,7 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
 
 
     public User(String email, String password) {
@@ -111,5 +113,11 @@ public class User {
         this.address = address;
     }
 
+    public String getImage_url() {
+        return image_url;
+    }
 
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 }

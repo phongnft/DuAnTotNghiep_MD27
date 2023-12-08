@@ -123,6 +123,7 @@ public class Login_Activity extends AppCompatActivity {
 
 
                             infolog(userLogin.getData().getUser().getUser_id(),
+                                    userLogin.getData().getUser().getImage_url(),
                                     userLogin.getData().getUser().getFull_name(),
                                     userLogin.getData().getUser().getPhone_number(),
                                     userLogin.getData().getUser().getEmail(),
@@ -169,17 +170,18 @@ public class Login_Activity extends AppCompatActivity {
     private void showProgressDialog() {
         progress.setVisibility(View.VISIBLE);
     }
-    public void infolog(String user_id,String full_name,String phone_number,String email,String address){
+    public void infolog(String user_id,String image_url,String full_name,String phone_number,String email,String address){
         SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("user_id",user_id);
+        editor.putString("image_url",image_url);
         editor.putString("full_name",full_name);
         editor.putString("phone_number",phone_number);
         editor.putString("email",email);
         editor.putString("address",address);
-        editor.commit();
-
-        Toast.makeText(getApplicationContext(), "ggdrctfvybuhni", Toast.LENGTH_LONG).show();
+        editor.putBoolean("isLoggedIn", true);
+        editor.apply();
+        Toast.makeText(getApplicationContext(), "Luu thong tin ok", Toast.LENGTH_LONG).show();
 
     }
 
