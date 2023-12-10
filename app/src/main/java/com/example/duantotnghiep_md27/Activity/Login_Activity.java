@@ -62,14 +62,14 @@ public class Login_Activity extends AppCompatActivity {
         createaccount = findViewById(R.id.createAccount);
 
         createaccount.setOnClickListener(view -> {
-            startActivity(new Intent(Login_Activity.this, Register_Activity.class));
+            startActivity(new Intent(getApplicationContext(), Register_Activity.class));
         });
         btnLogin.setOnClickListener(view -> {
             checkValidation();
         });
 
         forgotpass.setOnClickListener(view -> {
-            startActivity(new Intent(Login_Activity.this, ForgotPasswordActivity.class));
+            startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
         });
 
 
@@ -85,7 +85,7 @@ public class Login_Activity extends AppCompatActivity {
         if (email.equals("") || email.length() == 0
                 || password.equals("") || password.length() == 0) {
             vibrate(200);
-            Toast.makeText(Login_Activity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             user = new User(email, password);
             login(user);
@@ -95,7 +95,7 @@ public class Login_Activity extends AppCompatActivity {
 
     private void login(User user) {
         showProgressDialog();
-        Call<UserLogin> call = RestClient.getRestService(Login_Activity.this).login(user);
+        Call<UserLogin> call = RestClient.getRestService(getApplicationContext()).login(user);
         call.enqueue(new Callback<UserLogin>() {
             @Override
             public void onResponse(Call<UserLogin> call, Response<UserLogin> response) {
@@ -108,18 +108,18 @@ public class Login_Activity extends AppCompatActivity {
                         String userString = gson.toJson(userLogin);
                         localStorage.createUserLoginSession(userString);
                         if (userLogin.getData().getUser().getStatus().equalsIgnoreCase("2")) {
-                            startActivity(new Intent(Login_Activity.this, OTP_Activity.class));
+                            startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
 
                         } else {
-                            startActivity(new Intent(Login_Activity.this, MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }
 
                     } else {
-                        Toast.makeText(Login_Activity.this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_LONG).show();
                     }
 
                 } else {
-                    Toast.makeText(Login_Activity.this, "Reponse null rồi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Reponse null rồi", Toast.LENGTH_LONG).show();
                 }
                 hideProgressDialog();
             }
@@ -133,7 +133,7 @@ public class Login_Activity extends AppCompatActivity {
     }
 
     public void vibrate(int duration) {
-        Vibrator vibs = (Vibrator) Login_Activity.this.getSystemService(Context.VIBRATOR_SERVICE);
+        Vibrator vibs = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
         vibs.vibrate(duration);
     }
 

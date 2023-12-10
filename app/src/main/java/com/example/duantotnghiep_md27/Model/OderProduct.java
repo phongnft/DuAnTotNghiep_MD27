@@ -2,11 +2,7 @@ package com.example.duantotnghiep_md27.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Product_home{
+public class OderProduct {
     @SerializedName("product_id")
     private String product_id;
     @SerializedName("product_name")
@@ -22,11 +18,9 @@ public class Product_home{
     @SerializedName("creation_date")
     private String creation_date;
     @SerializedName("quantity")
-    private int quantity;
-    private Category category;
-    private List<ProductSize> product_Sizes;
+    private double quantity;
 
-    public Product_home(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, int quantity, Category category, List<ProductSize> product_Sizes) {
+    public OderProduct(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, double quantity) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
@@ -35,8 +29,6 @@ public class Product_home{
         this.category_id = category_id;
         this.creation_date = creation_date;
         this.quantity = quantity;
-        this.category = category;
-        this.product_Sizes = product_Sizes;
     }
 
     public String getProduct_id() {
@@ -95,27 +87,11 @@ public class Product_home{
         this.creation_date = creation_date;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public List<ProductSize> getProduct_Sizes() {
-        return product_Sizes;
-    }
-
-    public void setProduct_Sizes(List<ProductSize> product_Sizes) {
-        this.product_Sizes = product_Sizes;
     }
 }

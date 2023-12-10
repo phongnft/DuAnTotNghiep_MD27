@@ -1,6 +1,5 @@
 package com.example.duantotnghiep_md27.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,10 +16,8 @@ import com.bumptech.glide.Glide;
 import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
-import com.example.duantotnghiep_md27.Util;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapter.ProductViewHolder> {
@@ -29,7 +26,6 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
     Gson gson;
     List<Product_home> productList;
     private Context context;
-
 
 
     public Product_homeAdapter(List<Product_home> productList, Context context, String tag) {
@@ -52,20 +48,17 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
         final Product_home product_home = productList.get(position);
         holder.name.setText(product_home.getProduct_name());
         holder.price.setText(product_home.getPrice() + "đ");
-//        Product product = productList.get(position);
-//        holder.txtProductName.setText(product.getProductName());
-//        holder.txtPrice.setText(String.valueOf(product.getPrice()));
-//        Picasso.get().load(product.getImageUrl()).into(holder.imgProduct);
         Glide.with(context).load(product_home.getImage_url()).into(holder.imgproduct);
 //        set su kien khi click vao item san pham
         holder.cardViewItem.setOnClickListener(view -> {
-
+//
             Intent intent = new Intent(context, detail_activity.class);
             intent.putExtra("id", product_home.getProduct_id());
             intent.putExtra("name", product_home.getProduct_name());
             intent.putExtra("image", product_home.getImage_url());
             intent.putExtra("price", product_home.getPrice() + "đ");
             intent.putExtra("description", product_home.getDescription());
+            intent.putExtra("quantity",product_home.getQuantity()+" ");
 
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             context.startActivity(intent);
