@@ -28,10 +28,6 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     Context context;
     String Tag;
 
-    public HomeCategoryAdapter(List<Category> categoryList, Context context) {
-        this.categoryList = categoryList;
-        this.context = context;
-    }
 
     public HomeCategoryAdapter(List<Category> categoryList, Context context, String tag) {
         this.categoryList = categoryList;
@@ -44,9 +40,8 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View itemView;
 
-            itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_category_home, parent, false);
-
+        itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_category_home, parent, false);
 
 
         return new MyViewHolder(itemView);
@@ -58,15 +53,13 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
         final Category category = categoryList.get(position);
 
         holder.title.setText(category.getCategory_name());
-        Glide.with(context)
-                    .load(RestClient.BASE_URL+ category.getImage_url())
-                    .into(holder.imageView);
+        Glide.with(context).load(category.getImage_url()).into(holder.imageView);
 
     }
 
     @Override
     public int getItemCount() {
-            return categoryList.size();
+        return categoryList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

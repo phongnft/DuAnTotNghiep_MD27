@@ -15,6 +15,9 @@ public class Category {
     @SerializedName("description")
     private String description;
 
+    List<Product_home> Products = new ArrayList<>();
+
+
     public Category(String category_id, String category_name, String image_url, String description) {
         this.category_id = category_id;
         this.category_name = category_name;
@@ -52,6 +55,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Product_home> getProducts() {
+        return Products;
+    }
+
+    public void setProducts(List<Product_home> products) {
+        Products = products;
     }
 }
 

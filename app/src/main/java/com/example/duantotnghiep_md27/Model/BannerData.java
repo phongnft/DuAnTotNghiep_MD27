@@ -1,16 +1,16 @@
 package com.example.duantotnghiep_md27.Model;
 
+import com.bdtopcoder.smart_slider.SliderItem;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryResult {
+public class BannerData {
     @SerializedName("message")
     String message;
-
     @SerializedName("data")
-    List<Category> data;
-
+    List<SliderItem> data = new ArrayList<>();
 
     public String getMessage() {
         return message;
@@ -20,11 +20,11 @@ public class CategoryResult {
         this.message = message;
     }
 
-    public List<Category> getData() {
+    public List<SliderItem> getData() {
         return data;
     }
 
-    public void setData(List<Category> data) {
+    public void setData(List<SliderItem> data) {
         this.data = data;
     }
 }
