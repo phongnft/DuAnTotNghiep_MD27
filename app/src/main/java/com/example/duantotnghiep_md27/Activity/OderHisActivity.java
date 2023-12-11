@@ -75,8 +75,8 @@ public class OderHisActivity extends AppCompatActivity {
     }
 
     public void setupProductRecycleView() {
-        oderHisAdapter = new OderHisAdapter(oder_list,getApplicationContext(),"Oder");
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2,LinearLayoutManager.VERTICAL,false);
+        oderHisAdapter = new OderHisAdapter(oder_list, getApplicationContext(), "Oder");
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
         rycOderHis.setLayoutManager(layoutManager);
         rycOderHis.setItemAnimator(new DefaultItemAnimator());
         rycOderHis.setAdapter(oderHisAdapter);

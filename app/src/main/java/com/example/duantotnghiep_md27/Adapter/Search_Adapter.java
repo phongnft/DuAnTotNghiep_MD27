@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -34,7 +35,7 @@ public class Search_Adapter extends RecyclerView.Adapter<Search_Adapter.MyViewHo
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
         itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_search_product, parent, false);
+                .inflate(R.layout.item_products, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -43,12 +44,9 @@ public class Search_Adapter extends RecyclerView.Adapter<Search_Adapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final Product_home product = productList.get(position);
 
-        holder.title.setText(product.getProduct_name());
-
-        if (product.getImage_url() != null) {
-//            Picasso.get().load(RestClient.BASE_URL + product.getImages().get(0).getImage()).into(holder.imageView);
-            Glide.with(context).load(product.getImage_url()).into(holder.imageView);
-        }
+        holder.name.setText(product.getProduct_name());
+        holder.price.setText(product.getPrice() + "đ");
+        Glide.with(context).load(product.getImage_url()).into(holder.imgproduct);
 //        holder.row_ll.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -75,16 +73,19 @@ public class Search_Adapter extends RecyclerView.Adapter<Search_Adapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView title;
+        CardView cardViewItem;
+        ImageView imgproduct, imgshopnow;
+        TextView price, name;
         LinearLayout row_ll;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.search_image);
-            title = itemView.findViewById(R.id.search_title);
-            row_ll = itemView.findViewById(R.id.row_ll);
+            cardViewItem = itemView.findViewById(R.id.card_itemproduct);
+            imgshopnow = itemView.findViewById(R.id.imgShopnow);
+            imgproduct = itemView.findViewById(R.id.imgproducts);
+            price = itemView.findViewById(R.id.tv_priceproduct);
+            name = itemView.findViewById(R.id.tv_nameproduct);
         }
     }
 }

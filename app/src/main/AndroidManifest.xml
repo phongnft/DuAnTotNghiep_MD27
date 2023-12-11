@@ -22,17 +22,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Search_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.MyInfo"
             android:exported="false" />
         <activity
             android:name=".Activity.OderHisActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Activity.EditProfileActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".Activity.MyInfoActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Activity.EditProfileActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".Activity.MyInfoActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".Activity.OTP_Activity"
             android:exported="false" />

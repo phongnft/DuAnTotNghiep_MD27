@@ -4,10 +4,14 @@ package com.example.duantotnghiep_md27.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -65,11 +69,18 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
 
 //        localStorage = new LocalStorage(getContext());
 //        user = gson.fromJson(localStorage.getUserLogin(), User.class);
-//        category_name = new CategoryName(category_name.getCategory_name());
+//        user.getUser_id();
 
         getCategoryData();
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        MenuItem menuItem = menu.findItem(R.id.cart_action);
+//        menuItem.setIcon(Converter.convertLayoutToImage(MainActivity.this, cart_count, R.drawable.ic_shopping_basket));
+//        final MenuItem searchItem = menu.findItem(R.id.action_search);
     }
 
     private void getCategoryData() {
@@ -118,7 +129,7 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
 
     private void setupSubCategoryRecycleView() {
         sAdapter = new SubcategoryAdapter(product_homeList, getActivity());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerViewProduct.setLayoutManager(mLayoutManager);
         recyclerViewProduct.setItemAnimator(new DefaultItemAnimator());
         recyclerViewProduct.setAdapter(sAdapter);

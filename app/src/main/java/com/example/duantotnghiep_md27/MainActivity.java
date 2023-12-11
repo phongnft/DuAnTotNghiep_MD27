@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.duantotnghiep_md27.Activity.Search_Activity;
 import com.example.duantotnghiep_md27.Adapter.Search_Adapter;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
@@ -60,31 +61,37 @@ public class MainActivity extends AppCompatActivity {
         noIcon = findViewById(R.id.NotiIcon);
         searchView = findViewById(R.id.seachviewok);
         recyclerView = findViewById(R.id.search_recycler_view);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,Search_Activity.class));
+            }
+        });
 //        searchView.clearFocus();
 
 
 //        if (searchView != null) {
 //            final SearchView finalSearchView = searchView;
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Toast like print
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
-                if (s.length() == 0) {
-                    recyclerView.setVisibility(View.GONE);
-                    productList = new ArrayList<>();
-                } else {
-                    getSearchProduct(s);
-                }
-
-                return true;
-            }
-        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                // Toast like print
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
+//                if (s.length() == 0) {
+//                    recyclerView.setVisibility(View.GONE);
+//                    productList = new ArrayList<>();
+//                } else {
+//                    getSearchProduct(s);
+//                }
+//
+//                return true;
+//            }
+//        });
         // }
 
 
