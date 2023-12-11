@@ -7,28 +7,41 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#54ABEF"
-        android:id="@+id/toolbar"
-        >
+        android:background="#54ABEF">
 
-        <EditText
-            android:id="@+id/edt_searchview"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+        <!--        <EditText-->
+        <!--            android:id="@+id/edt_searchview"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_marginLeft="10dp"-->
+        <!--            android:background="@drawable/custom_searchview"-->
+        <!--            android:backgroundTint="@color/white"-->
+        <!--            android:drawableStart="@drawable/baseline_search_24"-->
+        <!--            android:hint="Tìm kiếm sản phẩm..."-->
+        <!--            android:maxLines="1"-->
+        <!--            android:paddingLeft="10dp"-->
+        <!--            android:textColorHint="#535151"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toStartOf="@id/CartIcon"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/seachviewok"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/custom_searchview"
-            android:backgroundTint="@color/white"
-            android:drawableStart="@drawable/baseline_search_24"
-            android:hint="Tìm kiếm sản phẩm..."
-            android:maxLines="1"
-            android:paddingLeft="10dp"
-            android:textColorHint="#535151"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center_vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/CartIcon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="Tìm kiếm sản phẩm nào..."
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/NotiIcon"
@@ -69,15 +82,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include layout="@layout/content_main" />
+
 
     <FrameLayout
         android:id="@+id/framehome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomnavmenu"
-        android:layout_below="@id/toolbar"
-        />
-<!--        android:layout_below="@+id/toolbar_home" />-->
+        android:layout_below="@id/toolbar" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

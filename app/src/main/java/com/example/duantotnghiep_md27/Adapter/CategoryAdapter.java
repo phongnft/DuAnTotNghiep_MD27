@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.duantotnghiep_md27.Api.Clients.CategorySelectCallBack;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.R;
@@ -26,26 +27,20 @@ import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
 
-    private List<Category> categoryList;
-    private OnCategoryClickListener callback;
-    private Context context;
+    List<Category> categoryList;
+    Activity context;
+    int selectedPosition = 0;
+    CategorySelectCallBack callBacks;
 
-    // Constructor
-    public CategoryAdapter(Context context, OnCategoryClickListener callback) {
+    public CategoryAdapter(List<Category> categoryList, Activity context, CategorySelectCallBack callBacks) {
+        this.categoryList = categoryList;
         this.context = context;
-        this.callback = callback;
-        this.categoryList = new ArrayList<>();
+        this.callBacks = callBacks;
     }
-
-    // Interface để xử lý sự kiện click trên danh sách loại sản phẩm
-    public interface OnCategoryClickListener {
-        void onCategoryClick(String idCategory);
-    }
-
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
 
         itemView = LayoutInflater.from(parent.getContext())
@@ -54,49 +49,46 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         return new MyViewHolder(itemView);
     }
 
-    @SuppressLint("RecyclerView")
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        final Category category = categoryList.get(position);
+        holder.title.setText(category.getCategory_name());
 
-        Category category = categoryList.get(position);
+        Glide.with(context).load(category.getImage_url()).into(holder.imageView);
 
-        holder.categoryName.setText(category.getCategory_name());
-        Glide.with(context).load(category.getImage_url()).into(holder.categoryImage);
-
-        holder.categoryImage.setOnClickListener(new View.OnClickListener() {
+        holder.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (callback != null) {
-                    callback.onCategoryClick(category.getCategory_id());
-                }
+                selectedPosition = position;
+                callBacks.onCategorySelect(position);
+                notifyDataSetChanged();
             }
         });
+
+        if(selectedPosition == position){
+            holder.ll.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }else{
+            holder.ll.setBackgroundColor(Color.parseColor("#F2F2F2"));
+        }
 
     }
 
     @Override
     public int getItemCount() {
         return categoryList.size();
-
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView categoryImage;
-        TextView categoryName;
+        ImageView imageView;
+        TextView title;
         LinearLayout ll;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            categoryImage = itemView.findViewById(R.id.category_image);
-            categoryName = itemView.findViewById(R.id.category_name);
+            imageView = itemView.findViewById(R.id.category_image1);
+            title = itemView.findViewById(R.id.category_name1);
             ll = itemView.findViewById(R.id.category_item_ll);
         }
-    }
-
-    // Setter cho dữ liệu
-    public void setData(List<Category> categoryList) {
-        this.categoryList = categoryList;
-        notifyDataSetChanged();
     }
 }

@@ -2,15 +2,11 @@ package com.example.duantotnghiep_md27.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class CategoryResult {
+public class OderCall {
     @SerializedName("message")
     String message;
-
     @SerializedName("data")
-    List<Category> data;
-
+    Oderdata data;
 
     public String getMessage() {
         return message;
@@ -20,11 +16,11 @@ public class CategoryResult {
         this.message = message;
     }
 
-    public List<Category> getData() {
+    public Oderdata getData() {
         return data;
     }
 
-    public void setData(List<Category> data) {
+    public void setData(Oderdata data) {
         this.data = data;
     }
 }

@@ -11,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,20 +24,12 @@ import com.example.duantotnghiep_md27.Fragment.Category_Fragment;
 import com.example.duantotnghiep_md27.Fragment.Home_Fragment;
 import com.example.duantotnghiep_md27.Fragment.NotificationsFragment;
 import com.example.duantotnghiep_md27.Fragment.Profile_Fragment;
-import com.example.duantotnghiep_md27.Model.ProductOrderCart;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageView cartIcon, noIcon;
     EditText searchView;
-    TextView CartCount;
-    ArrayList<ProductOrderCart> listProduct;
-    Cart_Fragment cartFragment;
-
-
 
 
     @SuppressLint("MissingInflatedId")
@@ -49,11 +40,6 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new Home_Fragment());
         cartIcon = findViewById(R.id.CartIcon);
         noIcon = findViewById(R.id.NotiIcon);
-        CartCount = findViewById(R.id.tvCartItemCount);
-        cartFragment = new Cart_Fragment();
-
-
-
 
 
         bottomNavigationView = findViewById(R.id.bottomnavmenu);
@@ -137,24 +123,4 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //
 //    }
-//public void updateCartCount(int cartItemCount) {
-//    // Đối với giỏ hàng rỗng, bạn có thể đặt giá trị mặc định là 0
-//    if (cartItemCount == 0) {
-//        CartCount.setVisibility(View.GONE);
-//    } else {
-//        CartCount.setText(String.valueOf(cartItemCount));
-//        CartCount.setVisibility(View.VISIBLE);
-//    }
-//}
-
-    public void updateCartCount(int cartItemCount) {
-        // Đối với giỏ hàng rỗng, bạn có thể đặt giá trị mặc định là 0
-        if (cartItemCount == 0) {
-            CartCount.setVisibility(View.GONE);
-        } else {
-            CartCount.setText(String.valueOf(cartItemCount));
-            CartCount.setVisibility(View.VISIBLE);
-        }
-    }
-
 }

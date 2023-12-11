@@ -6,6 +6,7 @@ public class Data {
 
     @SerializedName("user")
     User user;
+    
 
     public User getUser() {
         return user;

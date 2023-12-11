@@ -28,6 +28,9 @@ public class LocalStorage {
         editor.putString(KEY_USER, user);
         editor.commit();
     }
+    public boolean isUserLoggedIn() {
+        return sharedPreferences.getBoolean(IS_USER_LOGIN, false);
+    }
 
 
     public String getFirebaseToken() {

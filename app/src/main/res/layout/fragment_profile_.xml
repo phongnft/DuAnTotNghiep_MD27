@@ -67,6 +67,19 @@
             android:layout_marginLeft="110dp" />
     </LinearLayout>
 </LinearLayout>
+    <TextView
+        android:id="@+id/tv_donhang"
+        android:textSize="20dp"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/baseline_menu_book_24"
+        android:drawablePadding="15dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:text="Lịch sử mua hàng"
+        android:drawableEnd="@drawable/baseline_navigate_next_24"
+        />
 
 
     <TextView
