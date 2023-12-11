@@ -67,7 +67,6 @@ public class Login_Activity extends AppCompatActivity {
         });
         btnLogin.setOnClickListener(view -> {
             checkValidation();
-//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
 
         forgotpass.setOnClickListener(view -> {

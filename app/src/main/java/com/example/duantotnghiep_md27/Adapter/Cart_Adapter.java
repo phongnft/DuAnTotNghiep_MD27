@@ -2,7 +2,7 @@ package com.example.duantotnghiep_md27.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,55 +14,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.daimajia.swipe.SwipeLayout;
-import com.example.duantotnghiep_md27.Api.Clients.RestClient;
+import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
-import com.example.duantotnghiep_md27.Model.Delete_Cart;
-import com.example.duantotnghiep_md27.Model.ListCart;
-import com.example.duantotnghiep_md27.Model.ProductForCart;
-import com.example.duantotnghiep_md27.Model.ProductOrderCart;
-import com.example.duantotnghiep_md27.ItemTouchHelperAdapter;
-import com.example.duantotnghiep_md27.OnItemSwipeListener;
+import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
-import com.google.android.material.snackbar.Snackbar;
-
+import com.example.duantotnghiep_md27.Util;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHolder> implements ItemTouchHelperAdapter {
-
-    RecyclerView recyclerView;
-    private OnItemSwipeListener onItemSwipeListener;
-    private Context context;
-    ArrayList<ProductOrderCart> listProduct;
-
-    private Cart_Fragment cartFragment;
-
-    private ListCart listCart;
-
-    ArrayList<ProductForCart> listProductForCart = new ArrayList<>();
-
-    private boolean isCheckBoxChecked = false;
-
-    SwipeLayout swipeLayout;
-    String TAG = "bbbbbbbbbb";
-
-
-
-    public Cart_Adapter(ArrayList<ProductOrderCart> listProduct, Context context, Cart_Fragment cartFragment, ArrayList<ProductForCart> listProductForCart) {
-        this.listProduct = listProduct;
-        this.context = context;
-        this.cartFragment = cartFragment;
-        this.onItemSwipeListener = onItemSwipeListener;
-        this.listProductForCart = listProductForCart;
-
+public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHolder>  {
+    Activity activity;
+    List<Product_home> list = new ArrayList<>();
+    public Cart_Adapter(List<Product_home> list,Activity activity) {
+        this.activity = activity;
+        this.list = list;
     }
 
     public void setData(ArrayList<ProductOrderCart> listProduct) {
@@ -73,129 +42,35 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
     @NonNull
     @Override
     public Cart_Adapter.CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_cart, parent, false);
-
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_cart, parent, false);
         return new CartViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Cart_Adapter.CartViewHolder holder, int position) {
-        final ProductOrderCart productOrderCart = listProduct.get(position);
-        holder.nameListProduct.setText(productOrderCart.getProductForCart().getProduct_name());
-        Glide.with(context).load(productOrderCart.getProductForCart().getImage_url()).into(holder.imgListProduct);
-        holder.priceListProduct.setText(productOrderCart.getProductForCart().getPrice() + " ");
-        holder.SizeCart.setText(productOrderCart.getSize());
-
-//        holder.checkBoxall.setChecked(productOrderCart.isChecked());
-//
-//        holder.checkBoxall.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                productOrderCart.setChecked(isChecked);
-//                if (isChecked) {
-//                    cartFragment.listProductSelected.add(productOrderCart);
-//                } else {
-//                    cartFragment.listProductSelected.remove(productOrderCart);
-//                }
-//            }
-//        });
-
-
-        holder.checkboxproduct.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-              if(isChecked){
-                  cartFragment.listProductSelected.add(productOrderCart);
-              }else {
-                  cartFragment.listProductSelected.remove(productOrderCart);
-              }
-
-            }
-        });
-
-
+        final Product_home product_home= list.get(position);
+        Util.productHome = product_home;
     }
 
     @Override
     public int getItemCount() {
-        return listProduct.size();
-    }
-
-
-    //
-    @Override
-    public void onItemDismiss(int position) {
-
-        ProductOrderCart removedItem = listProduct.remove(position);
-        notifyItemRemoved(position);
-        onItemSwipeListener.onItemSwiped(position, removedItem);
-
-        deleteCart(removedItem);
-
-    }
-
-    public void setOnItemSwipeListener(OnItemSwipeListener listener) {
-        this.onItemSwipeListener = listener;
+        return 0;
     }
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgListProduct, imgdeleteProduct;
-        TextView nameListProduct, priceListProduct, SizeCart;
-        CheckBox checkBoxall, checkboxproduct;
-        Button deleteItem;
-
-
-
+        CardView itemCartProduct;
+        ImageView imgCartProduct;
+        TextView txtNameCartProduct, txtPriceCartProduct;
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgListProduct = itemView.findViewById(R.id.imgProductCart);
-            nameListProduct = itemView.findViewById(R.id.NameProductCart);
-            priceListProduct = itemView.findViewById(R.id.PriceProductCart);
-            SizeCart = itemView.findViewById(R.id.sizeCart);
-            checkboxproduct= itemView.findViewById(R.id.CheckboxProductCart);
-            deleteItem = itemView.findViewById(R.id.buttonDelete);
-            checkBoxall = itemView.findViewById(R.id.checkBoxAllItem);
-
-//            checkBoxall.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                    checkAllItems(isChecked);
-//                }
-//            });
+            itemCartProduct = itemView.findViewById(R.id.itemCartProduct);
+            imgCartProduct = itemView.findViewById(R.id.imgProductCart);
+            txtNameCartProduct = itemView.findViewById(R.id.txtProductCartName);
+            txtPriceCartProduct = itemView.findViewById(R.id.txtProductCartPrice);
 
         }
-    }
 
-    private void deleteCart(ProductOrderCart productOrderCart) {
 
-        Call<Delete_Cart> call = RestClient.getRestService(context).delete_Product_Cart(productOrderCart.getCart_id());
-        call.enqueue(new Callback<Delete_Cart>() {
-            @Override
-            public void onResponse(Call<Delete_Cart> call, Response<Delete_Cart> response) {
-                int Sum=0;
-                Log.d("Response :=>", response.body() + "");
-                if (response.isSuccessful() && response.body() != null) {
-                    Delete_Cart deleteCart = response.body();
-                    listProduct.remove(productOrderCart);
-                    notifyDataSetChanged();
-                    cartFragment.sumProductHealCart.setText(listProduct.size() + " ");
-                    for (int i = 0; i < listProduct.size(); i++) {
-                        Sum += listProduct.get(i).getProductForCart().getPrice();
-                    }
-                    cartFragment.sumProduct.setText(Sum + " ");
-                    cartFragment.getCartItemCount();
-                    Toast.makeText(context, deleteCart.getMessage(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.d("zzzzzzzz", "null data");
-                }
-            }
-            @Override
-            public void onFailure(Call<Delete_Cart> call, Throwable t) {
-            }
-
-        });
-
-    }
 
     private void showUndoSnackbar(final ProductOrderCart removedItem, final int position) {
 
@@ -212,11 +87,4 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 
         snackbar.show();
     }
-
-//    public void checkAllItems(boolean isChecked) {
-//        for (ProductOrderCart productOrderCart : listProduct) {
-//            productOrderCart.setChecked(isChecked);
-//        }
-//        notifyDataSetChanged();
-//    }
 }

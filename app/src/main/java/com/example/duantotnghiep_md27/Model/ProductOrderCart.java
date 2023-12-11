@@ -17,6 +17,7 @@ public class ProductOrderCart {
     private String size;
     @SerializedName("product")
     private ProductForCart productForCart;
+<<<<<<< HEAD
     private boolean isChecked;
 
     public boolean isChecked() {
@@ -26,6 +27,9 @@ public class ProductOrderCart {
     public void setChecked(boolean checked) {
         isChecked = checked;
     }
+=======
+
+>>>>>>> origin/truong
     public ProductOrderCart(String cart_id, String user_id, String product_id, int quantity, String status, String size, ProductForCart productForCart) {
         this.cart_id = cart_id;
         this.user_id = user_id;

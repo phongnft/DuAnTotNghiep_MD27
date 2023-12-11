@@ -12,7 +12,7 @@ public class Product_home{
     @SerializedName("product_name")
     private String product_name;
     @SerializedName("price")
-    private int price;
+    private double price;
     @SerializedName("image_url")
     private String image_url;
     @SerializedName("description")
@@ -22,11 +22,11 @@ public class Product_home{
     @SerializedName("creation_date")
     private String creation_date;
     @SerializedName("quantity")
-    private int quantity;
+    private double quantity;
     private Category category;
     private List<ProductSize> product_Sizes;
 
-    public Product_home(String product_id, String product_name, int price, String image_url, String description, String category_id, String creation_date, int quantity, Category category, List<ProductSize> product_Sizes) {
+    public Product_home(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, double quantity, Category category, List<ProductSize> product_Sizes) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
@@ -55,11 +55,11 @@ public class Product_home{
         this.product_name = product_name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -95,11 +95,11 @@ public class Product_home{
         this.creation_date = creation_date;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
