@@ -17,11 +17,11 @@
             android:id="@+id/backhome"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/home_img" />
+            android:src="@drawable/imgback" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/seachviewactivity"
-            android:layout_width="250dp"
+            android:layout_width="280dp"
             android:layout_height="40dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="8dp"

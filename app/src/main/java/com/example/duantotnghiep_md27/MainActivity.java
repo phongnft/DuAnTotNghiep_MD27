@@ -43,9 +43,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    ImageView cartIcon, noIcon;
-
-    SearchView searchView;
     Search_Adapter search_adapter;
     private RecyclerView recyclerView;
     List<Product_home> productList = new ArrayList<>();
@@ -57,16 +54,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         replaceFragment(new Home_Fragment());
-        cartIcon = findViewById(R.id.CartIcon);
-        noIcon = findViewById(R.id.NotiIcon);
-        searchView = findViewById(R.id.seachviewok);
+
         recyclerView = findViewById(R.id.search_recycler_view);
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,Search_Activity.class));
-            }
-        });
+
 //        searchView.clearFocus();
 
 
@@ -97,21 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomnavmenu);
 
-        cartIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Cart_Fragment());
-                bottomNavigationView.setSelectedItemId(R.id.card);
-            }
-
-        });
-        noIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new NotificationsFragment());
-                bottomNavigationView.setSelectedItemId(R.id.notifications);
-            }
-        });
         //set click cho từng item navigation
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {

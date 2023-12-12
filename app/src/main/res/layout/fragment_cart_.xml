@@ -3,9 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#EFEBEB"
     android:orientation="vertical"
     tools:context=".Fragment.Cart_Fragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:text="Giỏ hàng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/SumProducthealCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,32 +38,14 @@
 
         >
 
-        <ImageView
-            android:id="@+id/backCart"
-            android:layout_width="30dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/iconback" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="5dp"
-            android:text="Giỏ Hàng:"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+<!--        <ImageView-->
+<!--            android:id="@+id/backCart"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:background="@drawable/iconback" />-->
 
 
-        <TextView
-            android:id="@+id/SumProducthealCart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="0"
-            android:textSize="20dp"
-            android:textStyle="bold" />
     </LinearLayout>
 
 
