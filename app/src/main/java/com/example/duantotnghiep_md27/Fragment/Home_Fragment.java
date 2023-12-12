@@ -1,10 +1,12 @@
 package com.example.duantotnghiep_md27.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,13 +20,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bdtopcoder.smart_slider.SliderAdapter;
 import com.bdtopcoder.smart_slider.SliderItem;
+import com.example.duantotnghiep_md27.Activity.Search_Activity;
 import com.example.duantotnghiep_md27.Adapter.HomeCategoryAdapter;
 import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
+import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.Banner;
 import com.example.duantotnghiep_md27.Model.BannerData;
 import com.example.duantotnghiep_md27.Model.Category;
@@ -35,6 +41,7 @@ import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +52,9 @@ import retrofit2.Response;
 
 
 public class Home_Fragment extends Fragment {
+    BottomNavigationView bottomNavigationView;
+    EditText edtSearch;
+    ImageView cartIcon, noIcon;
 
     ViewPager2 viewPager2;
     Token token;
@@ -61,16 +71,44 @@ public class Home_Fragment extends Fragment {
     List<ProductImage> productImages;
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "ResourceType"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         product_recyclerView = view.findViewById(R.id.product_recycleview);
-        new_product_recyclerView = view.findViewById(R.id.new_product_recycleview);
+//        new_product_recyclerView = view.findViewById(R.id.new_product_recycleview);
         category_recyclerView = view.findViewById(R.id.recycleview_category);
+        bottomNavigationView = view.findViewById(R.id.bottomnavmenu);
         viewPager2 = view.findViewById(R.id.smartSlider);
+        edtSearch = view.findViewById(R.id.edtSearch);
+        cartIcon = view.findViewById(R.id.CartIcon);
+        noIcon = view.findViewById(R.id.NotiIcon);
+        cartIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new Cart_Fragment());
+//                bottomNavigationView.setSelectedItemId(R.id.card);
+            }
+
+        });
+        noIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new NotificationsFragment());
+//                bottomNavigationView.setSelectedItemId(R.id.notifications);
+            }
+        });
+
+
+        edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), Search_Activity.class));
+            }
+        });
+
 //        sliderAuto();
         getNewProduct();
         getCategoryData();
@@ -217,6 +255,11 @@ public class Home_Fragment extends Fragment {
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);
         category_recyclerView.setAdapter(homeCategoryAdapter);
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.framehome, fragment).commit();
     }
 
 }

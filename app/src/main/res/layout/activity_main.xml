@@ -6,63 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#54ABEF">
-
-        <!--        <EditText-->
-        <!--            android:id="@+id/edt_searchview"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="40dp"-->
-        <!--            android:layout_marginLeft="10dp"-->
-        <!--            android:background="@drawable/custom_searchview"-->
-        <!--            android:backgroundTint="@color/white"-->
-        <!--            android:drawableStart="@drawable/baseline_search_24"-->
-        <!--            android:hint="Tìm kiếm sản phẩm..."-->
-        <!--            android:maxLines="1"-->
-        <!--            android:paddingLeft="10dp"-->
-        <!--            android:textColorHint="#535151"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toStartOf="@id/CartIcon"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/seachviewok"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/custom_searchview"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:queryHint="Tìm kiếm sản phẩm nào..."
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/NotiIcon"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_notifications_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/CartIcon"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_shopping_cart_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/NotiIcon"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <include layout="@layout/content_main" />
 
 
