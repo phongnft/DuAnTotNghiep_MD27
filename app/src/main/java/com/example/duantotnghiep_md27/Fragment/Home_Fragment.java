@@ -77,8 +77,8 @@ public class Home_Fragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        new_product_recyclerView = view.findViewById(R.id.new_product_recycleview);
         product_recyclerView = view.findViewById(R.id.product_recycleview);
-//        new_product_recyclerView = view.findViewById(R.id.new_product_recycleview);
         category_recyclerView = view.findViewById(R.id.recycleview_category);
         bottomNavigationView = view.findViewById(R.id.bottomnavmenu);
         viewPager2 = view.findViewById(R.id.smartSlider);
@@ -109,11 +109,10 @@ public class Home_Fragment extends Fragment {
             }
         });
 
-//        sliderAuto();
         getNewProduct();
+        getAllProduct();
         getCategoryData();
         getBannerData();
-        // getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
@@ -129,13 +128,7 @@ public class Home_Fragment extends Fragment {
                     slierList = bannerData.getData();
                     if (slierList.size() > 0) {
                         sliderAuto();
-//                        setupBanner(view);
-//                        setupProductRecycleView();
-//                        ArrayList<SliderItem> sliderItems = new ArrayList<>();
-//                        product_homeAdapter = new Product_homeAdapter(product_list, getContext(), "Home");
-//                        viewPager2.setAdapter(product_homeAdapter);
 
-//                        viewPager2.setAdapter(new SliderAdapter(product_list, viewPager2, 3000));
                     }
 
 
@@ -152,23 +145,45 @@ public class Home_Fragment extends Fragment {
 
     private void sliderAuto() {
 
-//        ArrayList<SliderItem> listBanner = new ArrayList<>();
-////        listBanner.add(new SliderItem(R.drawable.img_8, "image 1"));
-////        listBanner.add(new SliderItem(R.drawable.img_9, "Image 2"));
-//
-//        viewPager2.setAdapter(new SliderAdapter(listBanner, viewPager2, 3000));
-//
-//        new SliderAdapter((position, title, vieww) -> {
-//
-//        });
-
-
         sliderAdapter = new SliderAdapter(slierList, viewPager2, 3000);
         viewPager2.setAdapter(sliderAdapter);
+
+        new SliderAdapter((position, title, vieww) -> {
+
+        });
+    }
+
+    private void getNewProduct() {
+        Call<ProductData> call = RestClient.getRestService(getContext()).getNewproduct();
+        call.enqueue(new Callback<ProductData>() {
+            @Override
+            public void onResponse(Call<ProductData> call, Response<ProductData> response) {
+                Log.d("Response :=>", response.body() + "");
+                if (response.isSuccessful() && response.body() != null) {
+
+                    ProductData productData = response.body();
+//                    if (productData.getStatus() == 200) {
+                    if (response.isSuccessful()) {
+                        product_list = productData.getData();
+
+                        setupNewProductRecycleView();
+                    }
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProductData> call, Throwable t) {
+                Toast.makeText(getContext(), "Fail api" + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 
-    private void getNewProduct() {
+    private void getAllProduct() {
         Call<ProductData> call = RestClient.getRestService(getContext()).getproductData();
         call.enqueue(new Callback<ProductData>() {
             @Override
@@ -191,7 +206,7 @@ public class Home_Fragment extends Fragment {
 
             @Override
             public void onFailure(Call<ProductData> call, Throwable t) {
-                Toast.makeText(getContext(), "Fail api mất rồi" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Fail api" + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -250,7 +265,6 @@ public class Home_Fragment extends Fragment {
     }
 
     private void setupCategoryRecycleView() {
-
         homeCategoryAdapter = new HomeCategoryAdapter(categoryList, getContext(), "Home");
         RecyclerView.LayoutManager categ_LayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         category_recyclerView.setLayoutManager(categ_LayoutManager);

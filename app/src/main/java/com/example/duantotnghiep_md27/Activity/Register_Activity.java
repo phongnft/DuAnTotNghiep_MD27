@@ -82,7 +82,7 @@ public class Register_Activity extends AppCompatActivity {
             edtpass.setError("Mật khẩu phải đủ 6 kí tự");
             edtpass.requestFocus();
         } else {
-            user = new User(full_name, phone_number, email, password);
+            user = new User(full_name, "+84" + phone_number, email, password);
             registerUser(user);
         }
 

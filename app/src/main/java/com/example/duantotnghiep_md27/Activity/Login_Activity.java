@@ -2,14 +2,19 @@ package com.example.duantotnghiep_md27.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +23,7 @@ import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserLogin;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.Utils.CustomToast;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.gson.Gson;
 
@@ -27,7 +33,12 @@ import retrofit2.Response;
 
 public class Login_Activity extends AppCompatActivity {
 
-    private EditText edtphone, edtpass;
+    View view;
+
+    LinearLayout loginLayout;
+    private RelativeLayout loginlayout;
+    private static Animation shakeAnimation;
+    private EditText edtmail, edtpass;
 
     private static Button btnLogin;
     private static TextView forgotpass, createaccount;
@@ -43,6 +54,8 @@ public class Login_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         InitView();
     }
 
@@ -55,11 +68,15 @@ public class Login_Activity extends AppCompatActivity {
         firebaseToken = localStorage.getFirebaseToken();
 
         progress = findViewById(R.id.progress_bar);
-        btnLogin = findViewById(R.id.btnLogin);
-        edtphone = findViewById(R.id.edt_phoneLog);
+        btnLogin = findViewById(R.id.btn_Login);
+        edtmail = findViewById(R.id.edt_mailLog);
         edtpass = findViewById(R.id.edt_passLog);
         forgotpass = findViewById(R.id.forgot_password);
         createaccount = findViewById(R.id.createAccount);
+        loginlayout = findViewById(R.id.loginlayout);
+
+        shakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.shake);
 
         createaccount.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), Register_Activity.class));
@@ -69,23 +86,27 @@ public class Login_Activity extends AppCompatActivity {
         });
 
         forgotpass.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+            startActivity(new Intent(this, ForgotPasswordActivity.class));
         });
 
 
     }
 
+    @SuppressLint("ResourceType")
     private void checkValidation() {
+        loginLayout = findViewById(R.id.loginlayouttt);
         // Lấy dữ liệu từ người dùng
-        final String email = edtphone.getText().toString();
+        final String email = edtmail.getText().toString();
         final String password = edtpass.getText().toString();
 
 
         // Check for both field is empty or not
         if (email.equals("") || email.length() == 0
                 || password.equals("") || password.length() == 0) {
+            loginlayout.startAnimation(shakeAnimation);
             vibrate(200);
-            Toast.makeText(getApplicationContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_LONG).show();
+            new CustomToast().Show_Toast(this, loginLayout, "Vui long k để trống");
+            edtpass.setError("k đc trống");
         } else {
             user = new User(email, password);
             login(user);
@@ -119,7 +140,7 @@ public class Login_Activity extends AppCompatActivity {
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Reponse null rồi", Toast.LENGTH_LONG).show();
+                    new CustomToast().Show_Toast(getApplicationContext(), view, "Lỗi rồi");
                 }
                 hideProgressDialog();
             }
