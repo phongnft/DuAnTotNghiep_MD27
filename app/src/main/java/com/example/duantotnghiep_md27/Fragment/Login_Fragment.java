@@ -66,7 +66,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
 
     private void initViews() {
         fragmentManager = getActivity().getSupportFragmentManager();
-        btnLogin = view.findViewById(R.id.btnLogin);
+//        btnLogin = view.findViewById(R.id.btnLogin);
 //        edtmail = view.findViewById(R.id.edt_mailLog);
         edtpass = view.findViewById(R.id.edt_passLog);
         forgotpass = view.findViewById(R.id.forgot_password);
@@ -198,22 +198,6 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnLogin:
-                startActivity(new Intent(getContext(), MainActivity.class));
-                getActivity().finish();
 
-                break;
-            case R.id.forgot_password:
-                break;
-
-            case R.id.createAccount:
-                fragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
-                        .replace(R.id.frameContainer, new Signup_Fragment(), "signup").commit();
-                break;
-
-        }
     }
 }

@@ -51,6 +51,9 @@ public interface Api_Service {
     @GET("products/getallproducts")
     Call<ProductData> getproductData();
 
+    @GET("products/getbannerproducts")
+    Call<ProductData> getNewproduct();
+
     @GET("duantotnghiep_md27")
     Call<List<User>> getListUser(
             @Query("duantotnghiep_md27") String key

@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
 
         <EditText
             android:id="@+id/edtSearch"
@@ -24,8 +24,8 @@
             android:paddingLeft="10dp"
             android:textColorHint="#535151"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/CartIcon"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -195,27 +195,6 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
                         android:visibility="gone" />
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:text="Popular Products"
-                            android:textColor="@color/black"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/popular_product_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
                 </LinearLayout>
 

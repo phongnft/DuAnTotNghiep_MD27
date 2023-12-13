@@ -45,6 +45,9 @@
             android:name=".Activity.Login_Activity"
             android:exported="false" />
         <activity
+            android:name=".Activity.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.detail_activity"
             android:exported="false" />
         <activity

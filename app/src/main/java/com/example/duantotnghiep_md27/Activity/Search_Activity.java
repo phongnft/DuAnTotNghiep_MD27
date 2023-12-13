@@ -46,7 +46,7 @@ public class Search_Activity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rcv_search);
         backhome = findViewById(R.id.backhome);
 
-        backhome.setOnClickListener(view -> onBackPressed());
+        backhome.setOnClickListener(view -> finish());
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
