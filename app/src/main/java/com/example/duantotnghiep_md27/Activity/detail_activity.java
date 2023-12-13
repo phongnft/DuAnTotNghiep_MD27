@@ -22,8 +22,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
-import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
-import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
 import com.example.duantotnghiep_md27.Model.OrderProductData;
@@ -31,6 +29,7 @@ import com.example.duantotnghiep_md27.Model.OrderProductResponse;
 import com.example.duantotnghiep_md27.Model.ProductForCart;
 import com.example.duantotnghiep_md27.Model.ProductOrderCart;
 import com.example.duantotnghiep_md27.Model.Product_home;
+import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.gson.Gson;
@@ -55,15 +54,15 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     List<Product_home> list = new ArrayList<>();
     ProductOrderCart productOrderCart;
     Button selectedButton;
-    Cart_Fragment cartFragment;
-    MainActivity mainActivity;
-    LocalStorage localStorage;
+
+
     Gson gson;
+
+    LocalStorage localStorage;
+    User user;
     OrderProduct orderProduct;
 
     ProductForCart productForCart;
-
-
 
 
     private Product_home productHome;
@@ -94,7 +93,11 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         mota.setText(_description);
         Glide.with(getApplicationContext()).load(_image).into(image);
 
-        orderProduct = new OrderProduct(localStorage.getUserLogin(), _id,1, "s");
+        gson = new Gson();
+        localStorage = new LocalStorage(detail_activity.this);
+        user = gson.fromJson(localStorage.getUserLogin(),User.class);
+
+        orderProduct = new OrderProduct(user.getUser_id(), _id,1, "s");
 
 
 //        image = gson.fromJson(price,);
@@ -159,17 +162,10 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 //                    String result = orderProductData.getUser_id() + " " + orderProductData.getProduct_id() + " "
 //                            + orderProductData.getQuantity();
 
-
-
-
-
-
-
                     Toast.makeText(detail_activity.this, "thêm vào giỏ thành công", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.d("zzzzzzzz", "null data");
                 }
-                finish();
             }
 
             @Override
@@ -294,4 +290,3 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     }
 
 }
-

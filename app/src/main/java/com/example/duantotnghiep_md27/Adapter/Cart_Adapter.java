@@ -16,7 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.daimajia.swipe.SwipeLayout;
+
+
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
@@ -46,13 +47,11 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 
     private ListCart listCart;
 
+    private boolean isAllSelected = false;
     ArrayList<ProductForCart> listProductForCart = new ArrayList<>();
 
-    private boolean isCheckBoxChecked = false;
 
-    SwipeLayout swipeLayout;
     String TAG = "bbbbbbbbbb";
-
 
 
     public Cart_Adapter(ArrayList<ProductOrderCart> listProduct, Context context, Cart_Fragment cartFragment, ArrayList<ProductForCart> listProductForCart) {
@@ -74,8 +73,8 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
     public Cart_Adapter.CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_cart, parent, false);
 
-        return new CartViewHolder(view);
 
+        return new CartViewHolder(view);
     }
 
     @Override
@@ -93,16 +92,33 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 //                    deleteCart(productOrderCart);
 //            }
 //        });
+        if (holder.checkBoxall != null) {
+            holder.checkBoxall.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    isAllSelected = !isAllSelected;
+                    for (ProductOrderCart item : listProduct) {
+                        item.setChecked(isAllSelected);
+                    }
+                    notifyDataSetChanged();
 
+                }
+
+            });
+        }
 
         holder.checkboxproduct.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-              if(isChecked){
-                  cartFragment.listProductSelected.add(productOrderCart);
-              }else {
-                  cartFragment.listProductSelected.remove(productOrderCart);
-              }
+                boolean isAllSelected;
+                if (isChecked) {
+
+                    isAllSelected = true;
+                    cartFragment.listProductSelected.add(productOrderCart);
+                } else {
+                    isAllSelected = false;
+                    cartFragment.listProductSelected.remove(productOrderCart);
+                }
 
             }
         });
@@ -139,48 +155,18 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
         Button deleteItem;
 
 
-
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
             imgListProduct = itemView.findViewById(R.id.imgProductCart);
             nameListProduct = itemView.findViewById(R.id.NameProductCart);
             priceListProduct = itemView.findViewById(R.id.PriceProductCart);
             SizeCart = itemView.findViewById(R.id.sizeCart);
-            checkboxproduct= itemView.findViewById(R.id.CheckboxProductCart);
+            checkBoxall = itemView.findViewById(R.id.checkBoxAllItem);
             deleteItem = itemView.findViewById(R.id.buttonDelete);
-//            swipeLayout = itemView.findViewById(R.id.swipeLayout);
+            checkboxproduct = itemView.findViewById(R.id.CheckboxProductCart);
 //
-//            swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
-//                @Override
-//                public void onStartOpen(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.VISIBLE);
-//                }
-//
-//                @Override
-//                public void onOpen(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.VISIBLE);
-//                }
-//
-//                @Override
-//                public void onStartClose(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.GONE);
-//                }
-//
-//                @Override
-//                public void onClose(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.GONE);
-//                }
-//
-//                @Override
-//                public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-//
-//                }
-//
-//                @Override
-//                public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-//
-//                }
-//            });
+
+
         }
     }
 
@@ -190,7 +176,7 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
         call.enqueue(new Callback<Delete_Cart>() {
             @Override
             public void onResponse(Call<Delete_Cart> call, Response<Delete_Cart> response) {
-                int Sum=0;
+                int Sum = 0;
                 Log.d("Response :=>", response.body() + "");
                 if (response.isSuccessful() && response.body() != null) {
                     Delete_Cart deleteCart = response.body();
@@ -206,6 +192,7 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
                     Log.d("zzzzzzzz", "null data");
                 }
             }
+
             @Override
             public void onFailure(Call<Delete_Cart> call, Throwable t) {
             }
@@ -237,4 +224,6 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 //            notifyItemChanged(position);
 //        }
 //    }
+
+
 }
