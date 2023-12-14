@@ -25,6 +25,7 @@ import com.example.duantotnghiep_md27.Model.UserLogin;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.Utils.CustomToast;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -33,7 +34,8 @@ import retrofit2.Response;
 
 public class Login_Activity extends AppCompatActivity {
 
-    View view;
+    TextInputLayout layoutpass, layoutmail;
+
 
     LinearLayout loginLayout;
     private RelativeLayout loginlayout;
@@ -73,7 +75,8 @@ public class Login_Activity extends AppCompatActivity {
         edtpass = findViewById(R.id.edt_passLog);
         forgotpass = findViewById(R.id.forgot_password);
         createaccount = findViewById(R.id.createAccount);
-        loginlayout = findViewById(R.id.loginlayout);
+        layoutpass = findViewById(R.id.layoutpass);
+        layoutmail = findViewById(R.id.layoutmail);
 
         shakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.shake);
@@ -103,10 +106,11 @@ public class Login_Activity extends AppCompatActivity {
         // Check for both field is empty or not
         if (email.equals("") || email.length() == 0
                 || password.equals("") || password.length() == 0) {
-            loginlayout.startAnimation(shakeAnimation);
+            layoutmail.startAnimation(shakeAnimation);
+            layoutpass.startAnimation(shakeAnimation);
             vibrate(200);
-            new CustomToast().Show_Toast(this, loginLayout, "Vui long k để trống");
-            edtpass.setError("k đc trống");
+            new CustomToast().Show_Toast(this, loginLayout, "Vui lòng điền đẩy đủ thông tin");
+
         } else {
             user = new User(email, password);
             login(user);
@@ -130,17 +134,18 @@ public class Login_Activity extends AppCompatActivity {
                         localStorage.createUserLoginSession(userString);
                         if (userLogin.getData().getUser().getStatus().equalsIgnoreCase("2")) {
                             startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
-
+                            finish();
                         } else {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
                         }
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_LONG).show();
+                        new CustomToast().Show_Toast(Login_Activity.this, loginLayout, "Sai tài khoản hoặc mật khẩu");
                     }
 
                 } else {
-                    new CustomToast().Show_Toast(getApplicationContext(), view, "Lỗi rồi");
+                    new CustomToast().Show_Toast(getApplicationContext(), loginLayout, "Vui lòng thử lại sau");
                 }
                 hideProgressDialog();
             }
