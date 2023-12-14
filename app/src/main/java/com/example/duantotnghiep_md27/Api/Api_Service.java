@@ -9,6 +9,7 @@ import com.example.duantotnghiep_md27.Model.MyInfo;
 import com.example.duantotnghiep_md27.Model.OderCall;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
 import com.example.duantotnghiep_md27.Model.OrderProductResponse;
+import com.example.duantotnghiep_md27.Model.Payment;
 import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Profile;
@@ -19,6 +20,7 @@ import com.example.duantotnghiep_md27.Model.UserLogin;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -69,7 +71,8 @@ public interface Api_Service {
     @GET("banner/getlistbanner")
     Call<BannerData> getBanner();
 
-
+    @POST("cart/create_payment_url")
+    Call<ResponseBody> getPayment(@Body  Payment payment);
 
 
 

@@ -114,6 +114,7 @@ public class Home_Fragment extends Fragment {
         getAllProduct();
         getCategoryData();
         getBannerData();
+        // getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
@@ -210,6 +211,7 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onFailure(Call<ProductData> call, Throwable t) {
                 Toast.makeText(getContext(), "Fail api" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Fail api mất rồi" + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

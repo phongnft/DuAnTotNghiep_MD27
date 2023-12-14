@@ -18,6 +18,18 @@ public class ProductOrderCart {
     @SerializedName("product")
     private ProductForCart productForCart;
 
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+
+
     public ProductOrderCart(String cart_id, String user_id, String product_id, int quantity, String status, String size, ProductForCart productForCart) {
         this.cart_id = cart_id;
         this.user_id = user_id;

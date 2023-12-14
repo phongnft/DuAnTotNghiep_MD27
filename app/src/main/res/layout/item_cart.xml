@@ -105,11 +105,11 @@
                         app:riv_mutate_background="true" />
 
                     <TextView
-                        android:id="@+id/SoluongProductCart"
+                        android:id="@+id/SoluongforCart"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:gravity="center"
-                        android:text="1"
+                        android:text=""
                         android:textSize="15dp" />
 
                     <com.makeramen.roundedimageview.RoundedImageView

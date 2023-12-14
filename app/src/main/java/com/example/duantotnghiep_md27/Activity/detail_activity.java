@@ -26,11 +26,14 @@ import com.example.duantotnghiep_md27.Model.Delete_Cart;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
 import com.example.duantotnghiep_md27.Model.OrderProductData;
 import com.example.duantotnghiep_md27.Model.OrderProductResponse;
-import com.example.duantotnghiep_md27.Model.ProductForCart;
+
 import com.example.duantotnghiep_md27.Model.ProductOrderCart;
 import com.example.duantotnghiep_md27.Model.Product_home;
+import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.gson.Gson;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import org.w3c.dom.Text;
 
@@ -45,22 +48,23 @@ import retrofit2.Response;
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView name, price, mota;
     Button btAddcart;
+
+
     String _id, _name, _price, _description, _image,_quantity;
 
     ImageView btnshare, image;
 
-    List<Product_home> list = new ArrayList<>();
-    ProductOrderCart productOrderCart;
     Button selectedButton;
 
+LocalStorage localStorage;
 
+User user;
     Gson gson;
     OrderProduct orderProduct;
+    int soluong=1;
 
-    ProductForCart productForCart;
 
 
-    private Product_home productHome;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -88,10 +92,12 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         mota.setText(_description);
         Glide.with(getApplicationContext()).load(_image).into(image);
 
-        orderProduct = new OrderProduct("1", _id,1, "s");
+        gson = new Gson();
+        localStorage = new LocalStorage(detail_activity.this);
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
+        orderProduct = new OrderProduct(user.getUser_id(), _id,soluong, "s");
 
-//        image = gson.fromJson(price,);
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,8 +108,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 showDiaLogCart();
-
-
             }
         });
         btnshare.setOnClickListener(new View.OnClickListener() {
@@ -144,15 +148,8 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
             public void onResponse(Call<OrderProductResponse> call, Response<OrderProductResponse> response) {
                 Log.d("Response :=>", response.body() + "");
                 if (response.isSuccessful() && response.body() != null) {
-
                     OrderProductResponse orderProductResponse = response.body();
-                    //if (productData.getStatus() == 200) {
-                    // }
                     OrderProductData orderProductData = orderProductResponse.getOrderProductData();
-
-//                    String result = orderProductData.getUser_id() + " " + orderProductData.getProduct_id() + " "
-//                            + orderProductData.getQuantity();
-
                     Toast.makeText(detail_activity.this, "thêm vào giỏ thành công", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.d("zzzzzzzz", "null data");
@@ -161,6 +158,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 
             @Override
             public void onFailure(Call<OrderProductResponse> call, Throwable t) {
+                Toast.makeText(detail_activity.this, "Không thành công"+" "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -175,6 +173,9 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         Button sizem = dialog.findViewById(R.id.sizeM);
         Button sizel = dialog.findViewById(R.id.sizeL);
         Button sizexl = dialog.findViewById(R.id.sizeXL);
+        RoundedImageView downsoluong = dialog.findViewById(R.id.SoluongDown);
+        RoundedImageView upsoluong = dialog.findViewById(R.id.SoluongUp);
+        TextView textsoluong = dialog.findViewById(R.id.SoluongProductCart);
 
         Button AddCart = dialog.findViewById(R.id.AddCartDialog);
         ImageView img = dialog.findViewById(R.id.imgProductCartDialog);
@@ -186,6 +187,26 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         txprice.setText(_price + " ");
         txq.setText(_quantity + " ");
 
+
+
+        upsoluong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                soluong++;
+                orderProduct.setQuantity(soluong);
+                textsoluong.setText(soluong+"");
+            }
+        });
+        downsoluong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(soluong>1){
+                    soluong--;
+                    orderProduct.setQuantity(soluong);
+                    textsoluong.setText(soluong+"");
+                }
+            }
+        });
 
         sizes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,4 +302,3 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     }
 
 }
-

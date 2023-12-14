@@ -12,6 +12,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/imgHistorypay"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:background="@drawable/clothes"
@@ -20,6 +21,7 @@
             ></ImageButton>
 
         <TextView
+            android:id="@+id/txtHistorypay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -28,16 +30,34 @@
             android:textSize="20dp"
             android:textStyle="bold" />
     </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-
-        android:text="Số lượng: 1"
+        android:text="Số lượng:"
         android:textSize="20dp">
 
     </TextView>
+
+    <TextView
+        android:id="@+id/soluonghistorypay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text=""
+        android:textSize="20dp">
+
+    </TextView>
+</LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -48,7 +68,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Size: L"
+            android:text="Size:"
+            android:textSize="20dp">
+
+        </TextView>
+        <TextView
+            android:id="@+id/sizeHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text=""
             android:textSize="20dp">
 
         </TextView>
@@ -61,35 +90,13 @@
             android:textSize="20dp"></TextView>
 
         <TextView
+            android:id="@+id/priceHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="1.199.000đ"
             android:textColor="#020202"
             android:textSize="20dp"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="90dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Màu: đen"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:text="999.000đ"
-            android:textColor="#FF0000"
-            android:textSize="20dp"></TextView>
-
     </LinearLayout>
 
     <Button

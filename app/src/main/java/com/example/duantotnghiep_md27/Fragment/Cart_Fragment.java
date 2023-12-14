@@ -32,9 +32,12 @@ import com.example.duantotnghiep_md27.Model.MyItemTouchHelperCallback;
 import com.example.duantotnghiep_md27.Model.ProductForCart;
 import com.example.duantotnghiep_md27.Model.ProductOrderCart;
 import com.example.duantotnghiep_md27.Model.Product_home;
+import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.OnItemSwipeListener;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 
 import java.util.ArrayList;
@@ -44,23 +47,26 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Cart_Fragment extends Fragment implements OnItemSwipeListener{
+public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
     RecyclerView recyclerView;
+        Gson gson;
+        User user;
+    public static boolean isCheckall = false;
     Button ButtonPay;
-    Intent intent;
-    String Size;
-    Product_home productHome;
+
     String TAG = "zzzzzzzzzzzzzzzzzzz";
     ArrayList<ProductOrderCart> listProductOrder = new ArrayList<>();
 
     private IsCheck isCheckbox = new IsCheck();
 
 
-
-    public TextView sumProduct, sumProductHealCart, PriceCartProducDialog;
+    public TextView sumProduct, sumProductHealCart;
     ImageView ImgCartProduct, imgbackCart, imgCartProductDiaLog;
 
     Cart_Adapter cartAdapter;
+    LocalStorage localStorage;
+
+    CheckBox checkall;
     detail_activity detailActivity;
 
     public static ArrayList<ProductOrderCart> listProductSelected = new ArrayList<>();
@@ -81,6 +87,8 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener{
         ButtonPay = view.findViewById(R.id.pay);
         sumProduct = view.findViewById(R.id.SumProductCart);
         sumProductHealCart = view.findViewById(R.id.SumProducthealCart);
+        imgbackCart = view.findViewById(R.id.backCart);
+        checkall = view.findViewById(R.id.checkBoxAllItem);
 
         ArrayList<ProductForCart> listProductForCart = new ArrayList<>();
 
@@ -98,33 +106,45 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener{
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
 
+        checkall.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                isCheckall = isChecked;
+                cartAdapter.notifyDataSetChanged();
+            }
+        });
 
 
-
-
-//        imgbackCart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Home_Fragment homeFragment = new Home_Fragment();
-//                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.framehome, homeFragment).commit();
-//            }
-//        });
+        imgbackCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Home_Fragment homeFragment = new Home_Fragment();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.framehome, homeFragment).commit();
+            }
+        });
         ButtonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserPayfragment userPayfragment = new UserPayfragment();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
+                if (listProductSelected.size() > 0) {
+                    int sum = 0;
+                    for (int i = 0; i < listProductSelected.size(); i++) {
+                        sum += listProductSelected.get(i).getProductForCart().getPrice();
+                    }
+                    UserPayfragment userPayfragment = new UserPayfragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("price", sum);
+                    userPayfragment.setArguments(bundle);
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
+                }else {
+                    Toast.makeText(requireContext(), "Vui lòng chọn sản phẩm thanh toán", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
     }
-
-
-
-
-
 
 
     @Override
@@ -135,7 +155,10 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener{
     }
 
     public void GetListProductCart() {
-        Call<ListCart> call = RestClient.getRestService(requireContext()).getListCartProduct("1");
+        gson = new Gson();
+        localStorage = new LocalStorage(requireContext());
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
+        Call<ListCart> call = RestClient.getRestService(requireContext()).getListCartProduct(user.getUser_id());
         call.enqueue(new Callback<ListCart>() {
             @Override
             public void onResponse(Call<ListCart> call, Response<ListCart> response) {
@@ -143,7 +166,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener{
                 if (response.isSuccessful() && response.body() != null) {
                     ListCart listCart = response.body();
                     listProductOrder = listCart.getCartDataList().getProductOrderCartArrayList();
-                    sumProduct.setText(listCart.getCartDataList().getTotal() + " ");
+
                     Log.d("aaaaa", listCart.getCartDataList().getTotal());
                     sumProductHealCart.setText(listProductOrder.size() + " ");
                     cartAdapter.setData(listProductOrder);
@@ -170,6 +193,3 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener{
 
     }
 }
-
-
-

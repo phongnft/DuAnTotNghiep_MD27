@@ -16,7 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.daimajia.swipe.SwipeLayout;
+
+
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
@@ -29,6 +30,8 @@ import com.example.duantotnghiep_md27.R;
 import com.google.android.material.snackbar.Snackbar;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -36,7 +39,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHolder> implements ItemTouchHelperAdapter {
-
     RecyclerView recyclerView;
     private OnItemSwipeListener onItemSwipeListener;
     private Context context;
@@ -46,13 +48,13 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 
     private ListCart listCart;
 
+    String Gia;
+
+    private boolean isAllSelected = false;
     ArrayList<ProductForCart> listProductForCart = new ArrayList<>();
 
-    private boolean isCheckBoxChecked = false;
 
-    SwipeLayout swipeLayout;
     String TAG = "bbbbbbbbbb";
-
 
 
     public Cart_Adapter(ArrayList<ProductOrderCart> listProduct, Context context, Cart_Fragment cartFragment, ArrayList<ProductForCart> listProductForCart) {
@@ -74,8 +76,8 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
     public Cart_Adapter.CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_cart, parent, false);
 
-        return new CartViewHolder(view);
 
+        return new CartViewHolder(view);
     }
 
     @Override
@@ -85,25 +87,29 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
         Glide.with(context).load(productOrderCart.getProductForCart().getImage_url()).into(holder.imgListProduct);
         holder.priceListProduct.setText(productOrderCart.getProductForCart().getPrice() + " ");
         holder.SizeCart.setText(productOrderCart.getSize());
+        holder.soluong.setText(productOrderCart.getQuantity()+"");
 
-
-//        holder.deleteItem.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                    deleteCart(productOrderCart);
-//            }
-//        });
+        holder.checkboxproduct.setChecked(Cart_Fragment.isCheckall);
 
 
         holder.checkboxproduct.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-              if(isChecked){
-                  cartFragment.listProductSelected.add(productOrderCart);
-              }else {
-                  cartFragment.listProductSelected.remove(productOrderCart);
-              }
 
+                if (isChecked) {
+                    cartFragment.listProductSelected.add(productOrderCart);
+
+                } else {
+
+                    cartFragment.listProductSelected.remove(productOrderCart);
+                }
+                int sum = 0;
+                for (int i = 0; i < cartFragment.listProductSelected.size(); i++) {
+                    sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()
+                            *Cart_Fragment.listProductSelected.get(i).getQuantity());
+
+                }
+                cartFragment.sumProduct.setText(sum + "");
             }
         });
 
@@ -133,10 +139,11 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
     }
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgListProduct, imgdeleteProduct;
+        ImageView imgListProduct;
         TextView nameListProduct, priceListProduct, SizeCart;
-        CheckBox checkBoxall, checkboxproduct;
+        CheckBox checkboxproduct;
         Button deleteItem;
+        TextView soluong;
 
 
 
@@ -146,41 +153,10 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
             nameListProduct = itemView.findViewById(R.id.NameProductCart);
             priceListProduct = itemView.findViewById(R.id.PriceProductCart);
             SizeCart = itemView.findViewById(R.id.sizeCart);
-            checkboxproduct= itemView.findViewById(R.id.CheckboxProductCart);
             deleteItem = itemView.findViewById(R.id.buttonDelete);
-//            swipeLayout = itemView.findViewById(R.id.swipeLayout);
-//
-//            swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
-//                @Override
-//                public void onStartOpen(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.VISIBLE);
-//                }
-//
-//                @Override
-//                public void onOpen(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.VISIBLE);
-//                }
-//
-//                @Override
-//                public void onStartClose(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.GONE);
-//                }
-//
-//                @Override
-//                public void onClose(SwipeLayout layout) {
-//                    deleteItem.setVisibility(View.GONE);
-//                }
-//
-//                @Override
-//                public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-//
-//                }
-//
-//                @Override
-//                public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-//
-//                }
-//            });
+            checkboxproduct = itemView.findViewById(R.id.CheckboxProductCart);
+             soluong= itemView.findViewById(R.id.SoluongforCart);
+
         }
     }
 
@@ -190,22 +166,27 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
         call.enqueue(new Callback<Delete_Cart>() {
             @Override
             public void onResponse(Call<Delete_Cart> call, Response<Delete_Cart> response) {
-                int Sum=0;
+                int Sum = 0;
                 Log.d("Response :=>", response.body() + "");
                 if (response.isSuccessful() && response.body() != null) {
                     Delete_Cart deleteCart = response.body();
                     listProduct.remove(productOrderCart);
+                    if(cartFragment.listProductSelected.contains(productOrderCart)){
+
+                        cartFragment.listProductSelected.remove(productOrderCart);
+                    }
                     notifyDataSetChanged();
                     cartFragment.sumProductHealCart.setText(listProduct.size() + " ");
                     for (int i = 0; i < listProduct.size(); i++) {
                         Sum += listProduct.get(i).getProductForCart().getPrice();
                     }
-                    cartFragment.sumProduct.setText(Sum + " ");
+//                    cartFragment.sumProduct.setText(Sum + " ");
                     Toast.makeText(context, deleteCart.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Log.d("zzzzzzzz", "null data");
                 }
             }
+
             @Override
             public void onFailure(Call<Delete_Cart> call, Throwable t) {
             }
@@ -237,4 +218,6 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 //            notifyItemChanged(position);
 //        }
 //    }
+
+
 }
