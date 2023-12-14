@@ -38,14 +38,14 @@ import retrofit2.Response;
 
 public class Profile_Fragment extends Fragment {
     Context context;
-    LinearLayout tv_next;
-    TextView tv_fanpage, tv_exit, tv_email_store, tv_sdt_store, tv_name_pro, tv_sdt_pro,tv_donhang;
+    LinearLayout tv_next, tv_sdt_store, tv_fanpage, tv_donhang, tv_email_store, tv_exit;
+    TextView tv_name_pro, tv_sdt_pro;
 
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_, container, false);
-context = getContext();
+        context = getContext();
         tv_next = view.findViewById(R.id.tv_next_taikhoan);
         tv_fanpage = view.findViewById(R.id.tv_facebook);
         tv_sdt_store = view.findViewById(R.id.tv_sdt_store);
@@ -60,11 +60,10 @@ context = getContext();
         tv_donhang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),OderHisActivity.class);
+                Intent intent = new Intent(getActivity(), OderHisActivity.class);
                 startActivity(intent);
             }
         });
-
 
 
         tv_email_store.setOnClickListener(new View.OnClickListener() {
@@ -135,11 +134,11 @@ context = getContext();
 
                                         SharedPreferences preferences = context.getSharedPreferences("infologin", context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = preferences.edit();
-                                        editor.putString("user_id","");
-                                        editor.putString("full_name","");
-                                        editor.putString("phone_number","");
-                                        editor.putString("email","");
-                                        editor.putString("address","");
+                                        editor.putString("user_id", "");
+                                        editor.putString("full_name", "");
+                                        editor.putString("phone_number", "");
+                                        editor.putString("email", "");
+                                        editor.putString("address", "");
                                         editor.commit();
 
 
