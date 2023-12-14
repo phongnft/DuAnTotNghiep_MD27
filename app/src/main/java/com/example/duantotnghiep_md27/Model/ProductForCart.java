@@ -18,9 +18,12 @@ public class ProductForCart {
     @SerializedName("creation_date")
     private String creation_date;
 
+    @SerializedName("quantity")
+    private int quantity;
+
     private Boolean IScheck = true;
 
-    public ProductForCart(String product_id, String product_name, int price, String image_url, String description, String category_id, String creation_date, Boolean IScheck) {
+    public ProductForCart(String product_id, String product_name, int price, String image_url, String description, String category_id, String creation_date, Boolean IScheck,int quantity) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
@@ -28,6 +31,7 @@ public class ProductForCart {
         this.description = description;
         this.category_id = category_id;
         this.creation_date = creation_date;
+        this.quantity = quantity;
         this.IScheck = IScheck;
     }
 
@@ -85,6 +89,14 @@ public class ProductForCart {
 
     public void setCreation_date(String creation_date) {
         this.creation_date = creation_date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Boolean getIScheck() {

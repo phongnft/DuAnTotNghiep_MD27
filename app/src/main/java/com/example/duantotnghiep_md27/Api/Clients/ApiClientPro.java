@@ -2,6 +2,7 @@ package com.example.duantotnghiep_md27.Api.Clients;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClientPro {
     private static final String BASE_URL = "http:/192.168.110.109/:3000/";
@@ -13,6 +14,7 @@ public class ApiClientPro {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .build();
         }
         return retrofit;

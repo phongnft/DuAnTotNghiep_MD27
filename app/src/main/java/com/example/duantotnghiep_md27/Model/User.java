@@ -14,16 +14,7 @@ public class User {
     public User() {
     }
 
-//    public User(String user_id, String full_name, String phone_number, String password, String email, String status, String otp, String address) {
-//        this.user_id = user_id;
-//        this.full_name = full_name;
-//        this.phone_number = phone_number;
-//        this.password = password;
-//        this.email = email;
-//        this.status = status;
-//        this.otp = otp;
-//        this.address = address;
-//    }
+
 
     public User(String full_name, String phone_number, String email, String password) {
         this.full_name = full_name;

@@ -6,19 +6,40 @@
     android:orientation="vertical"
     tools:context=".Fragment.History_Pay">
 
-   <ImageView
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
        android:layout_marginTop="10dp"
        android:layout_marginLeft="5dp"
-       android:layout_width="20dp"
-       android:layout_height="20dp"
-       android:background="@drawable/iconback"
        >
 
-   </ImageView>
+      <ImageView
+
+          android:layout_width="20dp"
+          android:layout_height="20dp"
+          android:background="@drawable/iconback"
+          >
+
+      </ImageView>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+         android:text="Lịch sử mua hàng"
+          android:textSize="20dp"
+          android:textStyle="bold"
+          >
+      </TextView>
+   </LinearLayout>
+
 
    <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="wrap_content"
+
+       >
 
    </androidx.recyclerview.widget.RecyclerView>
 

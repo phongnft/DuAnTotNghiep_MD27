@@ -8,7 +8,7 @@ public class OderProduct {
     @SerializedName("product_name")
     private String product_name;
     @SerializedName("price")
-    private double price;
+    private int price;
     @SerializedName("image_url")
     private String image_url;
     @SerializedName("description")
@@ -18,9 +18,9 @@ public class OderProduct {
     @SerializedName("creation_date")
     private String creation_date;
     @SerializedName("quantity")
-    private double quantity;
+    private int quantity;
 
-    public OderProduct(String product_id, String product_name, double price, String image_url, String description, String category_id, String creation_date, double quantity) {
+    public OderProduct(String product_id, String product_name, int price, String image_url, String description, String category_id, String creation_date, int quantity) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
@@ -47,11 +47,11 @@ public class OderProduct {
         this.product_name = product_name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -87,11 +87,11 @@ public class OderProduct {
         this.creation_date = creation_date;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }
