@@ -1,6 +1,8 @@
 package com.example.duantotnghiep_md27.Api;
 
+import com.example.duantotnghiep_md27.Model.BannerData;
 import com.example.duantotnghiep_md27.Model.Category;
+import com.example.duantotnghiep_md27.Model.CategoryResult;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
 import com.example.duantotnghiep_md27.Model.ListCart;
 import com.example.duantotnghiep_md27.Model.MyInfo;
@@ -30,12 +32,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api_Service {
-    @GET("cart/history/1")
-    Call<OderCall>getOrders();
-
-    @GET("users/getalluser")
-    Call<User> getUser();
-
 
     @POST("user/createuser")
     Call<UserRegister> register(@Body User user);
@@ -61,19 +57,29 @@ public interface Api_Service {
 
     @GET("products/getallproducts")
     Call<ProductData> getproductData();
-    @POST("cart/orderproduct")
-    Call<OrderProductResponse> PostCartProduct(@Header("Content-Type") String contentType, @Body OrderProduct orderProduct);
 
-
-    @GET("cart/getlistorder/{user_id}")
-    Call<ListCart> getListCartProduct(@Path("user_id") String user_id);
     @GET("duantotnghiep_md27")
     Call<List<User>> getListUser(
             @Query("duantotnghiep_md27") String key
     );
 
-    @DELETE("cart/deleteitemcart/{product_id}")
-    Call<Delete_Cart> delete_Product_Cart(@Path("product_id") String product_id);
+    @GET("banner/getlistbanner")
+    Call<BannerData> getBanner();
+
+
+
+
+
+    @GET("products/searchproductsbyname/{name}")
+    Call<ProductData> searchProductsByName(@Path("name") String name);
+
+
+
+
+    @GET("categoty/getlistcategory")
+    Call<CategoryResult> getCategoryHome();
+
+
     @GET("demo2")
     Call<List<Product_home>> getData();
 
@@ -83,6 +89,18 @@ public interface Api_Service {
 
     @GET("category")
     Call<List<Category>> getCategory();
+
+    @DELETE("cart/deleteitemcart/{product_id}")
+    Call<Delete_Cart> delete_Product_Cart(@Path("product_id") String product_id);
+
+    @POST("cart/orderproduct")
+    Call<OrderProductResponse> PostCartProduct(@Header("Content-Type") String contentType, @Body OrderProduct orderProduct);
+
+    @GET("cart/history/1")
+    Call<OderCall>getOrders();
+
+    @GET("cart/getlistorder/{user_id}")
+    Call<ListCart> getListCartProduct(@Path("user_id") String user_id);
 
     @GET("products/{category_id}")
     Call<List<Product_home>> getProductsByCategory(@Path("category_id") String idCategory);

@@ -12,5 +12,11 @@
         android:id="@+id/notifications"
         android:icon="@drawable/baseline_notifications_24"
         android:title="Thông báo" />
+    <item
+        android:id="@+id/action_search"
+        android:title="Tìm kiếm"
+        android:icon="@drawable/baseline_search_24"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
 
 </menu>

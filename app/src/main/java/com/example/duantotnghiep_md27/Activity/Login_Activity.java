@@ -57,6 +57,7 @@ public class Login_Activity extends AppCompatActivity {
         userString = localStorage.getUserLogin();
         user = gson.fromJson(userString, User.class);
         firebaseToken = localStorage.getFirebaseToken();
+
         progress = findViewById(R.id.progress_bar);
         btnLogin = findViewById(R.id.btnLogin);
         edtphone = findViewById(R.id.edt_phoneLog);
@@ -69,7 +70,6 @@ public class Login_Activity extends AppCompatActivity {
         });
         btnLogin.setOnClickListener(view -> {
             checkValidation();
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
 
         forgotpass.setOnClickListener(view -> {
