@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.daimajia.swipe.SwipeLayout;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
@@ -50,7 +49,7 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 
     private boolean isCheckBoxChecked = false;
 
-    SwipeLayout swipeLayout;
+
     String TAG = "bbbbbbbbbb";
 
 

@@ -57,7 +57,6 @@ public class Login_Activity extends AppCompatActivity {
         userString = localStorage.getUserLogin();
         user = gson.fromJson(userString, User.class);
         firebaseToken = localStorage.getFirebaseToken();
-
         progress = findViewById(R.id.progress_bar);
         btnLogin = findViewById(R.id.btnLogin);
         edtphone = findViewById(R.id.edt_phoneLog);
@@ -69,7 +68,7 @@ public class Login_Activity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Register_Activity.class));
         });
         btnLogin.setOnClickListener(view -> {
-//            checkValidation();
+            checkValidation();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
 
@@ -115,19 +114,27 @@ public class Login_Activity extends AppCompatActivity {
 
                         String userString = gson.toJson(userLogin);
                         localStorage.createUserLoginSession(userString);
+                        Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getEmail(), Toast.LENGTH_LONG).show();
+
+
                         if (userLogin.getData().getUser().getStatus().equalsIgnoreCase("2")) {
                             startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "davao", Toast.LENGTH_LONG).show();
 
+                            //toast được
+                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getOtp(), Toast.LENGTH_LONG).show();
 
-                            infolog(userLogin.getData().getUser().getUser_id(),
+ //userLogin.getData().getUser().getUser_id() cái nay ko gọi đc kiểm tra lại
+                             infolog(userLogin.getData().getUser().getUser_id(),
                                     userLogin.getData().getUser().getImage_url(),
                                     userLogin.getData().getUser().getFull_name(),
                                     userLogin.getData().getUser().getPhone_number(),
                                     userLogin.getData().getUser().getEmail(),
-                                    userLogin.getData().getUser().getAddress()
+                                    userLogin.getData().getUser().getAddress(),
+                                     userLogin.getData().getUser().getPassword(),
+                                     userLogin.getData().getUser().getOtp()
+
                             );
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
@@ -170,7 +177,7 @@ public class Login_Activity extends AppCompatActivity {
     private void showProgressDialog() {
         progress.setVisibility(View.VISIBLE);
     }
-    public void infolog(String user_id,String image_url,String full_name,String phone_number,String email,String address){
+    public void infolog(String user_id,String image_url,String full_name,String phone_number,String email,String address,String password,String otp){
         SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("user_id",user_id);
@@ -179,8 +186,12 @@ public class Login_Activity extends AppCompatActivity {
         editor.putString("phone_number",phone_number);
         editor.putString("email",email);
         editor.putString("address",address);
+        editor.putString("password",password);
+        editor.putString("otp",otp);
         editor.putBoolean("isLoggedIn", true);
-        editor.apply();
+        editor.commit();
+        Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();
+
         Toast.makeText(getApplicationContext(), "Luu thong tin ok", Toast.LENGTH_LONG).show();
 
     }

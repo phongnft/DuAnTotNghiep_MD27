@@ -25,18 +25,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.Objects;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
+
 
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -48,6 +43,8 @@ public class EditProfileActivity extends AppCompatActivity {
     Button btnUpdate;
     private Uri filePath;
     private FirebaseAuth mAuth;
+
+
     private FirebaseStorage storage;
     private StorageReference storageReference;
     SharedPreferences preferences;

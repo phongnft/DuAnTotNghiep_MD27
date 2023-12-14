@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.ResActivity">
+
+  <FrameLayout
+      android:id="@+id/Res_pass_FL"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <TextView
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="100dp"
+          android:padding="10dp"
+          android:text="Vui lòng điền sdt đăng ký"
+          android:textColor="@color/black"
+          android:textSize="17sp" />
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="65dp"
+          android:layout_marginTop="20dp"
+          android:gravity="bottom">
+
+        <EditText
+            android:id="@+id/edt_Res_Mobi"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawablePadding="8dp"
+            android:gravity="bottom"
+            android:hint="mobile"
+            android:maxLength="12"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="2px"
+          android:background="@color/colorPrimaryDark" />
+
+      <RelativeLayout
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/backToLoginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="5dp"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/res_summit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:padding="5dp"
+            android:text="Submit"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+      </RelativeLayout>
+    </LinearLayout>
+
+  </FrameLayout>
+  <FrameLayout
+      android:id="@+id/Res_pass_FL_info"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/otp_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:digits="0123456789"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="Reset code"
+            android:inputType="phone"
+            android:maxLength="6"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="2px"
+          android:background="@color/colorPrimaryDark" />
+
+      <androidx.coordinatorlayout.widget.CoordinatorLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edt_oldpass"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/progress"
+            android:drawablePadding="10dp"
+            android:hint="Mật khẩu cũ"
+            android:padding="15dp" />
+
+        <ImageView
+            android:id="@+id/showPass1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_email_if" />
+      </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="2px"
+          android:background="@color/colorPrimaryDark" />
+
+      <androidx.coordinatorlayout.widget.CoordinatorLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edt_newpass"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/progress"
+            android:drawablePadding="10dp"
+            android:hint="Mật khẩu mới "
+            android:padding="15dp" />
+
+        <ImageView
+            android:id="@+id/showPass2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_email_if" />
+      </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="2px"
+          android:background="@color/colorPrimaryDark" />
+
+      <androidx.coordinatorlayout.widget.CoordinatorLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edt_retype_newpass"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/progress"
+            android:drawablePadding="10dp"
+            android:hint="Nhập lại mật khẩu mới "
+            android:padding="15dp" />
+
+        <ImageView
+            android:id="@+id/showPass3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_email_if" />
+      </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="2px"
+          android:background="@color/colorPrimaryDark" />
+
+
+      <RelativeLayout
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btndoimatkhau"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_button"
+            android:text="Thay đổi"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+      </RelativeLayout>
+    </LinearLayout>
+
+  </FrameLayout>
+
+  <include
+      android:id="@+id/progress_bar_res_if"
+      layout="@layout/progressbar"
+      android:visibility="gone" />
+
+
+
+
+</LinearLayout>

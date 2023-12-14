@@ -28,23 +28,14 @@ import androidx.fragment.app.Fragment;
 import com.example.duantotnghiep_md27.Activity.Login_Activity;
 import com.example.duantotnghiep_md27.Activity.MyInfo;
 import com.example.duantotnghiep_md27.Activity.OderHisActivity;
-import com.example.duantotnghiep_md27.Api.Api_Service;
-import com.example.duantotnghiep_md27.Api.Clients.ApiClientPro;
-import com.example.duantotnghiep_md27.Model.Profile;
+import com.example.duantotnghiep_md27.Activity.ResetPassActivity;
 import com.example.duantotnghiep_md27.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class Profile_Fragment extends Fragment {
     Context context;
     ImageView img_avatar;
-    LinearLayout tv_next;
-    TextView tv_fanpage, tv_exit, tv_email_store, tv_sdt_store, tv_name_pro, tv_sdt_pro, tv_donhang,tv_doimk;
+    LinearLayout tv_next,tv_donhang,tv_doimk,tv_fanpage,tv_exit,tv_email_store, tv_sdt_store;
+    TextView  tv_name_pro, tv_sdt_pro;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -76,6 +67,14 @@ public class Profile_Fragment extends Fragment {
 
         tv_name_pro.setText(fullname);
         tv_sdt_pro.setText(phone_number);
+
+        tv_doimk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ResetPassActivity.class);
+                startActivity(intent);
+            }
+        });
         tv_donhang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

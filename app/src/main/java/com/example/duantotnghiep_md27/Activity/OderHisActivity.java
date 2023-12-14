@@ -41,8 +41,6 @@ public class OderHisActivity extends AppCompatActivity {
         rycOderHis = findViewById(R.id.ryc_Oderhis);
         oder_list = new ArrayList<>();
         getOderhis();
-
-
         rycOderHis.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
 
