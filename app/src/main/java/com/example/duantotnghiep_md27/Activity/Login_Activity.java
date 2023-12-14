@@ -1,13 +1,10 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -22,13 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
-import com.example.duantotnghiep_md27.Fragment.Home_Fragment;
 import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserLogin;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.Utils.CustomToast;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -37,7 +34,8 @@ import retrofit2.Response;
 
 public class Login_Activity extends AppCompatActivity {
 
-    View view;
+    TextInputLayout layoutpass, layoutmail;
+
 
     LinearLayout loginLayout;
     private RelativeLayout loginlayout;
@@ -77,7 +75,8 @@ public class Login_Activity extends AppCompatActivity {
         edtpass = findViewById(R.id.edt_passLog);
         forgotpass = findViewById(R.id.forgot_password);
         createaccount = findViewById(R.id.createAccount);
-        loginlayout = findViewById(R.id.loginlayout);
+        layoutpass = findViewById(R.id.layoutpass);
+        layoutmail = findViewById(R.id.layoutmail);
 
         shakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.shake);
@@ -129,51 +128,23 @@ public class Login_Activity extends AppCompatActivity {
                 if (response != null) {
 
                     UserLogin userLogin = response.body();
-
                     if (userLogin != null && response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "khac null", Toast.LENGTH_LONG).show();
-
                         String userString = gson.toJson(userLogin);
                         localStorage.createUserLoginSession(userString);
-                        Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getEmail(), Toast.LENGTH_LONG).show();
-
-
                         if (userLogin.getData().getUser().getStatus().equalsIgnoreCase("2")) {
                             startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
-
+                            finish();
                         } else {
-
-                            //toast được
-                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getOtp(), Toast.LENGTH_LONG).show();
-
- //userLogin.getData().getUser().getUser_id() cái nay ko gọi đc kiểm tra lại
-                             infolog(userLogin.getData().getUser().getUser_id(),
-                                    userLogin.getData().getUser().getImage_url(),
-                                    userLogin.getData().getUser().getFull_name(),
-                                    userLogin.getData().getUser().getPhone_number(),
-                                    userLogin.getData().getUser().getEmail(),
-                                    userLogin.getData().getUser().getAddress(),
-                                     userLogin.getData().getUser().getPassword(),
-                                     userLogin.getData().getUser().getOtp()
-
-                            );
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-
-                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getUser_id(), Toast.LENGTH_LONG).show();
-                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getPhone_number(), Toast.LENGTH_LONG).show();
-                            Toast.makeText(getApplicationContext(), userLogin.getData().getUser().getEmail(), Toast.LENGTH_LONG).show();
-
-//                            String user_id,String full_name,String phone_number,String email,String image_url,String address){
-//        SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
+                            finish();
                         }
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_LONG).show();
+                        new CustomToast().Show_Toast(Login_Activity.this, loginLayout, "Sai tài khoản hoặc mật khẩu");
                     }
 
                 } else {
-                    new CustomToast().Show_Toast(getApplicationContext(), view, "Lỗi rồi");
+                    new CustomToast().Show_Toast(getApplicationContext(), loginLayout, "Vui lòng thử lại sau");
                 }
                 hideProgressDialog();
             }
@@ -197,24 +168,6 @@ public class Login_Activity extends AppCompatActivity {
 
     private void showProgressDialog() {
         progress.setVisibility(View.VISIBLE);
-    }
-    public void infolog(String user_id,String image_url,String full_name,String phone_number,String email,String address,String password,String otp){
-        SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("user_id",user_id);
-        editor.putString("image_url",image_url);
-        editor.putString("full_name",full_name);
-        editor.putString("phone_number",phone_number);
-        editor.putString("email",email);
-        editor.putString("address",address);
-        editor.putString("password",password);
-        editor.putString("otp",otp);
-        editor.putBoolean("isLoggedIn", true);
-        editor.commit();
-        Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();
-
-        Toast.makeText(getApplicationContext(), "Luu thong tin ok", Toast.LENGTH_LONG).show();
-
     }
 
 }

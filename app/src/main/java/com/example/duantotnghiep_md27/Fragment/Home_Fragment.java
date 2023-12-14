@@ -57,7 +57,7 @@ public class Home_Fragment extends Fragment {
     ImageView cartIcon, noIcon;
 
     ViewPager2 viewPager2;
-    Token token;
+    View progress;
     private RecyclerView new_product_recyclerView, product_recyclerView, category_recyclerView;
     private Product_homeAdapter product_homeAdapter;
     private HomeCategoryAdapter homeCategoryAdapter;
@@ -82,6 +82,7 @@ public class Home_Fragment extends Fragment {
         category_recyclerView = view.findViewById(R.id.recycleview_category);
         bottomNavigationView = view.findViewById(R.id.bottomnavmenu);
         viewPager2 = view.findViewById(R.id.smartSlider);
+        progress = view.findViewById(R.id.progress_bar);
         edtSearch = view.findViewById(R.id.edtSearch);
         cartIcon = view.findViewById(R.id.CartIcon);
         noIcon = view.findViewById(R.id.NotiIcon);
@@ -118,7 +119,7 @@ public class Home_Fragment extends Fragment {
     }
 
     private void getBannerData() {
-//        showProgressDialog();
+        showProgressDialog();
         Call<BannerData> call = RestClient.getRestService(getContext()).getBanner();
         call.enqueue(new Callback<BannerData>() {
             @Override
@@ -133,12 +134,12 @@ public class Home_Fragment extends Fragment {
 
 
                 }
-//                hideProgressDialog();
+                hideProgressDialog();
             }
 
             @Override
             public void onFailure(Call<BannerData> call, Throwable t) {
-//                hideProgressDialog();
+                hideProgressDialog();
             }
         });
     }
@@ -184,6 +185,7 @@ public class Home_Fragment extends Fragment {
 
 
     private void getAllProduct() {
+        showProgressDialog();
         Call<ProductData> call = RestClient.getRestService(getContext()).getproductData();
         call.enqueue(new Callback<ProductData>() {
             @Override
@@ -202,6 +204,7 @@ public class Home_Fragment extends Fragment {
                 } else {
 
                 }
+                hideProgressDialog();
             }
 
             @Override
@@ -233,8 +236,7 @@ public class Home_Fragment extends Fragment {
 
 
     private void getCategoryData() {
-
-//        showProgressDialog();
+        showProgressDialog();
 
         Call<CategoryResult> call = RestClient.getRestService(getContext()).getCategoryHome();
         call.enqueue(new Callback<CategoryResult>() {
@@ -253,7 +255,7 @@ public class Home_Fragment extends Fragment {
 
                 }
 
-//                hideProgressDialog();
+                hideProgressDialog();
             }
 
             @Override
@@ -274,6 +276,14 @@ public class Home_Fragment extends Fragment {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.framehome, fragment).commit();
+    }
+
+    private void hideProgressDialog() {
+        progress.setVisibility(View.GONE);
+    }
+
+    private void showProgressDialog() {
+        progress.setVisibility(View.VISIBLE);
     }
 
 }

@@ -2,24 +2,19 @@ package com.example.duantotnghiep_md27.Activity;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.MainActivity;
@@ -27,11 +22,8 @@ import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserLogin;
 import com.example.duantotnghiep_md27.Model.UserOTP;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.Utils.CustomToast;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
-import com.example.duantotnghiep_md27.permission.PinEntryEdittex;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -40,9 +32,8 @@ import retrofit2.Response;
 
 public class OTP_Activity extends AppCompatActivity {
 
+    LinearLayout OTPLayout;
 
-    private PinEntryEdittex pinEntryEdittex;
-    String otp;
     CountDownTimer cTimer = null;
     LinearLayout resendLayout, timerLayout;
     TextView timer, mail, phone;
@@ -53,17 +44,14 @@ public class OTP_Activity extends AppCompatActivity {
     LocalStorage localStorage;
     private int SelectOTPposition = 0;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
 
-//        final PinEntryEdittex pinEntry = findViewById(R.id.txt_pin_entry);
         resendLayout = findViewById(R.id.resend_otp_layout);
         timerLayout = findViewById(R.id.timer_layout);
         timer = findViewById(R.id.timer);
-//        emailText = findViewById(R.id.email_verify_text);
         progress = findViewById(R.id.progress_bar);
 
         otp1 = findViewById(R.id.otp1);
@@ -74,11 +62,12 @@ public class OTP_Activity extends AppCompatActivity {
         otp6 = findViewById(R.id.otp6);
         mail = findViewById(R.id.tvmail);
         phone = findViewById(R.id.tvphone);
+        OTPLayout = findViewById(R.id.line1);
         NextfocusOTP();
         RemovefocusOTP();
 
 
-        localStorage = new LocalStorage(getApplicationContext());
+        localStorage = new LocalStorage(OTP_Activity.this);
         String userString = localStorage.getUserLogin();
         user = gson.fromJson(userString, User.class);
 
@@ -86,11 +75,6 @@ public class OTP_Activity extends AppCompatActivity {
             mail.setText(user.getEmail());
             phone.setText(user.getPhone_number());
         }
-
-
-//        if (user != null) {
-//            emailText.setText("Please verify your email using OTP send to your register Mobile Number   " + user.getPhone_number());
-//        }
 
 
     }
@@ -240,7 +224,6 @@ public class OTP_Activity extends AppCompatActivity {
 
     //Click xác minh OTP
     public void onVerifyOTPClicked(View view) {
-        progress.setVisibility(View.VISIBLE);
         String getotp1 = otp1.getText().toString();
         String getotp2 = otp2.getText().toString();
         String getotp3 = otp3.getText().toString();
@@ -250,8 +233,9 @@ public class OTP_Activity extends AppCompatActivity {
         String getallOTP = getotp1 + getotp2 + getotp3 + getotp4 + getotp5 + getotp6;
 
         if (getallOTP.length() < 6) {
-            Toast.makeText(this, "Vui lòng điền đầy đủ OTP", Toast.LENGTH_SHORT).show();
+            new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Vui lòng nhập đúng mã xác minh");
         } else {
+            progress.setVisibility(View.VISIBLE);
             user.setOtp(getallOTP);
 
             Call<UserOTP> call = RestClient.getRestService(getApplicationContext()).verifyOTP(user);
@@ -259,30 +243,21 @@ public class OTP_Activity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<UserOTP> call, Response<UserOTP> response) {
                     if (response != null) {
-//                        Log.d(TAG, "onResponse: Success");
                         UserOTP userOTP = response.body();
                         if (userOTP != null && response.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Status hiện tại là " + userOTP.getData().getStatus(), Toast.LENGTH_SHORT).show();
                             Gson gson = new Gson();
                             String userString = gson.toJson(user);
                             localStorage.createUserLoginSession(userString);
                             Toast.makeText(getApplicationContext(), "Xác minh OTP thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                            infolog(userOTP.getData().getUser_id(),
-//                                    userOTP.getData().getFull_name(),
-//                                    userOTP.getData().getPhone_number(),
-//                                    userOTP.getData().getEmail(),
-//                                    userOTP.getData().getAddress()
-//                            );
-
+                            finish();
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "Mã OTP không chính xác", Toast.LENGTH_SHORT).show();
+                            new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Mã xác minh không chính xác");
                         }
 
-
                     } else {
-                        Toast.makeText(getApplicationContext(), "Vui lòng nhập đúng định dạng OTP.", Toast.LENGTH_SHORT).show();
+                        new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Vui lòng thử lại sau");
                     }
                     progress.setVisibility(View.GONE);
 
@@ -312,20 +287,20 @@ public class OTP_Activity extends AppCompatActivity {
                         Toast.makeText(OTP_Activity.this, "OTP đã được gửi lại đến số điện thoại đăng ký của bạn", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(OTP_Activity.this, "Mã chưa được gửi", Toast.LENGTH_LONG).show();
+                        new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Vui lòng thử lại sau");
 
                     }
 
 
                 } else {
-                    Toast.makeText(OTP_Activity.this, "Máy chủ không phản hồi. Xin hãy thử lại sau một vài giây!", Toast.LENGTH_LONG).show();
+                    new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Máy chủ không phản hồi. Xin hãy thử lại sau một vài giây!");
                 }
             }
 
             @Override
             public void onFailure(Call<UserLogin> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
-                Toast.makeText(OTP_Activity.this, "Máy chủ không phản hồi. Xin hãy thử lại sau một vài giây!", Toast.LENGTH_LONG).show();
+                new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Máy chủ không phản hồi. Xin hãy thử lại sau một vài giây!");
 
             }
         });
@@ -363,16 +338,6 @@ public class OTP_Activity extends AppCompatActivity {
         if (cTimer != null)
             cTimer.cancel();
     }
-//    public void infolog(String user_id,String full_name,String phone_number,String email,String address){
-//        SharedPreferences preferences = getSharedPreferences("infologin",MODE_PRIVATE);
-//        SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString("user_id",user_id);
-//        editor.putString("full_name",full_name);
-//        editor.putString("phone_number",phone_number);
-//        editor.putString("email",email);
-//        editor.putString("address",address);
-//
-//
-//    }
+
 
 }

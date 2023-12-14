@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -81,7 +82,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView title;
-        LinearLayout ll;
+        CardView ll;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
