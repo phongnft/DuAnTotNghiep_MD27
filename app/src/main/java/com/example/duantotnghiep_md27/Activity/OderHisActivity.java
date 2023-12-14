@@ -41,8 +41,6 @@ public class OderHisActivity extends AppCompatActivity {
         rycOderHis = findViewById(R.id.ryc_Oderhis);
         oder_list = new ArrayList<>();
         getOderhis();
-
-
         rycOderHis.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
 
@@ -82,16 +80,6 @@ public class OderHisActivity extends AppCompatActivity {
         rycOderHis.setAdapter(oderHisAdapter);
 
 
-//        if (!oder_list.isEmpty()) {
-//            oderHisAdapter = new OderHisAdapter(oder_list, OderHisActivity.this, "product");
-//            RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(OderHisActivity.this, 2, LinearLayoutManager.VERTICAL, false);
-//            rycOderHis.setLayoutManager(nLayoutManager);
-//            rycOderHis.setAdapter(oderHisAdapter);
-//        } else {
-//            // Xử lý khi danh sách rỗng
-//            Log.d("Empty List", "Danh sách lịch sử thanh toán rỗng.");
-//        }
-//    }
 
     }
 }

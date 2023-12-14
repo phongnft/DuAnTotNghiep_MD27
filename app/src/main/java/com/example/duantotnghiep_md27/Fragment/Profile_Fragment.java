@@ -1,5 +1,7 @@
 package com.example.duantotnghiep_md27.Fragment;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -15,6 +17,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,27 +28,20 @@ import androidx.fragment.app.Fragment;
 import com.example.duantotnghiep_md27.Activity.Login_Activity;
 import com.example.duantotnghiep_md27.Activity.MyInfo;
 import com.example.duantotnghiep_md27.Activity.OderHisActivity;
-import com.example.duantotnghiep_md27.Api.Api_Service;
-import com.example.duantotnghiep_md27.Api.Clients.ApiClientPro;
-import com.example.duantotnghiep_md27.Model.Profile;
+import com.example.duantotnghiep_md27.Activity.ResetPassActivity;
 import com.example.duantotnghiep_md27.R;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
+import com.squareup.picasso.Picasso;
 public class Profile_Fragment extends Fragment {
     Context context;
-    LinearLayout tv_next;
-    TextView tv_fanpage, tv_exit, tv_email_store, tv_sdt_store, tv_name_pro, tv_sdt_pro,tv_donhang;
+    ImageView img_avatar;
+    LinearLayout tv_next,tv_donhang,tv_doimk,tv_fanpage,tv_exit,tv_email_store, tv_sdt_store;
+    TextView  tv_name_pro, tv_sdt_pro;
 
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_, container, false);
-context = getContext();
+        context = getContext();
         tv_next = view.findViewById(R.id.tv_next_taikhoan);
         tv_fanpage = view.findViewById(R.id.tv_facebook);
         tv_sdt_store = view.findViewById(R.id.tv_sdt_store);
@@ -54,17 +50,38 @@ context = getContext();
         tv_sdt_pro = view.findViewById(R.id.tv_sdt_pro);
         tv_name_pro = view.findViewById(R.id.tv_name_pro);
         tv_donhang = view.findViewById(R.id.tv_donhang);
-        String maND = "1"; // Thay bằng giá trị thực tế
-//        fetchProfileData(maND);
+        img_avatar = view.findViewById(R.id.img_avatar);
+        tv_doimk = view.findViewById(R.id.tv_doimk);
 
-        tv_donhang.setOnClickListener(new View.OnClickListener() {
+        SharedPreferences preferences = context.getSharedPreferences("infologin", context.MODE_PRIVATE);
+        String fullname = preferences.getString("full_name", "");
+        String phone_number = preferences.getString("phone_number", "");
+        String image_url = preferences.getString("image_url", "");
+        if (!image_url.isEmpty()) {
+            // Sử dụng Picasso để hiển thị ảnh
+            Picasso.get().load(image_url).into(img_avatar);
+        } else {
+            Toast.makeText(getContext(),"trống", Toast.LENGTH_SHORT).show();
+
+        }
+
+        tv_name_pro.setText(fullname);
+        tv_sdt_pro.setText(phone_number);
+
+        tv_doimk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),OderHisActivity.class);
+                Intent intent = new Intent(getActivity(), ResetPassActivity.class);
                 startActivity(intent);
             }
         });
-
+        tv_donhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), OderHisActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         tv_email_store.setOnClickListener(new View.OnClickListener() {
@@ -133,13 +150,14 @@ context = getContext();
                                     public void run() {
                                         progressDialog.dismiss();
 
-                                        SharedPreferences preferences = context.getSharedPreferences("infologin", context.MODE_PRIVATE);
+
                                         SharedPreferences.Editor editor = preferences.edit();
-                                        editor.putString("user_id","");
-                                        editor.putString("full_name","");
-                                        editor.putString("phone_number","");
-                                        editor.putString("email","");
-                                        editor.putString("address","");
+                                        editor.putString("user_id", "");
+                                        editor.putString("full_name", "");
+                                        editor.putString("phone_number", "");
+                                        editor.putString("email", "");
+                                        editor.putString("address", "");
+                                        editor.putBoolean("isLoggedIn", false);
                                         editor.commit();
 
 
@@ -157,45 +175,5 @@ context = getContext();
 
         return view;
     }
-
-//    private void fetchProfileData(String maND) {
-//        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-//        progressDialog.setMessage("Đang tải dữ liệu...");
-//        progressDialog.show();
-//
-//        Api_Service apiService = ApiClientPro.getClient().create(Api_Service.class);
-//        Call<List<Profile>> call = apiService.getProfileData(maND);
-//
-//        call.enqueue(new Callback<List<Profile>>() {
-//            @Override
-//            public void onResponse(@NonNull Call<List<Profile>> call, @NonNull Response<List<Profile>> response) {
-//                progressDialog.dismiss();
-//
-//                if (response.isSuccessful()) {
-//                    List<Profile> profiles = response.body();
-//
-//                    if (profiles != null && !profiles.isEmpty()) {
-//                        // Giả sử bạn muốn hiển thị hồ sơ đầu tiên trong danh sách
-//                        Profile profile = profiles.get(0);
-//
-//                        tv_name_pro.setText(profile.getTenND());
-//                        tv_sdt_pro.setText(profile.getSDTND());
-//                    } else {
-//                        Toast.makeText(getActivity(), "Danh sách Profile trống", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(getActivity(), "Lỗi khi tải dữ liệu từ API", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<List<Profile>> call, @NonNull Throwable t) {
-//                progressDialog.dismiss();
-//                Toast.makeText(getActivity(), "Lỗi kết nối đến API", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
-    // (Các phần còn lại của mã)
 }
 

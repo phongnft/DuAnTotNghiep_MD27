@@ -16,13 +16,14 @@ import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserOTP;
 import com.example.duantotnghiep_md27.Model.UserRegister;
 import com.example.duantotnghiep_md27.Model.UserLogin;
-import com.example.duantotnghiep_md27.Model.UserResetPass;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -40,11 +41,17 @@ public interface Api_Service {
 
     @POST("user/forgotpassword")
     Call<UserLogin> ForgotPassword(@Body User user);
+    @POST("user/resetpassword")
+    Call<User> Resetpassword(@Body UserLogin user);
 
     @POST("user/forgotpassword")
     Call<UserLogin> resendOTP(@Body User user);
 
-    @POST("user/resetpassword")
+    @POST("user/updateProfile")
+    Call<User> updateInfoUser(@Body User updatedUser);
+
+
+    @PUT("user/resetpassword")
     Call<UserLogin> ConfirmresetPassword(@Body User user);
 
 
@@ -112,6 +119,12 @@ public interface Api_Service {
     Call<MyInfo> updateUser(
             @Path("maND") int maND,
             @Body MyInfo updatedUser
+    );
+    @FormUrlEncoded
+    @POST("change_password_endpoint")
+    Call<Void> changePassword(
+            @Field("old_password") String oldPassword,
+            @Field("new_password") String newPassword
     );
 
 
