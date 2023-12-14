@@ -38,6 +38,9 @@
             android:name=".Activity.Register_Activity"
             android:exported="false" />
         <activity
+            android:name=".Activity.Search_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.Login_Activity"
             android:exported="false" />
         <activity

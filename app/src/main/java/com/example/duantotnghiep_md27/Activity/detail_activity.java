@@ -50,20 +50,18 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     Button btAddcart;
 
 
-    String _id, _name, _price, _description, _image,_quantity;
+    String _id, _name, _price, _description, _image, _quantity;
 
     ImageView btnshare, image;
 
     Button selectedButton;
 
-LocalStorage localStorage;
+    LocalStorage localStorage;
 
-User user;
+    User user;
     Gson gson;
     OrderProduct orderProduct;
-    int soluong=1;
-
-
+    int soluong = 1;
 
 
     @SuppressLint("MissingInflatedId")
@@ -96,7 +94,7 @@ User user;
         localStorage = new LocalStorage(detail_activity.this);
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
-        orderProduct = new OrderProduct(user.getUser_id(), _id,soluong, "s");
+        orderProduct = new OrderProduct(user.getUser_id(), _id, soluong, "s");
 
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +156,7 @@ User user;
 
             @Override
             public void onFailure(Call<OrderProductResponse> call, Throwable t) {
-                Toast.makeText(detail_activity.this, "Không thành công"+" "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(detail_activity.this, "Không thành công" + " " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -188,22 +186,21 @@ User user;
         txq.setText(_quantity + " ");
 
 
-
         upsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 soluong++;
                 orderProduct.setQuantity(soluong);
-                textsoluong.setText(soluong+"");
+                textsoluong.setText(soluong + "");
             }
         });
         downsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(soluong>1){
+                if (soluong > 1) {
                     soluong--;
                     orderProduct.setQuantity(soluong);
-                    textsoluong.setText(soluong+"");
+                    textsoluong.setText(soluong + "");
                 }
             }
         });

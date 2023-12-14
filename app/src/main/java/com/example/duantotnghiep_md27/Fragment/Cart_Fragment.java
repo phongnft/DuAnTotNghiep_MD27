@@ -87,7 +87,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
         ButtonPay = view.findViewById(R.id.pay);
         sumProduct = view.findViewById(R.id.SumProductCart);
         sumProductHealCart = view.findViewById(R.id.SumProducthealCart);
-        imgbackCart = view.findViewById(R.id.backCart);
+//        imgbackCart = view.findViewById(R.id.backCart);
         checkall = view.findViewById(R.id.checkBoxAllItem);
 
         ArrayList<ProductForCart> listProductForCart = new ArrayList<>();
@@ -116,14 +116,14 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
         });
 
 
-        imgbackCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Home_Fragment homeFragment = new Home_Fragment();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.framehome, homeFragment).commit();
-            }
-        });
+//        imgbackCart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Home_Fragment homeFragment = new Home_Fragment();
+//                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.framehome, homeFragment).commit();
+//            }
+//        });
         ButtonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
