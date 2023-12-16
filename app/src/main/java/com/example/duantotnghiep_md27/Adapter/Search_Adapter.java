@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 import com.google.gson.Gson;
@@ -47,24 +48,24 @@ public class Search_Adapter extends RecyclerView.Adapter<Search_Adapter.MyViewHo
         holder.name.setText(product.getProduct_name());
         holder.price.setText(product.getPrice() + "đ");
         Glide.with(context).load(product.getImage_url()).into(holder.imgproduct);
-//        holder.row_ll.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, ProductViewActivity.class);
-//                intent.putExtra("id", product.getId());
-//                intent.putExtra("title", product.getName());
-//                intent.putExtra("image", gson.toJson(product.getImages()));
-//                intent.putExtra("price", product.getPrice());
-//                intent.putExtra("currency", product.getCurrency());
-//                intent.putExtra("attribute", product.getAttribute());
-//                intent.putExtra("discount", product.getDiscount());
-//                intent.putExtra("description", product.getDescription());
-//
-//
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                context.startActivity(intent);
-//            }
-//        });
+        holder.cardViewItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, detail_activity.class);
+                intent.putExtra("id", product.getProduct_id());
+                intent.putExtra("name", product.getProduct_name());
+                intent.putExtra("image", product.getImage_url());
+                intent.putExtra("price", product.getPrice() + "đ");
+                intent.putExtra("description", product.getDescription());
+                intent.putExtra("quantity", product.getQuantity());
+
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                context.startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override
@@ -76,7 +77,6 @@ public class Search_Adapter extends RecyclerView.Adapter<Search_Adapter.MyViewHo
         CardView cardViewItem;
         ImageView imgproduct, imgshopnow;
         TextView price, name;
-        LinearLayout row_ll;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

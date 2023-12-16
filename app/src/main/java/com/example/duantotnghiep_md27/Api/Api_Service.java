@@ -5,6 +5,7 @@ import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.CategoryResult;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
 import com.example.duantotnghiep_md27.Model.ListCart;
+import com.example.duantotnghiep_md27.Model.LoginGoogleData;
 import com.example.duantotnghiep_md27.Model.MyInfo;
 import com.example.duantotnghiep_md27.Model.OderCall;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
@@ -92,6 +93,9 @@ public interface Api_Service {
 
     @POST("user/loginemailpassword")
     Call<UserLogin> login(@Body User user);
+
+    @POST("user/loginemail")
+    Call<LoginGoogleData> loginwithGoogle(@Body User user);
 
     @GET("category")
     Call<List<Category>> getCategory();

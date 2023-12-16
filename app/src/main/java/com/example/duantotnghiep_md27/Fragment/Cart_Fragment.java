@@ -49,8 +49,8 @@ import retrofit2.Response;
 
 public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
     RecyclerView recyclerView;
-        Gson gson;
-        User user;
+    Gson gson = new Gson();
+    User user;
     public static boolean isCheckall = false;
     Button ButtonPay;
 
@@ -65,7 +65,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
 
     Cart_Adapter cartAdapter;
     LocalStorage localStorage;
-
+    String userid;
     CheckBox checkall;
     detail_activity detailActivity;
 
@@ -86,7 +86,9 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
         recyclerView = view.findViewById(R.id.recycleview_cart);
         ButtonPay = view.findViewById(R.id.pay);
         sumProduct = view.findViewById(R.id.SumProductCart);
-        sumProductHealCart = view.findViewById(R.id.SumProducthealCart);
+        localStorage = new LocalStorage(requireContext());
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
+
 //        imgbackCart = view.findViewById(R.id.backCart);
         checkall = view.findViewById(R.id.checkBoxAllItem);
 
@@ -138,7 +140,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
                     userPayfragment.setArguments(bundle);
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
-                }else {
+                } else {
                     Toast.makeText(requireContext(), "Vui lòng chọn sản phẩm thanh toán", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -155,9 +157,8 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
     }
 
     public void GetListProductCart() {
-        gson = new Gson();
-        localStorage = new LocalStorage(requireContext());
-        user = gson.fromJson(localStorage.getUserLogin(), User.class);
+
+
         Call<ListCart> call = RestClient.getRestService(requireContext()).getListCartProduct(user.getUser_id());
         call.enqueue(new Callback<ListCart>() {
             @Override
@@ -168,7 +169,6 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
                     listProductOrder = listCart.getCartDataList().getProductOrderCartArrayList();
 
                     Log.d("aaaaa", listCart.getCartDataList().getTotal());
-                    sumProductHealCart.setText(listProductOrder.size() + " ");
                     cartAdapter.setData(listProductOrder);
                 } else {
                     Log.d("zzzzzzzz", "null data");

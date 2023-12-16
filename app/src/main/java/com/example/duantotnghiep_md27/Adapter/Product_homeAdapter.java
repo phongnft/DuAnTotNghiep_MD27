@@ -58,7 +58,7 @@ public class Product_homeAdapter extends RecyclerView.Adapter<Product_homeAdapte
             intent.putExtra("image", product_home.getImage_url());
             intent.putExtra("price", product_home.getPrice() + "đ");
             intent.putExtra("description", product_home.getDescription());
-            intent.putExtra("quantity",product_home.getQuantity()+" ");
+            intent.putExtra("quantity",product_home.getQuantity());
 
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             context.startActivity(intent);

@@ -165,8 +165,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 Log.d("Response :=>", response.body() + "");
                 if (response != null) {
                     UserLogin userLogin = response.body();
-                    if (userLogin != null) {
-                        startActivity(new Intent(getApplicationContext(), Login_Activity.class));
+                    if (response.code() == 200) {
+                        startActivity(new Intent(ForgotPasswordActivity.this, Login_Activity.class));
                         Toast.makeText(getApplicationContext(), "Lấy lại mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {

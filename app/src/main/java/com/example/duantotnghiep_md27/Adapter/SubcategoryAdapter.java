@@ -1,6 +1,7 @@
 package com.example.duantotnghiep_md27.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryAdapter.MyViewHolder> {
@@ -47,6 +50,25 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryAdapter.
 
         Glide.with(context).load(product_home.getImage_url()).into(holder.imageView);
 
+        holder.cardItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, detail_activity.class);
+                intent.putExtra("id", product_home.getProduct_id());
+                intent.putExtra("name", product_home.getProduct_name());
+                intent.putExtra("image", product_home.getImage_url());
+                intent.putExtra("price", product_home.getPrice() + "đ");
+                intent.putExtra("description", product_home.getDescription());
+                intent.putExtra("quantity", product_home.getQuantity());
+
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                context.startActivity(intent);
+
+
+            }
+        });
+
     }
 
     @Override
@@ -57,14 +79,14 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView title;
-        LinearLayout ll;
+        LinearLayout cardItem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.subcategory_image);
             title = itemView.findViewById(R.id.subcategory_title);
-            ll = itemView.findViewById(R.id.category_item_ll);
+            cardItem = itemView.findViewById(R.id.card_category_item);
         }
     }
 }

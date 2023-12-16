@@ -85,7 +85,7 @@ public class Home_Fragment extends Fragment {
         progress = view.findViewById(R.id.progress_bar);
         edtSearch = view.findViewById(R.id.edtSearch);
         cartIcon = view.findViewById(R.id.CartIcon);
-        noIcon = view.findViewById(R.id.NotiIcon);
+
         cartIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,13 +94,7 @@ public class Home_Fragment extends Fragment {
             }
 
         });
-        noIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new NotificationsFragment());
-//                bottomNavigationView.setSelectedItemId(R.id.notifications);
-            }
-        });
+
 
 
         edtSearch.setOnClickListener(new View.OnClickListener() {

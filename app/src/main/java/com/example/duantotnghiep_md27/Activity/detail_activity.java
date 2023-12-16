@@ -50,16 +50,19 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     Button btAddcart;
 
 
-    String _id, _name, _price, _description, _image, _quantity;
+    String _id, _name, _price, _description, _image, userid;
+    int _quantity;
 
     ImageView btnshare, image;
 
     Button selectedButton;
 
+    Product_home product_home;
+
     LocalStorage localStorage;
 
     User user;
-    Gson gson;
+    Gson gson = new Gson();
     OrderProduct orderProduct;
     int soluong = 1;
 
@@ -70,13 +73,17 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
+        localStorage = new LocalStorage(getApplicationContext());
+        User user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
+
+        userid = user.getUser_id();
         _id = intent.getStringExtra("id");
         _name = intent.getStringExtra("name");
         _price = intent.getStringExtra("price");
         _description = intent.getStringExtra("description");
         _image = intent.getStringExtra("image");
-        _quantity = intent.getStringExtra("quantity");
+        _quantity = intent.getIntExtra("quantity", 0);
         name = findViewById(R.id.tvdetail_namee);
         image = findViewById(R.id.imagedetail);
         price = findViewById(R.id.tvdetail_pricee);
@@ -90,11 +97,9 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         mota.setText(_description);
         Glide.with(getApplicationContext()).load(_image).into(image);
 
-        gson = new Gson();
-        localStorage = new LocalStorage(detail_activity.this);
-        user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
-        orderProduct = new OrderProduct(user.getUser_id(), _id, soluong, "s");
+        orderProduct = new OrderProduct(userid, _id, soluong, "s");
+
 
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,12 +191,20 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         txq.setText(_quantity + " ");
 
 
+
         upsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                soluong++;
-                orderProduct.setQuantity(soluong);
-                textsoluong.setText(soluong + "");
+                if (product_home.getQuantity() > 0) {
+                    soluong++;
+                    orderProduct.setQuantity(soluong);
+                    textsoluong.setText(soluong + "");
+//                    AddCart.setVisibility(View.VISIBLE);
+                } else {
+                    Toast.makeText(detail_activity.this, "Số lượng trong kho không còn", Toast.LENGTH_SHORT).show();
+                    AddCart.setVisibility(View.GONE);
+                }
+
             }
         });
         downsoluong.setOnClickListener(new View.OnClickListener() {
@@ -208,6 +221,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         sizes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 changeButtonColor(sizes);
                 sizes.setEnabled(false);
@@ -275,7 +289,14 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         AddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddCartProduct();
+                if(_quantity>0){
+                    AddCartProduct();
+                }else {
+                    AddCart.setEnabled(false);
+                    Toast.makeText(detail_activity.this, "Số lượng sản phẩm đã hết", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
         dialog.show();

@@ -50,7 +50,7 @@ public class Register_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
-        localStorage = new LocalStorage(getApplicationContext());
+        localStorage = new LocalStorage(Register_Activity.this);
         firebaseToken = localStorage.getFirebaseToken();
         loginAcout.setOnClickListener(v -> Login());
     }
@@ -144,7 +144,7 @@ public class Register_Activity extends AppCompatActivity {
                 } else {
                     String userString = gson.toJson(userRegister.getUser());
                     localStorage.createUserLoginSession(userString);
-                    startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
+                    startActivity(new Intent(Register_Activity.this, OTP_Activity.class));
                     finish();
                 }
 

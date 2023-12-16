@@ -1,14 +1,17 @@
 package com.example.duantotnghiep_md27.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.duantotnghiep_md27.Activity.Search_Activity;
 import com.example.duantotnghiep_md27.Adapter.CategoryAdapter;
 import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
 import com.example.duantotnghiep_md27.Adapter.SubcategoryAdapter;
@@ -49,6 +53,7 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
     LocalStorage localStorage;
     Gson gson = new Gson();
     User user;
+    EditText edtSearch;
     Category category;
     Token token;
     private List<Category> homeCategoryList = new ArrayList<>();
@@ -65,7 +70,15 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
 
         recyclerviewCate = view.findViewById(R.id.category_rv);
         recyclerViewProduct = view.findViewById(R.id.sub_category_rv);
-//        progress = view.findViewById(R.id.progress_bar);
+        progress = view.findViewById(R.id.progress_bar);
+        edtSearch = view.findViewById(R.id.edtSearchCate);
+
+        edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), Search_Activity.class));
+            }
+        });
 
 //        localStorage = new LocalStorage(getContext());
 //        user = gson.fromJson(localStorage.getUserLogin(), User.class);
@@ -85,7 +98,7 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
 
     private void getCategoryData() {
 
-//        showProgressDialog();
+        showProgressDialog();
 
         Call<CategoryResult> call = RestClient.getRestService(getContext()).getCategoryHome();
         call.enqueue(new Callback<CategoryResult>() {
@@ -108,7 +121,7 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
 
                 }
 
-//                hideProgressDialog();
+                hideProgressDialog();
             }
 
             @Override
@@ -123,7 +136,7 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
         mAdapter = new CategoryAdapter(homeCategoryList, getActivity(), this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerviewCate.setLayoutManager(mLayoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerviewCate.setItemAnimator(new DefaultItemAnimator());
         recyclerviewCate.setAdapter(mAdapter);
     }
 
@@ -141,5 +154,13 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
         product_homeList = homeCategoryList.get(position).getProducts();
         setupSubCategoryRecycleView();
 
+    }
+
+    private void hideProgressDialog() {
+        progress.setVisibility(View.GONE);
+    }
+
+    private void showProgressDialog() {
+        progress.setVisibility(View.VISIBLE);
     }
 }

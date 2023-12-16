@@ -53,8 +53,7 @@ public class UserPayfragment extends Fragment {
     RecyclerView recyclerViewPay;
     int price = 0;
     UserPayAdapter userPayAdapter;
-
-    Gson gson;
+    Gson gson =new Gson();
     LocalStorage localStorage;
     User user;
     TextView sumproductpay, sumproductpay2;
@@ -83,9 +82,14 @@ public class UserPayfragment extends Fragment {
         recyclerViewPay = view.findViewById(R.id.List_Item_Product_Pay);
         sumproductpay = view.findViewById(R.id.SumProductPay);
         sumproductpay2 = view.findViewById(R.id.sumproductpay2);
+
+        localStorage = new LocalStorage(requireContext());
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
+
         int sum = 0;
         for (int i = 0; i < cartFragment.listProductSelected.size(); i++) {
-            sum += cartFragment.listProductSelected.get(i).getProductForCart().getPrice();
+            sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()
+                    *Cart_Fragment.listProductSelected.get(i).getQuantity());
 
         }
         sumproductpay.setText(sum + "");
@@ -155,10 +159,17 @@ public class UserPayfragment extends Fragment {
     }
 
     public void paymentAPI() {
-        gson = new Gson();
-        localStorage = new LocalStorage(requireContext());
-        user = gson.fromJson(localStorage.getUserLogin(), User.class);
-        Call<ResponseBody> call = RestClient.getRestService(requireContext()).getPayment(new Payment(user.getUser_id()));
+//        gson = new Gson();
+//        localStorage = new LocalStorage(requireContext());
+//        user = gson.fromJson(localStorage.getUserLogin(), User.class);
+
+        int sum = 0;
+        for (int i = 0; i < cartFragment.listProductSelected.size(); i++) {
+            sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()
+                    *Cart_Fragment.listProductSelected.get(i).getQuantity());
+
+        }
+        Call<ResponseBody> call = RestClient.getRestService(requireContext()).getPayment(new Payment(user.getUser_id(),sum));
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

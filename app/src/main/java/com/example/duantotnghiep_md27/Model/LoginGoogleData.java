@@ -2,10 +2,10 @@ package com.example.duantotnghiep_md27.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+public class LoginGoogleData {
     @SerializedName("message")
     String message;
-    @SerializedName("user")
+    @SerializedName("data")
     User user;
 
     public String getMessage() {

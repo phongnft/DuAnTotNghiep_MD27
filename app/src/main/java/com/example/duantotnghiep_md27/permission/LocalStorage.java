@@ -32,6 +32,16 @@ public class LocalStorage {
         return sharedPreferences.getBoolean(IS_USER_LOGIN, false);
     }
 
+    public void logoutUser() {
+        editor = sharedPreferences.edit();
+        editor.remove(KEY_USER);
+//        editor.remove(KEY_USER_ADDRESS);
+        editor.remove(IS_USER_LOGIN);
+//        editor.remove(CART);
+//        editor.remove(ORDER);
+        editor.commit();
+    }
+
 
     public String getFirebaseToken() {
         return sharedPreferences.getString(KEY_FIREBASE_TOKEN, null);

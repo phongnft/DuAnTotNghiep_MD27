@@ -28,7 +28,13 @@ import com.example.duantotnghiep_md27.Activity.OderHisActivity;
 import com.example.duantotnghiep_md27.Api.Api_Service;
 import com.example.duantotnghiep_md27.Api.Clients.ApiClientPro;
 import com.example.duantotnghiep_md27.Model.Profile;
+import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.permission.LocalStorage;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -37,9 +43,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Profile_Fragment extends Fragment {
+
+    private GoogleSignInClient mGoogleSignInClient;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
     Context context;
     LinearLayout tv_next, tv_sdt_store, tv_fanpage, tv_donhang, tv_email_store, tv_exit;
     TextView tv_name_pro, tv_sdt_pro;
+
+    LocalStorage localStorage;
+    Gson gson = new Gson();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,6 +67,14 @@ public class Profile_Fragment extends Fragment {
         tv_sdt_pro = view.findViewById(R.id.tv_sdt_pro);
         tv_name_pro = view.findViewById(R.id.tv_name_pro);
         tv_donhang = view.findViewById(R.id.tv_donhang);
+        localStorage = new LocalStorage(context);
+
+        User user = gson.fromJson(localStorage.getUserLogin(), User.class);
+        FirebaseUser user1 = mAuth.getCurrentUser();
+
+//        tv_name_pro.setText(user1.getDisplayName());
+
+
         String maND = "1"; // Thay bằng giá trị thực tế
 //        fetchProfileData(maND);
 
@@ -130,21 +151,18 @@ public class Profile_Fragment extends Fragment {
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
+
+                                        // Đăng xuất người dùng
+                                        mAuth.signOut();
+                                        localStorage.logoutUser();
+                                        startActivity(new Intent(context, Login_Activity.class));
+                                        getActivity().finish();
                                         progressDialog.dismiss();
 
-                                        SharedPreferences preferences = context.getSharedPreferences("infologin", context.MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = preferences.edit();
-                                        editor.putString("user_id", "");
-                                        editor.putString("full_name", "");
-                                        editor.putString("phone_number", "");
-                                        editor.putString("email", "");
-                                        editor.putString("address", "");
-                                        editor.commit();
 
 
-                                        Intent intent = new Intent(getActivity(), Login_Activity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
+//                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                                     }
                                 }, 2000);
                             }

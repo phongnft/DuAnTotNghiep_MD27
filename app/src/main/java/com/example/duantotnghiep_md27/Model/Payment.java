@@ -6,6 +6,22 @@ public class Payment {
 
     @SerializedName("userid")
     private String user_id;
+    @SerializedName("total")
+    private int total;
+
+
+    public Payment(String user_id, int total) {
+        this.user_id = user_id;
+        this.total = total;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public Payment(String user_id) {
         this.user_id = user_id;

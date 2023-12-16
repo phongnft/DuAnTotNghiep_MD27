@@ -57,7 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
         Glide.with(context).load(category.getImage_url()).into(holder.imageView);
 
-        holder.ll.setOnClickListener(new View.OnClickListener() {
+        holder.item_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedPosition = position;
@@ -67,9 +67,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         });
 
         if(selectedPosition == position){
-            holder.ll.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            holder.item_cardview.setBackgroundColor(Color.parseColor("#FFFFFF"));
         }else{
-            holder.ll.setBackgroundColor(Color.parseColor("#F2F2F2"));
+            holder.item_cardview.setBackgroundColor(Color.parseColor("#F2F2F2"));
         }
 
     }
@@ -82,14 +82,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView title;
-        CardView ll;
+        CardView item_cardview;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.category_image1);
             title = itemView.findViewById(R.id.category_name1);
-            ll = itemView.findViewById(R.id.category_item_ll);
+            item_cardview = itemView.findViewById(R.id.category_item_card);
         }
     }
 }
