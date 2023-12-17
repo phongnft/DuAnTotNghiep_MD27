@@ -1,12 +1,17 @@
 package com.example.duantotnghiep_md27.Model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class Oderdata {
     String order_id;
     String user_id;
-    String total_amount;
+    int total_amount;
     String status;
     String order_date;
-    OrderDetails orderDetails;
+    @SerializedName("OrderDetails")
+    List<OrderDetails> OrderDetails;
 
     public String getOrder_id() {
         return order_id;
@@ -24,11 +29,11 @@ public class Oderdata {
         this.user_id = user_id;
     }
 
-    public String getTotal_amount() {
+    public int getTotal_amount() {
         return total_amount;
     }
 
-    public void setTotal_amount(String total_amount) {
+    public void setTotal_amount(int total_amount) {
         this.total_amount = total_amount;
     }
 
@@ -48,11 +53,11 @@ public class Oderdata {
         this.order_date = order_date;
     }
 
-    public OrderDetails getOrderDetails() {
-        return orderDetails;
+    public List<com.example.duantotnghiep_md27.Model.OrderDetails> getOrderDetails() {
+        return OrderDetails;
     }
 
-    public void setOrderDetails(OrderDetails orderDetails) {
-        this.orderDetails = orderDetails;
+    public void setOrderDetails(List<com.example.duantotnghiep_md27.Model.OrderDetails> orderDetails) {
+        OrderDetails = orderDetails;
     }
 }

@@ -104,7 +104,7 @@ public class UserPayfragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Cart_Fragment.listProductSelected.clear();
+
                 Cart_Fragment cartFragment = new Cart_Fragment();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.framehome, cartFragment).commit();
@@ -196,5 +196,9 @@ public class UserPayfragment extends Fragment {
         });
     }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        Cart_Fragment.listProductSelected.clear();
+    }
 }

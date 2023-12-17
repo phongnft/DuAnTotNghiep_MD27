@@ -44,6 +44,10 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Search_Adapter search_adapter;
+
+    Cart_Fragment cartFragment;
+
+    Home_Fragment homeFragment;
     private RecyclerView recyclerView;
     List<Product_home> productList = new ArrayList<>();
 
@@ -69,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Home_Fragment());
                     break;
                 case R.id.card:
+                    Cart_Fragment.listProductSelected.clear();
                     replaceFragment(new Cart_Fragment());
                     break;
                 case R.id.category:

@@ -52,6 +52,7 @@ public class LocalStorage {
         editor.remove(KEY_USER);
 //        editor.remove(KEY_USER_ADDRESS);
         editor.remove(IS_USER_LOGIN);
+        editor.remove(IS_USER_LOGIN_GG);
 //        editor.remove(CART);
 //        editor.remove(ORDER);
         editor.commit();

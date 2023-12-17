@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -226,6 +227,7 @@ public class Login_Activity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
                             finish();
                         } else {
+
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         }
@@ -295,5 +297,6 @@ public class Login_Activity extends AppCompatActivity {
     private void showProgressDialog() {
         progress.setVisibility(View.VISIBLE);
     }
+
 
 }

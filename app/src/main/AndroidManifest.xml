@@ -21,7 +21,9 @@
         android:theme="@style/Theme.DuAnTotNghiep_MD27"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activity.RePassActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.MyInfo"
             android:exported="false" />

@@ -8,16 +8,21 @@ import com.example.duantotnghiep_md27.Model.ListCart;
 import com.example.duantotnghiep_md27.Model.LoginGoogleData;
 import com.example.duantotnghiep_md27.Model.MyInfo;
 import com.example.duantotnghiep_md27.Model.OderCall;
+import com.example.duantotnghiep_md27.Model.OderProduct;
+import com.example.duantotnghiep_md27.Model.Oderdata;
+import com.example.duantotnghiep_md27.Model.OrderDetails;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
 import com.example.duantotnghiep_md27.Model.OrderProductResponse;
 import com.example.duantotnghiep_md27.Model.Payment;
 import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.Profile;
+import com.example.duantotnghiep_md27.Model.ResPas;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.Model.UserOTP;
 import com.example.duantotnghiep_md27.Model.UserRegister;
 import com.example.duantotnghiep_md27.Model.UserLogin;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
 import java.util.List;
 
@@ -115,8 +120,18 @@ public interface Api_Service {
     @GET("products/{category_id}")
     Call<List<Product_home>> getProductsByCategory(@Path("category_id") String idCategory);
 
-    @GET("users/list")
-    Call<List<MyInfo>> getUserList(@Header("Authorization") String token);
+    @POST("user/resetpasswordinfo")
+    Call<ResPas> ConfirmresetPassword_1(@Body ResPas resPas);
+
+    @POST("user/forgotpassword")
+    Call<ResPas> ForgotPassword_1(@Body ResPas resPas);
+
+    @GET("cart/history/{id}")
+    Call<OderProduct> getOderHistory(@Path("id") String cartId);
+
+    @GET("cart/history/{id}")
+    Call<Oderdata> getOderHistoryDetail(@Path("id") String cartId);
+
 
 
     @GET("getProfileData")

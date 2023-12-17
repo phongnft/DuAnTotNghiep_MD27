@@ -10,7 +10,7 @@ public class OrderDetails {
     String product_id;
     int quantity;
     @SerializedName("product")
-    List<OderProduct> oderProducts_list;
+    Product_home product;
 
     public String getOrder_detail_id() {
         return order_detail_id;
@@ -44,11 +44,11 @@ public class OrderDetails {
         this.quantity = quantity;
     }
 
-    public List<OderProduct> getOderProducts_list() {
-        return oderProducts_list;
+    public Product_home getProduct() {
+        return product;
     }
 
-    public void setOderProducts_list(List<OderProduct> oderProducts_list) {
-        this.oderProducts_list = oderProducts_list;
+    public void setProduct(Product_home product) {
+        this.product = product;
     }
 }

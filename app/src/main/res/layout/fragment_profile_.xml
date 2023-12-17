@@ -7,73 +7,79 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/customtext"
+        android:layout_height="200dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/tv_next_taikhoan"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
             android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                app:cardCornerRadius="150dp">
-
-                <ImageView
-                    android:id="@+id/img_avatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/logoapp" />
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_name_pro"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Nguyễn Văn Phong" />
-
-                <TextView
-                    android:id="@+id/tv_sdt_pro"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:text="0334158096" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/img_16" />
 
             <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="110dp"
-                android:drawableRight="@drawable/baseline_navigate_next_24" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chỉnh sửa" />
         </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="150dp">
+
+            <ImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/logoapp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_name_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:text="Nguyễn Văn Phong"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tv_sdt_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="0334158096" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/tv_donhang"
+        android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/customtext"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_back_dark_blue5_15"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/tv_donhang"
-            android:layout_width="match_parent"
+
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:orientation="horizontal">
 
@@ -84,16 +90,14 @@
                 android:src="@drawable/img_2" />
 
             <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-
                 android:orientation="vertical">
 
                 <TextView
-
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="50dp"
                     android:drawablePadding="15dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="15dp"
@@ -101,119 +105,21 @@
 
                     />
             </LinearLayout>
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="110dp"
-                android:drawableRight="@drawable/baseline_navigate_next_24" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/tv_dangxuat"
+        android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/customtext"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_back_dark_blue5_15"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/tv_doimk"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/img_3" />
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawablePadding="15dp"
-                    android:paddingLeft="21dp"
-                    android:paddingTop="15dp"
-                    android:text="Đặt lại mật khẩu "
-
-                    />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="120dp"
-                android:drawableRight="@drawable/baseline_navigate_next_24" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/customtext"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/tv_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/img_12" />
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawablePadding="15dp"
-                    android:paddingLeft="21dp"
-                    android:paddingTop="15dp"
-                    android:text="Fanpage "
-
-                    />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="120dp"
-                android:drawableRight="@drawable/baseline_navigate_next_24" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/customtext"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/tv_dangxuat"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:orientation="horizontal">
 
@@ -226,10 +132,9 @@
                 android:src="@drawable/img_13" />
 
             <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-
                 android:orientation="vertical">
 
                 <TextView
@@ -241,15 +146,100 @@
                     android:text="Đăng Xuất "
 
                     />
-            </LinearLayout>
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="120dp"
-                android:drawableRight="@drawable/baseline_navigate_next_24" />
+                />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tv_doimk"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_back_dark_blue5_15"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_3" />
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:drawablePadding="15dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:text="Đặt lại mật khẩu "
+
+                    />
+
+                />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tv_facebook"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_back_dark_blue5_15"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_12" />
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:drawablePadding="15dp"
+                    android:paddingLeft="21dp"
+                    android:paddingTop="15dp"
+                    android:text="Fanpage "
+
+                    />
+
+                />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
 
 
     <LinearLayout
@@ -258,12 +248,18 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
-
-        <ImageView
-
+        <androidx.cardview.widget.CardView
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/logoapp" />
+            app:cardCornerRadius="150dp"
+            android:layout_height="100dp">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logoapp" />
+
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -314,10 +310,10 @@
 
         <LinearLayout
             android:id="@+id/tv_email_store"
-            android:layout_marginLeft="25dp"
             android:layout_width="350dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -329,9 +325,9 @@
                 android:textSize="20dp" />
 
             <ImageView
-                android:layout_marginLeft="10dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
                 android:src="@drawable/img_15">
 
             </ImageView>

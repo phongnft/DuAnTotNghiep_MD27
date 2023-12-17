@@ -1,6 +1,5 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -47,7 +46,7 @@ public class MyInfo extends AppCompatActivity {
         textViewEmail.setText(email);
         textViewDiachi.setText(address);
         textViewsdt.setText(phone_number);
-        // Đảm bảo đường dẫn ảnh không rỗng
+
         if (!image_url.isEmpty()) {
             // Sử dụng Picasso để hiển thị ảnh
             Picasso.get().load(image_url).into(img_my_if);

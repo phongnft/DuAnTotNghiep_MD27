@@ -1,5 +1,6 @@
 package com.example.duantotnghiep_md27.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -38,13 +39,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     CoordinatorLayout btn_camera;
     ImageView avatar;
-
     EditText edt_name,edt_email, edt_sdt, edt_diachi;
-    Button btnUpdate;
+    Button btnUpdate,btn_cancle;
     private Uri filePath;
     private FirebaseAuth mAuth;
-
-
     private FirebaseStorage storage;
     private StorageReference storageReference;
     SharedPreferences preferences;
@@ -56,6 +54,7 @@ public class EditProfileActivity extends AppCompatActivity {
     String imageUrlFirebase;
     boolean isLoggedIn;
     String image_url1;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,21 +65,20 @@ public class EditProfileActivity extends AppCompatActivity {
         edt_sdt = findViewById(R.id.edt_sdt_edit);
         edt_diachi = findViewById(R.id.edt_diachi_edit);
         btnUpdate = findViewById(R.id.btnsave_edit);
+        btn_cancle = findViewById(R.id.btn_cancle);
         btn_camera = findViewById(R.id.btn_camera);
         avatar = findViewById(R.id.avatar);
 
-         preferences = getSharedPreferences("infologin", MODE_PRIVATE);
-         id = preferences.getString("user_id", "");
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+        preferences = getSharedPreferences("infologin", MODE_PRIVATE);
         id = preferences.getString("user_id", "");
         String fullname = preferences.getString("full_name", "");
-         isLoggedIn = preferences.getBoolean("isLoggedIn", false);
+        isLoggedIn = preferences.getBoolean("isLoggedIn", false);
         String phone_number = preferences.getString("phone_number", "");
         String email = preferences.getString("email", "");
         String address = preferences.getString("address", "");
         image_url1 = preferences.getString("image_url", "");
 
-    loadImg();
+        loadImg();
 
         edt_name.setText(fullname);
         edt_email.setText(email);
@@ -90,6 +88,9 @@ public class EditProfileActivity extends AppCompatActivity {
         edt_email.setClickable(false);
         edt_sdt.setFocusable(false);
         edt_sdt.setClickable(false);
+        btn_cancle.setOnClickListener(view -> {
+            onBackPressed();
+        });
         btn_camera.setOnClickListener(v -> pickImageFromGallery());
         btnUpdate.setOnClickListener(v -> updateProfile());
 
@@ -110,15 +111,13 @@ public class EditProfileActivity extends AppCompatActivity {
             // Tạo đường dẫn lưu trữ trong Firebase Storage
             String url = "images/" + Objects.requireNonNull( "/" + id +"_"+ System.currentTimeMillis());
             StorageReference ref = storageRef.child(url);
-
-
             // Tải lên ảnh
             ref.putFile(filePath)
                     .addOnSuccessListener(taskSnapshot -> {
                         // Lấy đường dẫn của ảnh sau khi upload
                         ref.getDownloadUrl().addOnSuccessListener(uri -> {
                             // Lưu đường dẫn vào SharedPreferences hoặc thực hiện các thao tác khác
-                             imageUrlFirebase = uri.toString();
+                            imageUrlFirebase = uri.toString();
 
 
                             SharedPreferences.Editor editor = preferences.edit();
@@ -135,7 +134,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(this, MyInfo.class);
                             startActivity(intent);
-//                            Toast.makeText(EditProfileActivity.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
                         });
                     })
                     .addOnFailureListener(e -> Toast.makeText(EditProfileActivity.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -175,8 +173,6 @@ public class EditProfileActivity extends AppCompatActivity {
         updatedUser.setEmail(updatedEmail);
         updatedUser.setAddress(updatedAddress);
 
-
-
         Call<User> call = apiService.updateInfoUser(updatedUser);
 
         call.enqueue(new Callback<User>() {
@@ -208,7 +204,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
 
-        @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -218,17 +214,13 @@ public class EditProfileActivity extends AppCompatActivity {
             // Xử lý ảnh tại đây (ví dụ: hiển thị ảnh hoặc lưu đường dẫn của ảnh)
             // Hiển thị ảnh lên ImageView (tạm thời)
             avatar.setImageURI(filePath);
-
-            // Thông báo cho người dùng về việc chọn ảnh thành công
-//            Toast.makeText(this, "Image selected successfully", Toast.LENGTH_SHORT).show();
         }
     }
 
-public void loadImg(){
-    image_url1 = preferences.getString("image_url", "");
-    if (!image_url1.isEmpty()) {
-        // Sử dụng Picasso để hiển thị ảnh
-        Picasso.get().load(image_url1).into(avatar);
+    public void loadImg(){
+        image_url1 = preferences.getString("image_url", "");
+        if (!image_url1.isEmpty()) {
+            Picasso.get().load(image_url1).into(avatar);
+        }
     }
-}
 }

@@ -171,16 +171,16 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
                 if (response.isSuccessful() && response.body() != null) {
                     Delete_Cart deleteCart = response.body();
                     listProduct.remove(productOrderCart);
-                    if(cartFragment.listProductSelected.contains(productOrderCart)){
+                    if (cartFragment.listProductSelected.contains(productOrderCart)) {
 
                         cartFragment.listProductSelected.remove(productOrderCart);
                     }
                     notifyDataSetChanged();
-                    cartFragment.sumProductHealCart.setText(listProduct.size() + " ");
+
                     for (int i = 0; i < listProduct.size(); i++) {
                         Sum += listProduct.get(i).getProductForCart().getPrice();
                     }
-//                    cartFragment.sumProduct.setText(Sum + " ");
+                    cartFragment.sumProduct.setText(Sum + " ");
                     Toast.makeText(context, deleteCart.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Log.d("zzzzzzzz", "null data");
@@ -194,6 +194,9 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
         });
 
     }
+
+
+
 
     private void showUndoSnackbar(final ProductOrderCart removedItem, final int position) {
 
