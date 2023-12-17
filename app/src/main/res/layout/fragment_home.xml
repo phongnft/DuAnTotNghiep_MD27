@@ -29,14 +29,14 @@
                 android:paddingLeft="10dp"
                 android:textColorHint="#535151"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/CartIcon"
+                app:layout_constraintEnd_toStartOf="@id/CartIcon1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
                 android:layout_marginLeft="15dp"
-                android:id="@+id/CartIcon"
+                android:id="@+id/CartIcon1"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:src="@drawable/img_16"

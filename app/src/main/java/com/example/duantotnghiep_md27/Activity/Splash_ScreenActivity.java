@@ -25,7 +25,7 @@ public class Splash_ScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (localStorage.isUserLoggedIn()) {
+                if (localStorage.isUserLoggedIn() || localStorage.isUserLoggedInGoogle()) {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {

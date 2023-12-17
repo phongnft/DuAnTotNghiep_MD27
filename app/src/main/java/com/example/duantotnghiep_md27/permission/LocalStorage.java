@@ -14,6 +14,9 @@ public class LocalStorage {
     public static final String KEY_USER = "User";
     private static final String IS_USER_LOGIN = "IsUserLoggedIn";
 
+    private static final String IS_USER_LOGIN_GG = "IsUserLoggedInGoogle";
+
+
     public LocalStorage(Context context) {
         sharedPreferences = context.getSharedPreferences("Preferences", 0);
     }
@@ -28,8 +31,20 @@ public class LocalStorage {
         editor.putString(KEY_USER, user);
         editor.commit();
     }
+
+    public void createUserLoginGoogle(String user) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(IS_USER_LOGIN_GG, true);
+        editor.putString(KEY_USER, user);
+        editor.commit();
+    }
+
     public boolean isUserLoggedIn() {
         return sharedPreferences.getBoolean(IS_USER_LOGIN, false);
+    }
+
+    public boolean isUserLoggedInGoogle() {
+        return sharedPreferences.getBoolean(IS_USER_LOGIN_GG, false);
     }
 
     public void logoutUser() {

@@ -36,6 +36,7 @@ import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.OnItemSwipeListener;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
@@ -48,6 +49,7 @@ import retrofit2.Response;
 
 
 public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
+    BottomNavigationView bottomNavigationView;
     RecyclerView recyclerView;
     Gson gson = new Gson();
     User user;
@@ -85,6 +87,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
         View view = inflater.inflate(R.layout.fragment_cart_, container, false);
         recyclerView = view.findViewById(R.id.recycleview_cart);
         ButtonPay = view.findViewById(R.id.pay);
+        bottomNavigationView = view.findViewById(R.id.bottomnavmenu);
         sumProduct = view.findViewById(R.id.SumProductCart);
         localStorage = new LocalStorage(requireContext());
         user = gson.fromJson(localStorage.getUserLogin(), User.class);

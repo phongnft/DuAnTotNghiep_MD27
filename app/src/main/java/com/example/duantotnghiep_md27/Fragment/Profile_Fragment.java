@@ -46,7 +46,7 @@ public class Profile_Fragment extends Fragment {
 
     private GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
+    User user;
     Context context;
     LinearLayout tv_next, tv_sdt_store, tv_fanpage, tv_donhang, tv_email_store, tv_exit;
     TextView tv_name_pro, tv_sdt_pro;
@@ -69,14 +69,17 @@ public class Profile_Fragment extends Fragment {
         tv_donhang = view.findViewById(R.id.tv_donhang);
         localStorage = new LocalStorage(context);
 
-        User user = gson.fromJson(localStorage.getUserLogin(), User.class);
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
         FirebaseUser user1 = mAuth.getCurrentUser();
 
-//        tv_name_pro.setText(user1.getDisplayName());
+        if (localStorage.isUserLoggedIn()) {
+            tv_name_pro.setText(user.getFull_name());
+        } else {
+            tv_fanpage.setEnabled(false);  // nếu login google thì không cho đổi mật khẩu
+            tv_name_pro.setText(user1.getDisplayName());
+        }
 
 
-        String maND = "1"; // Thay bằng giá trị thực tế
-//        fetchProfileData(maND);
 
         tv_donhang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +161,6 @@ public class Profile_Fragment extends Fragment {
                                         startActivity(new Intent(context, Login_Activity.class));
                                         getActivity().finish();
                                         progressDialog.dismiss();
-
 
 
 //                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

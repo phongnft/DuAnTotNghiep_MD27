@@ -57,32 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.search_recycler_view);
 
-//        searchView.clearFocus();
 
-
-//        if (searchView != null) {
-//            final SearchView finalSearchView = searchView;
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                // Toast like print
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
-//                if (s.length() == 0) {
-//                    recyclerView.setVisibility(View.GONE);
-//                    productList = new ArrayList<>();
-//                } else {
-//                    getSearchProduct(s);
-//                }
-//
-//                return true;
-//            }
-//        });
-        // }
 
 
         bottomNavigationView = findViewById(R.id.bottomnavmenu);
@@ -104,21 +79,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
             }
-//                if (item.getItemId()==R.id.home_){
-//                    replaceFragment(new Home_Fragment());
-//                    //getMenuInflater().inflate(R.menu.bottom_toolbar, menu);
-//                   // setSupportActionBar(toolbar);
-//
-
-//                }else if(item.getItemId()==R.id.card){
-//                    replaceFragment(new Cart_Fragment());
-//                    //toolbar.setTitle("Giỏ Hàng");
-//                }
 
             return true;
         });
 
 
+    }
+
+    public BottomNavigationView getBottomNavigationView() {
+        return bottomNavigationView;
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -132,101 +101,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == 123 && resultCode == RESULT_OK){
-//           replaceFragment(new Cart_Fragment());
-//           bottomNavigationView.setSelectedItemId( R.id.card);
-//
-//        }
-//
-//    }
-    private void timKiem() {
-        SearchView searchView = null;
-//        if (searchItem != null) {
-//            searchView = (SearchView) searchItem.getActionView();
-//        }
-        searchView.setQueryHint("Tìm kiếm nào...");
-        EditText searchBox = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
-        searchBox.setTextColor(Color.BLACK);
-        searchBox.setHintTextColor(Color.GRAY);
-        searchView.setIconifiedByDefault(true);
-        ImageView searchClose = searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
-//        searchClose.setImageResource(R.drawable.ic_close_black_24dp);
 
-        if (searchView != null) {
-            final SearchView finalSearchView = searchView;
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    // Toast like print
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String s) {
-                    // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
-                    if (s.length() == 0) {
-                        recyclerView.setVisibility(View.GONE);
-                        productList = new ArrayList<>();
-                    } else {
-                        getSearchProduct(s);
-                    }
-
-                    return true;
-                }
-            });
-        }
-    }
-
-
-    private void getSearchProduct(String name) {
-        Call<ProductData> call = RestClient.getRestService(getApplicationContext()).searchProductsByName(name);
-        call.enqueue(new Callback<ProductData>() {
-            @Override
-            public void onResponse(Call<ProductData> call, Response<ProductData> response) {
-                Log.d("Response :=>", response.body() + "");
-                if (response != null) {
-
-                    ProductData productData = response.body();
-                    if (response.isSuccessful()) {
-
-                        productList = productData.getData();
-                        setUpRecyclerView();
-
-                        Log.d("kiểm tra list", productList + "");
-                    }
-
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<ProductData> call, Throwable t) {
-                Log.d("Error", t.getMessage());
-
-
-            }
-        });
-
-    }
-
-    private void setUpRecyclerView() {
-        if (productList.size() > 0) {
-            recyclerView.setVisibility(View.VISIBLE);
-        } else {
-            recyclerView.setVisibility(View.GONE);
-        }
-
-        search_adapter = new Search_Adapter(productList, MainActivity.this);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(search_adapter);
-
-    }
 
 
 }

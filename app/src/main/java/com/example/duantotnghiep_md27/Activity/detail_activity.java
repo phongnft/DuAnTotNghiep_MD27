@@ -1,7 +1,5 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -20,25 +18,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
-import com.example.duantotnghiep_md27.Model.Delete_Cart;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
 import com.example.duantotnghiep_md27.Model.OrderProductData;
 import com.example.duantotnghiep_md27.Model.OrderProductResponse;
-
-import com.example.duantotnghiep_md27.Model.ProductOrderCart;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,7 +53,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 
     LocalStorage localStorage;
 
-    User user;
     Gson gson = new Gson();
     OrderProduct orderProduct;
     int soluong = 1;

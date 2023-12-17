@@ -3,8 +3,14 @@ package com.example.duantotnghiep_md27.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -12,17 +18,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bdtopcoder.smart_slider.SliderAdapter;
 import com.bdtopcoder.smart_slider.SliderItem;
@@ -37,9 +32,7 @@ import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.CategoryResult;
 import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.ProductImage;
-import com.example.duantotnghiep_md27.Model.ProductResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
-import com.example.duantotnghiep_md27.Model.Token;
 import com.example.duantotnghiep_md27.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -52,9 +45,8 @@ import retrofit2.Response;
 
 
 public class Home_Fragment extends Fragment {
-    BottomNavigationView bottomNavigationView;
     EditText edtSearch;
-    ImageView cartIcon, noIcon;
+    ImageView cartIcon;
 
     ViewPager2 viewPager2;
     View progress;
@@ -68,8 +60,6 @@ public class Home_Fragment extends Fragment {
     private List<Banner> bannerList = new ArrayList<>();
     private List<SliderItem> slierList = new ArrayList<>();
 
-    List<ProductImage> productImages;
-
 
     @SuppressLint({"MissingInflatedId", "ResourceType"})
     @Override
@@ -80,21 +70,23 @@ public class Home_Fragment extends Fragment {
         new_product_recyclerView = view.findViewById(R.id.new_product_recycleview);
         product_recyclerView = view.findViewById(R.id.product_recycleview);
         category_recyclerView = view.findViewById(R.id.recycleview_category);
-        bottomNavigationView = view.findViewById(R.id.bottomnavmenu);
         viewPager2 = view.findViewById(R.id.smartSlider);
         progress = view.findViewById(R.id.progress_bar);
         edtSearch = view.findViewById(R.id.edtSearch);
-        cartIcon = view.findViewById(R.id.CartIcon);
+        cartIcon = view.findViewById(R.id.CartIcon1);
+
+        MainActivity mainActivity = (MainActivity) requireActivity();
+        BottomNavigationView bottomNavigationView = mainActivity.findViewById(R.id.bottomnavmenu);
+
 
         cartIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new Cart_Fragment());
-//                bottomNavigationView.setSelectedItemId(R.id.card);
+                bottomNavigationView.setSelectedItemId(R.id.card);
             }
 
         });
-
 
 
         edtSearch.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +100,6 @@ public class Home_Fragment extends Fragment {
         getAllProduct();
         getCategoryData();
         getBannerData();
-        // getCategoryData();
         product_recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }

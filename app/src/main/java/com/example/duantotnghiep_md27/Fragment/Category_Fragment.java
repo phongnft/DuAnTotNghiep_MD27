@@ -7,15 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,21 +22,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duantotnghiep_md27.Activity.Search_Activity;
 import com.example.duantotnghiep_md27.Adapter.CategoryAdapter;
-import com.example.duantotnghiep_md27.Adapter.Product_homeAdapter;
 import com.example.duantotnghiep_md27.Adapter.SubcategoryAdapter;
-import com.example.duantotnghiep_md27.Api.Api_Service;
 import com.example.duantotnghiep_md27.Api.Clients.CategorySelectCallBack;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
+import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.Category;
-import com.example.duantotnghiep_md27.Model.CategoryName;
 import com.example.duantotnghiep_md27.Model.CategoryResult;
 import com.example.duantotnghiep_md27.Model.Product_home;
-import com.example.duantotnghiep_md27.Model.Profile;
-import com.example.duantotnghiep_md27.Model.Token;
-import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
-import com.example.duantotnghiep_md27.permission.LocalStorage;
-import com.google.gson.Gson;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,15 +40,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Category_Fragment extends Fragment implements CategorySelectCallBack {
-    //    Data data;
     View progress;
-    CategoryName category_name;
-    LocalStorage localStorage;
-    Gson gson = new Gson();
-    User user;
     EditText edtSearch;
-    Category category;
-    Token token;
+    ImageView cartIconCate;
     private List<Category> homeCategoryList = new ArrayList<>();
     private List<Product_home> product_homeList = new ArrayList<>();
     private RecyclerView recyclerviewCate, recyclerViewProduct;
@@ -67,12 +54,14 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_category, container, false);
+        MainActivity mainActivity = (MainActivity) requireActivity();
+        BottomNavigationView bottomNavigationView = mainActivity.findViewById(R.id.bottomnavmenu);
 
         recyclerviewCate = view.findViewById(R.id.category_rv);
         recyclerViewProduct = view.findViewById(R.id.sub_category_rv);
         progress = view.findViewById(R.id.progress_bar);
         edtSearch = view.findViewById(R.id.edtSearchCate);
-
+        cartIconCate = view.findViewById(R.id.CartIconCate);
         edtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,9 +69,15 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
             }
         });
 
-//        localStorage = new LocalStorage(getContext());
-//        user = gson.fromJson(localStorage.getUserLogin(), User.class);
-//        user.getUser_id();
+        cartIconCate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new Cart_Fragment());
+                bottomNavigationView.setSelectedItemId(R.id.card);
+            }
+        });
+
+
 
         getCategoryData();
 
@@ -154,6 +149,11 @@ public class Category_Fragment extends Fragment implements CategorySelectCallBac
         product_homeList = homeCategoryList.get(position).getProducts();
         setupSubCategoryRecycleView();
 
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.framehome, fragment).commit();
     }
 
     private void hideProgressDialog() {

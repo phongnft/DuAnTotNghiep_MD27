@@ -261,7 +261,7 @@ public class Login_Activity extends AppCompatActivity {
                     LoginGoogleData loginGoogleData = response.body();
                     if (response.code() == 200) {
                         String userString = gson.toJson(loginGoogleData.getUser());
-                        localStorage.createUserLoginSession(userString);
+                        localStorage.createUserLoginGoogle(userString);
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
 
