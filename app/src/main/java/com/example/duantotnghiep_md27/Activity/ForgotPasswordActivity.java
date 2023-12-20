@@ -68,7 +68,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         password = findViewById(R.id.passsword_text);
         confirm_password = findViewById(R.id.conf_passsword_text);
-        code = findViewById(R.id.otp_text);
+        code = findViewById(R.id.otp_text1);
         btn_confirmReset = findViewById(R.id.btn_confirmReset);
         btnResendCode = findViewById(R.id.btnResendCode);
         reset_password_FL = findViewById(R.id.reset_password_FL);
@@ -149,8 +149,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         } else if (!getConfPassword.equalsIgnoreCase(getPassword)) {
             new CustomToast().Show_Toast(ForgotPasswordActivity.this, layoutforgot, "Mật khẩu không giống nhau");
         } else {
+
             user.setOtp(getOtp);
-            user.setNewPassword(getPassword);
+            user.setNewPassword(getConfPassword);
             ConfirmresetPassword();
         }
 

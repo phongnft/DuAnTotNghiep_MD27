@@ -4,6 +4,7 @@ public class User {
     String user_id;
     String full_name;
     String image_url;
+    String oldPassword;
     String password;
     String newPassword;
     String phone_number;
@@ -16,6 +17,19 @@ public class User {
     }
 
 
+    public User(String user_id, String oldPassword, String newPassword) {
+        this.user_id = user_id;
+        this.oldPassword = oldPassword;
+        this.newPassword = newPassword;
+    }
+
+    public User(String user_id, String full_name, String phone_number, String email, String address) {
+        this.user_id = user_id;
+        this.full_name = full_name;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.address = address;
+    }
 
     public User(String full_name, String phone_number, String email, String password) {
         this.full_name = full_name;

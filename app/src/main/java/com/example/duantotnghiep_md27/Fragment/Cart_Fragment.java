@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -141,8 +142,13 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
                     Bundle bundle = new Bundle();
                     bundle.putInt("price", sum);
                     userPayfragment.setArguments(bundle);
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                    fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
+
                 } else {
                     Toast.makeText(requireContext(), "Vui lòng chọn sản phẩm thanh toán", Toast.LENGTH_SHORT).show();
                 }

@@ -62,11 +62,7 @@ public class Profile_Fragment extends Fragment {
         tv_donhang = view.findViewById(R.id.tv_donhang);
         img_avatar = view.findViewById(R.id.img_avatar);
         tv_doimk = view.findViewById(R.id.tv_doimk);
-//
-//        SharedPreferences preferences = context.getSharedPreferences("infologin", context.MODE_PRIVATE);
-//        String fullname = preferences.getString("full_name", "");
-//        String phone_number = preferences.getString("phone_number", "");
-//        String image_url = preferences.getString("image_url", "");
+
 //        if (!image_url.isEmpty()) {
 //            // Sử dụng Picasso để hiển thị ảnh
 //            Picasso.get().load(image_url).into(img_avatar);
@@ -86,7 +82,7 @@ public class Profile_Fragment extends Fragment {
             Glide.with(context).load(user.getImage_url()).into(img_avatar);
         } else if(localStorage.isUserLoggedInGoogle()){
             tv_fanpage.setEnabled(false);  // nếu login google thì không cho đổi mật khẩu
-//            tv_name_pro.setText(user1.getDisplayName());
+            tv_name_pro.setText(user1.getDisplayName());
 
         }
 
@@ -174,14 +170,6 @@ public class Profile_Fragment extends Fragment {
                                     public void run() {
                                         progressDialog.dismiss();
 
-//                                        SharedPreferences.Editor editor = preferences.edit();
-//                                        editor.putString("user_id", "");
-//                                        editor.putString("full_name", "");
-//                                        editor.putString("phone_number", "");
-//                                        editor.putString("email", "");
-//                                        editor.putString("address", "");
-//                                        editor.putBoolean("isLoggedIn", false);
-//                                        editor.commit();
 
                                         // Đăng xuất người dùng
                                         mAuth.signOut();
@@ -190,10 +178,6 @@ public class Profile_Fragment extends Fragment {
                                         getActivity().finish();
                                         progressDialog.dismiss();
 
-//
-//                                        Intent intent = new Intent(getActivity(), Login_Activity.class);
-//                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                                        startActivity(intent);
                                     }
                                 }, 2000);
                             }

@@ -227,7 +227,6 @@ public class Login_Activity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), OTP_Activity.class));
                             finish();
                         } else {
-
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         }

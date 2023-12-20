@@ -66,6 +66,7 @@ public class OderHisAdapter extends RecyclerView.Adapter<OderHisAdapter.OderHisV
         return new OderHisViewHoder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull OderHisAdapter.OderHisViewHoder holder, int position) {
         final Oderdata oderProduct = oderProductslist.get(position);
@@ -90,7 +91,7 @@ public class OderHisAdapter extends RecyclerView.Adapter<OderHisAdapter.OderHisV
         localStorage = new LocalStorage(context);
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
-        Button dialogButton = dialog.findViewById(R.id.dialogButtonOK);
+        ImageView dialogButton = dialog.findViewById(R.id.dialogButtonOK);
         recyclerView = dialog.findViewById(R.id.order_list);
         Call<OderProduct> call = RestClient.getRestService(context).getOderHistory(user.getUser_id());
         call.enqueue(new Callback<OderProduct>() {
@@ -102,13 +103,16 @@ public class OderHisAdapter extends RecyclerView.Adapter<OderHisAdapter.OderHisV
                         oderProductslist = oderProduct.getData();
                         if (oderProductslist.size() >= 0) {
                             orderDetailsList = oderProductslist.get(postion).getOrderDetails();
-                            homelsList = orderDetailsList.get(0).getProduct();
+                            if (orderDetailsList.size() >= 0) {
+                                homelsList = orderDetailsList.get(0).getProduct();
 
-                            oderItemHistoryAdapter = new OderItemHistoryAdapter(orderDetailsList, homelsList, context);
-                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-                            recyclerView.setLayoutManager(mLayoutManager);
-                            recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            recyclerView.setAdapter(oderItemHistoryAdapter);
+                                oderItemHistoryAdapter = new OderItemHistoryAdapter(orderDetailsList, homelsList, context);
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
+                                recyclerView.setLayoutManager(mLayoutManager);
+                                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                recyclerView.setAdapter(oderItemHistoryAdapter);
+                            }
+
                         }
 
 

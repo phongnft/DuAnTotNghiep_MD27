@@ -18,7 +18,7 @@
 
             <EditText
                 android:id="@+id/edtSearch"
-                android:layout_width="320dp"
+                android:layout_width="310dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/custom_searchview"
@@ -39,7 +39,7 @@
                 android:id="@+id/CartIcon1"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:src="@drawable/img_16"
+                android:src="@drawable/img_17"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,13 +93,6 @@
                             android:textSize="19sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="110dp"
-                            android:text="Xem tất cả"
-                            android:textColor="@color/card"
-                            android:textSize="19sp" />
 
                     </LinearLayout>
 
@@ -158,7 +151,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="5dp"
-                                android:text="Sản phẩm"
+                                android:text="Danh sách sản phẩm"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />

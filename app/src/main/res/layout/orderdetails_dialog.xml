@@ -17,12 +17,14 @@
             android:textColor="@color/white"
             android:textSize="18dp" />
 
-        <Button
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/dialogButtonOK"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/baseline_arrow_back_ios_new_24"></Button>
+            android:background="@drawable/img_19"></ImageView>
 
     </RelativeLayout>
 

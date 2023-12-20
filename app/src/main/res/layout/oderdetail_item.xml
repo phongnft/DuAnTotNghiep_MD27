@@ -86,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quantity : "
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -110,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Unit Price : "
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -131,13 +131,13 @@
                 android:orientation="horizontal"
                 android:paddingLeft="20px">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total Price : "
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Total Price : "-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="18dp"-->
+<!--                    android:textStyle="bold" />-->
 
                 <TextView
                     android:id="@+id/total_price"

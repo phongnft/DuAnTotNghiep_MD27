@@ -162,7 +162,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.fragment_size_number);
-        ImageView imageout = dialog.findViewById(R.id.imgOffCartProduct);
         Button sizes = dialog.findViewById(R.id.sizeS);
         Button sizem = dialog.findViewById(R.id.sizeM);
         Button sizel = dialog.findViewById(R.id.sizeL);
@@ -175,7 +174,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         ImageView img = dialog.findViewById(R.id.imgProductCartDialog);
         TextView txprice = dialog.findViewById(R.id.PriceCartDialog);
         TextView txq = dialog.findViewById(R.id.quantityCartDiaLog);
-        TextView txsize = dialog.findViewById(R.id.Size);
+
 
         Glide.with(getApplicationContext()).load(_image).into(img);
         txprice.setText(_price + " ");
@@ -220,7 +219,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("S");
-                txsize.setText("S");
+
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -235,7 +234,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("M");
-                txsize.setText("M");
+
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -249,7 +248,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(false);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("L");
-                txsize.setText("L");
+
                 AddCart.setVisibility(View.VISIBLE);
 
             }
@@ -264,18 +263,12 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(false);
                 orderProduct.setSize("XL");
-                txsize.setText("XL");
+
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
 
 
-        imageout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         AddCart.setOnClickListener(new View.OnClickListener() {
             @Override

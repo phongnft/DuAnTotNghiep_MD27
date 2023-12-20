@@ -6,13 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.duantotnghiep_md27.MainActivity;
+import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.permission.LocalStorage;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 public class MyInfo extends AppCompatActivity {
@@ -20,6 +24,11 @@ public class MyInfo extends AppCompatActivity {
     ImageView img_my_if;
     Button btn_edit;
     TextView btn_back;
+    Gson gson = new Gson();
+
+    LocalStorage localStorage;
+    User user;
+
 
 
     @Override
@@ -34,26 +43,23 @@ public class MyInfo extends AppCompatActivity {
         textViewEmail = findViewById(R.id.tv_email_my_if);
         textViewDiachi = findViewById(R.id.tv_diachi_my_if);
         textViewsdt = findViewById(R.id.tv_sdt_my_if);
+        localStorage = new LocalStorage(getApplicationContext());
 
-        SharedPreferences preferences = getSharedPreferences("infologin", MODE_PRIVATE);
-        String id = preferences.getString("user_id", "");
-        String image_url = preferences.getString("image_url", "");
-        String fullname = preferences.getString("full_name", "");
-        String phone_number = preferences.getString("phone_number", "");
-        String email = preferences.getString("email", "");
-        String address = preferences.getString("address", "");
-        textViewFullName.setText(fullname);
-        textViewEmail.setText(email);
-        textViewDiachi.setText(address);
-        textViewsdt.setText(phone_number);
+        user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
-        if (!image_url.isEmpty()) {
-            // Sử dụng Picasso để hiển thị ảnh
-            Picasso.get().load(image_url).into(img_my_if);
-        } else {
-            Toast.makeText(this, "trống", Toast.LENGTH_SHORT).show();
 
-        }
+        textViewFullName.setText(user.getFull_name());
+        textViewEmail.setText(user.getEmail());
+        textViewDiachi.setText(user.getAddress());
+        textViewsdt.setText(user.getPhone_number());
+
+//        if (!image_url.isEmpty()) {
+//            // Sử dụng Picasso để hiển thị ảnh
+//            Picasso.get().load(image_url).into(img_my_if);
+//        } else {
+//            Toast.makeText(this, "trống", Toast.LENGTH_SHORT).show();
+//
+//        }
 
         btn_edit.setOnClickListener(view -> {
             Intent intent = new Intent(MyInfo.this, EditProfileActivity.class);

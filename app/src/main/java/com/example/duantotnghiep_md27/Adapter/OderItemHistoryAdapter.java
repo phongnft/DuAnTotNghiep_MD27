@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duantotnghiep_md27.Model.OrderDetails;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
@@ -46,10 +47,10 @@ public class OderItemHistoryAdapter extends RecyclerView.Adapter<OderItemHistory
         final Product_home product_home = product_homeList;
         holder.order_id.setText("#" + order.getOrder_detail_id());
 //        holder.order_title.setText(order.get);
-        holder.order_quantity.setText(order.getQuantity()+"");
+        holder.order_quantity.setText("Số lượng: "+order.getQuantity()+"");
+        Glide.with(context).load(product_home.getImage_url()).into(holder.order_image);
 
-        holder.order_unitprice.setText(product_home.getProduct_name());
-//        holder.total_price.setText(order.getItemQuantity() + "X" + order.getItemPrice() + "=" + order.getItemTotal());
+        holder.order_unitprice.setText("Tên sản phẩm: "+product_home.getProduct_name());
     }
 
     @Override

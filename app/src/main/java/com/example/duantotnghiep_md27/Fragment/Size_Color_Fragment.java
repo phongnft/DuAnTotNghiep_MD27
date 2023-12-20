@@ -56,7 +56,6 @@ public class Size_Color_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_size_number, container, false);
-        imageOff = view.findViewById(R.id.imgOffCartProduct);
         imgCartProductDiaLog = view.findViewById(R.id.imgProductCartDialog);
         PriceCartProducDialog = view.findViewById(R.id.PriceCartDialog);
         sizeColor = new Size_Color(listProductOrder, requireContext());
@@ -64,13 +63,13 @@ public class Size_Color_Fragment extends Fragment {
 
         detailActivity = (detail_activity) getActivity();
 
-        imageOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), detailActivity.getClass());
-                startActivity(intent);
-            }
-        });
+//        imageOff.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), detailActivity.getClass());
+//                startActivity(intent);
+//            }
+//        });
 
         return view;
     }

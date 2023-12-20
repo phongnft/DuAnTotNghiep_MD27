@@ -2,8 +2,10 @@ package com.example.duantotnghiep_md27.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -53,10 +55,12 @@ public class UserPayfragment extends Fragment {
     RecyclerView recyclerViewPay;
     int price = 0;
     UserPayAdapter userPayAdapter;
-    Gson gson =new Gson();
+    Gson gson = new Gson();
     LocalStorage localStorage;
     User user;
-    TextView sumproductpay, sumproductpay2;
+    Context context;
+
+    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay;
 
     Cart_Fragment cartFragment;
     ArrayList<ProductOrderCart> listProductOrder = new ArrayList<>();
@@ -74,6 +78,7 @@ public class UserPayfragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        context = getContext();
         View view = inflater.inflate(R.layout.fragment_user_pay, container, false);
         imageViewBack = view.findViewById(R.id.imgback);
 //        imageViewNextInformation = view.findViewById(R.id.NextInformation);
@@ -82,6 +87,10 @@ public class UserPayfragment extends Fragment {
         recyclerViewPay = view.findViewById(R.id.List_Item_Product_Pay);
         sumproductpay = view.findViewById(R.id.SumProductPay);
         sumproductpay2 = view.findViewById(R.id.sumproductpay2);
+        tv_name_pay = view.findViewById(R.id.tv_name_pay);
+        tv_diachi_pay = view.findViewById(R.id.tv_diachi_pay);
+        tv_sdt_pay = view.findViewById(R.id.tv_sdt_pay);
+
 
         localStorage = new LocalStorage(requireContext());
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
@@ -89,11 +98,18 @@ public class UserPayfragment extends Fragment {
         int sum = 0;
         for (int i = 0; i < cartFragment.listProductSelected.size(); i++) {
             sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()
-                    *Cart_Fragment.listProductSelected.get(i).getQuantity());
+                    * Cart_Fragment.listProductSelected.get(i).getQuantity());
 
         }
+
+        tv_name_pay.setText(user.getFull_name());
+        tv_diachi_pay.setText(user.getAddress());
+        tv_sdt_pay.setText(user.getPhone_number());
+
+
         sumproductpay.setText(sum + "");
         sumproductpay2.setText(sum + "");
+
         buttonpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,10 +182,10 @@ public class UserPayfragment extends Fragment {
         int sum = 0;
         for (int i = 0; i < cartFragment.listProductSelected.size(); i++) {
             sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()
-                    *Cart_Fragment.listProductSelected.get(i).getQuantity());
+                    * Cart_Fragment.listProductSelected.get(i).getQuantity());
 
         }
-        Call<ResponseBody> call = RestClient.getRestService(requireContext()).getPayment(new Payment(user.getUser_id(),sum));
+        Call<ResponseBody> call = RestClient.getRestService(requireContext()).getPayment(new Payment(user.getUser_id(), sum));
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
