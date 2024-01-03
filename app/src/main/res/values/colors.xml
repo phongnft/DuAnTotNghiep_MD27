@@ -18,8 +18,8 @@
     <color name="favorite_20">#334CAF50</color>
     <color name="profile_20">#33FFC107</color>
     <color name="info">#E6D6D6</color>
-    <color name="clickedColor">#F83C3C</color>
-    <color name="defaultColor">#62B7FA</color>
+    <color name="clickedColor">#62B7FA</color>
+    <color name="defaultColor">#E6E6E6</color>
 
     <color name="primary">#01AED8</color>
 
