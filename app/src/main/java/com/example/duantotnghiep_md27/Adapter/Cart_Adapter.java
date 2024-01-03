@@ -198,29 +198,4 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
 
 
 
-    private void showUndoSnackbar(final ProductOrderCart removedItem, final int position) {
-
-        Snackbar snackbar = Snackbar.make(recyclerView, "Item deleted", Snackbar.LENGTH_LONG)
-                .setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Undo the item deletion
-                        listProduct.add(position, removedItem);
-                        notifyItemInserted(position);
-                        recyclerView.scrollToPosition(position);
-                    }
-                });
-
-        snackbar.show();
-    }
-
-//    public void checkItem(int position, boolean isChecked) {
-//        if (position >= 0 && position < listProductForCart.size()) {
-//            ProductForCart item = listProductForCart.get(position);
-//            item.setIScheck(isChecked);
-//            notifyItemChanged(position);
-//        }
-//    }
-
-
 }

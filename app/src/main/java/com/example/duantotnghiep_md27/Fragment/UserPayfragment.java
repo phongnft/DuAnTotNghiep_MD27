@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -60,7 +61,7 @@ public class UserPayfragment extends Fragment {
     User user;
     Context context;
 
-    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay;
+    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay,priceship;
 
     Cart_Fragment cartFragment;
     ArrayList<ProductOrderCart> listProductOrder = new ArrayList<>();
@@ -90,6 +91,8 @@ public class UserPayfragment extends Fragment {
         tv_name_pay = view.findViewById(R.id.tv_name_pay);
         tv_diachi_pay = view.findViewById(R.id.tv_diachi_pay);
         tv_sdt_pay = view.findViewById(R.id.tv_sdt_pay);
+        priceship = view.findViewById(R.id.priceShip);
+
 
 
         localStorage = new LocalStorage(requireContext());
@@ -100,15 +103,17 @@ public class UserPayfragment extends Fragment {
             sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()
                     * Cart_Fragment.listProductSelected.get(i).getQuantity());
 
+
+
         }
 
         tv_name_pay.setText(user.getFull_name());
         tv_diachi_pay.setText(user.getAddress());
         tv_sdt_pay.setText(user.getPhone_number());
 
-
+        priceship.setText(sum/6+"đ"+"+"+"(3000đ/1km giao hàng)");
         sumproductpay.setText(sum + "");
-        sumproductpay2.setText(sum + "");
+        sumproductpay2.setText(sum + sum/6+"");
 
         buttonpay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,9 +125,10 @@ public class UserPayfragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-
                 Cart_Fragment cartFragment = new Cart_Fragment();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.in_back, R.anim.out_back);
                 fragmentTransaction.replace(R.id.framehome, cartFragment).commit();
             }
         });
@@ -142,43 +148,9 @@ public class UserPayfragment extends Fragment {
     }
 
 
-    private void showDialogPay() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.dialog_pay, null);
-        builder.setView(view);
-        builder.setPositiveButton("Trang chủ", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Home_Fragment homeFragment = new Home_Fragment();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.framehome, homeFragment).commit();
-            }
-        });
-        builder.setNegativeButton("Trở về giỏ hàng", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                UserPayfragment userPayfragment = new UserPayfragment();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
 
-
-    private void goToUrl(String url) {
-        Uri uriUrl = Uri.parse(url);
-        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-        startActivity(launchBrowser);
-    }
 
     public void paymentAPI() {
-//        gson = new Gson();
-//        localStorage = new LocalStorage(requireContext());
-//        user = gson.fromJson(localStorage.getUserLogin(), User.class);
-
         int sum = 0;
         for (int i = 0; i < cartFragment.listProductSelected.size(); i++) {
             sum += (Cart_Fragment.listProductSelected.get(i).getProductForCart().getPrice()

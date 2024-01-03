@@ -63,7 +63,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
     private IsCheck isCheckbox = new IsCheck();
 
 
-    public TextView sumProduct, sumProductHealCart;
+    public TextView sumProduct, sumProductForCart;
     ImageView ImgCartProduct, imgbackCart, imgCartProductDiaLog;
 
     Cart_Adapter cartAdapter;
@@ -90,6 +90,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
         ButtonPay = view.findViewById(R.id.pay);
         bottomNavigationView = view.findViewById(R.id.bottomnavmenu);
         sumProduct = view.findViewById(R.id.SumProductCart);
+        sumProductForCart = view.findViewById(R.id.sumProductForCart);
         localStorage = new LocalStorage(requireContext());
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
@@ -142,12 +143,11 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
                     Bundle bundle = new Bundle();
                     bundle.putInt("price", sum);
                     userPayfragment.setArguments(bundle);
-//                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                     fragmentTransaction.replace(R.id.framehome, userPayfragment).commit();
+
 
                 } else {
                     Toast.makeText(requireContext(), "Vui lòng chọn sản phẩm thanh toán", Toast.LENGTH_SHORT).show();
@@ -176,7 +176,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
                 if (response.isSuccessful() && response.body() != null) {
                     ListCart listCart = response.body();
                     listProductOrder = listCart.getCartDataList().getProductOrderCartArrayList();
-
+                    sumProductForCart.setText(listProductOrder.size()+"");
                     Log.d("aaaaa", listCart.getCartDataList().getTotal());
                     cartAdapter.setData(listProductOrder);
                 } else {

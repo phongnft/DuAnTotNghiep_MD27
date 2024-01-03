@@ -42,19 +42,172 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/List_Item_Product_Pay"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+               android:id="@+id/header"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
 
-                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Thông tin khách hàng"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <LinearLayout
+                    android:id="@+id/settinguserpay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/user" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Họ tên: "
+                            android:textSize="17dp" />
+
+                        <TextView
+                            android:id="@+id/tv_name_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Nguyễn Văn A"
+                            android:textSize="17dp" />
 
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/call" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Số điện thoại: "
+                            android:textSize="17dp" />
+
+                        <TextView
+                            android:id="@+id/tv_sdt_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0334484569"
+                            android:textSize="17dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/pin" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Địa chỉ: "
+                            android:textSize="17dp" />
+
+                        <TextView
+                            android:id="@+id/tv_diachi_pay"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thị Trấn Triệu Sơn Thanh hóa"
+                            android:textSize="17dp" />
+
+                    </LinearLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/contranin3"
+                        android:layout_width="390dp"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/header"
+                        android:background="#B6B5B5">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="3dp"
+                        >
+
+                        <TextView
+                            android:layout_height="30dp"
+                            android:layout_width="wrap_content"
+                            android:text="Ghi chú: "
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            />
+                        <TextView
+                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:text="(thời gian giao hàng,ghi chú khác)"
+                            android:textStyle="italic"
+                            android:textSize="17dp"
+                            />
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="390dp"
+                        android:layout_height="50dp"
+                        android:hint="nhập ghi chú của bạn tại đây"
+                        android:textSize="17dp"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/List_Item_Product_Pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@+id/contranin3"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/contranin4"
+                        android:layout_width="390dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_below="@+id/List_Item_Product_Pay"
+                        android:background="#B6B5B5">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             <TextView
                 android:id="@+id/textchitietdonhang"
                 android:layout_width="wrap_content"
@@ -78,24 +231,26 @@
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:text="Tổng phụ"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
                 <TextView
                     android:id="@+id/SumProductPay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
+                    android:layout_marginLeft="50dp"
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="đ"
+                    android:layout_marginLeft="1dp"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
 
                     />
             </LinearLayout>
@@ -114,17 +269,18 @@
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:text="Vận chuyển"
-                    android:textSize="20dp" />
+                    android:textSize="17dp"/>
 
                 <TextView
-
+                    android:id="@+id/priceShip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Freeship"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
             </LinearLayout>
 
 
@@ -142,163 +298,42 @@
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:text="Tổng"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
                 <TextView
                     android:id="@+id/sumproductpay2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
+                    android:layout_marginLeft="50dp"
                     android:textColor="#EA1414"
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="đ"
+                    android:layout_marginLeft="1dp"
                     android:textColor="#EA1414"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
 
                     />
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/contranin"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@+id/List_Item_Product_Pay"
-                android:layout_marginTop="31dp"
-                android:background="#B6B5B5">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/contranin2"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@+id/lntong"
-
-                android:background="#B6B5B5">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/contranin2"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Thông tin đơn hàng"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/settinguserpay"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contranin2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/lntong"
+                    android:background="#B6B5B5">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Họ tên:"
-                            android:textSize="20dp" />
-
-                        <TextView
-                            android:id="@+id/tv_name_pay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="Nguyễn Văn A"
-                            android:textSize="20dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/call" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Số điện thoại: "
-                            android:textSize="20dp" />
-
-                        <TextView
-                            android:id="@+id/tv_sdt_pay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="0334484569"
-                            android:textSize="20dp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/pin" />
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Địa chỉ:"
-                            android:textSize="20dp" />
-
-                        <TextView
-                            android:id="@+id/tv_diachi_pay"
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="Thị Trấn Triệu Sơn Thanh hóa"
-                            android:textSize="20dp" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -327,7 +362,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="Ứng dụng ngân hàng di động (VNPAY)"
-                        android:textSize="20dp" />
+                        android:textSize="17dp" />
 
 
                 </LinearLayout>

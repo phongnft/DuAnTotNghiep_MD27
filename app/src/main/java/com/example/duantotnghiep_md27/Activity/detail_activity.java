@@ -89,6 +89,15 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         Glide.with(getApplicationContext()).load(_image).into(image);
 
 
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(detail_activity.this, Img_item_Activity.class);
+                startActivity(i);
+            }
+        });
+
+
         orderProduct = new OrderProduct(userid, _id, soluong, "s");
 
 
@@ -181,18 +190,15 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         txq.setText(_quantity + " ");
 
 
-
         upsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (product_home.getQuantity() > 0) {
+                if (_quantity > soluong) {
                     soluong++;
                     orderProduct.setQuantity(soluong);
-                    textsoluong.setText(soluong + "");
-//                    AddCart.setVisibility(View.VISIBLE);
+                    textsoluong.setText(soluong + " ");
                 } else {
-                    Toast.makeText(detail_activity.this, "Số lượng trong kho không còn", Toast.LENGTH_SHORT).show();
-                    AddCart.setVisibility(View.GONE);
+                    Toast.makeText(detail_activity.this, "số lượng trong giỏ hàng không đủ", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -204,6 +210,8 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                     soluong--;
                     orderProduct.setQuantity(soluong);
                     textsoluong.setText(soluong + "");
+                }else {
+                    Toast.makeText(detail_activity.this, "Số lượng phải ít nhất là 1", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -263,20 +271,17 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(false);
                 orderProduct.setSize("XL");
-
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
 
 
-
         AddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(_quantity>0){
+                if (_quantity >= soluong) {
                     AddCartProduct();
-                }else {
-                    AddCart.setEnabled(false);
+                } else {
                     Toast.makeText(detail_activity.this, "Số lượng sản phẩm đã hết", Toast.LENGTH_SHORT).show();
                 }
 
