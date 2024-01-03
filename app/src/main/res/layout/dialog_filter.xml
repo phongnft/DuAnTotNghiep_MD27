@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="match_parent"
+    android:gravity="end"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <EditText
+            android:id="@+id/edtminPrice"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:background="@drawable/round_back_dark_blue5_15"
+            android:hint="Nhập giá thấp nhất" />
+
+        <View
+            android:layout_width="25dp"
+            android:layout_height="1dp" />
+
+        <EditText
+            android:id="@+id/edtmaxPrice"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:background="@drawable/round_back_dark_blue5_15"
+            android:hint="Nhập giá cao nhất" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/row_back_primary_15"
+        android:text="Lọc" />
+
+
+</LinearLayout>

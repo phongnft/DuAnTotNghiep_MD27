@@ -29,6 +29,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface Api_Service {
 
@@ -106,5 +107,10 @@ public interface Api_Service {
     @GET("cart/history/{id}")
     Call<OderProduct> getOderHistory(@Path("id") String cartId);
 
+    @GET("products/searchproducts")
+    Call<ProductData> filterProducts(
+            @Query("minPrice") int minPrice,
+            @Query("maxPrice") int maxPrice
+    );
 
 }

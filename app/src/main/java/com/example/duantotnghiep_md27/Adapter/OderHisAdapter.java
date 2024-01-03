@@ -70,6 +70,7 @@ public class OderHisAdapter extends RecyclerView.Adapter<OderHisAdapter.OderHisV
     @Override
     public void onBindViewHolder(@NonNull OderHisAdapter.OderHisViewHoder holder, int position) {
         final Oderdata oderProduct = oderProductslist.get(position);
+        int position2 = 1;
 
         holder.orderId.setText("Mã đơn hàng" + oderProduct.getOrder_id());
         holder.date.setText("Ngày đặt hàng: " + oderProduct.getOrder_date());
@@ -77,13 +78,13 @@ public class OderHisAdapter extends RecyclerView.Adapter<OderHisAdapter.OderHisV
         holder.status.setText("Trạng thái: " + oderProduct.getStatus());
 
         holder.viewDetails.setOnClickListener(view -> {
-            openOrderItemModal(position);
+            openOrderItemModal(position,position2);
         });
 
 
     }
 
-    private void openOrderItemModal(int postion) {
+    private void openOrderItemModal(int postion,int position2) {
         final Dialog dialog = new Dialog(context, R.style.FullScreenDialogStyle);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.orderdetails_dialog);
