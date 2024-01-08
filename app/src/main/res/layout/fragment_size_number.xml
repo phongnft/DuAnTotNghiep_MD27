@@ -15,7 +15,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_margin="10dp"
-        android:background="@drawable/clothes"
+
         />
 
 
@@ -161,13 +161,12 @@
     </LinearLayout>
     <Button
         android:id="@+id/AddCartDialog"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="300dp"
-
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:text="Thêm vào giỏ hàng"
+        android:backgroundTint="#008DFD"
+        android:background="@drawable/cart_icon"
         android:textSize="20dp"
         android:textStyle="bold"
         android:visibility="invisible" />

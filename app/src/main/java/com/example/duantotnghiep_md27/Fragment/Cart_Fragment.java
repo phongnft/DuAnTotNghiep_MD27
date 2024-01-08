@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -68,6 +70,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
 
     Cart_Adapter cartAdapter;
     LocalStorage localStorage;
+    private static Animation shakeAnimation;
     String userid;
     CheckBox checkall;
     detail_activity detailActivity;
@@ -93,7 +96,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
         sumProductForCart = view.findViewById(R.id.sumProductForCart);
         localStorage = new LocalStorage(requireContext());
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
-
+        shakeAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.shake);
 //        imgbackCart = view.findViewById(R.id.backCart);
         checkall = view.findViewById(R.id.checkBoxAllItem);
 
@@ -150,6 +153,7 @@ public class Cart_Fragment extends Fragment implements OnItemSwipeListener {
 
 
                 } else {
+                    ButtonPay.startAnimation(shakeAnimation);
                     Toast.makeText(requireContext(), "Vui lòng chọn sản phẩm thanh toán", Toast.LENGTH_SHORT).show();
                 }
             }

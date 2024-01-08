@@ -181,10 +181,12 @@ public class Cart_Adapter extends RecyclerView.Adapter<Cart_Adapter.CartViewHold
                         Sum += listProduct.get(i).getProductForCart().getPrice();
                     }
                     cartFragment.sumProduct.setText(Sum + " ");
+                    cartFragment.sumProductForCart.setText(listProduct.size()+ "");
                     Toast.makeText(context, deleteCart.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Log.d("zzzzzzzz", "null data");
                 }
+
             }
 
             @Override

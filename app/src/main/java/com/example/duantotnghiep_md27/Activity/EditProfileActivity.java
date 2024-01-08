@@ -87,6 +87,8 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
         NetworkCheck.isNetworkAvailable(getApplicationContext());
+
+
     }
 
 

@@ -18,16 +18,22 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.duantotnghiep_md27.Activity.EditProfileActivity;
+import com.example.duantotnghiep_md27.Activity.MyInfo;
 import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Adapter.Cart_Adapter;
 import com.example.duantotnghiep_md27.Adapter.UserPayAdapter;
@@ -54,6 +60,7 @@ public class UserPayfragment extends Fragment {
     ImageView imageViewBack, imageViewNextInformation, imageViewNextPay, imgdialogpay, imgVNPay;
     Button buttonpay;
     RecyclerView recyclerViewPay;
+    private static Animation shakeAnimation;
     int price = 0;
     UserPayAdapter userPayAdapter;
     Gson gson = new Gson();
@@ -61,7 +68,7 @@ public class UserPayfragment extends Fragment {
     User user;
     Context context;
 
-    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay,priceship;
+    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay,priceship, editprofile;
 
     Cart_Fragment cartFragment;
     ArrayList<ProductOrderCart> listProductOrder = new ArrayList<>();
@@ -92,6 +99,8 @@ public class UserPayfragment extends Fragment {
         tv_diachi_pay = view.findViewById(R.id.tv_diachi_pay);
         tv_sdt_pay = view.findViewById(R.id.tv_sdt_pay);
         priceship = view.findViewById(R.id.priceShip);
+        editprofile = view.findViewById(R.id.editprofile);
+        shakeAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.shake);
 
 
 
@@ -106,19 +115,69 @@ public class UserPayfragment extends Fragment {
 
 
         }
+         final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                // Hiển thị nội dung từ EditText vào TextView
+                tv_name_pay .setText(user.getFull_name());
+            }
+        });
 
-        tv_name_pay.setText(user.getFull_name());
-        tv_diachi_pay.setText(user.getAddress());
-        tv_sdt_pay.setText(user.getPhone_number());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                // Hiển thị nội dung từ EditText vào TextView
+                tv_diachi_pay.setText(user.getAddress());
+            }
+        });
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                // Hiển thị nội dung từ EditText vào TextView
+                tv_sdt_pay.setText(user.getPhone_number());
+            }
+        });
+
+
+//        tv_name_pay.setText(user.getFull_name());
+//        tv_diachi_pay.setText(user.getAddress());
+//        tv_sdt_pay.setText(user.getPhone_number());
 
         priceship.setText(sum/6+"đ"+"+"+"(3000đ/1km giao hàng)");
-        sumproductpay.setText(sum + "");
-        sumproductpay2.setText(sum + sum/6+"");
+        sumproductpay.setText(sum + "đ");
+        sumproductpay2.setText(sum + sum/6+"đ");
+
+
+        editprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireContext(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         buttonpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                paymentAPI();
+                if(TextUtils.isEmpty(tv_diachi_pay.getText().toString())){
+                    Toast.makeText(context, "Nhập đầy đủ địa chỉ", Toast.LENGTH_SHORT).show();
+                    buttonpay.startAnimation(shakeAnimation);
+                    }
+                else if (TextUtils.isEmpty(tv_sdt_pay.getText().toString())) {
+                    Toast.makeText(context, "Nhập số điện thoại", Toast.LENGTH_SHORT).show();
+                    buttonpay.startAnimation(shakeAnimation);
+
+
+                }else if(TextUtils.isEmpty(tv_name_pay.getText().toString())){
+                    Toast.makeText(context, "Nhập đầy đủ tên", Toast.LENGTH_SHORT).show();
+                    buttonpay.startAnimation(shakeAnimation);
+                }
+                else {
+                    paymentAPI();
+                }
+
             }
         });
         imageViewBack.setOnClickListener(new View.OnClickListener() {
@@ -184,9 +243,13 @@ public class UserPayfragment extends Fragment {
         });
     }
 
+
+
     @Override
     public void onStop() {
         super.onStop();
         Cart_Fragment.listProductSelected.clear();
     }
+
+
 }

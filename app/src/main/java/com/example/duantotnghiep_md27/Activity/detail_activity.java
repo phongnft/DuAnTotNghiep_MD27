@@ -12,6 +12,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,6 +48,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     int _quantity;
 
     ImageView btnshare, image;
+    private static Animation shakeAnimation;
 
     Button selectedButton;
 
@@ -93,6 +96,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(detail_activity.this, Img_item_Activity.class);
+                i.putExtra("image", product_home.getImage_url());
                 startActivity(i);
             }
         });
@@ -178,6 +182,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         RoundedImageView downsoluong = dialog.findViewById(R.id.SoluongDown);
         RoundedImageView upsoluong = dialog.findViewById(R.id.SoluongUp);
         TextView textsoluong = dialog.findViewById(R.id.SoluongProductCart);
+        shakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 
         Button AddCart = dialog.findViewById(R.id.AddCartDialog);
         ImageView img = dialog.findViewById(R.id.imgProductCartDialog);
@@ -193,12 +198,15 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         upsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (_quantity > soluong) {
+                if (_quantity <= soluong) {
+                    Toast.makeText(detail_activity.this, "số lượng trong giỏ hàng không đủ", Toast.LENGTH_SHORT).show();
+                    textsoluong.startAnimation(shakeAnimation);
+                    textsoluong.setTextColor(Color.RED);
+                } else {
                     soluong++;
                     orderProduct.setQuantity(soluong);
+                    textsoluong.setTextColor(Color.BLACK);
                     textsoluong.setText(soluong + " ");
-                } else {
-                    Toast.makeText(detail_activity.this, "số lượng trong giỏ hàng không đủ", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -206,12 +214,16 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         downsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (soluong > 1) {
+                if (soluong <= 1) {
+                    textsoluong.startAnimation(shakeAnimation);
+                    textsoluong.setTextColor(Color.RED);
+                    Toast.makeText(detail_activity.this, "Số lượng phải ít nhất là 1", Toast.LENGTH_SHORT).show();
+
+                }else {
                     soluong--;
                     orderProduct.setQuantity(soluong);
+                    textsoluong.setTextColor(Color.BLACK);
                     textsoluong.setText(soluong + "");
-                }else {
-                    Toast.makeText(detail_activity.this, "Số lượng phải ít nhất là 1", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -282,6 +294,8 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 if (_quantity >= soluong) {
                     AddCartProduct();
                 } else {
+                    txq.startAnimation(shakeAnimation);
+                    txq.setTextColor(Color.RED);
                     Toast.makeText(detail_activity.this, "Số lượng sản phẩm đã hết", Toast.LENGTH_SHORT).show();
                 }
 

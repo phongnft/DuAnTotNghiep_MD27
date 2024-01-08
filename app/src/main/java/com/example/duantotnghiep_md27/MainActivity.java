@@ -74,9 +74,6 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Home_Fragment());
                     break;
                 case R.id.card:
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.in_back, R.anim.out_back);
                     Cart_Fragment.listProductSelected.clear();
                     replaceFragment(new Cart_Fragment());
                     break;
