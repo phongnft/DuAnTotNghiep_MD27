@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     TextView name, price, mota;
     Button btAddcart;
 
-
+    ImageButton btnback;
     String _id, _name, _price, _description, _image, userid;
     int _quantity;
 
@@ -81,6 +82,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         mota = findViewById(R.id.tvdetail_mota);
         btAddcart = findViewById(R.id.addCart);
         btnshare = findViewById(R.id.buttonShare);
+        btnback = findViewById(R.id.btnbackkkk);
 
 
         name.setText(_name);
@@ -91,6 +93,10 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 
         orderProduct = new OrderProduct(userid, _id, soluong, "s");
 
+
+        btnback.setOnClickListener(view -> {
+            finish();
+        });
 
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,7 +187,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         txq.setText(_quantity + " ");
 
 
-
         upsoluong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -269,13 +274,12 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         });
 
 
-
         AddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(_quantity>0){
+                if (_quantity > 0) {
                     AddCartProduct();
-                }else {
+                } else {
                     AddCart.setEnabled(false);
                     Toast.makeText(detail_activity.this, "Số lượng sản phẩm đã hết", Toast.LENGTH_SHORT).show();
                 }

@@ -156,7 +156,7 @@ public class Search_Activity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_filter);
 
-        Button btnFilter = findViewById(R.id.btnFilter);
+//        Button btnFilter = findViewById(R.id.btnFilter);
         EditText edtminprice = findViewById(R.id.edtminPrice);
         EditText edtmaxprice = findViewById(R.id.edtmaxPrice);
 
@@ -170,19 +170,19 @@ public class Search_Activity extends AppCompatActivity {
             window.setAttributes(layoutParams);
         }
 
-        btnFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String min = edtminprice.getText().toString();
-                String max = edtmaxprice.getText().toString();
-
-                int minValue = Integer.parseInt(min);
-                int maxValue = Integer.parseInt(max);
-//                String min= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
-//                String max= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
-                getFilterProduct(minValue, maxValue);
-            }
-        });
+//        btnFilter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String min = edtminprice.getText().toString();
+//                String max = edtmaxprice.getText().toString();
+//
+//                int minValue = Integer.parseInt(min);
+//                int maxValue = Integer.parseInt(max);
+////                String min= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
+////                String max= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
+//                getFilterProduct(minValue, maxValue);
+//            }
+//        });
 
         dialog.show();
     }
@@ -237,8 +237,8 @@ public class Search_Activity extends AppCompatActivity {
     private void showCustomDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(R.layout.dialog_filter)
-                .setTitle("Dialog lọc sản phẩm")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setTitle("Lọc sản phẩm")
+                .setPositiveButton("Lọc", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý sự kiện khi nhấn nút OK

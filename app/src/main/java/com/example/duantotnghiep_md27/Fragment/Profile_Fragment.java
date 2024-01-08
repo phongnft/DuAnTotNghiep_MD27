@@ -54,8 +54,8 @@ public class Profile_Fragment extends Fragment {
         context = getContext();
         tv_next = view.findViewById(R.id.tv_next_taikhoan);
         tv_fanpage = view.findViewById(R.id.tv_facebook);
-        tv_sdt_store = view.findViewById(R.id.tv_sdt_store);
-        tv_email_store = view.findViewById(R.id.tv_email_store);
+//        tv_sdt_store = view.findViewById(R.id.tv_sdt_store);
+//        tv_email_store = view.findViewById(R.id.tv_email_store);
         tv_exit = view.findViewById(R.id.tv_dangxuat);
         tv_sdt_pro = view.findViewById(R.id.tv_sdt_pro);
         tv_name_pro = view.findViewById(R.id.tv_name_pro);
@@ -104,30 +104,30 @@ public class Profile_Fragment extends Fragment {
         });
 
 
-        tv_email_store.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String emailAddress = "dungdvph23702@fpt.edu.vn";
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                emailIntent.setData(Uri.parse("mailto:" + emailAddress));
-                startActivity(emailIntent);
-            }
-        });
+//        tv_email_store.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String emailAddress = "dungdvph23702@fpt.edu.vn";
+//                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+//                emailIntent.setData(Uri.parse("mailto:" + emailAddress));
+//                startActivity(emailIntent);
+//            }
+//        });
 
-        tv_sdt_store.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String phoneNumber = "0334158096";
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + phoneNumber));
-
-                if (getActivity().checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1);
-                    return;
-                }
-                startActivity(callIntent);
-            }
-        });
+//        tv_sdt_store.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String phoneNumber = "0334158096";
+//                Intent callIntent = new Intent(Intent.ACTION_CALL);
+//                callIntent.setData(Uri.parse("tel:" + phoneNumber));
+//
+//                if (getActivity().checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                    requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1);
+//                    return;
+//                }
+//                startActivity(callIntent);
+//            }
+//        });
 
         tv_next.setOnClickListener(new View.OnClickListener() {
             @Override

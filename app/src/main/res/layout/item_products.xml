@@ -4,9 +4,11 @@
     android:id="@+id/card_itemproduct"
     android:layout_width="190dp"
     android:background="@drawable/border_cardview"
-    android:layout_height="275dp"
+    android:layout_height="300dp"
     android:layout_marginTop="10dp"
-    app:cardCornerRadius="7dp"
+    app:cardCornerRadius="10dp"
+    android:elevation="8dp"
+    app:cardPreventCornerOverlap="true"
     android:layout_margin="4dp">
 
 
@@ -20,12 +22,12 @@
             <ImageView
                 android:id="@+id/imgproducts"
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:src="@drawable/img_produc" />
+                android:src="@drawable/img_product4" />
 
             <TextView
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:layout_gravity="center"
                 android:id="@+id/tv_nameproduct"
                 android:layout_width="160dp"
@@ -36,7 +38,7 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -45,7 +47,7 @@
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     android:id="@+id/tv_priceproduct"
-                    android:layout_width="110dp"
+                    android:layout_width="118dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="123000đ"
@@ -54,7 +56,7 @@
 
                 <ImageView
                     android:id="@+id/imgShopnow"
-                    android:src="@drawable/img_18"
+                    android:src="@drawable/img_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
