@@ -15,13 +15,28 @@
             android:layout_marginHorizontal="10dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:id="@+id/imagedetail"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/img_product1" />
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/imagedetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_product1" />
+
+
+                <ImageButton
+                    android:id="@+id/btnbackkkk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_arrow_back_ios_new_24" />
+
+
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/tvdetail_namee"
@@ -33,13 +48,13 @@
 
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/tvdetail_pricee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="150.000đ"
-                android:textColor="#A80707" />
+                android:textColor="#A80707"
+                android:textStyle="bold" />
 
 
             <LinearLayout
@@ -49,7 +64,6 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:padding="10dp">
-
 
 
                 <Button
@@ -69,8 +83,8 @@
                     android:id="@+id/buttonShare"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/baseline_share_24" />
 
             </LinearLayout>

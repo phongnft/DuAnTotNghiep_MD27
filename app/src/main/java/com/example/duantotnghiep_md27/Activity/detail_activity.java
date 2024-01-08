@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     TextView name, price, mota;
     Button btAddcart;
 
-
+    ImageButton btnback;
     String _id, _name, _price, _description, _image, userid;
     int _quantity;
 
@@ -84,6 +85,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         mota = findViewById(R.id.tvdetail_mota);
         btAddcart = findViewById(R.id.addCart);
         btnshare = findViewById(R.id.buttonShare);
+        btnback = findViewById(R.id.btnbackkkk);
 
 
         name.setText(_name);
@@ -104,6 +106,10 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 
         orderProduct = new OrderProduct(userid, _id, soluong, "s");
 
+
+        btnback.setOnClickListener(view -> {
+            finish();
+        });
 
         btnshare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,6 +199,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         Glide.with(getApplicationContext()).load(_image).into(img);
         txprice.setText(_price + " ");
         txq.setText(_quantity + " ");
+
 
 
         upsoluong.setOnClickListener(new View.OnClickListener() {

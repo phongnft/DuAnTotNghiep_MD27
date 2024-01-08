@@ -201,7 +201,7 @@ public class Login_Activity extends AppCompatActivity {
             layoutmail.startAnimation(shakeAnimation);
             layoutpass.startAnimation(shakeAnimation);
             vibrate(200);
-            new CustomToast().Show_Toast(this, loginLayoutall, "Vui long k để trống");
+            new CustomToast().Show_Toast(this, loginLayoutall, "Vui lòng không để trống");
         } else {
             user = new User(email, password);
             login(user);

@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomnavmenu" />
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnavmenu"
         android:layout_width="match_parent"
