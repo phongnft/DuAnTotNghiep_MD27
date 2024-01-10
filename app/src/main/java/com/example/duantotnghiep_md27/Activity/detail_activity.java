@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ import com.example.duantotnghiep_md27.Model.OrderProductResponse;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
+import com.example.duantotnghiep_md27.Utils.CustomToast;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -41,9 +44,9 @@ import retrofit2.Response;
 
 
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextView name, price, mota;
+    TextView name, price, mota, sizedialog;
     Button btAddcart;
-
+    FrameLayout frameLayoutdialog;
     ImageButton btnback;
     String _id, _name, _price, _description, _image, userid;
     int _quantity;
@@ -188,8 +191,9 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         RoundedImageView downsoluong = dialog.findViewById(R.id.SoluongDown);
         RoundedImageView upsoluong = dialog.findViewById(R.id.SoluongUp);
         TextView textsoluong = dialog.findViewById(R.id.SoluongProductCart);
+        sizedialog = dialog.findViewById(R.id.sizedialog);
         shakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-
+        frameLayoutdialog = dialog.findViewById(R.id.frameLayoutdialog);
         Button AddCart = dialog.findViewById(R.id.AddCartDialog);
         ImageView img = dialog.findViewById(R.id.imgProductCartDialog);
         TextView txprice = dialog.findViewById(R.id.PriceCartDialog);
@@ -246,7 +250,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("S");
-
+                sizedialog.setText("S");
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -261,7 +265,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("M");
-
+                sizedialog.setText("M");
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -275,7 +279,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(false);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("L");
-
+                sizedialog.setText("L");
                 AddCart.setVisibility(View.VISIBLE);
 
             }
@@ -290,6 +294,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(false);
                 orderProduct.setSize("XL");
+                sizedialog.setText("XL");
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -328,5 +333,4 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         // Cập nhật biến selectedButton
         selectedButton = clickedButton;
     }
-
 }

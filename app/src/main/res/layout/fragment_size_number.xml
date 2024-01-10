@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
     android:background="@color/white"
+    android:id="@+id/frameLayoutdialog"
     tools:context=".Fragment.Size_Color_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -56,6 +57,16 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="150dp"
         android:text="Size:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sizedialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="150dp"
+        android:text=""
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -161,12 +172,12 @@
     </LinearLayout>
     <Button
         android:id="@+id/AddCartDialog"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="190dp"
         android:layout_marginTop="300dp"
         android:backgroundTint="#008DFD"
-        android:background="@drawable/cart_icon"
+        android:text="thêm vào giỏ hàng"
         android:textSize="20dp"
         android:textStyle="bold"
         android:visibility="invisible" />
