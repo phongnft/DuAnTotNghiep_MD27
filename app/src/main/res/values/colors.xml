@@ -22,5 +22,8 @@
     <color name="defaultColor">#E6E6E6</color>
 
     <color name="primary">#01AED8</color>
+    <color name="lavender">#8692f7</color>
+    <color name="green">#50c878</color>
+
 
 </resources>

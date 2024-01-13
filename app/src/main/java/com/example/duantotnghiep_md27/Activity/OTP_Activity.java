@@ -3,18 +3,23 @@ package com.example.duantotnghiep_md27.Activity;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.MainActivity;
@@ -249,8 +254,7 @@ public class OTP_Activity extends AppCompatActivity {
                             String userString = gson.toJson(user);
                             localStorage.createUserLoginSession(userString);
                             Toast.makeText(getApplicationContext(), "Xác minh OTP thành công", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
+                            showdialogsuccess();
 
                         } else {
                             new CustomToast().Show_Toast(OTP_Activity.this, OTPLayout, "Mã xác minh không chính xác");
@@ -338,6 +342,28 @@ public class OTP_Activity extends AppCompatActivity {
         if (cTimer != null)
             cTimer.cancel();
     }
+private void showdialogsuccess(){
+    ConstraintLayout constraintLayoutsuccess = findViewById(R.id.LoginDiaLog);
+    View view = LayoutInflater.from(OTP_Activity.this).inflate(R.layout.dialog_loginsuccess,constraintLayoutsuccess);
+    Button done = view.findViewById(R.id.buttonsuccess);
 
+    AlertDialog.Builder builder = new AlertDialog.Builder(OTP_Activity.this);
+    builder.setView(view);
+    final AlertDialog alertDialog = builder.create();
+    done.findViewById(R.id.buttonsuccess).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            alertDialog.dismiss();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+
+    });
+
+if(alertDialog.getWindow()!=null){
+    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+}
+    alertDialog.show();
+}
 
 }

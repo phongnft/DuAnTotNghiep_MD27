@@ -39,7 +39,7 @@ public class UserPayAdapter extends RecyclerView.Adapter<UserPayAdapter.userPay>
     public void onBindViewHolder(@NonNull UserPayAdapter.userPay holder, int position) {
         ProductOrderCart productOrderCart = listProductOrderpay.get(position);
         holder.txtNameProduct.setText(productOrderCart.getProductForCart().getProduct_name());
-        holder.txtPriceProduct.setText(productOrderCart.getProductForCart().getPrice() + "");
+        holder.txtPriceProduct.setText(productOrderCart.getProductForCart().getPrice() + "đ");
         Glide.with(context).load(productOrderCart.getProductForCart().getImage_url()).into(holder.imageproductpay);
         holder.soluongpay.setText(productOrderCart.getQuantity() + "");
         holder.size.setText(productOrderCart.getSize());

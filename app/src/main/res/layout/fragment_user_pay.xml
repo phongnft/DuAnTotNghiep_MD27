@@ -45,9 +45,9 @@
 
 
             <LinearLayout
+                android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:id="@+id/header"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
@@ -57,31 +57,32 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="5dp"
-                    >
+                    android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:background="@drawable/icon_information2" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
                         android:text="Thông tin khách hàng"
                         android:textSize="18dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginLeft="5dp"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/editprofile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="70dp"
-                        android:text="Chỉnh sửa"
-                        android:textSize="15dp"
                         android:layout_marginTop="3dp"
+                        android:text="Chỉnh sửa"
                         android:textColor="#008EFF"
-                        />
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -97,7 +98,6 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
                         android:orientation="horizontal">
-
 
 
                         <TextView
@@ -124,7 +124,6 @@
                         android:orientation="horizontal">
 
 
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -149,7 +148,6 @@
                         android:orientation="horizontal">
 
 
-
                         <TextView
 
                             android:layout_width="wrap_content"
@@ -167,207 +165,207 @@
                             android:textSize="17dp" />
 
 
-
                     </LinearLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/contranin3"
                         android:layout_width="390dp"
-                        android:layout_height="2dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
                         android:layout_below="@+id/header"
                         android:background="#B6B5B5">
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_margin="3dp"
-                        >
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:layout_height="30dp"
                             android:layout_width="wrap_content"
-                            android:text="Ghi chú: "
-                            android:textStyle="bold"
-                            android:textSize="18dp"
-                            />
-                        <TextView
                             android:layout_height="30dp"
+                            android:text="Ghi chú: "
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
                             android:layout_width="match_parent"
+                            android:layout_height="30dp"
                             android:text="(thời gian giao hàng, ghi chú khác)"
-                            android:textStyle="italic"
                             android:textSize="17dp"
-                            />
+                            android:textStyle="italic" />
                     </LinearLayout>
 
                     <EditText
                         android:layout_width="390dp"
                         android:layout_height="50dp"
                         android:hint="nhập ghi chú của bạn tại đây"
-                        android:textSize="17dp"
-                        />
+                        android:textSize="17dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginLeft="5dp"
-                        >
+                        android:orientation="horizontal">
+
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:background="@drawable/icon_cart2"
-                            />
+                            android:background="@drawable/icon_cart2" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
                             android:text="Mặt hàng đã chọn"
                             android:textSize="18dp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginLeft="5dp"
-                            />
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/List_Item_Product_Pay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="5dp"
                         android:layout_below="@+id/contranin3"
-                        >
-                    </androidx.recyclerview.widget.RecyclerView>
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/contranin4"
                         android:layout_width="390dp"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginBottom="3dp"
+                        android:layout_height="1dp"
                         android:layout_below="@+id/List_Item_Product_Pay"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="5dp"
                         android:background="#B6B5B5">
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="5dp"
-                        android:background="@drawable/iconchitiet"
-                        />
+                        android:background="@drawable/iconchitiet" />
+
                     <TextView
                         android:id="@+id/textchitietdonhang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/List_Item_Product_Pay"
+                        android:layout_marginLeft="5dp"
                         android:text="Chi tiết đơn hàng"
                         android:textSize="18dp"
-                        android:layout_marginLeft="5dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/Lntongphu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/contranin"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="200dp"
+                <LinearLayout
+                    android:id="@+id/Lntongphu"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Tổng phụ: "
-                    android:textSize="17dp" />
+                    android:layout_below="@+id/contranin"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/SumProductPay"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Tổng phụ: "
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/SumProductPay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnvanchuyen"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_marginLeft="50dp"
-                    android:textColor="@color/black"
-                    android:textSize="17dp" />
+                    android:layout_below="@+id/Lntongphu"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Vận chuyển: "
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/priceShip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_marginLeft="150dp"
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+                </LinearLayout>
 
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lnvanchuyen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/Lntongphu"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="100dp"
+                <LinearLayout
+                    android:id="@+id/lntong"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Vận chuyển: "
-                    android:textSize="17dp"/>
+                    android:layout_below="@id/lnvanchuyen"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/priceShip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="17dp" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Tổng: "
+                        android:textSize="17dp" />
 
+                    <TextView
+                        android:id="@+id/sumproductpay2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:text=""
+                        android:textColor="#EA1414"
+                        android:textSize="17dp" />
 
-            <LinearLayout
-                android:id="@+id/lntong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/lnvanchuyen"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Tổng: "
-                    android:textSize="17dp" />
-
-                <TextView
-                    android:id="@+id/sumproductpay2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_marginLeft="50dp"
-                    android:textColor="#EA1414"
-                    android:textSize="17dp" />
-
-            </LinearLayout>
-
+                </LinearLayout>
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/contranin2"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
                     android:layout_below="@+id/lntong"
                     android:background="#B6B5B5">
 
@@ -376,14 +374,14 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/iconpayment"
                         android:layout_marginLeft="5dp"
-                        />
+                        android:background="@drawable/iconpayment" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -394,7 +392,6 @@
 
                         />
                 </LinearLayout>
-
 
 
                 <LinearLayout
