@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.UpdateAddressActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/btn_backupdateaddress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/img_back_btn" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cập nhật địa chỉ"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_marginLeft="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liên hệ"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edit_nameAdress"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Họ và tên" />
+
+    <TextView
+        android:layout_marginLeft="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số điện thoại"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edit_phoneAdress"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Số điện thoại" />
+
+    <TextView
+        android:layout_marginLeft="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Địa chỉ"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edit_addressAdress"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Địa chỉ giao hàng" />
+
+    <Button
+        android:id="@+id/btn_Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/row_back_primary_15"
+        android:text="Lưu thay đổi" />
+
+</LinearLayout>

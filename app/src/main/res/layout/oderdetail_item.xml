@@ -53,14 +53,12 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/order_id"
+                        android:id="@+id/order_unitprice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:lines="2"
-                        android:text="Order Id"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
+
 
                     <TextView
                         android:id="@+id/order_title"
@@ -75,6 +73,7 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
+
             </LinearLayout>
 
             <LinearLayout
@@ -82,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="20px">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -116,12 +116,14 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/order_unitprice"
+                    android:id="@+id/order_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="Order Id"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
-
 
             </LinearLayout>
 
@@ -131,20 +133,22 @@
                 android:orientation="horizontal"
                 android:paddingLeft="20px">
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Total Price : "-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="18dp"-->
-<!--                    android:textStyle="bold" />-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Total Price : "-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="18dp"-->
+                <!--                    android:textStyle="bold" />-->
 
                 <TextView
                     android:id="@+id/total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:text="giá tiền"
+                    android:textColor="@color/home"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
 

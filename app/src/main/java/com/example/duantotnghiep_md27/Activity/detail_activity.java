@@ -46,12 +46,13 @@ import retrofit2.Response;
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView name, price, mota, sizedialog;
     Button btAddcart;
+
     FrameLayout frameLayoutdialog;
     ImageButton btnback;
     String _id, _name, _price, _description, _image, userid;
     int _quantity;
 
-    ImageView btnshare, image;
+    ImageView btnshare, image, btnback1;
     private static Animation shakeAnimation;
 
     Button selectedButton;
@@ -196,14 +197,15 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         frameLayoutdialog = dialog.findViewById(R.id.frameLayoutdialog);
         Button AddCart = dialog.findViewById(R.id.AddCartDialog);
         ImageView img = dialog.findViewById(R.id.imgProductCartDialog);
+        TextView productname = dialog.findViewById(R.id.ProductNameCartDialog);
         TextView txprice = dialog.findViewById(R.id.PriceCartDialog);
         TextView txq = dialog.findViewById(R.id.quantityCartDiaLog);
 
 
         Glide.with(getApplicationContext()).load(_image).into(img);
+        productname.setText(_name + "");
         txprice.setText(_price + " ");
         txq.setText(_quantity + " ");
-
 
 
         upsoluong.setOnClickListener(new View.OnClickListener() {
@@ -230,7 +232,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                     textsoluong.setTextColor(Color.RED);
                     Toast.makeText(detail_activity.this, "Số lượng phải ít nhất là 1", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
                     soluong--;
                     orderProduct.setQuantity(soluong);
                     textsoluong.setTextColor(Color.BLACK);
