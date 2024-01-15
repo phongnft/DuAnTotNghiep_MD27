@@ -18,13 +18,24 @@
 
         />
 
-
     <TextView
-        android:id="@+id/PriceCartDialog"
+        android:textColor="@color/black"
+        android:id="@+id/ProductNameCartDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:textColor="@color/red"
+        android:id="@+id/PriceCartDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
         android:text=""
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -34,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="Kho: "
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -44,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="190dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="80dp"
         android:text="5"
         android:textSize="17dp"
         android:textStyle="normal" />
@@ -60,10 +71,6 @@
         android:textStyle="bold" />
 
 
-
-
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,36 +83,36 @@
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/black"
             android:backgroundTint="@color/defaultColor"
-            android:text="S" />
+            android:text="S"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/sizeM"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/black"
             android:backgroundTint="@color/defaultColor"
-            android:text="M" />
+            android:text="M"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/sizeL"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/black"
             android:backgroundTint="@color/defaultColor"
-            android:text="L" />
+            android:text="L"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/sizeXL"
             android:layout_width="65dp"
             android:layout_height="40dp"
-            android:textColor="@color/black"
             android:layout_marginLeft="5dp"
             android:backgroundTint="@color/defaultColor"
-            android:text="XL" />
+            android:text="XL"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
@@ -114,16 +121,16 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="240dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="250dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:text="Số lượng:"
             android:textSize="18dp"
-            android:layout_marginTop="3dp"
             android:textStyle="bold" />
 
         <com.makeramen.roundedimageview.RoundedImageView
@@ -142,8 +149,8 @@
             android:id="@+id/SoluongProductCart"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:gravity="center"
             android:layout_marginTop="3dp"
+            android:gravity="center"
             android:text="1"
             android:textSize="17dp" />
 
@@ -159,17 +166,19 @@
             app:riv_mutate_background="true" />
 
     </LinearLayout>
+
     <Button
+        android:layout_marginBottom="20dp"
         android:id="@+id/AddCartDialog"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="300dp"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="290dp"
+        android:background="@drawable/border_cardview"
         android:backgroundTint="#008DFD"
-        android:background="@drawable/cart_icon"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+        android:drawableLeft="@drawable/baseline_shopping_cart_24"
+        android:text="Thêm vào giỏ hàng"
+        android:visibility="gone" />
 
 
 </FrameLayout>

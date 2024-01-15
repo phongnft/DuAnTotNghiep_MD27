@@ -54,7 +54,7 @@ public interface Api_Service {
     @POST("user/resetpassword")
     Call<UserLogin> ConfirmresetPassword(@Body User user);
 
-    @POST("user/resetpasswordinfo")
+    @POST("user/changePassword")
     Call<UserUpdatePass> EditPassword(@Body User user);
 
 

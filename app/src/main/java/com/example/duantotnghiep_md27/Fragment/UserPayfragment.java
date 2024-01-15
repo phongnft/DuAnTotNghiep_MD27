@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Activity.EditProfileActivity;
 import com.example.duantotnghiep_md27.Activity.MyInfo;
+import com.example.duantotnghiep_md27.Activity.WebViewActivity;
 import com.example.duantotnghiep_md27.Activity.detail_activity;
 import com.example.duantotnghiep_md27.Adapter.Cart_Adapter;
 import com.example.duantotnghiep_md27.Adapter.UserPayAdapter;
@@ -68,7 +69,7 @@ public class UserPayfragment extends Fragment {
     User user;
     Context context;
 
-    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay,priceship, editprofile;
+    TextView sumproductpay, sumproductpay2, tv_name_pay, tv_sdt_pay, tv_diachi_pay, priceship, editprofile;
 
     Cart_Fragment cartFragment;
     ArrayList<ProductOrderCart> listProductOrder = new ArrayList<>();
@@ -103,7 +104,6 @@ public class UserPayfragment extends Fragment {
         shakeAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.shake);
 
 
-
         localStorage = new LocalStorage(requireContext());
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
 
@@ -113,14 +113,13 @@ public class UserPayfragment extends Fragment {
                     * Cart_Fragment.listProductSelected.get(i).getQuantity());
 
 
-
         }
-         final Handler handler = new Handler();
+        final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
                 // Hiển thị nội dung từ EditText vào TextView
-                tv_name_pay .setText(user.getFull_name());
+                tv_name_pay.setText(user.getFull_name());
             }
         });
 
@@ -145,9 +144,9 @@ public class UserPayfragment extends Fragment {
 //        tv_diachi_pay.setText(user.getAddress());
 //        tv_sdt_pay.setText(user.getPhone_number());
 
-        priceship.setText(sum/6+"đ"+"+"+"(3000đ/1km giao hàng)");
+        priceship.setText(sum / 6 + "đ" + "+" + "(3000đ/1km giao hàng)");
         sumproductpay.setText(sum + "đ");
-        sumproductpay2.setText(sum + sum/6+"đ");
+        sumproductpay2.setText(sum + sum / 6 + "đ");
 
 
         editprofile.setOnClickListener(new View.OnClickListener() {
@@ -161,21 +160,20 @@ public class UserPayfragment extends Fragment {
         buttonpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(tv_diachi_pay.getText().toString())){
+                if (TextUtils.isEmpty(tv_diachi_pay.getText().toString())) {
                     Toast.makeText(context, "Nhập đầy đủ địa chỉ", Toast.LENGTH_SHORT).show();
                     buttonpay.startAnimation(shakeAnimation);
-                    }
-                else if (TextUtils.isEmpty(tv_sdt_pay.getText().toString())) {
+                } else if (TextUtils.isEmpty(tv_sdt_pay.getText().toString())) {
                     Toast.makeText(context, "Nhập số điện thoại", Toast.LENGTH_SHORT).show();
                     buttonpay.startAnimation(shakeAnimation);
 
 
-                }else if(TextUtils.isEmpty(tv_name_pay.getText().toString())){
+                } else if (TextUtils.isEmpty(tv_name_pay.getText().toString())) {
                     Toast.makeText(context, "Nhập đầy đủ tên", Toast.LENGTH_SHORT).show();
                     buttonpay.startAnimation(shakeAnimation);
-                }
-                else {
-                    paymentAPI();
+                } else {
+                  //  paymentAPI();
+                    startActivity(new Intent(getContext(), WebViewActivity.class));
                 }
 
             }
@@ -205,8 +203,6 @@ public class UserPayfragment extends Fragment {
         recyclerViewPay.setItemAnimator(new DefaultItemAnimator());
         recyclerViewPay.setAdapter(userPayAdapter);
     }
-
-
 
 
     public void paymentAPI() {
@@ -242,7 +238,6 @@ public class UserPayfragment extends Fragment {
             }
         });
     }
-
 
 
     @Override

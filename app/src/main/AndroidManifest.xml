@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +22,15 @@
         android:theme="@style/Theme.DuAnTotNghiep_MD27"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Activity.UpdateAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MyAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.Img_item_Activity"
             android:exported="false" />

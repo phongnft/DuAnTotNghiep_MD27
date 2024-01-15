@@ -6,22 +6,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Activity.OderHisActivity">
+
     <androidx.appcompat.widget.Toolbar
-        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/btn_backhistory"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/img_back_btn" />
+
         <TextView
-            android:textColor="@color/white"
-            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Lịch sử mua hàng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ryc_Oderhis"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

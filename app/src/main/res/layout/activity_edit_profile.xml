@@ -40,7 +40,7 @@
                 android:layout_height="35dp"
                 android:src="@drawable/bgr_gray" />
             <ImageView
-                android:id="@+id/edit_img_info"
+                android:id="@+id/edit_avater"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_camera_alt_24"

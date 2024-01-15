@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.duantotnghiep_md27.Adapter.OderHisAdapter;
@@ -39,15 +41,20 @@ public class OderHisActivity extends AppCompatActivity {
 
     LocalStorage localStorage;
     User user;
+    ImageView back;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oder_his);
         rycOderHis = findViewById(R.id.ryc_Oderhis);
+        back = findViewById(R.id.btn_backhistory);
         localStorage = new LocalStorage(getApplicationContext());
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
         getOrderHistory(user.getUser_id());
+
+        back.setOnClickListener(view -> finish());
     }
 
     private void getOrderHistory(String user) {
@@ -63,6 +70,7 @@ public class OderHisActivity extends AppCompatActivity {
                     if (response.code() == 200) {
 
                         oder_list = oderProduct.getData();
+
                         setupOrderRecycleView();
 
                     }
