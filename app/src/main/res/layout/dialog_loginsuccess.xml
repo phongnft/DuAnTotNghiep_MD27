@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutloginsuccess"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:background="@drawable/cutton_dialog_success"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
             android:layout_marginTop="18dp"
             android:gravity="center_horizontal"
             android:paddingTop="28dp"
-            android:text="Xác nhận OTP thành công"
+            android:text="Xác minh OTP thành công"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -31,7 +31,7 @@
 
         <Button
             android:id="@+id/buttonsuccess"
-            android:layout_width="270dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="12dp"
@@ -45,6 +45,7 @@
             app:layout_constraintTop_toBottomOf="@id/title1"
 
             />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

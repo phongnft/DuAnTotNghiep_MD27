@@ -253,7 +253,7 @@ public class OTP_Activity extends AppCompatActivity {
                             Gson gson = new Gson();
                             String userString = gson.toJson(user);
                             localStorage.createUserLoginSession(userString);
-                            Toast.makeText(getApplicationContext(), "Xác minh OTP thành công", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Xác minh OTP thành công", Toast.LENGTH_SHORT).show();
                             showdialogsuccess();
 
                         } else {
@@ -342,28 +342,29 @@ public class OTP_Activity extends AppCompatActivity {
         if (cTimer != null)
             cTimer.cancel();
     }
-private void showdialogsuccess(){
-    ConstraintLayout constraintLayoutsuccess = findViewById(R.id.LoginDiaLog);
-    View view = LayoutInflater.from(OTP_Activity.this).inflate(R.layout.dialog_loginsuccess,constraintLayoutsuccess);
-    Button done = view.findViewById(R.id.buttonsuccess);
 
-    AlertDialog.Builder builder = new AlertDialog.Builder(OTP_Activity.this);
-    builder.setView(view);
-    final AlertDialog alertDialog = builder.create();
-    done.findViewById(R.id.buttonsuccess).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            alertDialog.dismiss();
-            startActivity(new Intent(OTP_Activity.this, MainActivity.class));
-            finish();
+    private void showdialogsuccess() {
+        ConstraintLayout constraintLayoutsuccess = findViewById(R.id.LoginDiaLog);
+        View view = LayoutInflater.from(OTP_Activity.this).inflate(R.layout.dialog_loginsuccess, constraintLayoutsuccess);
+        Button done = view.findViewById(R.id.buttonsuccess);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(OTP_Activity.this);
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+        done.findViewById(R.id.buttonsuccess).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+//                startActivity(new Intent(OTP_Activity.this, Login_Activity.class));
+                finish();
+            }
+
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }
-
-    });
-
-if(alertDialog.getWindow()!=null){
-    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-}
-    alertDialog.show();
-}
+        alertDialog.show();
+    }
 
 }
