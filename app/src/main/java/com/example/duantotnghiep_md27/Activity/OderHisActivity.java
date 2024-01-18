@@ -1,23 +1,17 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duantotnghiep_md27.Adapter.OderHisAdapter;
-import com.example.duantotnghiep_md27.Api.Api_Service;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
-
-import com.example.duantotnghiep_md27.Model.OderCall;
 import com.example.duantotnghiep_md27.Model.OderProduct;
 import com.example.duantotnghiep_md27.Model.Oderdata;
 import com.example.duantotnghiep_md27.Model.User;

@@ -1,20 +1,21 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
 import com.example.duantotnghiep_md27.Fragment.Cart_Fragment;
@@ -50,7 +51,6 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-        finnisshhh = findViewById(R.id.finnishss);
         localStorage = new LocalStorage(WebViewActivity.this);
         user = gson.fromJson(localStorage.getUserLogin(), User.class);
         paymentAPI();
@@ -62,15 +62,7 @@ public class WebViewActivity extends AppCompatActivity {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true); // Bật JavaScript
 
-        finnisshhh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
-
-        // Tải một trang web
     }
 
     public void paymentAPI() {
@@ -88,9 +80,6 @@ public class WebViewActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     try {
                         webView.loadUrl(response.body().string());
-//                        webView.loadUrl("https://www.forexfactory.com/");
-
-
 
 
                         webView.setWebViewClient(new WebViewClient() {
@@ -100,20 +89,16 @@ public class WebViewActivity extends AppCompatActivity {
 
                                 String currentUrl = view.getTitle();
 
-                                if (currentUrl.equals("YouTube")) {
-                                    Toast.makeText(WebViewActivity.this, "đang demo", Toast.LENGTH_SHORT).show();
+                                if (currentUrl.equals("Bảng mã lỗi · Cổng thanh toán VNPAY")) {
+                                    Toast.makeText(WebViewActivity.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
                                     finish();
+
+
                                 }
 
-//                                if (currentUrl.length() == 216) {
-//                                    Toast.makeText(WebViewActivity.this, "đang demo", Toast.LENGTH_SHORT).show();
-//                                    finish();
-//                                }
-                                // currentUrl chứa địa chỉ URL của trang web hiện tại
                             }
                         });
 
-//                        webView.loadUrl("https://sandbox.vnpayment.vn/apis/docs/bang-ma-loi/");
 
 
                     } catch (IOException e) {
@@ -140,6 +125,39 @@ public class WebViewActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+
+    private void showdialogsuccess(View view) {
+        ConstraintLayout constraintLayoutsuccess = view.findViewById(R.id.DialogPaySuccess);
+        view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_pay_success, constraintLayoutsuccess);
+        Button donee = view.findViewById(R.id.buttonsuccess2);
+//        Button stoppay = view.findViewById(R.id.buttonstopPay);
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(getApplicationContext());
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+        donee.findViewById(R.id.buttonsuccess2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
+                paymentAPI();
+
+            }
+
+
+        });
+
+//        stoppay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.cancel();
+//            }
+//        });
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
     }
 
 

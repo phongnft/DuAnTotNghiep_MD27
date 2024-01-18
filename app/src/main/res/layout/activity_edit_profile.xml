@@ -1,216 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Activity.EditProfileActivity">
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/avatar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="200dp"
+        android:src="@drawable/img_product" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardCornerRadius="150dp">
-            <ImageView
-                android:id="@+id/avatar"
-                android:src="@drawable/img_avatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                />
-        </androidx.cardview.widget.CardView>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/btn_camera_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="-40dp">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/btn_camera"
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_img_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="-40dp">
+            android:layout_gravity="right"
+            android:src="@drawable/ic_baseline_camera_alt_24" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/i1"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/bgr_gray" />
-            <ImageView
-                android:id="@+id/edit_avater"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_camera_alt_24"
-                android:layout_gravity="center"
-                />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <EditText
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingStart="10dp"
+            android:text="Họ tên"
+            android:textSize="20dp" />
+        <TextView
             android:id="@+id/edt_name_edit"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:maxLines="1"
-            android:layout_marginRight="5dp"
-            android:hint="Vui lòng nhập tên"
-            android:textSize="20dp"
+            android:text="Vui lòng nhập tên"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:paddingStart="10dp"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/customeditif" />
-
-        <LinearLayout
+            android:text="Số điện thoại"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/edt_sdt_edit"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Vui lòng nhập tên"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/customeditif"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/baseline_email_if"
-                android:drawablePadding="7dp"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Email"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edt_email_edit"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:hint="fpt@gmail.com"
-                android:textSize="20dp"
-                android:gravity="right|center"
-                android:paddingRight="25dp"
-                android:maxLines="1"
-                android:maxLength="30"
-                android:background="@drawable/customeditif" />
-
-
-        </LinearLayout>
-        <LinearLayout
+            android:paddingStart="10dp"
+            android:text="Email"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/edt_email_edit"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Vui lòng nhập tên"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancle"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/customeditif"
-            android:orientation="horizontal">
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/custom_edittex"
+            android:padding="3dp"
+            android:text="Hủy"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_location"
-                android:drawablePadding="7dp"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Địa chỉ"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edt_diachi_edit"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:hint="Trịnh Văn Bô"
-                android:textSize="20dp"
-                android:maxLines="1"
-                android:maxLength="30"
-                android:gravity="right|center"
-                android:paddingRight="35dp"
-                android:background="@drawable/customeditif" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnsave_edit"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/customeditif"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_phone"
-                android:drawablePadding="7dp"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Số điện thoại"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edt_sdt_edit"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:hint="03551324546"
-                android:textSize="20dp"
-                android:gravity="right|center"
-                android:paddingRight="25dp"
-                android:maxLines="1"
-                android:maxLength="30"
-                android:background="@drawable/customeditif" />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/btn_cancle"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="70dp"
-                android:background="@drawable/custom_edittex"
-                android:padding="3dp"
-                android:text="Hủy"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnsave_edit"
-                android:layout_marginLeft="30dp"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="70dp"
-                android:background="@drawable/custom_edittex"
-                android:padding="3dp"
-                android:text="Lưu"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/custom_edittex"
+            android:padding="3dp"
+            android:text="Lưu"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
 </LinearLayout>
+
+
+

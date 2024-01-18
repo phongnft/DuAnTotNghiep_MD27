@@ -31,7 +31,6 @@ import com.example.duantotnghiep_md27.Model.BannerData;
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.CategoryResult;
 import com.example.duantotnghiep_md27.Model.ProductData;
-import com.example.duantotnghiep_md27.Model.ProductImage;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -117,7 +116,6 @@ public class Home_Fragment extends Fragment {
                         sliderAuto();
 
                     }
-
 
                 }
                 hideProgressDialog();

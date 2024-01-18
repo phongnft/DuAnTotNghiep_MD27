@@ -1,12 +1,5 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,29 +7,30 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.duantotnghiep_md27.Adapter.Search_Adapter;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
-import com.example.duantotnghiep_md27.MainActivity;
 import com.example.duantotnghiep_md27.Model.ProductData;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.R;
-import com.makeramen.roundedimageview.RoundedImageView;
-import com.orhanobut.dialogplus.DialogPlus;
-import com.orhanobut.dialogplus.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,55 +145,6 @@ public class Search_Activity extends AppCompatActivity {
     }
 
 
-    private void showDialog() {
-        Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_filter);
-
-//        Button btnFilter = findViewById(R.id.btnFilter);
-        EditText edtminprice = findViewById(R.id.edtminPrice);
-        EditText edtmaxprice = findViewById(R.id.edtmaxPrice);
-
-        // Cấu hình kích thước và vị trí cho dialog
-        Window window = dialog.getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams layoutParams = window.getAttributes();
-            layoutParams.gravity = Gravity.BOTTOM;
-            layoutParams.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.7);
-            layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
-            window.setAttributes(layoutParams);
-        }
-
-//        btnFilter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String min = edtminprice.getText().toString();
-//                String max = edtmaxprice.getText().toString();
-//
-//                int minValue = Integer.parseInt(min);
-//                int maxValue = Integer.parseInt(max);
-////                String min= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
-////                String max= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
-//                getFilterProduct(minValue, maxValue);
-//            }
-//        });
-
-        dialog.show();
-    }
-
-
-    public void showDiaLogCart() {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_filter);
-
-
-        dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setGravity(Gravity.END);
-    }
 
     private void getFilterProduct(int minprice, int maxprice) {
         showProgressDialog();
@@ -242,18 +187,21 @@ public class Search_Activity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý sự kiện khi nhấn nút OK
-                        String min = edtminprice.getText().toString() + "";
-                        String max = edtmaxprice.getText().toString() + "";
-
+                        String min = edtminprice.getText().toString().trim();
+                        String max = edtmaxprice.getText().toString().trim();
+                        if (TextUtils.isEmpty(min) || TextUtils.isEmpty(max)) {
+                            Toast.makeText(Search_Activity.this, "Vui lòng nhập mức giá muốn lọc", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         int minValue = Integer.parseInt(min);
                         int maxValue = Integer.parseInt(max);
-//                String min= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
-//                String max= String.valueOf(Double.parseDouble(edtminprice.getText().toString()));
+
                         getFilterProduct(minValue, maxValue);
-                        // ...
+
+
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý sự kiện khi nhấn nút Cancel
@@ -264,9 +212,6 @@ public class Search_Activity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        // Lấy tham chiếu đến các EditText trong dialog
-
-//        btnFilter = dialog.findViewById(R.id.btnFilter);
         edtminprice = dialog.findViewById(R.id.edtminPrice);
         edtmaxprice = dialog.findViewById(R.id.edtmaxPrice);
     }

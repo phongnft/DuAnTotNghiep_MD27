@@ -25,5 +25,10 @@
     <color name="lavender">#8692f7</color>
     <color name="green">#50c878</color>
 
+    <color name="pending">#AA9556</color>
+    <color name="confirmed">#2196F3</color>
+    <color name="onway">#FF5722</color>
+    <color name="delivered">#4CAF50</color>
+
 
 </resources>

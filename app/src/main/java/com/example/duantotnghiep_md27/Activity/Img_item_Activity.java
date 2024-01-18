@@ -14,17 +14,18 @@ import com.example.duantotnghiep_md27.R;
 import java.util.ArrayList;
 
 public class Img_item_Activity extends AppCompatActivity {
-String _image;
-ImageView imageView;
+    String _image;
+    ImageView imageView;
     int position;
     ArrayList<ProductOrderCart> listProduct;
-ProductForCart productForCart;
+    ProductForCart productForCart;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState ) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_img_item);
-       Intent intent = getIntent();
-      _image = intent.getStringExtra("image");
+        Intent intent = getIntent();
+        _image = intent.getStringExtra("image");
         imageView = findViewById(R.id.img_item_activity);
         Glide.with(getApplicationContext()).load(_image).into(imageView);
     }

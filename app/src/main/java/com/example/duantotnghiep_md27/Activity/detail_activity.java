@@ -1,13 +1,11 @@
 package com.example.duantotnghiep_md27.Activity;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -24,19 +22,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.duantotnghiep_md27.Adapter.Comment_Adapter;
 import com.example.duantotnghiep_md27.Api.Clients.RestClient;
+import com.example.duantotnghiep_md27.Model.Comment;
+import com.example.duantotnghiep_md27.Model.CommentData;
 import com.example.duantotnghiep_md27.Model.OrderProduct;
 import com.example.duantotnghiep_md27.Model.OrderProductData;
 import com.example.duantotnghiep_md27.Model.OrderProductResponse;
 import com.example.duantotnghiep_md27.Model.Product_home;
 import com.example.duantotnghiep_md27.Model.User;
 import com.example.duantotnghiep_md27.R;
-import com.example.duantotnghiep_md27.Utils.CustomToast;
 import com.example.duantotnghiep_md27.permission.LocalStorage;
 import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,15 +51,18 @@ import retrofit2.Response;
 
 
 public class detail_activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    RecyclerView recyclerViewComment;
+    private List<Comment> commentDataList = new ArrayList<>();
+    private Comment_Adapter comment_adapter;
     TextView name, price, mota, sizedialog;
     Button btAddcart;
 
     FrameLayout frameLayoutdialog;
-    ImageButton btnback;
+    ImageButton btnback123;
     String _id, _name, _price, _description, _image, userid;
     int _quantity;
 
-    ImageView btnshare, image, btnback1;
+    ImageView btnshare, image, btnback;
     private static Animation shakeAnimation;
 
     Button selectedButton;
@@ -66,7 +76,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
     int soluong = 1;
 
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +99,8 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         btAddcart = findViewById(R.id.addCart);
         btnshare = findViewById(R.id.buttonShare);
         btnback = findViewById(R.id.btnbackkkk);
+        recyclerViewComment = findViewById(R.id.recycview_comment);
+        getComment(_id);
 
 
         name.setText(_name);
@@ -102,7 +113,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(detail_activity.this, Img_item_Activity.class);
-                i.putExtra("image", product_home.getImage_url());
+                i.putExtra("image", _image);
                 startActivity(i);
             }
         });
@@ -192,9 +203,7 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
         RoundedImageView downsoluong = dialog.findViewById(R.id.SoluongDown);
         RoundedImageView upsoluong = dialog.findViewById(R.id.SoluongUp);
         TextView textsoluong = dialog.findViewById(R.id.SoluongProductCart);
-        sizedialog = dialog.findViewById(R.id.sizedialog);
         shakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-        frameLayoutdialog = dialog.findViewById(R.id.frameLayoutdialog);
         Button AddCart = dialog.findViewById(R.id.AddCartDialog);
         ImageView img = dialog.findViewById(R.id.imgProductCartDialog);
         TextView productname = dialog.findViewById(R.id.ProductNameCartDialog);
@@ -252,7 +261,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("S");
-                sizedialog.setText("S");
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -267,7 +275,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("M");
-                sizedialog.setText("M");
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -281,7 +288,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(false);
                 sizexl.setEnabled(true);
                 orderProduct.setSize("L");
-                sizedialog.setText("L");
                 AddCart.setVisibility(View.VISIBLE);
 
             }
@@ -296,7 +302,6 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
                 sizel.setEnabled(true);
                 sizexl.setEnabled(false);
                 orderProduct.setSize("XL");
-                sizedialog.setText("XL");
                 AddCart.setVisibility(View.VISIBLE);
             }
         });
@@ -334,5 +339,45 @@ public class detail_activity extends AppCompatActivity implements AdapterView.On
 
         // Cập nhật biến selectedButton
         selectedButton = clickedButton;
+    }
+
+    private void getComment(String id_product) {
+//        showProgressDialog();
+        Call<CommentData> call = RestClient.getRestService(getApplicationContext()).getListCommentByProductId(id_product);
+        call.enqueue(new Callback<CommentData>() {
+            @Override
+            public void onResponse(Call<CommentData> call, Response<CommentData> response) {
+                Log.d("Response :=>", response.body() + "");
+                if (response.isSuccessful() && response.body() != null) {
+
+                    CommentData commentData = response.body();
+//                    if (productData.getStatus() == 200) {
+                    if (response.body() != null) {
+                        commentDataList = commentData.getCommentList();
+
+                        setupCommentRecycleView();
+                    }
+
+                } else {
+
+                }
+//                hideProgressDialog();
+            }
+
+            @Override
+            public void onFailure(Call<CommentData> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Fail api" + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private void setupCommentRecycleView() {
+
+        comment_adapter = new Comment_Adapter(commentDataList, getApplicationContext());
+        RecyclerView.LayoutManager nLayoutManager = new GridLayoutManager(getApplicationContext(), 1, LinearLayoutManager.VERTICAL, false);
+        recyclerViewComment.setLayoutManager(nLayoutManager);
+        recyclerViewComment.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewComment.setAdapter(comment_adapter);
     }
 }

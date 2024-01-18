@@ -354,7 +354,7 @@ private void showdialogsuccess(){
         @Override
         public void onClick(View v) {
             alertDialog.dismiss();
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(OTP_Activity.this, MainActivity.class));
             finish();
         }
 

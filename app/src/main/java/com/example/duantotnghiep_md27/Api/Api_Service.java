@@ -3,6 +3,9 @@ package com.example.duantotnghiep_md27.Api;
 import com.example.duantotnghiep_md27.Model.BannerData;
 import com.example.duantotnghiep_md27.Model.Category;
 import com.example.duantotnghiep_md27.Model.CategoryResult;
+import com.example.duantotnghiep_md27.Model.Comment;
+import com.example.duantotnghiep_md27.Model.CommentData;
+import com.example.duantotnghiep_md27.Model.Comment_create;
 import com.example.duantotnghiep_md27.Model.Delete_Cart;
 import com.example.duantotnghiep_md27.Model.ListCart;
 import com.example.duantotnghiep_md27.Model.LoginGoogleData;
@@ -113,4 +116,9 @@ public interface Api_Service {
             @Query("maxPrice") int maxPrice
     );
 
+    @POST("comment/createComment")
+    Call<Comment_create> createCommment(@Body Comment_create comment_create);
+
+    @GET("comment/getListCommentByProductId/{productId}")
+    Call<CommentData> getListCommentByProductId(@Path("productId") String productId);
 }

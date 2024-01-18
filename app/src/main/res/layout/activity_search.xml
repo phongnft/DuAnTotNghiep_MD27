@@ -22,7 +22,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/imgback" />
+                android:src="@drawable/img_back_btn" />
+
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/seachviewactivity"

@@ -11,26 +11,22 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/primary">
+        android:background="@color/colorPrimaryDark">
 
         <ImageView
             android:id="@+id/imgback"
-            android:layout_width="20dp"
+            android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/iconback"
-            android:onClick="BackPay"></ImageView>
+            android:src="@drawable/img_back_btn" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:text="TỔNG QUAN ĐƠN HÀNG"
+            android:text="Tổng quan đơn hàng"
             android:textColor="@color/white"
-            android:textSize="23dp"
-            android:textStyle="bold"
-
-            />
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -63,26 +59,18 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/icon_information2" />
+                        android:background="@drawable/img_delivered" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="3dp"
-                        android:text="Thông tin khách hàng"
+                        android:paddingTop="4dp"
+                        android:text="Địa chỉ giao hàng"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/editprofile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="70dp"
-                        android:layout_marginTop="3dp"
-                        android:text="Chỉnh sửa"
-                        android:textColor="#008EFF"
-                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -171,9 +159,9 @@
                         android:id="@+id/contranin3"
                         android:layout_width="390dp"
                         android:layout_height="1dp"
+                        android:layout_below="@+id/header"
                         android:layout_marginTop="3dp"
                         android:layout_marginBottom="3dp"
-                        android:layout_below="@+id/header"
                         android:background="#B6B5B5">
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -184,9 +172,16 @@
                         android:layout_margin="3dp"
                         android:orientation="horizontal">
 
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/img_note" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
+                            android:layout_marginLeft="7dp"
+                            android:paddingTop="3dp"
                             android:text="Ghi chú: "
                             android:textSize="18dp"
                             android:textStyle="bold" />
@@ -265,6 +260,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/List_Item_Product_Pay"
                         android:layout_marginLeft="5dp"
+                        android:paddingTop="3dp"
                         android:text="Chi tiết đơn hàng"
                         android:textSize="18dp"
                         android:textStyle="bold" />
@@ -286,7 +282,7 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="Tổng phụ: "
+                        android:text="Tổng tiền hàng"
                         android:textSize="17dp" />
 
                     <TextView
@@ -296,7 +292,8 @@
                         android:layout_marginLeft="50dp"
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
@@ -316,17 +313,18 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="Vận chuyển: "
+                        android:text="Phí ship"
                         android:textSize="17dp" />
 
                     <TextView
                         android:id="@+id/priceShip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
                         android:layout_marginLeft="150dp"
+                        android:text=""
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
@@ -345,7 +343,7 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="Tổng: "
+                        android:text="Tổng thanh toán"
                         android:textSize="17dp" />
 
                     <TextView
@@ -353,9 +351,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="50dp"
-                        android:text=""
+                        android:text="32424"
                         android:textColor="#EA1414"
-                        android:textSize="17dp" />
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -364,9 +363,9 @@
                     android:id="@+id/contranin2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_below="@+id/lntong"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
-                    android:layout_below="@+id/lntong"
                     android:background="#B6B5B5">
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -421,7 +420,7 @@
                     android:layout_width="380dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/row_back_primary_15"
+                    android:background="@drawable/backgr_btnnew"
                     android:backgroundTint="#F83535"
                     android:text="Đặt hàng" />
 

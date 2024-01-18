@@ -5,12 +5,26 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class OrderDetails {
+    private boolean isButtonDisabled;
     String order_detail_id;
     String order_id;
     String product_id;
     int quantity;
     @SerializedName("product")
     Product_home product;
+
+    public OrderDetails(boolean isButtonDisabled) {
+        this.isButtonDisabled = false;
+    }
+
+    public boolean isButtonDisabled() {
+        return isButtonDisabled;
+    }
+
+    public void setButtonDisabled(boolean buttonDisabled) {
+        isButtonDisabled = buttonDisabled;
+    }
+
 
     public String getOrder_detail_id() {
         return order_detail_id;

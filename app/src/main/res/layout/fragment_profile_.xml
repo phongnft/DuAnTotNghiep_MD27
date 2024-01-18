@@ -42,8 +42,8 @@
 
                 <ImageView
                     android:id="@+id/edit_logo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/img_edit_profile"
                     app:layout_constraintBottom_toBottomOf="@+id/img_avatarprofile"
                     app:layout_constraintEnd_toEndOf="@+id/imageView"

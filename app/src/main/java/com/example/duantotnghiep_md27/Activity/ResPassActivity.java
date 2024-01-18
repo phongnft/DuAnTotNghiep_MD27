@@ -113,6 +113,7 @@ public class ResPassActivity extends AppCompatActivity {
                         new CustomToast().Show_Toast(ResPassActivity.this, layoutEditpass, "Mật khẩu cũ không chính xác");
                     } else {
                         Toast.makeText(getApplicationContext(), "Thay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 } else {
                     new CustomToast().Show_Toast(ResPassActivity.this, layoutEditpass, "Vui lòng thử lại sau");

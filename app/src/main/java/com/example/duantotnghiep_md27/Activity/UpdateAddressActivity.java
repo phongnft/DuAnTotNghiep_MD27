@@ -118,7 +118,8 @@ public class UpdateAddressActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                     String userString = gson.toJson(update.getData());
                     localStorage.createUserLoginSession(userString);
-                    Toast.makeText(UpdateAddressActivity.this, "Đổi địa chỉ thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateAddressActivity.this, "Thay đổi địa chỉ thành công", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(UpdateAddressActivity.this, "Đổi địa chỉ thất bại", Toast.LENGTH_SHORT).show();
                 }

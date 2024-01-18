@@ -29,6 +29,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.example.duantotnghiep_md27.Activity.EditProfileActivity;
 import com.example.duantotnghiep_md27.Activity.Login_Activity;
 import com.example.duantotnghiep_md27.Activity.MyAddressActivity;
 import com.example.duantotnghiep_md27.Activity.MyInfo;
@@ -159,7 +160,7 @@ public class Profile_Fragment extends Fragment {
         edit_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MyInfo.class);
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(intent);
             }
         });

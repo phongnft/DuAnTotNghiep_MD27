@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <ScrollView
@@ -31,10 +33,10 @@
 
 
                 <ImageView
-                    android:layout_marginTop="5sp"
                     android:id="@+id/btnbackkkk"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="5sp"
                     android:src="@drawable/back_detailproduct" />
 
 
@@ -44,8 +46,9 @@
                 android:id="@+id/tvdetail_namee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:text="Áo thun nam Cotton Coolmate Basics 200gsm thương hiệu Coolmate CW"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
 
@@ -96,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Mô tả sản phẩm"
+                android:text="Mô TẢ SẢN PHẨM"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -112,21 +115,6 @@ Dáng áo vừa vặn, phù hợp với đi chơi, đi làm và ở nhà
 Tự hào sản xuất tại Việt Nam"
                 android:textColor="@color/black" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Thương hiệu"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Cool-mate"
-                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -142,6 +130,80 @@ Tự hào sản xuất tại Việt Nam"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:src="@drawable/bangsize" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh giá"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="4.9"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8sp"
+                        android:src="@drawable/img_star" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8sp"
+                        android:src="@drawable/img_star" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8sp"
+                        android:src="@drawable/img_star" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8sp"
+                        android:src="@drawable/img_star" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8sp"
+                        android:src="@drawable/img_star" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="11sp"
+                        android:src="@drawable/img_next" />
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    tools:listitem="@layout/item_comment"
+                    android:id="@+id/recycview_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp" />
+
+
+            </LinearLayout>
 
 
             <TextView
