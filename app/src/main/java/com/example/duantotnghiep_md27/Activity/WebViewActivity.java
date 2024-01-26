@@ -90,7 +90,6 @@ public class WebViewActivity extends AppCompatActivity {
                                 String currentUrl = view.getTitle();
 
                                 if (currentUrl.equals("Bảng mã lỗi · Cổng thanh toán VNPAY")) {
-                                    Toast.makeText(WebViewActivity.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
                                     finish();
 
 
@@ -98,7 +97,6 @@ public class WebViewActivity extends AppCompatActivity {
 
                             }
                         });
-
 
 
                     } catch (IOException e) {

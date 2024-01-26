@@ -13,7 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
-    public static final String BASE_URL = "http://192.168.24.106:5000/api/v1/";
+    public static final String BASE_URL = "http://192.168.43.78:5000/api/v1/";
     private static Retrofit retrofit;
     public static Api_Service api_servicea = null;
 

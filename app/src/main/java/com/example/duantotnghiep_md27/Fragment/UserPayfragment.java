@@ -50,6 +50,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserPayfragment extends Fragment {
+    private static final int DELAY_TIME_MS = 2000; // Thời gian chờ (2 giây)
     ImageView imageViewBack, imageViewNextInformation, imageViewNextPay, imgdialogpay, imgVNPay;
     Button buttonpay;
     RecyclerView recyclerViewPay;
@@ -132,8 +133,6 @@ public class UserPayfragment extends Fragment {
         });
 
 
-
-
         priceship.setText("0đ");
         sumproductpay.setText(sum + "đ");
         sumproductpay2.setText(sum + "đ");
@@ -156,7 +155,6 @@ public class UserPayfragment extends Fragment {
                 } else {
                     startActivity(new Intent(getContext(), WebViewActivity.class));
                 }
-
 
 
             }
@@ -232,10 +230,16 @@ public class UserPayfragment extends Fragment {
 
     private boolean isRestarted = false;
 
+    private boolean dialog = false;
+
     @Override
     public void onStart() {
         super.onStart();
         if (isRestarted) {
+//            if (dialog) {
+//                showDialogWithDelay();
+//            }
+//            dialog = true;
             showdialogsuccess(getView());
             // Thực hiện các hoạt động sau khi Fragment bị tạm dừng và khởi động lại
             // Ví dụ: cập nhật giao diện người dùng, làm mới dữ liệu, ...
@@ -270,5 +274,28 @@ public class UserPayfragment extends Fragment {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }
         alertDialog.show();
+    }
+
+    private void showDialogWithDelay() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Tạo Dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                LayoutInflater inflater = LayoutInflater.from(context);
+                View dialogView = inflater.inflate(R.layout.layout_delay, null);
+                builder.setView(dialogView);
+
+                // Thiết lập các thành phần giao diện trong Dialog
+                // Ví dụ:
+//                TextView messageTextView = dialogView.findViewById(R.id.textView_message);
+//                messageTextView.setText("Nội dung thông báo");
+
+                // Hiển thị Dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        }, DELAY_TIME_MS);
     }
 }
